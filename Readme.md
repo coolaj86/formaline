@@ -33,7 +33,7 @@ change the path and the port with yours
  
  etc..
  
- (the parsing data rate depends on many factor, it is possible to reach 700 MB/s and more with a *real* Buffer totally loaded in RAM and a basic ~60 bytes boundary string (like Firefox uses), is not the same thing with a real chunked data upload, as others libraries announce,)
+ (the parsing data rate depends on many factor, it is possible to reach 700 MB/s and more with a *real* Buffer totally loaded in RAM and a basic ~60 bytes boundary string (like Firefox uses), is not the same thing with a real chunked data upload, as others libraries announce )
 
 
 ## Usage
@@ -77,7 +77,7 @@ change the path and the port with yours
         
             /*
              remove file not completed due to maxBytes, 
-             if true formaline emit fileremoved event, 
+             if true, formaline emit 'fileremoved' event, 
              otherwise return a path array of incomplete files when 'end' event is emitted 
             */
             
@@ -132,7 +132,7 @@ change the path and the port with yours
     };
         
     /*
-        create an instance of formaline with configuration object and parse req
+        create an instance of formaline with configuration object and then parse request
     */
     
     new formaline( config ).parse( req, res, next );
