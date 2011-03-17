@@ -140,7 +140,6 @@ change the path and the port with yours
         
     /*
         create a formaline instance with configuration object, then parse request
-        
     */
     
     new formaline( config ).parse( req, res, next );
