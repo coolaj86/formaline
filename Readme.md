@@ -11,6 +11,13 @@ with npm:
 with git:
     $ git clone git://github.com/rootslab/formaline.git
 
+for using node and apache together, a way is to enable apache *mod-proxy* and add this lines to your apache virtualhost:
+
+    ProxyPass /test/ http://localhost:3000/test/
+    ProxyPassReverse /test/ http://localhost:3000/test/
+
+change the path and the port with yours
+
 ## Features
   
   in progress..
