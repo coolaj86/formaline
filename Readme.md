@@ -50,22 +50,22 @@ change the path and the port with yours
              default is /tmp/ -->
             */
             
-        tmpUploadDir: '/var/www/upload/',
+        *tmpUploadDir*: '/var/www/upload/',
             
             /*
-             default is false, or integer chunk factor, 
-             every k chunk emits 'dataprogress' event  start from first chunk ( 1+(0*k) 1+(1*k),1+(2*k),1+(3*k) ), 
-             minimum multply factor value is 2 -->
+             boolean: default is false; when true, it emits 'dataprogress' every chunk 
+             integer chunk factor: emits 'dataprogress' event every k chunks starting from first chunk ( 1+(0*k) 1+(1*k),1+(2*k),1+(3*k) ),
+             minimum chunk factor value is 2 -->
             */
             
-        emitDataProgress: !true, //3,10,100 (every k chunks)
+        *emitDataProgress*: !true, //true, false, 3, 10, 100.. (every k chunks)
             
             /*
-             max bytes allowed, this is the max bytes writed to disk before stop to write 
+             max bytes allowed, this is the max bytes writed to disk before stopping 
              this is also true for serialzed fields not only for files upload  -->
             */
             
-        maxBytes: 3949000, //bytes ex.: 1024*1024*1024 , 512
+        *maxBytes*: 3949000, //bytes ex.: 1024*1024*1024 , 512
         
             /*
              default false, bypass headers value, continue to write to disk  
@@ -73,7 +73,7 @@ change the path and the port with yours
              if true -> stop receiving data, when headers Content-Length exceeds maxBytes
             */
             
-        blockOnReqHeaderContentLength: !true,
+        *blockOnReqHeaderContentLength*: !true,
         
             /*
              remove file not completed due to maxBytes, 
@@ -81,7 +81,7 @@ change the path and the port with yours
              otherwise return a path array of incomplete files when 'end' event is emitted 
             */
             
-        removeIncompleteFiles : true,
+        *removeIncompleteFiles*: true,
         
             /*
              enable various logging levels
@@ -89,13 +89,20 @@ change the path and the port with yours
              debug: 'off' turn off logging
             */
             
-        logging: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
+        *logging*: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
             
             /*
-            listeners
+             it is possible to specify here a configuration object for listeners
+             or adding them in normal way, with 'addListener' or 'on' functions
+             
+             events:
+                - headersexception, filepathexception, exception: indicates a closed request caused by a 'fatal' exception
+                - warning: indicates a value/operation not ammitted (it doesn't block data receiving)  
+                - fileremoved: indicates that a file was removed because it exceeded max allowed bytes 
+                - dataprogress: emitted on every (k) chunk(s) received   
             */
             
-        listeners: {
+        *listeners*: {
             'warning': function(msg){
                 ...
             },

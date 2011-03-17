@@ -44,7 +44,7 @@ var buildBuffer = function(p,MBsize,gapFactor){
 
 var lookupTable = function(p){
     var b = new Buffer(255),
-        m = p.length;
+        m = p.length,
         called = 0,
         cmatches = 0;
     for( var i = 0; i <= 255 ; b[i] = 0x00, i++ );
