@@ -50,7 +50,7 @@ change the path and the port with yours
              default is /tmp/ -->
             */
             
-        *tmpUploadDir*: '/var/www/upload/',
+        tmpUploadDir: '/var/www/upload/',
             
             /*
              boolean: default is false; when true, it emits 'dataprogress' every chunk 
@@ -58,14 +58,14 @@ change the path and the port with yours
              minimum chunk factor value is 2 -->
             */
             
-        *emitDataProgress*: !true, //true, false, 3, 10, 100.. (every k chunks)
+        emitDataProgress: !true, //true, false, 3, 10, 100.. (every k chunks)
             
             /*
              max bytes allowed, this is the max bytes writed to disk before stopping 
              this is also true for serialzed fields not only for files upload  -->
             */
             
-        *maxBytes*: 3949000, //bytes ex.: 1024*1024*1024 , 512
+        maxBytes: 3949000, //bytes ex.: 1024*1024*1024 , 512
         
             /*
              default false, bypass headers value, continue to write to disk  
@@ -73,7 +73,7 @@ change the path and the port with yours
              if true -> stop receiving data, when headers Content-Length exceeds maxBytes
             */
             
-        *blockOnReqHeaderContentLength*: !true,
+        blockOnReqHeaderContentLength: !true,
         
             /*
              remove file not completed due to maxBytes, 
@@ -81,15 +81,15 @@ change the path and the port with yours
              otherwise return a path array of incomplete files when 'end' event is emitted 
             */
             
-        *removeIncompleteFiles*: true,
+        removeIncompleteFiles: true,
         
             /*
              enable various logging levels
              it is possible to switch on/off one or more levels at the same time
-             debug: 'off' turn off logging
+             debug: 'off' turn off logging,to see parser stats enable 2 level
             */
             
-        *logging*: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
+        logging: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
             
             /*
              it is possible to specify here a configuration object for listeners
@@ -102,7 +102,7 @@ change the path and the port with yours
                 - dataprogress: emitted on every (k) chunk(s) received   
             */
             
-        *listeners*: {
+        listeners: {
             'warning': function(msg){
                 ...
             },
