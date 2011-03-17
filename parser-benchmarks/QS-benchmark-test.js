@@ -1,3 +1,9 @@
+/*!
+ * formaline QuickSearch semi-interactive benchmarks
+ * Copyright(c) 2011 Guglielmo Ferri <44gatti@gmail.com>
+ * MIT Licensed
+ */
+
 var log = console.log;
 
 var emitter = require('events').EventEmitter;
