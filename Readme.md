@@ -1,4 +1,3 @@
-
 # formaline
 
  formaline is a new (node.js) module for handling simple form posts and fast parsing of file uploads,
@@ -131,7 +130,8 @@ with git:
     
     new formaline( config ).parse( req, res, next );
 
- *See Also :*
+
+ **See Also :**
  - examples directory for seeing formaline in action. 
  - parser-benchmarks directory for testing algorithm parsing speed (wow). 
   
