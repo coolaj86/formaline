@@ -139,11 +139,15 @@ change the path and the port with yours
     };
         
     /*
-        create an instance of formaline with configuration object and then parse request
+        create a formaline instance with configuration object, then parse request
+        
     */
     
     new formaline( config ).parse( req, res, next );
-
+    
+    //or
+    //  var form = new formaline(config); 
+    //  form.parse( req, res, next);
 
  **See Also :**
 
