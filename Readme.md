@@ -145,9 +145,11 @@ change the path and the port with yours
     
     new formaline( config ).parse( req, res, next );
     
-    //or
-    //  var form = new formaline(config); 
-    //  form.parse( req, res, next);
+      // or
+      //     var form = new formaline(config); 
+      //     form.parse( req, res, next);
+    
+    
 
  **See Also :**
 
