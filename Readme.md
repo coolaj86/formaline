@@ -22,7 +22,7 @@ change the path and the port with yours
 
  - Works!
  - It is possible to create instances via configuration object
- - Useful configuration parameters (like maxBytes..)
+ - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. )
  - Fluid exceptions handling
  - Many events for total control of parsing flow 
  - Very Fast and Simple Parser (see parser-benchmarks)
@@ -156,7 +156,21 @@ change the path and the port with yours
  
 
 ## About File Creation 
-
+ 
+When a file is founded in the data stream:
+ 
+ - this is directly writed to disk chunk per chunk, until end of file is reached.
+ - a directory with random numeric name is created, as child of root dir specified via configuration object (default is /tmp/); 
+   that assures no file name collisions for every different post.
+ - when two files with the same name are uploaded through the same form post action, 
+   the file that causes the collision is renamed with a prefix equal to current time in millis; 
+   for example two files with the same name like *hello.jpg*, the first is recevied and the name is not modified, 
+   the second causes a name collision and it is renamed to something like *1300465416185_hello.jpg*. 
+   It assures that the first file received is not overwrited.
+ - when a file reaches the maximum byte allowed, it is auto removed (if specified in the instance configuration object) 
+   and a event 'fileremoved' is emmitted, or is kept in the filesystem, and a list of files, in the form of an array of paths, 
+   are passed to callback specified for 'end' event.
+ 
  in progress..
 
 ## About Parser  
