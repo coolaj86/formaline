@@ -19,9 +19,8 @@ for using node and apache together, a way is to enable apache *mod-proxy* and ad
 change the path and the port with yours
 
 ## Features
-  
-  in progress..
-  
+
+ - Works!
  - It is possible to create instances via configuration object
  - Useful configuration parameters (like maxBytes..)
  - Fluid exceptions handling
@@ -29,8 +28,7 @@ change the path and the port with yours
  - Very Fast and Simple Parser (see parser-benchmarks)
  - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of max bytes limit 
  - It is possible to easily integrate with connect.js
- - It is not perfect, who is ?
- 
+
  etc..
  
  (the parsing data rate depends on many factor, it is possible to reach 700 MB/s and more with a *real* Buffer totally loaded in RAM and a basic ~60 bytes boundary string (like Firefox uses), is not the same thing with a real chunked data upload, as others libraries announce )
@@ -155,8 +153,13 @@ change the path and the port with yours
 
  - examples directory for seeing formaline in action. 
  - parser-benchmarks directory for testing algorithm parsing speed (wow). 
-  
-## API
+ 
+
+## About File Creation 
+
+ in progress..
+
+## About Parser  
 
  in progress..
 
