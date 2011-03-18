@@ -84,7 +84,7 @@ change the path and the port with yours
             /*
              enable various logging levels
              it is possible to switch on/off one or more levels at the same time
-             debug: 'off' turn off logging,to see parser stats enable 2 level
+             debug: 'off' turn off logging,to see parser stats enable 2nd level
             */
             
         logging: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
