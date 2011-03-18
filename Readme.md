@@ -164,11 +164,11 @@ When a file is founded in the data stream:
    that assures no file name collisions for every different post.
  - when two files with the same name are uploaded through the same form post action, 
    the file that causes the collision is renamed with a prefix equal to current time in millis; 
-   for example two files with the same name like *hello.jpg*, the first is recevied and the name is not modified, 
-   the second causes a name collision and it is renamed to something like *1300465416185_hello.jpg*. 
-   It assures that the first file received is not overwritten.
- - when a file reaches the max bytes allowed, it is auto removed (if specified in the instance configuration object) 
-   and a event 'fileremoved' is emitted, or is kept in the filesystem, and a list of files, in the form of an array of paths, 
+   for example: two files with the same name, like *hello.jpg*, the first file is received and its name is not modified, 
+   the second file received causes a name collision and it is renamed to something like *1300465416185_hello.jpg*. 
+   It assures that the first file is not overwritten.
+ - when a file reaches the max bytes allowed, it is auto removed (if it is specified in the instance configuration object) 
+   and a event 'fileremoved' is emitted, or it is kept in the filesystem, and a list of files, in the form of an array of paths, 
    are passed to callback specified for 'end' event.
  - when a file is totally received a 'filereceived' is emitted with these arguments -> filename, filedir, ctype, filesize
  
