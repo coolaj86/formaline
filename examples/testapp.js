@@ -28,7 +28,9 @@ var getHtmlForm = function(req, res,next) {
 var log = console.log,
     receivedFiles,
     removedFiles,
-    receivedFields;
+    receivedFields,
+    dir = '/tmp/'
+    ;
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
@@ -36,25 +38,36 @@ var handleFormRequest = function(req,res,next){
     receivedFields = {};                    
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         var config = {
+        
             //default is /tmp/ -->
-            //tmpUploadDir: '/var/www/demo/upload/',
+        tmpUploadDir: dir,
+        
             // default is false, or integer chunk factor, 
             // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
             // minimum factor value is 2 -->
-            emitDataProgress: !true,//false,true,3,10,100
+        emitDataProgress: !true,//false,true,3,10,100
+        
             // max bytes allowed, this is the max bytes writed to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-            maxBytes: 3949000,//bytes ex.: 1024*1024*1024, 512
+        maxBytes: 3949000,//bytes ex.: 1024*1024*1024, 512
+        
             //default false, bypass headers value, continue to write to disk 
             //until maxBytes bytes are writed. 
             //if true -> stop receiving data, when headers content length exceeds maxBytes
-            blockOnReqHeaderContentLength: !true,
+        blockOnReqHeaderContentLength: !true,
+        
             //remove file not completed due to maxBytes, 
             //if true formaline emit fileremoved event, 
             //otherwise return a path array of incomplete files 
-            removeIncompleteFiles : true, 
+        removeIncompleteFiles : true,
+        
+            //enable various logging levels
+            //it is possible to switch on/off one or more levels at the same time
+            //debug: 'off' turn off logging
+        logging: 'debug:on,1:on,2:on,3:off',
+        
             //listeners
-            listeners: {
+        listeners: {
                 'warning': function(msg){
                     log('\n warning  -->',msg);
                 },
@@ -110,11 +123,7 @@ var handleFormRequest = function(req,res,next){
                         response.end();
                         //next();//test
                 }
-            },
-            //enable various logging levels
-            //it is possible to switch on/off one or more levels at the same time
-            //debug: 'off' turn off logging
-            logging: 'debug:on,1:on,2:on,3:off'
+            }
         };
     
         new formaline(config).parse(req,res,next);
@@ -130,4 +139,5 @@ server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nSuc
 
 server.listen(3000);
 
-console.log('listening on http://localhost:3000/');
+console.log('\nlistening on http://localhost:3000/');
+console.log(' -> upload directory is:',dir);
