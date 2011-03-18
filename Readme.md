@@ -166,8 +166,8 @@ When a file is founded in the data stream:
    the file that causes the collision is renamed with a prefix equal to current time in millis; 
    for example two files with the same name like *hello.jpg*, the first is recevied and the name is not modified, 
    the second causes a name collision and it is renamed to something like *1300465416185_hello.jpg*. 
-   It assures that the first file received is not overwrited.
- - when a file reaches the maximum byte allowed, it is auto removed (if specified in the instance configuration object) 
+   It assures that the first file received is not overwritten.
+ - when a file reaches the max bytes allowed, it is auto removed (if specified in the instance configuration object) 
    and a event 'fileremoved' is emmitted, or is kept in the filesystem, and a list of files, in the form of an array of paths, 
    are passed to callback specified for 'end' event.
  
