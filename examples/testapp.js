@@ -29,7 +29,7 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
-    dir = '/tmp/';
+    dir =  '/var/www/demo/upload/'; //'/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
@@ -93,7 +93,7 @@ var handleFormRequest = function(req,res,next){
                 'fileremoved': function(filename,filedir) {
                     log('\n fileremoved -->  name: '+filename+', path: '+filedir+'\n');
                     removedFiles[filename] = { filedir: filedir };
-                    log('all files removed: '+removedFiles);
+                    log('all files removed: ',removedFiles);
                 },
                 'dataprogress': function(bytesReceived, chunksReceived) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
