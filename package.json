@@ -1,8 +1,8 @@
 {
     "name": "formaline"
-  , "version": "0.1.0"
+  , "version": "0.2.0"
   , "description": "fast node.js module for handling simple form posts and file uploads,ready for connect.js integration"
-  , "keywords": []
+  , "keywords": ["form","upload","multipart","formaline"]
   , "author": "Guglielmo Ferri <44gatti@gmail.com>"
   , "dependencies": {}
   , "main": "index"
