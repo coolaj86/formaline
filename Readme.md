@@ -57,13 +57,8 @@ The limit in this implementation is that it doesn't support a boundary length ov
 
 ## Simple Usage
 
-    var formaline = require('formaline');
-    
-    ...
-    
-    var form = new formaline({}); // <-- empty config object
-    ...
-    
+    var formaline = require('formaline'),
+        form = new formaline({});           // <-- empty config object
     form.parse( req, res, next );
 
 
