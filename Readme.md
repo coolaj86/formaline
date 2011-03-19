@@ -41,10 +41,10 @@ Overall parsing data-rate depends on many factors, it is generally possible to r
 Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 
-In the world of fairies, a super-fast Booyer-Moore parser reaches an order of time complexity of : 
+In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity of : 
     O((data length)/(pattern length)) 
 
-In the world ruled by Murphy Laws, the time complexity becomes to look something like:
+In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
     O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
 When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long switch statement or a long chain of if(..){..} else {..}. 
 
