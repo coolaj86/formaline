@@ -21,6 +21,7 @@ change the path and the port with yours
 ## Features
 
  - Works!
+ - Real-time parsing for file uploads 
  - It is possible to create instances via configuration object
  - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. )
  - Fluid exceptions handling
