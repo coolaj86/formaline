@@ -55,7 +55,20 @@ The limit in this implementation is that it doesn't support a boundary length ov
 
 
 
-## Usage
+## Simple Usage
+
+    var formaline = require('formaline');
+    
+    ...
+    
+    var form = new formaline({}); // <-- empty config object
+    ...
+    
+    form.parse( req, res, next );
+
+
+## Advanced Usage
+
 
 *module usage:*
 
@@ -192,8 +205,6 @@ When a file is founded in the data stream:
  - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
  - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, ctype, filesize, formfield
 
- 
- in progress..
 
 ## About Parser  
 
