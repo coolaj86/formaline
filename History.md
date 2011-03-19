@@ -1,5 +1,5 @@
 
-0.1.0 / 2011-16-03
+0.2.0 / 2011-03-19
 ==================
 
-  * Initial release
+  * Added other params to 'filereceived' and 'fileremoved' callbacks
