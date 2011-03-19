@@ -90,10 +90,11 @@ var handleFormRequest = function(req,res,next){
                     receivedFiles[filename] = { filedir: filedir, ctype: ctype, filesize: filesize };
                     log('\n filereceived -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes: '+filesize+'\n');
                 },
-                'fileremoved': function(filename,filedir) {
-                    log('\n fileremoved -->  name: '+filename+', path: '+filedir+'\n');
+                'fileremoved': function(filename,filedir,ctype,filesize,formfield) {
+                    log('\n fileremoved -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes received: '+filesize+', form field: '+formfield+'\n');
                     removedFiles[filename] = { filedir: filedir };
-                    log('all files removed: ',removedFiles);
+                    log(' updated list of files removed: ',removedFiles);
+
                 },
                 'dataprogress': function(bytesReceived, chunksReceived) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
