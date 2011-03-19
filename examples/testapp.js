@@ -86,9 +86,9 @@ var handleFormRequest = function(req,res,next){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
                 },
-                'filereceived': function(filename,filedir,ctype,filesize) {
+                'filereceived': function(filename,filedir,ctype,filesize,formfield) {
                     receivedFiles[filename] = { filedir: filedir, ctype: ctype, filesize: filesize };
-                    log('\n filereceived -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes: '+filesize+'\n');
+                    log('\n filereceived -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes: '+filesize+', form field: '+formfield+'\n');
                 },
                 'fileremoved': function(filename,filedir,ctype,filesize,formfield) {
                     log('\n fileremoved -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes received: '+filesize+', form field: '+formfield+'\n');
