@@ -30,8 +30,15 @@ change the path and the port with yours
  - It is possible to easily integrate with connect.js
 
  etc..
+
+##A note about Parsing Data Rate vs Network Bandwidth
  
- (the parsing data rate depends on many factor, it is possible to reach 700 MB/s and more with a *real* Buffer totally loaded in RAM and a basic ~60 bytes boundary string (like Firefox uses), is not the same thing with a real chunked data upload, as others libraries announce )
+Overall parsing data-rate depends on many factors, it is generally possible to reach 700 MB/s and more ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but, in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+In the world of fairies, a super-fast Booyer-Moore parser reaches an order of time complexity of O((data length)/(pattern length)). 
+In the world ruled by Murphy Laws, the time complexity becomes to look something like O(dlength/plength) * (number of chunks) * (delay of calling the parser method); when the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long switch statement or a long chain of if{}else{}. 
+That's the reason why I decide to write a simple and fast implementation of the QuickSearch algorithm for my parser, instead of building a complex state-machine; I use only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). The limit in this implementation is that it doesn't support a boundary length over 254 bytes, for now it doesn't seem a real problem, all major browsers I have tested, are using a boundary totally made of ASCII chars, and of ~60bytes in length.
+
 
 
 ## Usage
@@ -119,10 +126,10 @@ change the path and the port with yours
             'field': function ( fname, fvalue ) {
                 ...
             },
-            'filereceived': function ( filename, filedir, ctype, filesize ) {
+            'filereceived': function ( filename, filedir, ctype, filesize, formfield ) {
                 ...
             },
-            'fileremoved': function ( filename, filedir ) {
+            'fileremoved': function ( filename, filedir, ctype, filesize, formfield ) {
                 ...
             },
             'dataprogress': function ( bytesReceived, chunksReceived ) {
@@ -162,15 +169,14 @@ When a file is founded in the data stream:
  - this is directly writed to disk chunk per chunk, until end of file is reached.
  - a directory with random numeric name is created, as child of root dir specified via configuration object (default is /tmp/); 
    that assures no file name collisions for every different post.
- - when two files with the same name are uploaded through the same form post action, 
-   the file that causes the collision is renamed with a prefix equal to current time in millis; 
-   for example: two files with the same name, like *hello.jpg*, the first file is received and its name is not modified, 
-   the second file received causes a name collision and it is renamed to something like *1300465416185_hello.jpg*. 
+ - when two files with the same name are uploaded through the same form post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
+   for example: two files with the same name *hello.jpg*, the first one is received and writed to disk with its original name, 
+   the second one is received but its name causes a collision and it is writed to disk but with a name something like *1300465416185_hello.jpg*. 
    It assures that the first file is not overwritten.
- - when a file reaches the max bytes allowed, it is auto removed (if it is specified in the instance configuration object) 
-   and a event 'fileremoved' is emitted, or it is kept in the filesystem, and a list of files, in the form of an array of paths, 
-   are passed to callback specified for 'end' event.
- - when a file is totally received a 'filereceived' is emitted with these arguments -> filename, filedir, ctype, filesize
+ - when a file reaches the max bytes allowed:
+   - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, ctype, filesize, formfield
+   - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
+ - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, ctype, filesize, formfield
  
  in progress..
 
