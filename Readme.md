@@ -44,7 +44,7 @@ In the world of fairies, a super-fast Booyer-Moore parser reaches an order of ti
 
 In the world ruled by Murphy Laws, the time complexity becomes to look something like:
     O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
-When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long switch statement or a long chain of if{}else{}. 
+When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long switch statement or a long chain of if(..){..} else {..}. 
 
 That's the reason why I decide to write a simple and fast implementation of the QuickSearch algorithm for my parser, instead of building a complex state-machine; I have used only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). 
 
