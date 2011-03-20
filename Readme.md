@@ -151,10 +151,10 @@ The limit in this implementation is that it doesn't support a boundary length ov
             'field': function ( fname, fvalue ) {
                 ...
             },
-            'filereceived': function ( filename, filedir, ctype, filesize, formfield ) {
+            'filereceived': function ( filename, filedir, filetype, filesize, filefield ) {
                 ...
             },
-            'fileremoved': function ( filename, filedir, ctype, filesize, formfield ) {
+            'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) {
                 ...
             },
             'dataprogress': function ( bytesReceived, chunksReceived ) {
@@ -199,9 +199,9 @@ When a file is founded in the data stream:
    the second one is received but its name causes a collision and it is writed to disk but with a name something like *1300465416185_hello.jpg*. 
    It assures that the first file is not overwritten.
  - when a file reaches the max bytes allowed:
- - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, ctype, filesize, formfield
+ - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, filetype, filesize, filefield
  - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
- - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, ctype, filesize, formfield
+ - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, filetype, filesize, filefield
 
 
 ## About Parser  

@@ -29,7 +29,7 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
-    dir =  '/var/www/demo/upload/'; //'/tmp/';
+    dir =  '/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
@@ -86,13 +86,13 @@ var handleFormRequest = function(req,res,next){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
                 },
-                'filereceived': function(filename,filedir,ctype,filesize,formfield) {
-                    receivedFiles[filename] = { filedir: filedir, ctype: ctype, filesize: filesize };
-                    log('\n filereceived -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes: '+filesize+', form field: '+formfield+'\n');
+                'filereceived': function(filename,filedir,filetype,filesize,filefield) {
+                    receivedFiles[filename] = { path: filedir, type: filetype, size: filesize, field: filefield };
+                    log('\n filereceived -->  name: '+filename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
                 },
-                'fileremoved': function(filename,filedir,ctype,filesize,formfield) {
-                    log('\n fileremoved -->  name: '+filename+', path: '+filedir+', content type: '+ctype+', bytes received: '+filesize+', form field: '+formfield+'\n');
-                    removedFiles[filename] = { filedir: filedir };
+                'fileremoved': function(filename,filedir,filetype,filesize,filefield) {
+                    log('\n fileremoved -->  name: '+filename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
+                    removedFiles[filename] = { path: filedir, type: filetype, filesize: filesize, field: filefield };
                     log(' updated list of files removed: ',removedFiles);
 
                 },
