@@ -245,18 +245,18 @@ I try to explain me:
 
  the time complexity becomes to look something like:
 
-    ( T ) *  ( number of chunks ) * ( time delay of calling the parser method on chunk )  
+    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * time delay of calling the parser  )  
       or
-    ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( k * d ) 
+    ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( c * k * d ) 
 
-When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
+When the number k of chunks increases, the value  ( c *  k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
 
-`A single GB of data transferred, with a chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
+`A single GB of data transferred, with a http chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
 However, in a general case, 
  
  - we can do very little about reducing time delay of calling the parser and  the number of chunks ( increasing their size ), it doesn't totally depend on us. 
- - we could minimize the number of parser calls, a single call for every chunk. 
+ - we could minimize the number of parser calls **'c'**, a single call for every chunk. 
  - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
 For this reasons: 
