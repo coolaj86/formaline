@@ -3,7 +3,7 @@
  formaline is a new (node.js) module for handling simple form posts and for fast parsing of file uploads,
  it is ready for integration with connect.js  
 
-## Installation
+### Installation
      
 with npm:
     $ npm install formaline
@@ -18,7 +18,7 @@ for using node and apache together, a way is to enable apache *mod-proxy* and ad
 
 change the path and the port with yours
 
-## Features
+### Features
 
  - Works!
  - Real-time parsing for file uploads.
@@ -32,7 +32,7 @@ change the path and the port with yours
 
  etc..
 
-## Simple Usage
+### Simple Usage
 
     var formaline = require('formaline'),
         form = new formaline({});           // <-- empty config object
@@ -45,7 +45,7 @@ change the path and the port with yours
     
 
 
-## Advanced Usage
+### Advanced Usage
 
     var formaline = require('formaline');
     
@@ -208,8 +208,8 @@ In the world ruled by Murphy Laws, the time complexity in the best case (it exis
 
 When the number of chunks (k) increases, the value  (k*d) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that for the system calling a function 10^4 times, is an heavier job than calling it only 1 time.
 
-We can do anything about reducing the number of chunks, or increase their size, don't depends totally on us; 
-on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
+We can do anything about reducing the number of chunks, or increase their size, don't depends totally on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
+
 In my parser I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
 
 The only limit in my implementation is that it doesn't support a boundary length over 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
