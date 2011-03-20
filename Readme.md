@@ -233,11 +233,11 @@ A single GB of data transferred, with a chunk size of 40K, is typically splitted
 
 However, in a general case, 
  
- - we can do anything about reducing the number of chunks, or increase their size, it doesn't totally depend on us ; 
- - we could minimize the number of parser calls, a single call on every chunk. 
- - minimize the time  't' to do a single comparison, it obviously reduces the overall execution time.
+ - we can do very little about reducing time delay of calling the parser and  the number of chunks ( increasing their size ), it doesn't totally depend on us. 
+ - we could minimize the number of parser calls, a single call for every chunk. 
+ - we could minimize the time **'t'** to do a single comparison of chars, it obviously reduces the overall execution time.
 
-For this reasons In my parser I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
+For this reasons, I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
 
 The only limit in my implementation is that it doesn't support a boundary length over 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
 
