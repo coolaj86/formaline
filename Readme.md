@@ -1,6 +1,6 @@
 # formaline for nodeJS 
 
-> formaline is a new (node.js) module for handling simple form posts and for fast parsing of file uploads, (multipart/form-data and x-www-urlencoded)
+> __formaline__ is a new (node.js) module for handling simple form posts and for fast parsing of file uploads, *(multipart/form-data and x-www-urlencoded)*
 > it is ready for integration with connect.js  
 
 ### Installation
@@ -20,15 +20,15 @@ change the path and the port with yours
 
 ### Features
 
- - Works!
- - Real-time parsing of file uploads.
- - It is possible to create instances via configuration object.
- - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
- - Fluid exceptions handling.
- - Many events for total control of parsing flow. 
- - Very Fast and Simple Parser (see parser-benchmarks).
- - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of a max bytes limit. 
- - It easily integrates with connect middleware.
+> - Works!
+> - Real-time parsing of file uploads.
+> - It is possible to create instances via configuration object.
+> - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
+> - Fluid exceptions handling.
+> - Many events for total control of parsing flow. 
+> - Very Fast and Simple Parser (see parser-benchmarks).
+> - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of a max bytes limit. 
+> - It easily integrates with connect middleware.
 
  etc..
 
@@ -189,7 +189,7 @@ When a file is founded in the data stream:
 ###A Note about Parsing Data Rate vs Network Bandwidth
 ---------------------------------------------------------------------------------------
 
-Overall parsing data-rate depends on many factors, it is generally possible to reach 700 MB/s and more ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
+Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
 
 Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
