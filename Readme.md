@@ -42,7 +42,7 @@ Unfortunately, sending data over the cloud is sometime a long-time task, the dat
 
 
 In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity equal to : 
-    `&#920;`((data length)/(pattern length))
+    &#920;((data length)/(pattern length))
 
 In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
     O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
