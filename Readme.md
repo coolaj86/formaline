@@ -173,19 +173,19 @@ When a file is founded in the data stream:
  
  - this is directly writed to disk chunk per chunk, until end of file is reached.
 
- - a directory with random numeric name is created, as child of root dir specified via configuration object (default is /tmp/); 
-   that assures no file name collisions for every different post.
+ - a directory with a random integer name is created in the upload path directory (default is /tmp/), for example:  * /tmp/123456789098/*
+   it assures no file name collisions for every different post.
 
  - when two files with the same name are uploaded through the same form post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
-   for example: two files with the same name *hello.jpg*, the first one is received and writed to disk with its original name, 
-   the second one is received but its name causes a collision and it is writed to disk but with a name something like *1300465416185_hello.jpg*. 
+   for example: we are uploading two files with same name like *hello.jpg*, the first one is received and writed to disk with its original name, 
+   the second one is received but its name causes a collision, it is writed to disk but with a name something like *1300465416185_hello.jpg*. 
    It assures that the first file is not overwritten.
 
  - when a file reaches the max bytes allowed:
    if *removeIncompleteFiles === true*  then the file is auto-removed and a event **'fileremoved'** event is emitted; 
    if *removeIncompleteFiles === false* then the file is kept in the filesystem, and when *'end'* event is launched, it is emitted  together with an array of  paths, that lists incomplete files.
 
- - when a file is totally received a **'filereceived'** event  is emitted. 
+ - when a file is totally received, a **'filereceived'** event  is emitted. 
 
  - the **filereceived** and **fileremoved** events are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
 
