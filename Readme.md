@@ -12,7 +12,7 @@ with npm:
 with git:
     $ git clone git://github.com/rootslab/formaline.git
 
->if you want to use nodeJS only for testing purpose, together with Apache , a simple way is to enable apache *mod-proxy* and add this lines to your apache virtualhost:
+>if you want to use nodeJS, only for testing purpose, together with Apache, a simple way to do this is to enable apache *mod-proxy* and add this lines to your apache virtualhost:
 
     ProxyPass /test/ http://localhost:3000/test/
     ProxyPassReverse /test/ http://localhost:3000/test/
