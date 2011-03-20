@@ -36,13 +36,15 @@ with git:
 ### Simple Usage
 
     var formaline = require('formaline'),
-        form = new formaline({});           // <-- empty config object
+        form = new formaline( { } );           // <-- empty config object
     ...
     form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) //add listener for an event
     ...
-    form.parse( req, res, next );
+    form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
-    //compact usage -> new formaline({}).parse(req,res,next);
+ compact usage -> 
+ 
+   new formaline({ .. }).parse(req,res,next);
     
 
 
