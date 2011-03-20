@@ -44,7 +44,8 @@ with git:
     
  compact usage -> 
  
-   new formaline({ .. }).parse(req,res,next);
+    
+     new formaline({ .. }).parse(req,res,next);
     
 
 
