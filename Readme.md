@@ -22,7 +22,7 @@ with git:
 ### Features
 
 > - Works!
-> - Real-time parsing of file uploads, also HTML5 multiple files.
+> - Real-time parsing of file uploads, also HTML5 multiple files upload.
 > - It is possible to create instances via configuration object.
 > - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
 > - Fluid exceptions handling.
