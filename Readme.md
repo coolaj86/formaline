@@ -51,6 +51,9 @@ with git:
 
 ### Advanced Usage
 
+**require the module: **
+
+
     var formaline = require('formaline');
     
 
@@ -156,12 +159,18 @@ with git:
     /*
         create a formaline instance with configuration object, then parse request
     */
-    
+ 
+**create instance with configuration object:**
+   
+
     new formaline( config ).parse( req, res, next );
     
-      // or
-      //     var form = new formaline(config); 
-      //     form.parse( req, res, next);
+
+ or
+
+
+    var form = new formaline(config); 
+    form.parse( req, res, next);
     
     
 
