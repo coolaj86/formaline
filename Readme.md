@@ -156,17 +156,16 @@ with git:
         }
     };
         
-    /*
-        create a formaline instance with configuration object, then parse request
-    */
  
-**create instance with configuration object:**
+
+**create instance with configuration object,then parse request
+:**
    
 
     new formaline( config ).parse( req, res, next );
     
 
- or
+  *or*
 
 
     var form = new formaline(config); 
