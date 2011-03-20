@@ -211,7 +211,7 @@ In the world ruled by Murphy Laws, the time complexity in the best case (it exis
 
 When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that for the system calling a function 10^4 times, is an heavier job than calling it only 1 time.
 
-We can do anything about reducing the number of chunks, or increase their size, don't depends totally on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
+However, we can do anything about reducing the number of chunks, or increase their size, it doesn't totally depend on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
 
 In my parser I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
 
