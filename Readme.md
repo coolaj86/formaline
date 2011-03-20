@@ -21,39 +21,16 @@ change the path and the port with yours
 ## Features
 
  - Works!
- - Real-time parsing for file uploads 
- - It is possible to create instances via configuration object
- - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. )
- - Fluid exceptions handling
- - Many events for total control of parsing flow 
- - Very Fast and Simple Parser (see parser-benchmarks)
- - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of max bytes limit 
- - It is possible to easily integrate with connect.js
+ - Real-time parsing for file uploads.
+ - It is possible to create instances via configuration object.
+ - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
+ - Fluid exceptions handling.
+ - Many events for total control of parsing flow. 
+ - Very Fast and Simple Parser (see parser-benchmarks).
+ - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of a max bytes limit. 
+ - It easily integrates with connect middleware.
 
  etc..
-
-
-##A note about Parsing Data Rate vs Network Bandwidth
-
-
-Overall parsing data-rate depends on many factors, it is generally possible to reach 700 MB/s and more ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
-
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
-
-
-In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity equal to : 
-    O((data length)/(pattern length))
-
-In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
-    O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
-When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long *switch( .. ){ .. }* statement or a long chain of *if(..){..} else {..}*. 
-
-
-That's the reason why I decide to write a simple and fast implementation of the QuickSearch algorithm for my parser, instead of building a complex state-machine; I have used only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). 
-
-The limit in this implementation is that it doesn't support a boundary length over 254 bytes, for now it doesn't seem a real problem, all major browsers I have tested, are using a boundary totally made of ASCII chars, and of ~60bytes in length.
-
-
 
 ## Simple Usage
 
@@ -206,9 +183,38 @@ When a file is founded in the data stream:
  - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, filetype, filesize, filefield
 
 
-## About Parser  
 
- in progress..
+##A note about Parsing Data Rate vs Network Bandwidth
+
+Overall parsing data-rate depends on many factors, it is generally possible to reach 700 MB/s and more ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
+
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+
+I try to explain me:
+
+In the world of fairies, a super-fast Booyer-Moore parser in the best case (data is not chunked and there is a low pattern repetition),  reaches a time complexity of : 
+
+    O((data chunk length)/(pattern length)) * (time to do a single comparison)   = T
+      or  for simplicity  
+    O( n / m) * t = T
+
+(for the purists, O stands for Theta). 
+
+In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
+
+    T *  (number of chunks) * (time delay of calling the parser method on chunk)  
+      or
+    T * (k * d)
+
+When the number of chunks (k) increases, the value  (k*d) becomes to have a considerable weigth in terms of overall time; I think it's obvious that for the system calling a function 10^4 times, is an heavier job than calling it only 1 time.
+
+We can do anything about reducing the number of chunks, or increase their size, don't depends on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
+I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple parser (QuickSearch algo) using only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). 
+
+The only limit in my implementation is that it doesn't support a boundary length over 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
+
+
+
 
 
 ##TODO
@@ -216,6 +222,7 @@ When a file is founded in the data stream:
  - add some other server-side security checks, and write about it
  - some code performance modifications in quickSearch.js and formaline.js
  - some code variables cleaning in formaline.js
+ - change the core parser with a custom one
  - in progress..  
 
 ## License 
