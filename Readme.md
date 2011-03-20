@@ -197,7 +197,7 @@ I try to explain me:
 
 In the world of fairies, a super-fast Booyer-Moore parser in the best case (data is not chunked and there is a low pattern repetition),  reaches a time complexity of : 
 
-    O((data chunk length)/(pattern length)) * (time to do a single comparison)   = T
+    O( ( data chunk length ) / ( pattern length ) ) * ( time to do a single comparison ) = T
       or  for simplicity  
      O( n / m ) * t = T
 
