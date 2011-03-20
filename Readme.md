@@ -42,11 +42,11 @@ Unfortunately, sending data over the cloud is sometime a long-time task, the dat
 
 
 In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity equal to : 
-    O((data length)/(pattern length))  
+    `&#920;`((data length)/(pattern length))
 
 In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
     O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
-When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long switch statement or a long chain of if(..){..} else {..}. 
+When the number of chunks increases, calling the parser is not a light job if it implies to call closures, read a long *switch( .. ){ .. }* statement or a long chain of *if(..){..} else {..}*. 
 
 
 That's the reason why I decide to write a simple and fast implementation of the QuickSearch algorithm for my parser, instead of building a complex state-machine; I have used only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). 
@@ -59,6 +59,9 @@ The limit in this implementation is that it doesn't support a boundary length ov
 
     var formaline = require('formaline'),
         form = new formaline({});           // <-- empty config object
+    ...
+    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) //add listener for an event
+    ...
     form.parse( req, res, next );
     
     //compact usage -> new formaline({}).parse(req,res,next);
@@ -67,12 +70,11 @@ The limit in this implementation is that it doesn't support a boundary length ov
 
 ## Advanced Usage
 
-
-*module usage:*
-
     var formaline = require('formaline');
-
-    var config = {
+    
+    // build a config object -->
+    
+    var config = { 
         
             /*
              temporary upload directory for file uploads
