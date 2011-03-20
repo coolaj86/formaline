@@ -182,12 +182,12 @@ When a file is founded in the data stream:
    It assures that the first file is not overwritten.
 
  - when a file reaches the max bytes allowed:
-> - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, filetype, filesize, filefield
+> - if removeIncompleteFiles === true : it is auto-removed and a event **'fileremoved'** is emitted.
 > - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
 
- - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, filetype, filesize, filefield
+ - when a file is totally received a **'filereceived'** is emitted. 
 
-
+ - the **filereceived** and **fileremoved** are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
 
 ## Parser
 
