@@ -235,9 +235,13 @@ However, in a general case,
  
  - we can do very little about reducing time delay of calling the parser and  the number of chunks ( increasing their size ), it doesn't totally depend on us. 
  - we could minimize the number of parser calls, a single call for every chunk. 
- - we could minimize the time **'t'** to do a single comparison of chars, it obviously reduces the overall execution time.
+ - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
-For this reasons, I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
+For this reasons: 
+ 
+ - I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine,
+ - I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles,
+ - For miminizing the time 't' to do a comparison, I have used two simple char lookup tables, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern to match, one for CRLFCRLF sequence). 
 
 The only limit in my implementation is that it doesn't support a boundary length over 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
 
@@ -245,10 +249,10 @@ The only limit in my implementation is that it doesn't support a boundary length
 
 ##TODO
 
- - add some other server-side security checks, and write about it
  - some code performance modifications in quickSearch.js and formaline.js
  - some code variables cleaning in formaline.js
  - change the core parser with a custom one
+ - add some other server-side security checks, and write about it
  - in progress..  
 
 ## License 
