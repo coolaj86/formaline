@@ -201,6 +201,7 @@ Unfortunately, sending data over the cloud is sometime a long-time task, the dat
 I try to explain me:
 
 >In the world of fairies, a super-fast Booyer-Moore parser in the best case:
+ 
  - data is not chunked, 
  - there is a low pattern repetition, 
  - network throughput == network bandwidth ),
@@ -214,6 +215,7 @@ I try to explain me:
 (for the purists, O stands for Theta). 
 
 >In real world Murphy Laws assures that the best case doesn't exists: :O 
+ 
  - data is chunked 
  - network throughput < network bandwidth
  - time 't' to do a single comparison, depends on how the comparison is implemented
