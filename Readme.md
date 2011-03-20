@@ -163,8 +163,8 @@ change the path and the port with yours
  **See Also :**
 
 
- - examples directory for seeing formaline in action. 
- - parser-benchmarks directory for testing algorithm parsing speed (wow). 
+> - examples directory for seeing formaline in action. 
+> - parser-benchmarks directory for testing algorithm parsing speed (*wow*). 
  
 
 ## File Creation 
@@ -182,12 +182,12 @@ When a file is founded in the data stream:
    It assures that the first file is not overwritten.
 
  - when a file reaches the max bytes allowed:
-> - if removeIncompleteFiles === true : it is auto-removed and a event **'fileremoved'** is emitted.
-> - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
+   if removeIncompleteFiles === true : it is auto-removed and a event **'fileremoved'** event is emitted; 
+   if removeIncompleteFiles === false then the file is kept in the filesystem, and when *'end'* event is launched, it is emitted  together with an array of  paths, that lists incomplete files.
 
- - when a file is totally received a **'filereceived'** is emitted. 
+ - when a file is totally received a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
+ - the **filereceived** and **fileremoved** events are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
 
 ## Parser
 
