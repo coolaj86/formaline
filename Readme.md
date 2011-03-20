@@ -225,7 +225,7 @@ I try to explain me:
  
 >  - data is not chunked, 
 >  - there is a low pattern repetition, ( this get the result of n/m comparison )
-> - network throughput == network bandwidth ),
+> - network throughput == network bandwidth (not real),
  
  reaches a time complexity of : 
 
