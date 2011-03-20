@@ -191,16 +191,21 @@ When a file is founded in the data stream:
 
 ## Parser
 
-###A Note about Parsing Data Rate vs Network Bandwidth
+###A Note about Parsing Data Rate vs Network Throughput
 ---------------------------------------------------------------------------------------
 
-Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
+Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level Throughput, than a real case. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is >~ 40K, <~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is >~ 8K, <~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
-In the world of fairies, a super-fast Booyer-Moore parser in the best case (data is not chunked and there is a low pattern repetition),  reaches a time complexity of : 
+>In the world of fairies, a super-fast Booyer-Moore parser in the best case:
+ - data is not chunked, 
+ - there is a low pattern repetition, 
+ - network throughput == network bandwidth ),
+ 
+ reaches a time complexity of : 
 
     O( ( data chunk length ) / ( pattern length ) ) * ( time to do a single comparison ) = T
       or  for simplicity  
@@ -208,13 +213,18 @@ In the world of fairies, a super-fast Booyer-Moore parser in the best case (data
 
 (for the purists, O stands for Theta). 
 
-In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
+>In real world Murphy Laws assures that the best case doesn't exists: :O 
+ - data is chunked 
+ - network throughput < network bandwidth
+ - time 't' to do a single comparison, depends on how the comparison is implemented
+
+ the time complexity becomes to look something like:
 
     ( T ) *  ( number of chunks ) * ( time delay of calling the parser method on chunk )  
       or
     ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( k * d ) 
 
-When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time.
+When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. For transferring a single GB with a typical size 
 
 However, we can do anything about reducing the number of chunks, or increase their size, it doesn't totally depend on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
 
