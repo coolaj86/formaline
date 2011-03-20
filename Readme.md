@@ -158,7 +158,7 @@ with git:
         
  
 
-**create instance with configuration object,then parse request
+**create instance with config object, then parse request:
 :**
    
 
