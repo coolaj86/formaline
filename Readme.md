@@ -206,10 +206,11 @@ In the world ruled by Murphy Laws, the time complexity in the best case (it exis
       or
     T * (k * d)
 
-When the number of chunks (k) increases, the value  (k*d) becomes to have a considerable weigth in terms of overall time; I think it's obvious that for the system calling a function 10^4 times, is an heavier job than calling it only 1 time.
+When the number of chunks (k) increases, the value  (k*d) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that for the system calling a function 10^4 times, is an heavier job than calling it only 1 time.
 
-We can do anything about reducing the number of chunks, or increase their size, don't depends on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
-I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple parser (QuickSearch algo) using only high performance for-cycles, and simple char lookup tables (255 bytes Buffer). 
+We can do anything about reducing the number of chunks, or increase their size, don't depends totally on us; 
+on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
+In my parser I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*, instead of building a complex state-machine, I write a simple implementation of QuickSearch algorithm, using only high performance for-cycles, and simple char lookup tables (255 bytes nodeJS Buffer). 
 
 The only limit in my implementation is that it doesn't support a boundary length over 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
 
