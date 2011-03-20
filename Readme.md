@@ -229,7 +229,7 @@ I try to explain me:
 
 When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
 
-A single GB of data transferred, with a chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks! 
+`A single GB of data transferred, with a chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
 However, in a general case, 
  
