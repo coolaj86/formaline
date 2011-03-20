@@ -41,8 +41,8 @@ Overall parsing data-rate depends on many factors, it is generally possible to r
 Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K ). Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 
-In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity of : 
-    O((data length)/(pattern length)) 
+In the world of fairies, a super-fast Booyer-Moore parser in the best case reaches an order of time complexity equal to : 
+    O((data length)/(pattern length))  
 
 In the world ruled by Murphy Laws, the time complexity in the best case (it exists?) becomes to look something like:
     O(dlength/plength) * (number of chunks) * (delay of calling the parser method)
@@ -207,6 +207,14 @@ When a file is founded in the data stream:
 ## About Parser  
 
  in progress..
+
+
+##TODO
+
+ - add some other server-side security checks, and write about it
+ - some code performance modifications in quickSearch.js and formaline.js
+ - some code variables cleaning in formaline.js
+ - in progress..  
 
 ## License 
 

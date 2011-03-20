@@ -29,7 +29,7 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
-    dir =  '/tmp/';
+    dir =  '/var/www/demo/upload/'; //'/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
