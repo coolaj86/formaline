@@ -161,7 +161,7 @@ with git:
         
  
 
-*create instance passing config, then parse request:*
+*create an instance with config, then parse request:*
    
 
     new formaline( config ).parse( req, res, next );
