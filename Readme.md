@@ -51,13 +51,13 @@ with git:
 
 ### Advanced Usage
 
-*require the module: *
+*require the module:*
 
 
     var formaline = require('formaline');
     
 
-*build a config object: *
+*build a config object:*
 
     
     var config = { 
