@@ -245,7 +245,7 @@ I try to explain me:
 
  the time complexity becomes to look something like:
 
-    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * time delay of calling the parser  )  
+    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * average delay time of call the parser )  
       or
     ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( c * k * d ) 
 
@@ -256,7 +256,7 @@ When the number k of chunks increases, the value  ( c *  k * d ) becomes to have
 However, in a general case, 
  
  - we can do very little about reducing time delay of calling the parser and  the number of chunks ( increasing their size ), it doesn't totally depend on us. 
- - we could minimize the number of parser calls **'c'**, a single call for every chunk. 
+ - we could minimize the number of parser calls **'c'**, a single call for every chunk, c = 1.
  - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
 For this reasons: 
