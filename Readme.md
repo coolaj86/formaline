@@ -196,14 +196,14 @@ When a file is founded in the data stream:
 
 Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level Throughput, than a real case. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is >~ 8K, <~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
 >In the world of fairies, a super-fast Booyer-Moore parser in the best case:
  
  - data is not chunked, 
- - there is a low pattern repetition, 
+ - there is a low pattern repetition, ( this get the result of n/m comparison )
  - network throughput == network bandwidth ),
  
  reaches a time complexity of : 
@@ -216,9 +216,10 @@ I try to explain me:
 
 >In real world Murphy Laws assures that the best case doesn't exists: :O 
  
- - data is chunked 
- - network throughput < network bandwidth
- - time 't' to do a single comparison, depends on how the comparison is implemented
+ - data is chunked,
+ - there is a low pattern repetition, but not all the cases are best (very big CSV file), for simplicity we use previous T result,
+ - network throughput < network bandwidth,
+ - time 't' to do a single comparison, depends on how the comparison is implemented,
 
  the time complexity becomes to look something like:
 
@@ -226,7 +227,9 @@ I try to explain me:
       or
     ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( k * d ) 
 
-When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. For transferring a single GB with a typical size 
+When the number k of chunks increases, the value  ( k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
+
+A single GB of data transferred, with a chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks! 
 
 However, we can do anything about reducing the number of chunks, or increase their size, it doesn't totally depend on us; on the other hand, considering that a typical parser have to do an incredible number of comparisons between chars , minimizing the time of a single comparison, obviously reduce the overall execution time.
 
