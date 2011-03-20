@@ -38,7 +38,7 @@ with git:
     var formaline = require('formaline'),
         form = new formaline( { } );           // <-- empty config object
    
-   *add listener for an event:*
+   *add events listener:*
 
     ...
     form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) 
