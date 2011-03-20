@@ -166,7 +166,7 @@ change the path and the port with yours
  - parser-benchmarks directory for testing algorithm parsing speed (wow). 
  
 
-## About File Creation 
+## File Creation 
  
 When a file is founded in the data stream:
  
@@ -184,7 +184,7 @@ When a file is founded in the data stream:
 
 
 
-##About Parser
+## Parser
 
 ###A Note about Parsing Data Rate vs Network Bandwidth
 ---------------------------------------------------------------------------------------
