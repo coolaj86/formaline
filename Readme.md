@@ -14,11 +14,10 @@ with git:
 
 >if you want to use nodeJS, only for testing purpose, together with Apache, a simple way to do this is to enable apache *mod-proxy* and add this lines to your apache virtualhost:
 
-<pre class="terminal" style="background-color: #444">
- ProxyPass /test/ http://localhost:3000/test/
-    ProxyPassReverse /test/ http://localhost:3000/test/</pre>
+
     ProxyPass /test/ http://localhost:3000/test/
     ProxyPassReverse /test/ http://localhost:3000/test/
+
 
 >change the path and the port with yours. 
 
