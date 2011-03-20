@@ -1,6 +1,6 @@
 # formaline for nodeJS 
 
- formaline is a new (node.js) module for handling simple form posts and for fast parsing of file uploads,
+ formaline is a new (node.js) module for handling simple form posts and for fast parsing of file uploads, (multipart/form-data and x-www-urlencoded)
  it is ready for integration with connect.js  
 
 ### Installation
@@ -21,7 +21,7 @@ change the path and the port with yours
 ### Features
 
  - Works!
- - Real-time parsing for file uploads.
+ - Real-time parsing of file uploads.
  - It is possible to create instances via configuration object.
  - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
  - Fluid exceptions handling.
