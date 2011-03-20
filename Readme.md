@@ -196,7 +196,7 @@ When a file is founded in the data stream:
 
 Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level bandwidth and low-level latency, than a real case. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically >~ 40K, <~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is >~ 40K, <~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
