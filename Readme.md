@@ -202,9 +202,9 @@ I try to explain me:
 
 >__In the world of fairies, a super-fast Booyer-Moore parser in the best case:__
  
- - data is not chunked, 
- - there is a low pattern repetition, ( this get the result of n/m comparison )
- - network throughput == network bandwidth ),
+>  - data is not chunked, 
+>  - there is a low pattern repetition, ( this get the result of n/m comparison )
+> - network throughput == network bandwidth ),
  
  reaches a time complexity of : 
 
@@ -216,10 +216,10 @@ I try to explain me:
 
 >__In real world Murphy Laws assures that the best case doesn't exists:__ :O 
  
- - data is chunked,
- - in some cases (very large CSV file) there is a big number of char comparisons ( it decreases the parser data-rate), however for simplicity we use previous time T result, O( n * m ) * t
- - network throughput < network bandwidth,
- - time 't' to do a single comparison, depends on how the comparison is implemented,
+>  - data is chunked,
+>  - in some cases (very large CSV file) there is a big number of char comparisons ( it decreases the parser data-rate), however for simplicity we use previous time T result, O( n * m ) * t
+>  - network throughput < network bandwidth,
+>  - time 't' to do a single comparison, depends on how the comparison is implemented,
 
  the time complexity becomes to look something like:
 
