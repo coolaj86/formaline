@@ -39,11 +39,15 @@ with git:
         form = new formaline( { } );           // <-- empty config object
    
    *add listener for an event:*
+   ===================
+
     ...
     form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) 
     ...
     
+
    *parse request, with next callback:*    
+   =========================
 
    form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
