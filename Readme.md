@@ -42,11 +42,6 @@ with git:
     ...
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
-### Compact Usage  
- 
-    
-     new formaline({ .. }).parse(req,res,next);
-    
 
 
 ### Advanced Usage
@@ -158,7 +153,7 @@ with git:
         
  
 
-**create instance with config object, then parse request:
+**create instance passing config, then parse request:
 :**
    
 
