@@ -172,15 +172,19 @@ change the path and the port with yours
 When a file is founded in the data stream:
  
  - this is directly writed to disk chunk per chunk, until end of file is reached.
+
  - a directory with random numeric name is created, as child of root dir specified via configuration object (default is /tmp/); 
    that assures no file name collisions for every different post.
+
  - when two files with the same name are uploaded through the same form post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
    for example: two files with the same name *hello.jpg*, the first one is received and writed to disk with its original name, 
    the second one is received but its name causes a collision and it is writed to disk but with a name something like *1300465416185_hello.jpg*. 
    It assures that the first file is not overwritten.
+
  - when a file reaches the max bytes allowed:
- - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, filetype, filesize, filefield
- - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
+> - if removeIncompleteFiles = true : it is auto removed and a event 'fileremoved' is emitted with this params -> filename, filedir, filetype, filesize, filefield
+> - else it is kept in the filesystem, and a list of files, in the form of an array of paths, are passed to callback specified for 'end' event.
+
  - when a file is totally received a 'filereceived' is emitted with these params -> filename, filedir, filetype, filesize, filefield
 
 
