@@ -238,7 +238,7 @@ I try to explain me:
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (very large CSV file) there is a big number of char comparisons ( it decreases the parser data-rate), however for simplicity we use previous time T result, O( n * m ) * t
+>  - in some cases (very large CSV file) there is a big number of char comparisons ( it decreases the parser data-rate), however for optimism and simplicity, we use previous time result T = O( n / m ) * t. 
 >  - network throughput < network bandwidth,
 >  - time 't' to do a single comparison, depends on how the comparison is implemented,
 
