@@ -42,7 +42,7 @@ with git:
     ...
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
- compact usage -> 
+### Compact Usage  
  
     
      new formaline({ .. }).parse(req,res,next);
