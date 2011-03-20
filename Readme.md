@@ -37,22 +37,27 @@ with git:
 
     var formaline = require('formaline'),
         form = new formaline( { } );           // <-- empty config object
+   
+   *add listener for an event:*
     ...
-    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) //add listener for an event
+    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  ) 
     ...
-    form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
+    
+   *parse request, with next callback:*    
+
+   form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
 
 
 ### Advanced Usage
 
-**require the module: **
+*require the module: *
 
 
     var formaline = require('formaline');
     
 
-**build a config object: **
+*build a config object: *
 
     
     var config = { 
@@ -153,8 +158,7 @@ with git:
         
  
 
-**create instance passing config, then parse request:
-:**
+*create instance passing config, then parse request:*
    
 
     new formaline( config ).parse( req, res, next );
