@@ -48,7 +48,7 @@ with git:
    *parse request, with next callback:*    
 
 
-   form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
+    form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
 
 
