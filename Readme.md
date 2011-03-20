@@ -17,7 +17,7 @@ with git:
     ProxyPass /test/ http://localhost:3000/test/
     ProxyPassReverse /test/ http://localhost:3000/test/
 
->change the path and the port with yours. 
+>change the path and the port with yours. (use it for testing purpose)
 
 ### Features
 
