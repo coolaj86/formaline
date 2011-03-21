@@ -146,7 +146,7 @@ var printStats = function( stats ){
     log( ' ->\ttotal matches:', stats.matches );
     log( ' ->\tstep cycles: '+stats.steps+'\n ->\tinner cycles: '+stats.cycles+'\n ->\ttext bytes: '+stats.tbytes+'\n ->\tpattern bytes: '+stats.pbytes );
     log( ' ->\tmatching time:', ( stats.millis )/1000,'secs' );
-    log( ' ->\tparsing speed:',(stats.tbytes/stats.millis) / 1024, 'MB/s\n' );    
+    log( ' ->\taverage parsing speed:',(stats.tbytes/stats.millis) / 1024, 'MB/s\n' );    
 };
 
 
