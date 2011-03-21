@@ -100,7 +100,7 @@ with git:
 
 
 
-### Advanced Usage
+  Advanced Usage
 ------------------
 
 
