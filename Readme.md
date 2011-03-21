@@ -55,19 +55,18 @@ with git:
 
 ### Events
 
- > in progress..
 
-#### Type of events:
+ #### Type of events:
  
  
 > - *'fatal' exceptions* : headersexception, filepathexception, exception (the data transmission is interrupted). 
 > - *informational* : filereceived, field, dataprogress, end 
 > - *warning* : fileremoved, warning 
 
- *(see Advanced Usage for further description)* 
-
  
-> #### Listeners callbacks with params: 
+ 
+ #### Listeners callbacks with params: 
+
 
  
 > - **'warning'**: `function( msg ){ ... }`,
@@ -89,7 +88,7 @@ with git:
 > - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
  
  
- --------------------------------------------------------------------------------
+=====
 
 
 
