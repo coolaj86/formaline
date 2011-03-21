@@ -25,7 +25,8 @@ with git:
 
 
 
-### Features
+ Features
+----------
 
 > - Works!
 > - Real-time parsing of file uploads, also HTML5 multiple files upload.
@@ -41,8 +42,8 @@ with git:
 
 
 
-### Simple Usage
-
+ Simple Usage
+--------------
 
     var formaline = require('formaline'),
         form = new formaline( { } );           // <-- empty config object
