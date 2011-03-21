@@ -293,11 +293,11 @@ I try to explain me:
 
  the time complexity becomes to look something like:
 
-    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * average delay time of call the parser )  
+    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * average delay time of a single call )  
       or
     ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( c * k * d ) 
 
-When the number k of chunks increases, the value  ( c *  k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
+When the number k of chunks increases, the value  ( c *  k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function closure 10^4 times, is an heavier job than calling it only 1 time. 
 
 `A single GB of data transferred, with a http chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
