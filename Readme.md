@@ -2,7 +2,7 @@
 
 > __formaline__ is a new [(nodeJS)](http://nodejs.org/) module for handling simple form posts and for fast parsing of file uploads
 >  *(multipart/form-data and x-www-urlencoded)*, 
-> it is ready for using with [connect](https://github.com/senchalabs/connect) middleware.  
+> it is ready for using with [connect middleware](https://github.com/senchalabs/connect).  
 
 
 
@@ -29,7 +29,6 @@ with git:
  Features
 ----------
 
-> - Works!
 > - Real-time parsing of file uploads, also supports HTML5 multiple files upload.
 > - It is possible to create instances via configuration object.
 > - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
@@ -38,6 +37,7 @@ with git:
 > - Very Fast and Simple Parser (see parser-benchmarks).
 > - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of a max bytes limit. 
 > - It easily integrates with connect middleware.
+> - Works!
 > - etc..
 
 
