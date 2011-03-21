@@ -168,7 +168,7 @@ with git:
              it is possible to specify here a configuration object for listeners
              or adding them in normal way, with 'addListener' or 'on' functions
              
-             events:
+             **events**:
                 - headersexception, filepathexception, exception: indicates a closed request caused by a 'fatal' exception
                 - warning: indicates a value/operation not ammitted (it doesn't block data receiving)  
                 - fileremoved: indicates that a file was removed because it exceeded max allowed bytes 
