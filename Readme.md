@@ -74,7 +74,7 @@ You could create a formaline instance with some configuration options :
 > - **'maxBytes'** : ( *integer* ) default value is integer 1024*1024*1024 bytes (1GB).
 >   - it indicates the max total bytes allowed for file uploads (multipart/form-data) before stopping, it also limits data received with serialzed fields (x-www-urlencoded). 
 
-> - *'*emitDataProgress'** : ( *boolean or integer > 1* ) default value is boolean false.
+> - **'emitDataProgress'** : ( *boolean or integer > 1* ) default value is boolean false.
 >    - when true, it emits 'dataprogress' on every chunk. If you need to change emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it, for example, to an integer k, 'dataprogress' is emitted every k data chunks received, starting from the first. ( emits on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
 
