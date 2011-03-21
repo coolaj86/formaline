@@ -62,8 +62,43 @@ with git:
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
 
+ Configuration Options
+-----------------------
+
+You could create a formaline instance with some configuration options : 
+
+> - **'*tmpUploadDir*'** : (path string) default root dir is '/tmp/'; it is the root directory for file uploads, a new sub-directory with a random name is created for every upload request.
 
 
+> - **'*maxBytes*'** : (integer) default value is integer 1024*1024*1024 (1GB); it set the max total bytes allowed for file uploads (multipart/form-data) before stopping, it also limits data received with serialzed fields (x-www-urlencoded). 
+
+
+> - **'*emitDataProgress*'** : (boolean or integer > 1) default value is boolean false; 
+>    - when true, it emits 'dataprogress' on every chunk. If you need to change emitting factor ,( you could specify an integer > 1 ). 
+>    - If you set it, for example, to an integer k, 'dataprogress' is emitted every k data chunks received, starting from the first. ( emits on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
+
+
+> - **'*blockOnReqHeaderContentLength*'** : (boolean) default value is false.
+>   - formaline don't stop if header content-length > maxBytes allowed, try to receive all data for request, but write only maxBytes to disk. 
+>   - if true, formaline stops to receive data, because headers Content-Length exceeds maxBytes.
+
+
+> - **'*removeIncompleteFiles*'** : (boolean) default value is boolean true
+>   -   
+>   - if true, formaline auto-removes files not completed since of maxBytes limit, then it emits 'fileremoved' event, 
+>   - if false, no event is emitted, but the incomplete files list are passed to 'end' listeners in the form of an array of paths 
+
+
+> - **'*logging*'** : (string) default is 'debug:off,1:on,2:on,3:on'
+>   - enable various logging levels, it is possible to switch 'on' / 'off' one or more levels at the same time. 
+>   - debug: 'off' turn off logging,to see parser stats enable 2nd level.
+            
+            
+> - **'*listeners*'** : (config object). It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' or 'on' functions. *See below*
+
+
+
+           
  Events
 --------
 
@@ -79,7 +114,6 @@ with git:
 #### Listeners callbacks with params: 
 
 
- 
 > - **'warning'**: `function( msg ){ ... }`,
  
 > - **'headersexception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
@@ -117,51 +151,16 @@ with git:
     
     var config = { 
         
-            /*
-             temporary upload directory for file uploads
-             for every upload request a subdirectory is created that contains receiving files 
-             default is /tmp/ -->
-            */
-            
         tmpUploadDir: '/var/www/upload/',
-            
-            /*
-             boolean: default is false; when true, it emits 'dataprogress' every chunk 
-             integer chunk factor: emits 'dataprogress' event every k chunks starting from first chunk ( 1+(0*k) 1+(1*k),1+(2*k),1+(3*k) ),
-             minimum chunk factor value is 2 -->
-            */
-            
+          
         emitDataProgress: !true, //true, false, 3, 10, 100.. (every k chunks)
             
-            /*
-             max bytes allowed, this is the max bytes writed to disk before stopping 
-             this is also true for serialzed fields not only for files upload  -->
-            */
-            
-        maxBytes: 3949000, //bytes ex.: 1024*1024*1024 , 512
-        
-            /*
-             default false, bypass headers value, continue to write to disk  
-             until maxBytes bytes are writed. 
-             if true -> stop receiving data, when headers Content-Length exceeds maxBytes
-            */
+        maxBytes: 3949000, //bytes ex.: 1024*1024*1024 , 512 
             
         blockOnReqHeaderContentLength: !true,
         
-            /*
-             remove file not completed due to maxBytes, 
-             if true, formaline emit 'fileremoved' event, 
-             otherwise return a path array of incomplete files when 'end' event is emitted 
-            */
-            
         removeIncompleteFiles: true,
         
-            /*
-             enable various logging levels
-             it is possible to switch on/off one or more levels at the same time
-             debug: 'off' turn off logging,to see parser stats enable 2nd level
-            */
-            
         logging: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
             
             /*
