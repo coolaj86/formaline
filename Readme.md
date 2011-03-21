@@ -2,7 +2,7 @@
 
 > __formaline__ is a new ([nodeJS](http://nodejs.org/)) module for handling simple form posts and for fast parsing of file uploads
 >  *(**multipart/form-data** and **x-www-urlencoded**)*, 
-> it is ready for using with [connect middleware](https://github.com/senchalabs/connect).  
+> it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
 
 
