@@ -32,8 +32,9 @@ with git:
 > - Very Fast and Simple Parser (see parser-benchmarks).
 > - It is possible to preserve or auto-remove incomplete files upload, due to exceeding of a max bytes limit. 
 > - It easily integrates with connect middleware.
+> - etc..
 
- etc..
+
 
 ### Simple Usage
 
@@ -52,6 +53,7 @@ with git:
 
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
+
 
 ### Events
 
