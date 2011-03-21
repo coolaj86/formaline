@@ -57,37 +57,37 @@ with git:
 
  > in progress..
 
- *type of events:*
+#### type of events:
  
  
- - 'fatal' exceptions : headersexception, filepathexception, exception (the data transmission is interrupted). 
- - informational : filereceived, field, dataprogress, end 
- - warning: fileremoved, warning 
+ - *'fatal' exceptions* : headersexception, filepathexception, exception (the data transmission is interrupted). 
+ - *informational* : filereceived, field, dataprogress, end 
+ - *warning* : fileremoved, warning 
 
 
  *see advanced usage for further description* 
 
  
- *listeners callbacks with params:* 
+#### listeners callbacks with params: 
 
  
- - **'warning'**: `function( msg ){ ... }`,
+> - **'warning'**: `function( msg ){ ... }`,
  
- - **'headersexception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
+> - **'headersexception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
  
- - **'exception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
+> - **'exception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
  
- - **'filepathexception'**: `function ( path, errmsg, res, next ) { .. }`,
+> - **'filepathexception'**: `function ( path, errmsg, res, next ) { .. }`,
  
- - **'field'**: `function ( fname, fvalue ) { .. }`,
+> - **'field'**: `function ( fname, fvalue ) { .. }`,
  
- - **'filereceived'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
+> - **'filereceived'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
  
- - **'fileremoved'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
+> - **'fileremoved'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
  
- - **'dataprogress'**: `function ( bytesReceived, chunksReceived ) { .. }`,
+> - **'dataprogress'**: `function ( bytesReceived, chunksReceived ) { .. }`,
  
- - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
+> - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
  
  
 
