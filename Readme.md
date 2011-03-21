@@ -151,64 +151,53 @@ You could create a formaline instance with some configuration options :
         
         tmpUploadDir: '/var/www/upload/',
           
-        emitDataProgress: !true, //true, false, 3, 10, 100.. (every k chunks)
+        emitDataProgress: !true, 
             
-        maxBytes: 3949000, //bytes ex.: 1024*1024*1024 , 512 
+        maxBytes: 3949000,  
             
         blockOnReqHeaderContentLength: !true,
         
         removeIncompleteFiles: true,
         
-        logging: 'debug:on,1:on,2:on,3:off' //string ex.: 'debug:on,1:off,2:on,3:off'
-            
-            /*
-             it is possible to specify here a configuration object for listeners
-             or adding them in normal way, with 'addListener' or 'on' functions
-             
-             events:
-                - headersexception, filepathexception, exception: indicates a closed request caused by a 'fatal' exception
-                - warning: indicates a value/operation not ammitted (it doesn't block data receiving)  
-                - fileremoved: indicates that a file was removed because it exceeded max allowed bytes 
-                - dataprogress: emitted on every (k) chunk(s) received   
-            */
-            
+        logging: 'debug:on,1:on,2:on,3:off'
+
         listeners: {
-            'warning': function(msg){
-                ...
-            },
+        
+            'warning': function(msg){ .. },
+            
             'headersexception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();               
             },
+            
             'exception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();
             },
+            
             'filepathexception': function ( path, errmsg, res, next ) {
                 ...
                 next();
             },
-            'field': function ( fname, fvalue ) {
-                ...
-            },
-            'filereceived': function ( filename, filedir, filetype, filesize, filefield ) {
-                ...
-            },
-            'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) {
-                ...
-            },
-            'dataprogress': function ( bytesReceived, chunksReceived ) {
-                ...
-            },
+            
+            'field': function ( fname, fvalue ) { .. },
+            
+            'filereceived': function ( filename, filedir, filetype, filesize, filefield ) { .. },
+            
+            'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) { .. },
+            
+            'dataprogress': function ( bytesReceived, chunksReceived ) { .. },
+            
             'end': function ( incompleteFiles, response, next ) {
+                ...
                 response.writeHead(200, {'content-type': 'text/plain'});
                 response.end();
                 //next();
             }
-        }
+            
+        }//end listener config
     };
         
- 
 
 *create an instance with config, then parse request:*
    
