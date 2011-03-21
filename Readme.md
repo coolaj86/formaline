@@ -252,7 +252,7 @@ When a file is founded in the data stream:
 
  - when a file reaches the max bytes allowed:
    > - if *removeIncompleteFiles === true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
-   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted and an array of  paths ( that lists incomplete files), is passed to callback.
+   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted and an array of  paths ( that lists incomplete files ), is passed to callback.
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
