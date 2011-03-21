@@ -5,7 +5,7 @@
 >Generic Usage:
 
 
->     $ node parser-benchmarks/QS-benchmark-test.js numberOfMegaBytes
+>     $ node parser-benchmarks/QS-benchmark-test.js [numberOfMegaBytes]
 
 
 > in progress..
