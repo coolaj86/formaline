@@ -6,7 +6,8 @@
 
 
 
-### Installation
+ Installation
+--------------
      
 with npm:
     $ npm install formaline
@@ -63,8 +64,8 @@ with git:
 
 
 
-### Events
-
+ Events
+--------
 
 #### Type of events:
  
@@ -233,7 +234,8 @@ with git:
 > - parser-benchmarks directory for testing algorithm parsing speed (*wow*). 
  
 
-## File Creation 
+ File Creation 
+---------------
  
 When a file is founded in the data stream:
  
@@ -256,7 +258,8 @@ When a file is founded in the data stream:
 
  - the **filereceived** and **fileremoved** events are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
 
-## Parser
+ Parser
+--------
 
 ###A Note about Parsing Data Rate vs Network Throughput
 ---------------------------------------------------------------------------------------
@@ -314,7 +317,8 @@ The only limit in this implementation is that it doesn't support a boundary leng
 
 
 
-##TODO
+ TODO
+------
 
  - some code performance modifications in quickSearch.js and formaline.js
  - some code variables cleaning in formaline.js
