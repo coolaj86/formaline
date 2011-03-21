@@ -10,13 +10,16 @@
 > **check if you have enough memory free!**
  
  
-#### Generic Usage:
+> **Generic Usage**:
 
     
->    $ node parser-benchmarks/QS-benchmark-test.js
+    
+>     $ node parser-benchmarks/QS-benchmark-test.js
+
 
 
 >  **you could also specify 3 ordered params:**
+
 
 
 >     $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
