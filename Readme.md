@@ -101,6 +101,7 @@ with git:
 
 
 ### Advanced Usage
+------------------
 
 
 *require the module:*
