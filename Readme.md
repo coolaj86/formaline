@@ -270,13 +270,13 @@ Unfortunately, sending data over the cloud is sometime a long-time task, the dat
 
 I try to explain me:
 
->__In the world of Fairies, a super-fast Booyer-Moore parser in the best case:__
+>__In the world of Fairies, using a super-fast Booyer-Moore parser :__
  
 >  - data is not chunked, 
->  - there is a low pattern repetition, ( this get the result of n/m comparison )
+>  - there is a low pattern repetition in data received, ( this get the result of n/m comparison )
 > - network throughput == network bandwidth (not real),
  
- reaches a time complexity of : 
+ reaches a time complexity (in the best case) of : 
 
     O( ( data chunk length ) / ( pattern length ) ) * ( time to do a single comparison ) = T
       or  for simplicity  
