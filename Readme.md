@@ -88,7 +88,7 @@ with git:
 > - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
  
  
-=====
+
 
 
 
