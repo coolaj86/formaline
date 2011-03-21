@@ -4,6 +4,8 @@
 >  *(multipart/form-data and x-www-urlencoded)*, 
 > it is ready for using with [connect](https://github.com/senchalabs/connect) middleware.  
 
+==============================================================================================================
+
 ### Installation
      
 with npm:
@@ -21,6 +23,8 @@ with git:
 
 >change the path and the port with yours. 
 
+==============================================================================================================
+
 ### Features
 
 > - Works!
@@ -35,11 +39,10 @@ with git:
 > - etc..
 
 
-
-
+==============================================================================================================
 
 ### Simple Usage
-===============
+
 
     var formaline = require('formaline'),
         form = new formaline( { } );           // <-- empty config object
@@ -57,6 +60,7 @@ with git:
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
     
 
+==============================================================================================================
 
 ### Events
 
@@ -93,8 +97,7 @@ with git:
 > - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
  
  
-
-
+==============================================================================================================
 
 
 ### Advanced Usage
