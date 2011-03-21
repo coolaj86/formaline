@@ -164,30 +164,22 @@ You could create a formaline instance with some configuration options :
         listeners: {
         
             'warning': function(msg){ .. },
-            
             'headersexception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();               
             },
-            
             'exception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();
             },
-            
             'filepathexception': function ( path, errmsg, res, next ) {
                 ...
                 next();
             },
-            
             'field': function ( fname, fvalue ) { .. },
-            
             'filereceived': function ( filename, filedir, filetype, filesize, filefield ) { .. },
-            
             'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) { .. },
-            
             'dataprogress': function ( bytesReceived, chunksReceived ) { .. },
-            
             'end': function ( incompleteFiles, response, next ) {
                 ...
                 response.writeHead(200, {'content-type': 'text/plain'});
