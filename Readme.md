@@ -230,8 +230,8 @@ with git:
  **See Also :**
 
 
-> - [examples](https://github.com/rootslab/formaline/tree/master/examples). 
-> - [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) for speed (data-rate) tests of parser (*wow*). 
+> - [examples](https://github.com/rootslab/formaline/tree/master/examples) 
+> - [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks), for parser speed tests (data-rate) 
  
 
  File Creation 
