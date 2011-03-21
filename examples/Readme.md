@@ -10,5 +10,5 @@
 
 >point your browser to:
 
-> - http://nodeServerIp/test/  [localhost](http://localhost:3000/test/)        
-> - http://nodeServerIp:3000/test/  [localhost](http://localhost:3000/test/) 
+> - http://nodeServerIp/test/  *or try* [localhost](http://localhost:3000/test/)        
+> - http://nodeServerIp:3000/test/ *or try* [localhost](http://localhost:3000/test/) 
