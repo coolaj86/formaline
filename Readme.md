@@ -56,7 +56,7 @@ with git:
 ### Events
 
 
- #### Type of events:
+#### Type of events:
  
  
 > - *'fatal' exceptions* : headersexception, filepathexception, exception (the data transmission is interrupted). 
@@ -65,7 +65,7 @@ with git:
 
  
  
- #### Listeners callbacks with params: 
+#### Listeners callbacks with params: 
 
 
  
