@@ -305,14 +305,17 @@ The only limit in this implementation is that it doesn't support a boundary leng
 
 
 
-ToDo
-------
+ Future Releases
+-----------------
 
  - some code performance modifications in quickSearch.js and formaline.js
  - some code variables cleaning in formaline.js
  - change the core parser with a custom one
  - add some other server-side security checks, and write about it
- - in progress..  
+ - check weird boundary types
+ - Restify?
+ - switch createDelegate to ecmascript5 bind..
+ - be happy  
 
 ## License 
 
