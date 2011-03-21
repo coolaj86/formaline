@@ -18,7 +18,7 @@
 
 
 
->  **you could also specify 3 ordered params:**
+> or
 
 
 
