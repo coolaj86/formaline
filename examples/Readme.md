@@ -1,3 +1,7 @@
+### Basic Example
+
+> *require connect middleware, but for basic usage you could comment out it in the code.*
+
 >Usage:
 
 
