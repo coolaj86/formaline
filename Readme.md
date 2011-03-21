@@ -35,10 +35,11 @@ with git:
 > - etc..
 
 
-***
+
 
 
 ### Simple Usage
+===============
 
     var formaline = require('formaline'),
         form = new formaline( { } );           // <-- empty config object
