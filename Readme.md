@@ -66,7 +66,7 @@ with git:
 
 You could create a formaline instance with some configuration options : 
 
-> - **'tmpUploadDir'** : ( *string* ) default root dir is '/tmp/'.
+> - **'uploadRootDir'** : ( *string* ) default root dir is '/tmp/'.
 >  - it is the root directory for file uploads, it must already exists!
 >  - a new sub-directory with a random name is created for every upload request.
 
@@ -148,7 +148,7 @@ You could create a formaline instance with some configuration options :
     
     var config = { 
         
-        tmpUploadDir: '/var/www/upload/',
+        uploadRootDir: '/var/www/upload/',
           
         emitDataProgress: !true, 
             

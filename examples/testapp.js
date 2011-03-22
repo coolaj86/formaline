@@ -39,7 +39,7 @@ var handleFormRequest = function(req,res,next){
         var config = {
         
             //default is /tmp/ -->
-        tmpUploadDir: dir,
+        uploadRootDir: dir,
         
             // default is false, or integer chunk factor, 
             // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
@@ -103,7 +103,7 @@ var handleFormRequest = function(req,res,next){
                         log('\n-> Post Done');
                         response.writeHead(200, {'content-type': 'text/plain'});
                         response.write('-> all data received!\n');
-                        response.write('\n-> upload root dir: '+config.tmpUploadDir+' \n');
+                        response.write('\n-> upload root dir: '+config.uploadRootDir+' \n');
                         response.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
                         response.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
                         response.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
