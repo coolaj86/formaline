@@ -71,7 +71,8 @@ You could create a formaline instance with some configuration options :
 >  - a new sub-directory with a random name is created for every upload request.
 
 > - **'uploadThreshold'** : ( *integer* ) default value is integer 1024*1024*1024 bytes (1GB).
->   - it indicates the max total bytes allowed for file uploads (multipart/form-data) before stopping, it also limits data received with serialzed fields (x-www-urlencoded). 
+>   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping to write to disk,
+>   - it also limits data received with serialzed fields (x-www-urlencoded). 
 
 > - **'emitDataProgress'** : ( *boolean or integer > 1* ) default value is boolean false.
 >    - when true, it emits 'dataprogress' on every chunk. If you need to change emitting factor ,( you could specify an integer > 1 ). 
