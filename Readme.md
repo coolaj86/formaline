@@ -186,10 +186,10 @@ You could create a formaline instance with some configuration options :
             'dataprogress': function ( bytesReceived, chunksReceived ) {
                 ...
             },
-            'end': function ( incompleteFiles, response, next ) {
+            'end': function ( incompleteFiles, res, next ) {
                 ...
-                response.writeHead(200, {'content-type': 'text/plain'});
-                response.end();
+                res.writeHead(200, {'content-type': 'text/plain'});
+                res.end();
                 //next();
             }
             
