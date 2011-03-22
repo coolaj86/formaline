@@ -150,12 +150,18 @@ You could create a formaline instance with some configuration options :
     
     var config = { 
     
-            uploadRootDir:              '/var/www/upload/',
-            checkContentLength:         !true,
-            uploadThreshold:            3949000,  
-            removeIncompleteFiles:      true,
-            emitDataProgress:           !true, 
-            logging:                    'debug:on,1:on,2:on,3:off'
+            uploadRootDir:          '/var/www/upload/',
+            
+            checkContentLength:     !true,
+            
+            uploadThreshold:        3949000,  
+            
+            removeIncompleteFiles:  true,
+            
+            emitDataProgress:       !true, 
+            
+            logging:                'debug:on,1:on,2:on,3:off'
+            
             listeners: {
         
                 'warning': function(msg){
