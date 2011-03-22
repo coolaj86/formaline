@@ -150,61 +150,53 @@ You could create a formaline instance with some configuration options :
     
     var config = { 
     
-            uploadRootDir:    '/var/www/upload/',
+        uploadRootDir:    '/var/www/upload/',
             
-            checkContentLength:   !true,
+        checkContentLength:   !true,
             
-            uploadThreshold:    3949000,  
+        uploadThreshold:    3949000,  
+          
+        removeIncompleteFiles:    true,
             
-            removeIncompleteFiles:    true,
+        emitDataProgress:    !true, 
             
-            emitDataProgress:    !true, 
+        logging:    'debug:on,1:on,2:on,3:off'
             
-            logging:    'debug:on,1:on,2:on,3:off'
-            
-            listeners: {
+        listeners: {
                 
-                'warning': function(msg){
-                    ...
-                },
-                
-                'headersexception': function ( isUpload, errmsg, res, next ) {
-                    ...
-                    next();               
-                },
-                
-                'exception': function ( isUpload, errmsg, res, next ) {
-                    ...
-                    next();
-                },
-                
-                'pathexception': function ( path, errmsg, res, next ) {
-                    ...
-                    next();
-                },
-                
-                'field': function ( fname, fvalue ) { 
-                    ...
-                },
-                
-                'filereceived': function ( filename, filedir, filetype, filesize, filefield ) { 
-                .. 
-                },
-                
-                'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) { 
-                    ...
-                },
-                
-                'dataprogress': function ( bytesReceived, chunksReceived ) {
-                    ...
-                },
-                
-                'end': function ( incompleteFiles, res, next ) {
-                    ...
-                    res.writeHead(200, {'content-type': 'text/plain'});
-                    res.end();
-                    //next();
-                }
+            'warning': function(msg){
+                ...
+             },
+             'headersexception': function ( isUpload, errmsg, res, next ) {
+                ...
+                next();               
+             },
+             'exception': function ( isUpload, errmsg, res, next ) {
+                ...
+                next();
+             },
+            'pathexception': function ( path, errmsg, res, next ) {
+                ...
+                next();
+            },
+            'field': function ( fname, fvalue ) { 
+                ...
+            },
+            'filereceived': function ( filename, filedir, filetype, filesize, filefield ) { 
+                ... 
+            },
+            'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) { 
+                ...
+            },
+            'dataprogress': function ( bytesReceived, chunksReceived ) {
+                ...
+            },
+            'end': function ( incompleteFiles, res, next ) {
+                ...
+                res.writeHead(200, {'content-type': 'text/plain'});
+                res.end();
+                //next();
+            }
             
         }//end listener config
     };
