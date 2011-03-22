@@ -31,7 +31,7 @@ with git:
 
 > - Real-time parsing of file uploads, also supports HTML5 multiple files upload.
 > - It is possible to create instances via configuration object.
-> - Useful configuration parameters ( like listeners, maxBytes, auto remove of incomplete files.. ).
+> - Useful configuration parameters ( listeners, maxBytes, logging .. ).
 > - Fluid exceptions handling.
 > - Many events for total control of parsing flow. 
 > - Very Fast and Simple Parser (see parser-benchmarks).
