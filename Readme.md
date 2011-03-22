@@ -308,6 +308,7 @@ The only limit in this implementation is that it doesn't support a boundary leng
 -----------------
 
  - some code performance modifications in quickSearch.js and formaline.js
+ - emit 'logging' events
  - some code variables cleaning in formaline.js
  - change the core parser with a custom one.
  - add some other server-side security checks, and write about it.
