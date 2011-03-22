@@ -152,13 +152,13 @@ You could create a formaline instance with some configuration options :
     
         uploadRootDir:    '/var/www/upload/',
             
-        checkContentLength:   !true,
+        checkContentLength:   false,
             
         uploadThreshold:    3949000,  
           
         removeIncompleteFiles:    true,
             
-        emitDataProgress:    !true, 
+        emitDataProgress:    false, 
             
         logging:    'debug:on,1:on,2:on,3:off'
             
