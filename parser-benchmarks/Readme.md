@@ -25,29 +25,29 @@
 >     $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
 
 
-**typical results**:
+>**typical results**:
 
-     ->	Min Gap Factor: 2
-     ->	Max Gap Factor: 5 
-     ->	Current Gap Factor: 3
+>     ->	Min Gap Factor: 2
+>     ->	Max Gap Factor: 5 
+>     ->	Current Gap Factor: 3
 
-     ->	pattern: ---------------------------2046863043300497616870820724
+>     ->	pattern: ---------------------------2046863043300497616870820724
 
-     ->	max pattern length: 254 bytes
-     ->	pattern length: 57 bytes
-     ->	pattern gap: 185193 bytes (distance in bytes of boundary occurrences)
-     ->	plength / pgap: 0.0003077870113881194 
+>     ->	max pattern length: 254 bytes
+>     ->	pattern length: 57 bytes
+>     ->	pattern gap: 185193 bytes (distance in bytes of boundary occurrences)
+>     ->	plength / pgap: 0.0003077870113881194 
 
-     ->	buffer size in MB: 700.0999994277954
-     ->	buffer creation time: 8.26 secs
+>     ->	buffer size in MB: 700.0999994277954
+>     ->	buffer creation time: 8.26 secs
 
-     ->	total matches: 3965
-     ->	step cycles: 12676085
-     ->	inner cycles: 234335
-     ->	text bytes: 734108057
-     ->	pattern bytes: 57
-     ->	matching time: 1.195 secs
-     ->	average parsing speed: 599.9183258695084 MB/s
+>     ->	total matches: 3965
+>     ->	step cycles: 12676085
+>     ->	inner cycles: 234335
+>     ->	text bytes: 734108057
+>     ->	pattern bytes: 57
+>     ->	matching time: 1.195 secs
+>     ->	average parsing speed: 599.9183258695084 MB/s
 
 
 > in progress..
