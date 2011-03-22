@@ -99,28 +99,28 @@ var handleFormRequest = function(req,res,next){
                 'dataprogress': function(bytesReceived, chunksReceived) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
                 },
-                'end': function(incompleteFiles,response,next) {
+                'end': function(incompleteFiles,res,next) {
                         log('\n-> Post Done');
-                        response.writeHead(200, {'content-type': 'text/plain'});
-                        response.write('-> all data received!\n');
-                        response.write('\n-> upload root dir: '+config.uploadRootDir+' \n');
-                        response.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
-                        response.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
-                        response.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
-                        response.write('-> checkContentLength: '+config.checkContentLength+'\n');
-                        response.write('\n-> fields received: '+JSON.stringify(receivedFields)+'\n');
-                        response.write('-> files received: '+JSON.stringify(receivedFiles)+'\n');
+                        res.writeHead(200, {'content-type': 'text/plain'});
+                        res.write('-> all data received!\n');
+                        res.write('\n-> upload root dir: '+config.uploadRootDir+' \n');
+                        res.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
+                        res.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
+                        res.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
+                        res.write('-> checkContentLength: '+config.checkContentLength+'\n');
+                        res.write('\n-> fields received: '+JSON.stringify(receivedFields)+'\n');
+                        res.write('-> files received: '+JSON.stringify(receivedFiles)+'\n');
                         if(config.removeIncompleteFiles ){
-                            response.write('-> files removed : '+JSON.stringify(removedFiles)+'\n');
+                            res.write('-> files removed : '+JSON.stringify(removedFiles)+'\n');
                         }else{
                             if( incompleteFiles.length !== 0 ){
-                                response.write('-> incomplete files (not removed) : '+incompleteFiles+'\n');
+                                res.write('-> incomplete files (not removed) : '+incompleteFiles+'\n');
                             }
                         }
                         receivedFiles = null;
                         removedFiles = null;
                         receivedFields = null;  
-                        response.end();
+                        res.end();
                         //next();//test
                 }
             }
