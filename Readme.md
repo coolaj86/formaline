@@ -93,7 +93,7 @@ You could create a formaline instance with some configuration options :
 >   - debug: 'off' turn off logging, to see parser stats enable 2nd level.
             
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' or 'on' functions. 
->    - *See below*
+>    - **See below**
 
 
 

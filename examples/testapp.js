@@ -139,5 +139,7 @@ server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nSuc
 
 server.listen(3000);
 
-console.log('\nlistening on http://localhost:3000/');
-console.log(' -> upload directory is:',dir);
+log('\nlistening on http://localhost:3000/');
+log(' -> upload directory is:',dir);
+
+
