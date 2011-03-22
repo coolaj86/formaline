@@ -48,14 +48,14 @@ var handleFormRequest = function(req,res,next){
         
             // max bytes allowed, this is the max bytes writed to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        maxBytes: 3949000,//bytes ex.: 1024*1024*1024, 512
+        maxWritedBytes: 3949000,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
-            //until maxBytes bytes are writed. 
-            //if true -> stop receiving data, when headers content length exceeds maxBytes
-        blockOnReqHeaderContentLength: !true,
+            //until uploadThreshold bytes are writed. 
+            //if true -> stop receiving data, when headers content length exceeds uploadThreshold
+        checkContentLength: !true,
         
-            //remove file not completed due to maxBytes, 
+            //remove file not completed due to uploadThreshold, 
             //if true formaline emit fileremoved event, 
             //otherwise return a path array of incomplete files 
         removeIncompleteFiles : true,
@@ -104,10 +104,10 @@ var handleFormRequest = function(req,res,next){
                         response.writeHead(200, {'content-type': 'text/plain'});
                         response.write('-> all data received!\n');
                         response.write('\n-> upload root dir: '+config.tmpUploadDir+' \n');
-                        response.write('-> max allowed bytes: '+config.maxBytes+' \n');
+                        response.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
                         response.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
                         response.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
-                        response.write('-> blockOnReqHeaderContentLength: '+config.blockOnReqHeaderContentLength+'\n');
+                        response.write('-> checkContentLength: '+config.checkContentLength+'\n');
                         response.write('\n-> fields received: '+JSON.stringify(receivedFields)+'\n');
                         response.write('-> files received: '+JSON.stringify(receivedFiles)+'\n');
                         if(config.removeIncompleteFiles ){
