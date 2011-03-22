@@ -78,8 +78,8 @@ var handleFormRequest = function(req,res,next){
                     log('\n exception --> ',errmsg);
                     next();
                 },
-                'filepathexception': function(path,errmsg,res,next){//there is a file upload
-                    log('\n filepathexception -->',path,'msg:',errmsg+'\n');        
+                'pathexception': function(path,errmsg,res,next){//there is a file upload
+                    log('\n pathexception -->',path,'msg:',errmsg+'\n');        
                     next();
                 },
                 'field': function(fname,fvalue){

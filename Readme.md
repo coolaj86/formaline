@@ -104,7 +104,7 @@ You could create a formaline instance with some configuration options :
 #### Type of events:
  
  
-> - *'fatal' exceptions* : headersexception, filepathexception, exception (the data transmission is interrupted). 
+> - *'fatal' exceptions* : headersexception, pathexception, exception (the data transmission is interrupted). 
 > - *informational* : filereceived, field, dataprogress, end 
 > - *warning* : fileremoved, warning 
 
@@ -119,7 +119,7 @@ You could create a formaline instance with some configuration options :
  
 > - **'exception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
  
-> - **'filepathexception'**: `function ( path, errmsg, res, next ) { .. }`,
+> - **'pathexception'**: `function ( path, errmsg, res, next ) { .. }`,
  
 > - **'field'**: `function ( fname, fvalue ) { .. }`,
  
@@ -175,7 +175,7 @@ You could create a formaline instance with some configuration options :
                 ...
                 next();
             },
-            'filepathexception': function ( path, errmsg, res, next ) {
+            'pathexception': function ( path, errmsg, res, next ) {
                 ...
                 next();
             },
