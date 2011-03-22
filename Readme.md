@@ -166,15 +166,15 @@ You could create a formaline instance with some configuration options :
                 
             'warning': function(msg){
                 ...
-             },
-             'headersexception': function ( isUpload, errmsg, res, next ) {
+            },
+            'headersexception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();               
-             },
-             'exception': function ( isUpload, errmsg, res, next ) {
+            },
+            'exception': function ( isUpload, errmsg, res, next ) {
                 ...
                 next();
-             },
+            },
             'pathexception': function ( path, errmsg, res, next ) {
                 ...
                 next();
