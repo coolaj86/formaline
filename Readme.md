@@ -1,6 +1,6 @@
 # Formaline for NodeJS 
 
-> __formaline__ is a new ([nodeJS](http://nodejs.org/)) module for handling (*HTTP*) form *POST*s  *(**multipart/form-data** and **x-www-urlencoded** headers)* and for fast parsing of file uploads, 
+> __formaline__ is a new ([nodejs](http://nodejs.org/)) module for handling *HTTP* form *POST*s and for fast parsing of file uploads, 
 > it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
 
@@ -28,7 +28,7 @@ with git:
  Features
 ----------
 
-> - Real-time parsing of file uploads, also supports HTML5 multiple files upload.
+> - Real-time parsing of file uploads, also supports HTML5 multiple files.
 > - It is possible to create instances via configuration object.
 > - Useful configuration parameters ( listeners, maxBytes, logging .. ).
 > - Fluid exceptions handling.
