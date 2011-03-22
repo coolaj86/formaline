@@ -67,8 +67,8 @@ with git:
 You could create a formaline instance with some configuration options : 
 
 > - **'uploadRootDir'** : ( *string* ) default root dir is '/tmp/'.
->  - it is the root directory for file uploads, it must already exists!
->  - a new sub-directory with a random name is created for every upload request.
+>   - it is the root directory for file uploads, it must already exists!
+>   - a new sub-directory with a random name is created for every upload request.
 
 > - **'uploadThreshold'** : ( *integer* ) default value is integer 1024*1024*1024 bytes (1GB).
 >   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping to write to disk,
