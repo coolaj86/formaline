@@ -79,7 +79,7 @@ You could create a formaline instance with some configuration options :
 
 
 > - **'checkContentLength'** : ( *boolean* ) default value is false.
->   - formaline don't stop if header content-length > uploadThreshold allowed, try to receive all data for request, but write only uploadThreshold to disk. 
+>   - formaline don't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, but will write only uploadThreshold bytes to disk. 
 >   - if true, formaline stops to receive data, because headers Content-Length exceeds uploadThreshold.
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) default value is boolean true.
