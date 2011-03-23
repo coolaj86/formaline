@@ -292,7 +292,7 @@ When the number k of chunks increases, the value  ( c *  k * d ) becomes to have
 
 However, in a general case, 
  
- - we can do very little about reducing time delay of calling the parser and  the number of chunks ( increasing their size ), it doesn't totally depend on us. 
+ - we can do very little about reducing time delay of parser calls, and for reducing the number of chunks ( or manually increasing their size ), these don't totally depend on us. 
  - we could minimize the number of parser calls **'c'**, a single call for every chunk, c = 1.
  - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
@@ -309,14 +309,14 @@ The only limit in this implementation is that it doesn't support a boundary leng
  Future Releases
 -----------------
 
- - add some other server-side security checks, and write about it.
- - some code performance modifications in quickSearch.js and formaline.js
- - emit 'logging' events
- - some code variables cleaning in formaline.js
- - change the core parser with a custom one.
- - check some weird boundary types.
+ - add some other server-side security checks, and write about it .
+ - some code performance modifications in quickSearch.js and formaline.js .
+ - emit 'logging' events .
+ - some code variables cleaning in formaline.js .
+ - change the core parser with a custom one .
+ - check some weird boundary types .
  - Restify?
- - switch createDelegate to ecmascript5 bind..
+ - switch createDelegate to ecmascript5 bind ?
  - be happy?  
 
 ## License 
