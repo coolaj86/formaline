@@ -3,8 +3,8 @@
 
 > default example:
  
-> - uses a fixed boundary of 57 bytes, 
-> - builds a data buffer of 700MB,  
+> - uses a fixed boundary string of 57 bytes (ascii), 
+> - builds a data buffer of 700MB in RAM,  
 > - uses a sort of redundancy factor for boundary string presence into the data (gapFactor), actually it is a simple distance factor  between boundary strings. The bigger the value, the lesser are occurrences of boundary string into the text . 
   
 > **check if you have enough memory free!**
