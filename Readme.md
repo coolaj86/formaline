@@ -54,7 +54,8 @@ with git:
     form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  )  
     ...
  
->  the listed params ( filename, filedir, .. ) **are already attached to the function callback!** 
+  ** the listed params ( filename, filedir, .. ) are already attached to the function callback!** 
+
 >  see below for a complete list of listeners signatures!
       
     
