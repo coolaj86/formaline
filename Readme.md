@@ -72,7 +72,7 @@ with git:
 You could create a formaline instance with some configuration options : 
 
 > - **'uploadRootDir'** : ( *string* ) the default root directory for files uploads is '/tmp/'.
->   - it is the root directory for file uploads, must already exist!
+>   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it  throws an exception )
 >   - a new sub-directory with a random name is created for every upload request.
 
 > - **'uploadThreshold'** : ( *integer* ) default value is 1024 * 1024 * 1024 bytes (1GB).
@@ -208,7 +208,7 @@ You could create a formaline instance with some configuration options :
     };
         
 
-*create an instance with config, then parse request:*
+*create an instance with config, then parses the request:*
    
 
     new formaline( config ).parse( req, res, next );
@@ -229,46 +229,48 @@ You could create a formaline instance with some configuration options :
 > - [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks), for parser speed tests (data-rate) 
  
 
- File Creation 
+  File Creation 
 ---------------
  
-When a file is founded in the data stream:
+When a file is found in the data stream:
  
- - this is directly writed to disk chunk per chunk, until end of file is reached.
+ - this is directly written to disk, chunk per chunk, until the end of file is reached.
 
- - a directory with a random integer name is created in the upload path directory (default is /tmp/), for example:  */tmp/123456789098/*,
-   it assures no file name collisions for every different post.
+ - a directory with a random integer name is created in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
+   it assures no collisions on file names, for every upload.
+   
 
- - when two files with the same name are uploaded through the same form post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
+- when two files with the same name are uploaded through the same post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
    >**for example**: 
-   >we are uploading two files with same name, like *hello.jpg*, the first one is received and writed to disk with its original name, 
-   >the second one is received but its name causes a collision, then it is also writed to disk, but with a name something like *1300465416185_hello.jpg*. 
-   >It assures that the first file is not overwritten.
+   >we are uploading two files with same name, like *hello.jpg*, the first one is received and written to disk with its original name, 
+   >the second one is received but its name causes a collision,  a new file is written to disk, but its name will be something like *1300465416185_hello.jpg*. 
+   >In this way, It assures us that the first file will not overwritten.
 
- - when a file reaches the max bytes allowed:
+ - when a file reaches the upload threshold allowed:
    > - if *removeIncompleteFiles === true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
-   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted and an array of  paths ( that lists incomplete files ), is passed to callback.
+   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted, an array with paths ( which lists incomplete files ) is passed to callback.
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emiited together with this params: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
-
+ - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
+ 
+ 
  Parser
 --------
 
 ###A Note about Parsing Data Rate vs Network Throughput
 ---------------------------------------------------------------------------------------
 
-Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__ ( searching a basic ~60 bytes boundary string, like Firefox uses ) with a *real* data Buffer totally loaded in RAM, but in my opinion, this parsing test emulates more a network with an high-level Throughput, than a real case. 
+Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__  if you search a basic of ~60 bytes string ( like Firefox uses ), with a *real* Buffer totally loaded in RAM, but in my opinion, this parsing test  only emulates  an high Throughput network with only one chunk for all data , not  a real case. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of underneath TCP flow control ( typically chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of (underneath) TCP flow control ( typically the chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
->__In the world of Fairies, using a super-fast Booyer-Moore parser :__
+>__ In the world of Fairies, using a super-fast Booyer-Moore parser :__
  
->  - data is not chunked, 
->  - there is a low pattern repetition in data received, ( this get the result of n/m comparison )
+>  - the data received is not chunked, 
+>  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
 > - network throughput == network bandwidth (wow),
  
  reaches a time complexity (in the best case) of : 
@@ -282,47 +284,48 @@ I try to explain me:
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (very large CSV file) there is a big number of char comparisons ( it decreases the parser data rate ), however, for optimism and simplicity, we use previous time result T = O( n / m ) * t. 
+>  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time result T = O( n / m ) * t. 
 >  - network throughput < network bandwidth,
->  - time 't' to do a single comparison, depends on how the comparison is implemented,
+>  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
- the time complexity becomes to look something like:
+ the time complexity will becomes something like:
 
-    ( T ) *  ( number of chunks ) * ( average number of parser calls per chunk * average delay time of a single call )  
+    ( T ) *  ( number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
       or
     ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( c * k * d ) 
 
-When the number k of chunks increases, the value  ( c *  k * d ) becomes to have a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calling a function 10^4 times, is an heavier job than calling it only 1 time. 
+When k, the number of data chunks, increases, the value  ( c *  k * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time. 
 
-`A single GB of data transferred, with a http chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
+`A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
+ 
 However, in a general case, 
  
- - we can do very little about reducing time delay of parser calls, and for reducing the number of chunks ( or manually increasing their size ), these don't totally depend on us. 
- - we could minimize the number of parser calls **'c'**, a single call for every chunk, c = 1.
+ - we can do very little about reducing the time delay of parser calls, and for reducing the number of chunks ( or manually increasing their size ), these don't totally depend on us. 
+ - we could minimize the number **'c'**  of parser calls , a single call for every chunk, c = 1.
  - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
 For this reasons: 
  
- - I try to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
+ - I have tried to don't use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
  - instead of building a complex state-machine, I have written a simple implementation of QuickSearch algorithm, using only high performance for-cycles,
- - for miminizing the time 't' to do a comparison, I have used two simple char lookup tables, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern to match, one for CRLFCRLF sequence). 
+ - for minimizing the time 't' to do a single comparison, I have used two simple char lookup tables, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern string to match, one for CRLFCRLF sequence). 
 
 The only limit in this implementation is that it doesn't support a boundary length more than 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
-
 
 
  Future Releases
 -----------------
 
- - add some other server-side security checks, and write about it . *( like weird chars in files name, name length.. )*
+ - add some other server-side security checks, and write about it . *( like weird chars in files names, names length.. )*
  - some code performance modifications in quickSearch.js and formaline.js .
- - some code variables cleaning in formaline.js .
- - change the core parser with a custom one .
- - check some weird boundary types .
+ - some code cleaning in formaline.js for some variables .
+ - give choice to changing the parser with a custom one .
+ - check some weird boundary string types .
  - Restify?
- - switch createDelegate to ecmascript5 bind ?
+ - change createDelegate with  (ecmascript5) bind function ?
  - be happy?  
+
 
 ## License 
 
