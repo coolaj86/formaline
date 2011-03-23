@@ -309,9 +309,8 @@ The only limit in this implementation is that it doesn't support a boundary leng
  Future Releases
 -----------------
 
- - add some other server-side security checks, and write about it .
+ - add some other server-side security checks, and write about it . *( like weird chars in files name, name length.. )*
  - some code performance modifications in quickSearch.js and formaline.js .
- - emit 'logging' events .
  - some code variables cleaning in formaline.js .
  - change the core parser with a custom one .
  - check some weird boundary types .
