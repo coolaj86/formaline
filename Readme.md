@@ -51,7 +51,8 @@ with git:
    *add events listener:*
 
     ...
-    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  )  //the callback params are already attached to it!
+    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  )  
+    //the listed params ( filename, filedir, .. ) are already attached to the callback specified 
     ...
     
 
