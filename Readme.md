@@ -110,7 +110,7 @@ You could create a formaline instance with some configuration options :
 
  
  
-#### Listeners callbacks with params: 
+#### Listeners are called with following listed params passed to the callbacks : 
 
 
 > - **'warning'**: `function( msg ){ ... }`,
