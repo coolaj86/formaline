@@ -70,11 +70,11 @@ You could create a formaline instance with some configuration options :
 >   - it is the root directory for file uploads, it must already exists!
 >   - a new sub-directory with a random name is created for every upload request.
 
-> - **'uploadThreshold'** : ( *integer* ) default value is integer 1024 * 1024 * 1024 bytes (1GB).
+> - **'uploadThreshold'** : ( *integer* ) default value is 1024 * 1024 * 1024 bytes (1GB).
 >   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping to write to disk,
 >   - it also limits data received with serialzed fields (x-www-urlencoded). 
 
-> - **'emitDataProgress'** : ( *boolean or integer > 1* ) default value is boolean false.
+> - **'emitDataProgress'** : ( *boolean or integer > 1* ) default value is false.
 >    - when true, it emits 'dataprogress' on every chunk. If you need to change emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it, for example, to an integer k, 'dataprogress' is emitted every k data chunks received, starting from the first. ( emits on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
 
@@ -83,7 +83,7 @@ You could create a formaline instance with some configuration options :
 >   - formaline don't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, but will write only uploadThreshold bytes to disk. 
 >   - if true, formaline stops to receive data, because headers Content-Length exceeds uploadThreshold.
 
-> - **'removeIncompleteFiles'** : ( *boolean* ) default value is boolean true.
+> - **'removeIncompleteFiles'** : ( *boolean* ) default value is  true.
 >   - if true, formaline auto-removes files not completed since of uploadThreshold limit, then it emits 'fileremoved' event, 
 >   - if false, no event is emitted, but the incomplete files list are passed to 'end' listeners in the form of an array of paths 
 
@@ -92,7 +92,7 @@ You could create a formaline instance with some configuration options :
 >   - enable various logging levels, it is possible to switch 'on' / 'off' one or more level at the same time. 
 >   - debug: 'off' turn off logging, to see parser stats enable 2nd level.
             
-> - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' or 'on' functions. 
+> - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' methods. 
 >    - **See below**
 
 
