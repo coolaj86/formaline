@@ -71,34 +71,35 @@ with git:
 
 You could create a formaline instance with some configuration options : 
 
-> - **'uploadRootDir'** : ( *string* ) default root dir is '/tmp/'.
->   - it is the root directory for file uploads, it must already exists!
+> - **'uploadRootDir'** : ( *string* ) the default root directory for files uploads is '/tmp/'.
+>   - it is the root directory for file uploads, must already exist!
 >   - a new sub-directory with a random name is created for every upload request.
 
 > - **'uploadThreshold'** : ( *integer* ) default value is 1024 * 1024 * 1024 bytes (1GB).
->   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping to write to disk,
->   - it also limits data received with serialzed fields (x-www-urlencoded). 
+>   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping  writing to disk,
+>   - it also limits data received with serialized fields (x-www-urlencoded). 
 
-> - **'emitDataProgress'** : ( *boolean or integer > 1* ) default value is false.
->    - when true, it emits 'dataprogress' on every chunk. If you need to change emitting factor ,( you could specify an integer > 1 ). 
->    - If you set it, for example, to an integer k, 'dataprogress' is emitted every k data chunks received, starting from the first. ( emits on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
-
-
-> - **'checkContentLength'** : ( *boolean* ) default value is false.
->   - formaline don't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, but will write only uploadThreshold bytes to disk. 
->   - if true, formaline stops to receive data, because headers Content-Length exceeds uploadThreshold.
-
-> - **'removeIncompleteFiles'** : ( *boolean* ) default value is  true.
->   - if true, formaline auto-removes files not completed since of uploadThreshold limit, then it emits 'fileremoved' event, 
->   - if false, no event is emitted, but the incomplete files list are passed to 'end' listeners in the form of an array of paths 
+> - **'emitDataProgress'** : ( *boolean or integer > 1* ) the default value is false.
+>    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
+>    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
 
 
-> - **'logging'** : ( *string* ) default is 'debug:off,1:on,2:on,3:on'.
->   - enable various logging levels, it is possible to switch 'on' / 'off' one or more level at the same time. 
->   - debug: 'off' turn off logging, to see parser stats enable 2nd level.
+> - **'checkContentLength'** : ( *boolean* ) the default value is false.
+>   - formaline doesn't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, and write to disk the bytes received, until it reaches the upload threshold. 
+>   - if value is set to true, if  the header Content-Length exceeds uploadThreshold, It stops receiving data,
+
+> - **'removeIncompleteFiles'** : ( *boolean* ) the default value is  true.
+>   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
+>   - if false, no event is emitted, but the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
+
+
+> - **'logging'** : ( *string* ) the default value is 'debug:off,1:on,2:on,3:on'.
+>   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
+>   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
             
-> - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' methods. 
+> - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
 >    - **See below**
+
 
 
 
@@ -109,13 +110,13 @@ You could create a formaline instance with some configuration options :
 #### Type of events:
  
  
+
 > - *'fatal' exceptions* : headersexception, pathexception, exception (the data transmission is interrupted). 
 > - *informational* : filereceived, field, dataprogress, end 
 > - *warning* : fileremoved, warning 
 
  
- 
-#### Listeners are called with following listed params already attached to the callbacks : 
+#### Listeners are called with following listed parameters , them are  already attached to the callbacks : 
 
 
 > - **'warning'**: `function( msg ){ ... }`,
