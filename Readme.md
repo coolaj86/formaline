@@ -103,7 +103,7 @@ You could create a formaline instance with some configuration options :
 
 
            
- Events
+ Events & Listeners
 --------
 
 #### Type of events:
