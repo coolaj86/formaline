@@ -49,5 +49,7 @@
 >     ->	matching time: 1.195 secs
 >     ->	average parsing speed: 599.9183258695084 MB/s
 
+> long pattern boundaries (max 254 ascii chars) means best results. 
+
 
 > in progress..
