@@ -282,15 +282,15 @@ I try to explain me:
  O(t) is considered to be a constant value, but it still has a non zero value. 
  (for the purists, O stands for Theta, Complexity). 
 
-> if I set T = ( time to execute the parser on a single chunk ) then :  
+> Anyway, I set T = (average time to execute the parser on a single chunk ) then :  
     
-    T = ( number of comparisons ) * ( time to do a single comparison ) ~= ( n * m * t )
+    T = ( average number of comparisons ) * ( average time to do a single comparison ) ~= ( n / m ) * ( t )
 
 
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough there are cases in which, it's not totally correct.   
+>  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough it's not totally correct .   
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
@@ -300,9 +300,9 @@ I try to explain me:
 
   or for simplify it, a number like:
 
->   ( T ) * ( k ) * ( c * d )
+>   ( T ) * ( k ) * ( c * d )  ~= ( n / m ) * ( t ) * ( k ) * ( c * d )  
 
-When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time,. 
+When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time. 
 
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
