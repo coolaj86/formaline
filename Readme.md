@@ -310,8 +310,8 @@ However, in a general case,
 For this reasons: 
  
  - I have tried to don't use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
- - instead of building a complex state-machine, I have written a simple implementation of QuickSearch algorithm, using only high performance for-cycles,
- - for minimizing the time 't' to do a single comparison, I have used two simple char lookup tables, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern string to match, one for CRLFCRLF sequence). 
+ - **instead of building a complex state-machine**, I have written a simple implementation of QuickSearch algorithm, using only high performance for-cycles,
+ - for minimizing the time 't' to do a single comparison, **I have used two simple char lookup tables**, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern string to match, one for CRLFCRLF sequence). 
 
 The only limit in this implementation is that it doesn't support a boundary length more than 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
 
