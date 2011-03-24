@@ -298,9 +298,9 @@ I try to explain me:
    
 >    ( average time to execute the parser on a single chunk ) *  ( average number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
 
-      or for simplify it, a number like:
+  or for simplify it, a number like:
 
->    ( T ) * ( k ) * ( c * d )
+>   ( T ) * ( k ) * ( c * d )
 
 When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time,. 
 
