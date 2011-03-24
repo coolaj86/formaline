@@ -81,7 +81,7 @@ You could create a formaline instance with some configuration options :
 
 > - **'emitDataProgress'** : ( *boolean or integer > 1* ) the default value is false.
 >    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
->    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc.. );  
+>    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..   
 
 
 > - **'checkContentLength'** : ( *boolean* ) the default value is false.
