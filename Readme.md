@@ -286,7 +286,7 @@ O(t) is considered to be a constant value, but it still has a non zero value.
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time result T = O( n / m ) * O(t). 
+>  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time T as an average result. 
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
