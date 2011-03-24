@@ -275,17 +275,17 @@ I try to explain me:
  
  reaches a time complexity (in the best case) of : 
 
-    O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
+     O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
       or  for simplicity  
      O( n / m ) * O(t) 
    
-> O(t) is considered to be a constant value, but it still has a non zero value. 
+ O(t) is considered to be a constant value, but it still has a non zero value. 
+ (for the purists, O stands for Theta, Complexity). 
 
-> Finally, I set T = ( time to execute the parser on a single chunk )  
-> then  T =  ( number of comparisons ) * ( time to do a single comparison ) ~= ( n * m * t )
+> if I set T = ( time to execute the parser on a single chunk ) then :  
+    
+    T = ( number of comparisons ) * ( time to do a single comparison ) ~= ( n * m * t )
 
-
-(for the purists, O stands for Theta, Complexity). 
 
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
