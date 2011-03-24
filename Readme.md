@@ -275,28 +275,34 @@ I try to explain me:
  
  reaches a time complexity (in the best case) of : 
 
-    O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) = T
+    O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
       or  for simplicity  
-     O( n / m ) * O(t) = T
+     O( n / m ) * O(t) 
+   
+> O(t) is considered to be a constant value, but it still has a non zero value. 
 
-O(t) is considered to be a constant value, but it still has a non zero value. 
+> Finally, I set T = ( time to execute the parser on a single chunk )  
+> then  T =  ( number of comparisons ) * ( time to do a single comparison ) ~= ( n * m * t )
+
 
 (for the purists, O stands for Theta, Complexity). 
 
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time T as an average result. 
+>  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough there are cases in which, it's not totally correct.   
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
- the aveage time will becomes something like:
+ **the average time will becomes something like**:
+   
+>    ( average time to execute the parser on a single chunk ) *  ( average number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
 
-    ( T ) *  ( number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
-      or
-    ( T ) * k * ( c * d )
+      or for simplify it, a number like:
 
-When k, the number of data chunks, increases, the value  ( k *  c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time,. 
+>    ( T ) * ( k ) * ( c * d )
+
+When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time,. 
 
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
