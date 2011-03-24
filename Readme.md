@@ -290,7 +290,7 @@ O(t) is considered to be a constant value, but it still has a non zero value.
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
- the time complexity will becomes something like:
+ the aveage time will becomes something like:
 
     ( T ) *  ( number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
       or
