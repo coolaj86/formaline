@@ -303,9 +303,9 @@ When k, the number of data chunks, increases, the value  ( k *  c * d ) becomes 
  
 However, in a general case, 
  
- - we can do very little about reducing the time delay of parser calls, and for reducing the number of chunks ( or manually increasing their size ), these don't totally depend on us. 
- - we could minimize the number **'c'**  of parser calls, a single call for every chunk, c = 1.
- - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
+ - we can do very little about reducing the time delay (**d**) of parser calls, and for reducing the number (**k**) of chunks ( or manually increasing their size ), these thinks don't totally depend on us. 
+ - we could minimize the number **'c'**  of parser calls to a single call for every chunk, or  **c = 1**.
+ - we could still minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
 For this reasons: 
  
