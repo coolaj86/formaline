@@ -255,8 +255,8 @@ When a file is found in the data stream:
  - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
  
  
- Parser
---------
+ Parser & Performance
+----------------------
 
 ###A Note about Parsing Data Rate vs Network Throughput
 ---------------------------------------------------------------------------------------
@@ -275,16 +275,18 @@ I try to explain me:
  
  reaches a time complexity (in the best case) of : 
 
-    O( ( data chunk length ) / ( pattern length ) ) * ( time to do a single comparison ) = T
+    O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) = T
       or  for simplicity  
-     O( n / m ) * t = T
+     O( n / m ) * O(t) = T
 
-(for the purists, O stands for Theta). 
+O(t) is considered to be a constant value, but it still has a non zero value. 
+
+(for the purists, O stands for Theta, Complexity). 
 
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
 >  - data is chunked,
->  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time result T = O( n / m ) * t. 
+>  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll use the previous time result T = O( n / m ) * O(t). 
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
 
@@ -292,9 +294,9 @@ I try to explain me:
 
     ( T ) *  ( number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
       or
-    ( T ) * ( k * d ) => ( O( n / m ) * t ) * ( c * k * d ) 
+    ( T ) * k * ( c * d )
 
-When k, the number of data chunks, increases, the value  ( c *  k * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time. 
+When k, the number of data chunks, increases, the value  ( k *  c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time,. 
 
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
@@ -302,7 +304,7 @@ When k, the number of data chunks, increases, the value  ( c *  k * d ) becomes 
 However, in a general case, 
  
  - we can do very little about reducing the time delay of parser calls, and for reducing the number of chunks ( or manually increasing their size ), these don't totally depend on us. 
- - we could minimize the number **'c'**  of parser calls , a single call for every chunk, c = 1.
+ - we could minimize the number **'c'**  of parser calls, a single call for every chunk, c = 1.
  - we could minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
 For this reasons: 
