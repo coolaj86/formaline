@@ -48,7 +48,7 @@ var handleFormRequest = function(req,res,next){
         
             // max bytes allowed, this is the max bytes writed to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        maxWritedBytes: 3949000,//bytes ex.: 1024*1024*1024, 512
+        uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
             //until uploadThreshold bytes are writed. 
