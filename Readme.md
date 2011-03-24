@@ -263,13 +263,13 @@ When a file is found in the data stream:
 
 Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__  if you search a basic of ~60 bytes string ( like Firefox uses ), with a *real* Buffer totally loaded in RAM, but in my opinion, this parsing test  only emulates  an high Throughput network with only one chunk for all data , not  a real case. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chunked, and the **chunk size may change because of (underneath) TCP flow control ( typically the chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chopped in many chunks, and the **chunk size may change because of (underneath) TCP flow control ( typically the chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
 >__ In the world of Fairies, using a super-fast Booyer-Moore parser :__
  
->  - the data received is not chunked, 
+>  - the data received is not chopped, 
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
 > - network throughput == network bandwidth (wow),
  
@@ -289,7 +289,7 @@ I try to explain me:
 
 >__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
  
->  - data is chunked,
+>  - data is chopped,
 >  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough it's not totally correct .   
 >  - network throughput < network bandwidth,
 >  - the time 't' to do a single comparison, depends on how the comparison is implemented,
