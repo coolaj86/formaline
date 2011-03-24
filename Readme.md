@@ -307,7 +307,7 @@ However, in a general case,
  - we could minimize the number **'c'**  of parser calls to a single call for every chunk, or  **c = 1**.
  - we could still minimize the time **'t'** to do a single char comparison , it obviously reduces the overall execution time.
 
-**For this reasons**: 
+**For these reasons**: 
  
  - I have tried to don't use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
  - **instead of building a complex state-machine**, I have written a simple implementation of QuickSearch algorithm, using only high performance for-cycles,
