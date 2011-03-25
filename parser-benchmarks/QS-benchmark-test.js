@@ -167,15 +167,5 @@ var p = new Buffer( pattern ),// max 254 chars due to single byte use
 
 quickSearch( p, t, printStats );
 
-/**/
-var multipartParser = require('formidable/multipart_parser'),
-    parser = new multipartParser.MultipartParser(),
-    dummy = parser.initWithBoundary(pattern),
-    st = new Date(),
-    nparsed = parser.write(t),
-    duration = new Date - st,
-    mbPerSec = (bsize / (duration / 1000)).toFixed(2);
 
-console.log(mbPerSec+' mb/sec');
-/**/
 
