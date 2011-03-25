@@ -145,7 +145,7 @@ var handleFormRequest = function(req,res,next){
 
 };
 
-server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nSuccessfully call next() function');} );
+server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
 
 server.listen(3000);
 
