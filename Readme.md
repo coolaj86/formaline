@@ -265,7 +265,7 @@ When a file is found in the data stream:
  - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*.
  
  
- Parser & Performance
+ Parser Implementation  & Performance
 ----------------------
 
 ###A Note about Parsing Data Rate vs Network Throughput
