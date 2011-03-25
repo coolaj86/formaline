@@ -254,7 +254,7 @@ When a file is found in the data stream:
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *filedir*, *filetype*, *filesize*, *filefield*.
+ - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*.
  
  
  Parser & Performance
