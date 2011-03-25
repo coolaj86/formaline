@@ -41,8 +41,10 @@ var handleFormRequest = function(req,res,next){
     removedFiles = {};
     receivedFields = {};
     config = {
+        
             //default is true -->
         holdFilesExtensions : true,
+        
             //default is /tmp/ -->
         uploadRootDir: dir,
         
@@ -68,7 +70,7 @@ var handleFormRequest = function(req,res,next){
             //enable various logging levels
             //it is possible to switch on/off one or more levels at the same time
             //debug: 'off' turn off logging
-        logging: 'debug:on,1:on,2:on,3:off',
+        logging: 'debug:on,1:on,2:on,3:on',
         
             //listeners
         listeners: {
@@ -98,7 +100,7 @@ var handleFormRequest = function(req,res,next){
                 'fileremoved': function(filename,origfilename,filedir,filetype,filesize,filefield) {
                     log('\n fileremoved -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
                     removedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
-                    log(' updated list of files removed: ',removedFiles);
+                    //log(' updated list of files removed: ',removedFiles);
 
                 },
                 'dataprogress': function(bytesReceived, chunksReceived) {
