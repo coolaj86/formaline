@@ -231,7 +231,8 @@ You could create a formaline instance with some configuration options :
 
   File Creation 
 -----------------
- ..in progress.. I'm upgrading
+ 
+ >..in progress.. I'm upgrading this
  
 When a file is found in the data stream:
  
