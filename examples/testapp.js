@@ -14,7 +14,7 @@ var getHtmlForm = function(req, res,next) {
              <input type="text" name="demotitle1"><br>\
              <input type="file" name="multiplefield1" multiple="multiple"><br>\
              <input type="text" name="demotitle2"><br>\
-             <input type="file" name="multiplefield1" multiple="multiple"><br>\
+             <input type="file" name="multiplefield2" multiple="multiple"><br>\
              <input type="submit" value="Upload">\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
@@ -115,7 +115,6 @@ var handleFormRequest = function(req,res,next){
                         res.write( '-> holdFilesExtensions: ' + config.holdFilesExtensions + '\n');
                         res.write( '-> removeIncompleteFiles: ' + config.removeIncompleteFiles + '\n');
                         res.write( '-> emitDataProgress: ' + config.emitDataProgress + '\n');
-
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify(receivedFields) + '\n');
                         res.write( '\n-> files received: ( { hashname: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
                         if( config.removeIncompleteFiles ){
@@ -132,7 +131,8 @@ var handleFormRequest = function(req,res,next){
                         //next();//test
                 }
             }
-        };                    
+    };//end config obj
+                        
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         log( ' -> req url :', req.url );
         new formaline(config).parse(req,res,next);
