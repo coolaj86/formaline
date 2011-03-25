@@ -65,7 +65,7 @@ with git:
      ..
    
 
->  see *Event & Listeners* section for a complete list of callbacks signatures!
+>  see **Event & Listeners** section for a complete list of callbacks signatures!
       
     
 
