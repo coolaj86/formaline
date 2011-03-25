@@ -55,6 +55,15 @@ with git:
     ...
  
   ** the listed params ( filename, filedir, .. ) are already attached to the function callback!** 
+  
+  > for example, if I write an anonymous function myListener:
+  
+     ...
+     var myListener = function( ){ console.log( arguments ); }
+     ..
+     form.on( 'filereceived', myListener ); <-- myListener get filename, origname, etc.. as arguments
+     ..
+   
 
 >  see below for a complete list of listeners signatures!
       
@@ -118,7 +127,7 @@ You could create a formaline instance with some configuration options :
 > - *warning* : fileremoved, warning 
 
  
-#### Listeners are called with following listed parameters , them are  already attached to the callbacks : 
+#### Listeners are called with following listed arguments, they are already attached to the callbacks : 
 
 
 > - **'warning'**: `function( msg ){ ... }`,
