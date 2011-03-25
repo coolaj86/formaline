@@ -335,7 +335,8 @@ The only limit in this implementation is that it doesn't support a boundary leng
  Future Releases
 -----------------
 
- - move exception to a single listerner, with a type of exception field
+ - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..)
+ - add real creation time of file, as an argument of 'filereceived' and 'fileremoved' listeners signatures
  - add some other server-side security checks, and write about it .
  - some code performance modifications in quickSearch.js and formaline.js .
  - some code cleaning in formaline.js for some variables .
