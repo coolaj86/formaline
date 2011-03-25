@@ -27,3 +27,6 @@
 
   * Added original filename param to listeners signatures for 'filereceived' and 'fileremoved' events
   * Added stats object param to 'end' event listener ( it contains: chunks received, bytes received, bytes written to disk )
+
+0.2.4 / xxxx-xx-xx
+==================
