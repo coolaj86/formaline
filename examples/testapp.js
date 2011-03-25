@@ -48,12 +48,12 @@ var handleFormRequest = function(req,res,next){
             // minimum factor value is 2 -->
         emitDataProgress: !true,//false,true,3,10,100
         
-            // max bytes allowed, this is the max bytes writed to disk before stop to write 
+            // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
         uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
-            //until uploadThreshold bytes are writed. 
+            //until uploadThreshold bytes are written. 
             //if true -> stop receiving data, when headers content length exceeds uploadThreshold
         checkContentLength: !true,
         
