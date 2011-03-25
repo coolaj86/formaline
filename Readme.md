@@ -137,7 +137,7 @@ You could create a formaline instance with some configuration options :
  
 > - **'dataprogress'**: `function ( bytesReceived, chunksReceived ) { .. }`,
  
-> - **'end'**: `function ( incompleteFiles, response, next ) { .. }`
+> - **'end'**: `function ( incompleteFiles, stats, response, next ) { .. }`
  
  
 
@@ -199,7 +199,7 @@ You could create a formaline instance with some configuration options :
             'dataprogress': function ( bytesReceived, chunksReceived ) {
                 ...
             },
-            'end': function ( incompleteFiles, res, next ) {
+            'end': function ( incompleteFiles, stats, res, next ) {
                 ...
                 res.writeHead(200, {'content-type': 'text/plain'});
                 res.end();
