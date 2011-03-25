@@ -88,13 +88,13 @@ var handleFormRequest = function(req,res,next){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
                 },
-                'filereceived': function(filename,filedir,filetype,filesize,filefield) {
-                    receivedFiles[filename] = { path: filedir, type: filetype, size: filesize, field: filefield };
-                    log('\n filereceived -->  name: '+filename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
+                'filereceived': function(filename,origfilename,filedir,filetype,filesize,filefield) {
+                    receivedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield };
+                    log('\n filereceived -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
                 },
-                'fileremoved': function(filename,filedir,filetype,filesize,filefield) {
-                    log('\n fileremoved -->  name: '+filename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
-                    removedFiles[filename] = { path: filedir, type: filetype, filesize: filesize, field: filefield };
+                'fileremoved': function(filename,origfilename,filedir,filetype,filesize,filefield) {
+                    log('\n fileremoved -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
+                    removedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                     log(' updated list of files removed: ',removedFiles);
 
                 },
@@ -104,16 +104,16 @@ var handleFormRequest = function(req,res,next){
                 'end': function(incompleteFiles,res,next) {
                         log('\n-> Post Done');
                         res.writeHead(200, {'content-type': 'text/plain'});
-                        res.write('-> all data received!\n');
+                        res.write('-> all data received ->'+this.bytesReceived+' bytes\n');
                         res.write('\n-> upload root dir: '+config.uploadRootDir+' \n');
                         res.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
                         res.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
                         res.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
                         res.write('-> checkContentLength: '+config.checkContentLength+'\n');
-                        res.write('\n-> fields received: '+JSON.stringify(receivedFields)+'\n');
-                        res.write('-> files received: '+JSON.stringify(receivedFiles)+'\n');
+                        res.write('\n-> fields received: \n   ****************\n'+JSON.stringify(receivedFields)+'\n');
+                        res.write('\n-> files received: ( hashname: {..} )\n   ***************\n '+JSON.stringify(receivedFiles)+'\n');
                         if(config.removeIncompleteFiles ){
-                            res.write('-> files removed : '+JSON.stringify(removedFiles)+'\n');
+                            res.write('\n-> files removed: ( hashname: {..} )\n   **************\n'+JSON.stringify(removedFiles)+'\n');
                         }else{
                             if( incompleteFiles.length !== 0 ){
                                 res.write('-> incomplete files (not removed) : '+incompleteFiles+'\n');

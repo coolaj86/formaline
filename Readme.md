@@ -51,7 +51,7 @@ with git:
    *add events listener:*
 
     ...
-    form.on( 'filereceived', function( filename, filedir, filetype, filesize, filefield ){ .. }  )  
+    form.on( 'filereceived', function( filename, origfilename, filedir, filetype, filesize, filefield ){ .. }  )  
     ...
  
   ** the listed params ( filename, filedir, .. ) are already attached to the function callback!** 
@@ -131,9 +131,9 @@ You could create a formaline instance with some configuration options :
  
 > - **'field'**: `function ( fname, fvalue ) { .. }`,
  
-> - **'filereceived'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
+> - **'filereceived'**: `function ( filename, origfilename, filedir, filetype, filesize, filefield ) { .. }`,
  
-> - **'fileremoved'**: `function ( filename, filedir, filetype, filesize, filefield ) { .. }`,
+> - **'fileremoved'**: `function ( filename, origfilename, filedir, filetype, filesize, filefield ) { .. }`,
  
 > - **'dataprogress'**: `function ( bytesReceived, chunksReceived ) { .. }`,
  
@@ -190,10 +190,10 @@ You could create a formaline instance with some configuration options :
             'field': function ( fname, fvalue ) { 
                 ...
             },
-            'filereceived': function ( filename, filedir, filetype, filesize, filefield ) { 
+            'filereceived': function ( filename, origfilename, filedir, filetype, filesize, filefield ) { 
                 ... 
             },
-            'fileremoved': function ( filename, filedir, filetype, filesize, filefield ) { 
+            'fileremoved': function ( filename, origfilename, filedir, filetype, filesize, filefield ) { 
                 ...
             },
             'dataprogress': function ( bytesReceived, chunksReceived ) {
