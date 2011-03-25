@@ -17,5 +17,5 @@
 0.2.2 / 2011-03-24
 ================== 
 
-  * Added filename control checks: name length, special chars 
+  * Added filename control checks: name length, special chars escaping 
   * Better English in Readme.md
