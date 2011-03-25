@@ -8,40 +8,7 @@ var log = console.log;
 
 var emitter = require('events').EventEmitter;
 
-var buildBuffer = function(p,MBsize,gapFactor){
-    var s = new Date(),
-        len = p.length,
-        gap = Math.pow(len,(gapFactor && gapFactor>1 ) ? gapFactor : 3),//power od len
-        //gap = parseInt(Math.log(len)*Math.log(len)*Math.log(len)*Math.log(len),10),
-        mb =  1024*1024,
-        size = MBsize || 700.1, // megabytes
-        tSize = parseInt( size * mb, 10 ),
-        logp = Math.log(len), //log bt
-        logt = Math.log(tSize),//log a
-        logr = logt / logp,
-        maxLenPower = parseInt(logr,10); // maxLenPower = max power of len after which the 2nd pattern writed is out of buffer bound  
-        log('\n ->\tMin Gap Factor: 2\n ->\tMax Gap Factor:',maxLenPower,'\n ->\tCurrent Gap Factor:', (gapFactor) ? gapFactor : 3 ); 
-        
-    for( var i = 0,  c = 1, t = new Buffer( tSize ); i + len < tSize; i += len  ){
-        if( (i % (gap) ) === 0 ){
-            t.write(p.toString()+'\r\nContent-Disposition: form-data\r\nLorem Ipsum et Dolor sit amet, Quisquisce\r\n\r\n',i);
-        }else{
-            t[i] = i % 255;
-        } 
 
-    }
-    var mtime = new Date() - s;
-    log('\n ->\tpattern:',p.toString());
-    log(' ->\tmax pattern length: 254 bytes');
-    log(' ->\tpattern length:',len,'bytes');
-    log(' ->\tpattern gap:',gap,'bytes (distance in bytes of boundary occurrences)');
-    log(' ->\tplength / pgap:',len/gap,'\n');
-    
-
-    log(' ->\tbuffer size in MB:',t.length/1024/1024);
-    log(' ->\tbuffer creation time:',mtime/1000,'secs\n'); 
-    return t;
-};
 
 var lookupTable = function(p){
     var b = new Buffer(255),
@@ -140,7 +107,40 @@ var crlfcrlfMatch = function(t,l){ //stop at first match obviously.. l is start 
     return  j ;  
 };
 
+var buildBuffer = function(p,MBsize,gapFactor){
+    var s = new Date(),
+        len = p.length,
+        gap = Math.pow(len,(gapFactor && gapFactor>1 ) ? gapFactor : 3),//power od len
+        //gap = parseInt(Math.log(len)*Math.log(len)*Math.log(len)*Math.log(len),10),
+        mb =  1024 * 1024,
+        size = MBsize || 700.1, // megabytes
+        tSize = parseInt( size * mb, 10 ),
+        logp = Math.log(len), //log bt
+        logt = Math.log(tSize),//log a
+        logr = logt / logp,
+        maxLenPower = parseInt(logr,10); // maxLenPower = max power of len after which the 2nd pattern writed is out of buffer bound  
+        log('\n ->\tMin Gap Factor: 2\n ->\tMax Gap Factor:',maxLenPower,'\n ->\tCurrent Gap Factor:', (gapFactor) ? gapFactor : 3 ); 
+        
+    for( var i = 0,  c = 1, t = new Buffer( tSize ); i + len < tSize; i += len  ){
+        if( (i % (gap) ) === 0 ){
+            t.write(p.toString()+'\r\nContent-Disposition: form-data\r\nLorem Ipsum et Dolor sit amet, Quisquisce\r\n\r\n',i);
+        }else{
+            t[i] = i % 255;
+        } 
 
+    }
+    var mtime = new Date() - s;
+    log('\n ->\tpattern:',p.toString());
+    log(' ->\tmax pattern length: 254 bytes');
+    log(' ->\tpattern length:',len,'bytes');
+    log(' ->\tpattern gap:',gap,'bytes (distance in bytes of boundary occurrences)');
+    log(' ->\tplength / pgap:',len/gap,'\n');
+    
+
+    log(' ->\tbuffer size in MB:',t.length/1024/1024);
+    log(' ->\tbuffer creation time:',mtime/1000,'secs\n'); 
+    return t;
+};
 
 var printStats = function( stats ){
     //log( 'results:', stats.results );        

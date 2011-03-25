@@ -11,14 +11,15 @@ var getHtmlForm = function(req, res,next) {
     res.end('<b>Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" enctype="multipart/form-data" method="post">\
              <input type="text" name="title"><br>\
-             <input type="file" name="upload_a" multiple="multiple"><br>\
-             <input type="file" name="upload_b" multiple="multiple"><br>\
+             <input type="file" name="multiplefield1" multiple="multiple"><br>\
+             <input type="file" name="multiplefield2" multiple="multiple"><br>\
              <input type="submit" value="Upload">\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
              <form action="/test/post" method="post">\
-             <input type="text" name="demofield1"><br>\
-             <input type="text" name="demofield2"><br>\
+             <input type="text" name="simplefield1"><br>\
+             <input type="text" name="simplefield2"><br>\
+             <input type="text" name="simplefield3"><br>\
              <input type="submit" value="Submit">\
              </form>'
     );
