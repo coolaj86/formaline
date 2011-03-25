@@ -7,12 +7,14 @@ var http = require('http'),
     
 var getHtmlForm = function(req, res,next) {
   if (req.url === '/test/') {
+    log( ' -> req url :', req.url );
     res.writeHead(200, {'content-type': 'text/html'});
     res.end('<b>Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" enctype="multipart/form-data" method="post">\
-             <input type="text" name="title"><br>\
+             <input type="text" name="demotitle1"><br>\
              <input type="file" name="multiplefield1" multiple="multiple"><br>\
-             <input type="file" name="multiplefield2" multiple="multiple"><br>\
+             <input type="text" name="demotitle2"><br>\
+             <input type="file" name="multiplefield1" multiple="multiple"><br>\
              <input type="submit" value="Upload">\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
@@ -31,14 +33,14 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
+    config = null,
     dir =  '/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
     removedFiles = {};
-    receivedFields = {};                    
-    if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
-        var config = {
+    receivedFields = {};
+    config = {
             //default is true -->
         holdFilesExtensions : true,
             //default is /tmp/ -->
@@ -130,11 +132,13 @@ var handleFormRequest = function(req,res,next){
                         //next();//test
                 }
             }
-        };
-    
+        };                    
+    if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
+        log( ' -> req url :', req.url );
         new formaline(config).parse(req,res,next);
   
     } else {
+        log( ' -> req url 404 error :', req.url );    
         res.writeHead(404, {'content-type': 'text/plain'});
         res.end('404');
     }
