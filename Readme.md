@@ -29,14 +29,14 @@ with git:
 ----------
 
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
-> - It is Possible to create module instances with a configuration object.
-> - some Useful configuration parameters ( listeners, uploadThreshold, logging .. ).
+> - It is Possible to create module instances with a **configuration object**.
+> - some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ).
 > - exceptions handling is Fluid.
 > - Many events for control of the module execution. 
 > - Very Fast and Simple Parser (see parser-benchmarks).
-> - it Handles filename collisions
+> - it Handles filename collisions.
 > - It is Possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold. 
-> - It easily integrates with connect middleware.
+> - It easily integrates with **connect middleware**.
 > - Works!
 > - etc..
 
