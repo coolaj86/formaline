@@ -89,7 +89,7 @@ You could create a formaline instance with some configuration options :
 >   - it also limits data received with serialized fields (x-www-urlencoded). 
   
 > - **'holdFilesExtensions'** : ( *boolean* ) default value is true.
->   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .text, etc.. )
+>   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
 > - **'checkContentLength'** : ( *boolean* ) the default value is false.
 >   - formaline doesn't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, and write to disk the bytes received, until it reaches the upload threshold. 
