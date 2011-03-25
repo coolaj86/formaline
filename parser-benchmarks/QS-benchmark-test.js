@@ -16,11 +16,11 @@ var buildBuffer = function(p,MBsize,gapFactor){
         mb =  1024*1024,
         size = MBsize || 700.1, // megabytes
         tSize = parseInt( size * mb, 10 ),
-        logp = Math.log(len), //log b
+        logp = Math.log(len), //log bt
         logt = Math.log(tSize),//log a
         logr = logt / logp,
         maxLenPower = parseInt(logr,10); // maxLenPower = max power of len after which the 2nd pattern writed is out of buffer bound  
-        log('\n ->\tMin Gap Factor: 2\n ->\tMax Gap Factor:',maxLenPower,'\n ->\tCurrent Gap Factor:', (gapFactor) ? gapfactor : 3 ); 
+        log('\n ->\tMin Gap Factor: 2\n ->\tMax Gap Factor:',maxLenPower,'\n ->\tCurrent Gap Factor:', (gapFactor) ? gapFactor : 3 ); 
         
     for( var i = 0,  c = 1, t = new Buffer( tSize ); i + len < tSize; i += len  ){
         if( (i % (gap) ) === 0 ){
@@ -30,13 +30,14 @@ var buildBuffer = function(p,MBsize,gapFactor){
         } 
 
     }
+    var mtime = new Date() - s;
     log('\n ->\tpattern:',p.toString());
     log(' ->\tmax pattern length: 254 bytes');
     log(' ->\tpattern length:',len,'bytes');
     log(' ->\tpattern gap:',gap,'bytes (distance in bytes of boundary occurrences)');
     log(' ->\tplength / pgap:',len/gap,'\n');
     
-    var mtime = new Date() - s;
+
     log(' ->\tbuffer size in MB:',t.length/1024/1024);
     log(' ->\tbuffer creation time:',mtime/1000,'secs\n'); 
     return t;
@@ -165,4 +166,16 @@ var p = new Buffer( pattern ),// max 254 chars due to single byte use
     t = buildBuffer( p, bsize, gapfactor ); 
 
 quickSearch( p, t, printStats );
+
+/**/
+var multipartParser = require('formidable/multipart_parser'),
+    parser = new multipartParser.MultipartParser(),
+    dummy = parser.initWithBoundary(pattern),
+    st = new Date(),
+    nparsed = parser.write(t),
+    duration = new Date - st,
+    mbPerSec = (bsize / (duration / 1000)).toFixed(2);
+
+console.log(mbPerSec+' mb/sec');
+/**/
 

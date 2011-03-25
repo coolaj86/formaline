@@ -11,7 +11,8 @@ var getHtmlForm = function(req, res,next) {
     res.end('<b>Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" enctype="multipart/form-data" method="post">\
              <input type="text" name="title"><br>\
-             <input type="file" name="upload" multiple="multiple"><br>\
+             <input type="file" name="upload_a" multiple="multiple"><br>\
+             <input type="file" name="upload_b" multiple="multiple"><br>\
              <input type="submit" value="Upload">\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
@@ -29,7 +30,7 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
-    dir =  '/tmp/';
+    dir =  '/var/www/demo/upload/';//'/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
@@ -37,7 +38,8 @@ var handleFormRequest = function(req,res,next){
     receivedFields = {};                    
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         var config = {
-        
+            //default is true -->
+        holdFileExtensions : true,
             //default is /tmp/ -->
         uploadRootDir: dir,
         
