@@ -65,11 +65,11 @@ with git:
      ..
    
 
->  see below for a complete list of listeners signatures!
+>  see *Event & Listeners* section for a complete list of callbacks signatures!
       
     
 
-   *parse request:*    
+   *then, parse request:*    
 
 
     form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
