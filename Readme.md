@@ -335,6 +335,7 @@ The only limit in this implementation is that it doesn't support a boundary leng
  Future Releases
 -----------------
 
+ - move exception to a single listerner, with a type of exception field
  - add some other server-side security checks, and write about it .
  - some code performance modifications in quickSearch.js and formaline.js .
  - some code cleaning in formaline.js for some variables .
