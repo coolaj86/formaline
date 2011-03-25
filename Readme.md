@@ -241,7 +241,7 @@ When a file is found in the data stream:
    it assures no collisions on file names, for every upload.
    
 - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
-- when two files with the same name are uploaded through the same post action, the resulting string form SHA1 is the same, for not causing a collision, the file name is re-hashed with a seed (current time in millis); 
+- when two files with the same name are uploaded through the same post action, the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis);
   
    >In this way, It assures us that the first file will not overwritten.
 
