@@ -230,7 +230,8 @@ You could create a formaline instance with some configuration options :
  
 
   File Creation 
----------------
+-----------------
+ ..in progress.. I'm upgrading
  
 When a file is found in the data stream:
  
@@ -239,11 +240,9 @@ When a file is found in the data stream:
  - a directory with a random integer name is created in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
    it assures no collisions on file names, for every upload.
    
-
-- when two files with the same name are uploaded through the same post action, the file that causes the collision is renamed with a prefix equal to current time in millis; 
-   >**for example**: 
-   >we are uploading two files with same name, like *hello.jpg*, the first one is received and written to disk with its original name, 
-   >the second one is received but its name causes a collision,  a new file is written to disk, but its name will be something like *1300465416185_hello.jpg*. 
+- the file name is cleaned of weird chars, then converted to an hash string with SHA1.
+- when two files with the same name are uploaded through the same post action, the resulting string form SHA1 is the same, for not causing a collision, the file name is re-hashed with a seed (current time in millis); 
+  
    >In this way, It assures us that the first file will not overwritten.
 
  - when a file reaches the upload threshold allowed:
