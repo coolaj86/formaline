@@ -108,9 +108,11 @@ var handleFormRequest = function(req,res,next){
                         res.write( '\n-> stats -> ' + JSON.stringify(stats) + '\n');
                         res.write( '\n-> upload root dir: ' + config.uploadRootDir + ' \n');
                         res.write( '-> bytes upload threshold : ' + config.uploadThreshold + ' \n');
+                        res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
+                        res.write( '-> holdFilesExtensions: ' + config.holdFilesExtensions + '\n');
                         res.write( '-> removeIncompleteFiles: ' + config.removeIncompleteFiles + '\n');
                         res.write( '-> emitDataProgress: ' + config.emitDataProgress + '\n');
-                        res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
+
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify(receivedFields) + '\n');
                         res.write( '\n-> files received: ( { hashname: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
                         if( config.removeIncompleteFiles ){
