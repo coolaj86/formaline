@@ -335,16 +335,15 @@ The only limit in this implementation is that it doesn't support a boundary leng
  Future Releases
 -----------------
 
- - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..)
- - add real creation time of file, as an argument of 'filereceived' and 'fileremoved' listeners signatures
+ - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..) .
+ - add real creation time of file, as an argument of 'filereceived' and 'fileremoved' listeners signatures .
  - add some other server-side security checks, and write about it .
  - some code performance modifications in quickSearch.js and formaline.js .
  - some code cleaning in formaline.js for some variables .
  - give choice to changing the parser with a custom one .
- - check some weird boundary string types .
+ - find some weird boundary string types .
  - Restify?
- - change createDelegate with (ecmascript5) bind function ?
- - be happy?  
+
 
 
 ## License 
