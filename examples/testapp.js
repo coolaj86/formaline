@@ -30,7 +30,7 @@ var log = console.log,
     receivedFiles,
     removedFiles,
     receivedFields,
-    dir =  '/var/www/demo/upload/';//'/tmp/';
+    dir =  '/tmp/';
     
 var handleFormRequest = function(req,res,next){
     receivedFiles = {};
@@ -39,7 +39,7 @@ var handleFormRequest = function(req,res,next){
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         var config = {
             //default is true -->
-        holdFileExtensions : true,
+        holdFilesExtensions : true,
             //default is /tmp/ -->
         uploadRootDir: dir,
         
@@ -101,22 +101,23 @@ var handleFormRequest = function(req,res,next){
                 'dataprogress': function(bytesReceived, chunksReceived) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
                 },
-                'end': function(incompleteFiles,res,next) {
-                        log('\n-> Post Done');
-                        res.writeHead(200, {'content-type': 'text/plain'});
-                        res.write('-> all data received ->'+this.bytesReceived+' bytes\n');
-                        res.write('\n-> upload root dir: '+config.uploadRootDir+' \n');
-                        res.write('-> bytes upload threshold : '+config.uploadThreshold+' \n');
-                        res.write('-> removeIncompleteFiles: '+config.removeIncompleteFiles+'\n');
-                        res.write('-> emitDataProgress: '+config.emitDataProgress+'\n');
-                        res.write('-> checkContentLength: '+config.checkContentLength+'\n');
-                        res.write('\n-> fields received: \n   ****************\n'+JSON.stringify(receivedFields)+'\n');
-                        res.write('\n-> files received: ( hashname: {..} )\n   ***************\n '+JSON.stringify(receivedFiles)+'\n');
-                        if(config.removeIncompleteFiles ){
-                            res.write('\n-> files removed: ( hashname: {..} )\n   **************\n'+JSON.stringify(removedFiles)+'\n');
+                'end': function( incompleteFiles, stats, res, next) {
+                        log( '\n-> Post Done' );
+                        res.writeHead( 200, { 'content-type': 'text/plain' } );
+                        res.write( '-> all data received! \n');
+                        res.write( '\n-> stats -> ' + JSON.stringify(stats) + '\n');
+                        res.write( '\n-> upload root dir: ' + config.uploadRootDir + ' \n');
+                        res.write( '-> bytes upload threshold : ' + config.uploadThreshold + ' \n');
+                        res.write( '-> removeIncompleteFiles: ' + config.removeIncompleteFiles + '\n');
+                        res.write( '-> emitDataProgress: ' + config.emitDataProgress + '\n');
+                        res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
+                        res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify(receivedFields) + '\n');
+                        res.write( '\n-> files received: ( { hashname: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
+                        if( config.removeIncompleteFiles ){
+                            res.write( '\n-> files removed: ( { hashname: {..} }, { .. } )\n   **************\n' + JSON.stringify(removedFiles) + '\n');
                         }else{
                             if( incompleteFiles.length !== 0 ){
-                                res.write('-> incomplete files (not removed) : '+incompleteFiles+'\n');
+                                res.write( '-> incomplete files (not removed) : ' + incompleteFiles + '\n');
                             }
                         }
                         receivedFiles = null;
