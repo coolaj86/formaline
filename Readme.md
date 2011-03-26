@@ -81,31 +81,31 @@ with git:
 
 You could create a formaline instance with some configuration options : 
 
-> - **'uploadRootDir'** : ( *string* ) the default root directory for files uploads is '/tmp/'.
+> - **'uploadRootDir'** : ( *string* ) the default root directory for files uploads is **'/tmp/'**.
 >   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it  throws an exception )
 >   - a new sub-directory with a random name is created for every upload request.
 
-> - **'uploadThreshold'** : ( *integer* ) default value is 1024 * 1024 * 1024 bytes (1GB).
+> - **'uploadThreshold'** : ( *integer* ) default value is 1024 * 1024 * 1024 bytes (**1GB**).
 >   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping  writing to disk,
 >   - it also limits data received with serialized fields (x-www-urlencoded). 
   
 > - **'holdFilesExtensions'** : ( *boolean* ) default value is true.
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
-> - **'checkContentLength'** : ( *boolean* ) the default value is false.
+> - **'checkContentLength'** : ( *boolean* ) the default value is **false**.
 >   - formaline doesn't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, and write to disk the bytes received, until it reaches the upload threshold. 
 >   - if value is set to true, if  the header Content-Length exceeds uploadThreshold, It stops receiving data,
 
-> - **'removeIncompleteFiles'** : ( *boolean* ) the default value is  true.
+> - **'removeIncompleteFiles'** : ( *boolean* ) the default value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
 >   - if false, no event is emitted, but the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
 
 
-> - **'logging'** : ( *string* ) the default value is 'debug:off,1:on,2:on,3:on'.
+> - **'logging'** : ( *string* ) the default value is **'debug:off,1:on,2:on,3:on'** (debug is off).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
 >   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
       
-> - **'emitDataProgress'** : ( *boolean or integer > 1* ) the default value is false.
+> - **'emitDataProgress'** : ( *boolean or integer > 1* ) the default value is **false**.
 >    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
             
