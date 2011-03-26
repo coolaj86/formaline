@@ -62,7 +62,7 @@ with git:
      ...
      var myListener = function( ){ console.log( arguments ); }
      ..
-     form.on( 'filereceived', myListener ); <-- myListener get filename, origname, etc.. as arguments
+     form.on( 'filereceived', myListener ); <-- myListener get filename, origfilename, etc.. as arguments
      ..
    
 
