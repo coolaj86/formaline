@@ -35,7 +35,8 @@ with git:
 > - **Very Fast and Simple Parser** (see parser-benchmarks directory).
 > - It Handles filename collisions.
 > - Exceptions handling is Fluid.
-> - It is Possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold. 
+> - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
+> - It is possible to parse all the request also when uploadThreshold has been exceeded  
 > - It easily integrates with **connect middleware**.
 > - Works!
 > - etc..
@@ -220,7 +221,7 @@ You could create a formaline instance with some configuration options :
     };
         
 
-*create an instance with config, then parses the request:*
+*create an instance with config, then parse the request:*
    
 
     new formaline( config ).parse( req, res, next );
