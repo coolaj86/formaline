@@ -36,7 +36,6 @@ with git:
 > - It Handles filename collisions.
 > - Exceptions handling is Fluid.
 > - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
-> - It is possible to parse all the request also when uploadThreshold has been exceeded  
 > - It easily integrates with **connect middleware**.
 > - Works!
 > - etc..
