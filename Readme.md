@@ -89,7 +89,7 @@ You could create a formaline instance with some configuration options :
 >   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping  writing to disk,
 >   - it also limits data received with serialized fields (x-www-urlencoded). 
   
-> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is true.
+> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true**.
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
 > - **'checkContentLength'** : ( *boolean* ) the **default** value is **false**.
