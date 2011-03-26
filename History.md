@@ -17,16 +17,20 @@
 0.2.2 / 2011-03-24
 ================== 
 
-  * Added filename control checks:  special chars escaping
-  * Added SHA1 hashing for file names 
-  * Added configuration param 'holdFilesExtensions'
-  * Better English in Readme.md
+  * + filename control checks:  special chars escaping
+  * + SHA1 hashing for file names 
+  * + configuration param 'holdFilesExtensions'
+  * + Better English in Readme.md
   
 0.2.3 / 2011-03-24
 ================== 
 
-  * Added original filename param to listeners signatures for 'filereceived' and 'fileremoved' events
-  * Added stats object param to 'end' event listener ( it contains: chunks received, bytes received, bytes written to disk )
+  * + added the original filename as an argument of  'filereceived' / 'fileremoved' events listeners.
+  * + added the parameter stats object  as an argument of 'end' event listeners. ( it contains: chunks received, bytes received, bytes written to disk )
 
-0.2.4 / xxxx-xx-xx
+0.2.4 / 2011-03-xx
 ==================
+
+ * Added overall statistics output, added overall time for stats
+ *   
+
