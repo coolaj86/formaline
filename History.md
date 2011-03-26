@@ -7,12 +7,12 @@
 0.2.0 / 2011-03-19
 ==================
 
-  * Added the same params to 'filereceived' and 'fileremoved' listeners callbacks
+  * + added the same params to 'filereceived' and 'fileremoved' listeners callbacks
   
 0.2.1 / 2011-03-21
 ================== 
 
-  * Added a lot of text in Readme.md and cleaned come code
+  * + added a lot of text in Readme.md and cleaned come code
   
 0.2.2 / 2011-03-24
 ================== 
@@ -31,6 +31,8 @@
 0.2.4 / 2011-03-xx
 ==================
 
- * Added overall statistics output, added overall time for stats
- *   
+ * + added overall statistics output when 'end' event is emitted -> overallSecs, filesCompleted, filesRemoved
+ * + moved logger functions to formaline instance attributes
+ * + Restyle stats
+ * + Cleaned some code
 
