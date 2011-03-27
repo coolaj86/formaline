@@ -96,8 +96,8 @@ You could create a formaline instance with some configuration options :
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
 > - **'checkContentLength'** : ( *boolean* )  **default** value is **false**.
->   - formaline doesn't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, and write to disk the bytes received, until it reaches the upload threshold. 
->   - if value is set to true, if  the header Content-Length exceeds uploadThreshold, It stops receiving data,
+>   - formaline, for default, doesn't stop if it finds that the header ( Content-Length > uploadThreshold ), it will try to receive all data for request, it will write to disk the bytes received, until they reaches the upload. 
+>   - if value is set to true, if the header Content-Length exceeds uploadThreshold, It stops receiving data,
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) the **default** value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
@@ -246,7 +246,7 @@ You could create a formaline instance with some configuration options :
 
 
 > - [examples](https://github.com/rootslab/formaline/tree/master/examples) 
-> - [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks), for parser speed tests (data-rate) 
+
  
 
   File Uploads 
@@ -280,9 +280,9 @@ When a file is found in the data stream:
 ###A Note about Parsing Data Rate vs Network Throughput
 -------------------------------------------------------
 
-Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__  if you search a basic of ~60 bytes string ( like Firefox uses ), with a *real* Buffer totally loaded in RAM, but in my opinion, this parsing test  only emulates  an high Throughput network with only one chunk for all data , not  a real case. 
+Overall parsing data-rate depends on many factors, it is generally possible to reach a ( parsing ) data rate of __700 MB/s and more__  with a *real* Buffer totally loaded in RAM ( searching a basic ~60 bytes string, like Firefox uses; see > - [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) ), but in my opinion, **this parsing test only emulates an high Throughput network with only one chunk for all data, therefore not a real case**. 
 
-Unfortunately, sending data over the cloud is sometime a long-time task, the data is chopped in many chunks, and the **chunk size may change because of (underneath) TCP flow control ( typically the chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling the method becomes more perceptible with a lot of chunks. 
+Unfortunately, sending data over the cloud is sometime a long-time task, the data is chopped in many chunks, and the **chunk size may change because of (underneath) TCP flow control ( typically the chunk size is ~ 8K to ~ 1024K )**. Now, the point is that the parser is called for every chunk of data received, the total delay of calling it becomes more perceptible with a lot of chunks. 
 
 I try to explain me:
 
