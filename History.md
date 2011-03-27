@@ -28,12 +28,16 @@
   * + added the original filename as an argument of  'filereceived' / 'fileremoved' events listeners.
   * + added 'stats' as an argument of 'end' event listeners. ( it contains: chunks received, bytes received, bytes written to disk )
 
-0.2.4 / 2011-03-xx
+0.2.4 / 2011-03-26
 ==================
 
- * + added sha1 sum for every 'filereceived', 
  * + added overall statistics output when 'end' event is emitted -> overallSecs, filesCompleted, filesRemoved
  * + moved logger functions to formaline instance attributes
  * + tested with some curl weird params
  * + cleaned some code
 
+0.2.5 / 2011-03-27
+==================
+
+ * + added sha1 digest for file data
+ * - resolved a little bug in overall stats logging
