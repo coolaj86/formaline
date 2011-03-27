@@ -34,12 +34,13 @@ with git:
 > - Many events for control of the module execution. 
 > - **Very Fast and Simple Parser** (see parser-benchmarks directory).
 > - It Handles filename collisions ( 40 hex string with SHA1 checksum )
-> - It is also possible to return the SHA1 checksum of received files
+> - It is also possible to return the SHA1 checksum of received files .
 > - Exceptions handling is Fluid.
+> - It supports duplicate names for fields .
 > - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
 > - It easily integrates with **connect middleware**.
 > - Works!
-> - etc..
+> - etc.. in progress
 
 
 
@@ -273,10 +274,10 @@ When a file is found in the data stream:
  
  
  Parser Implementation  & Performance
-----------------------
+--------------------------------------
 
 ###A Note about Parsing Data Rate vs Network Throughput
----------------------------------------------------------------------------------------
+-------------------------------------------------------
 
 Overall parsing data-rate depends on many factors, it is generally possible to reach __700 MB/s and more__  if you search a basic of ~60 bytes string ( like Firefox uses ), with a *real* Buffer totally loaded in RAM, but in my opinion, this parsing test  only emulates  an high Throughput network with only one chunk for all data , not  a real case. 
 
@@ -343,7 +344,7 @@ The only limit in this implementation is that it doesn't support a boundary leng
 
  Future Releases
 -----------------
-
+ 
  - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..) .
  - add real creation time of file, as an argument of 'filereceived' and 'fileremoved' listeners signatures .
  - add some other server-side security checks, and write about it .
@@ -352,6 +353,7 @@ The only limit in this implementation is that it doesn't support a boundary leng
  - give choice to changing the parser with a custom one .
  - find some weird boundary string types .
  - Restify?
+ - add unit tests
 
 
 
