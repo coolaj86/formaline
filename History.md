@@ -41,3 +41,5 @@
 
  * + added sha1 digest for file data
  * - resolved a little bug in overall stats logging
+ 
+
