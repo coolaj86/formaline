@@ -8,12 +8,13 @@
      $ node examples/testapp.js
 
 
->point your browser to:
+>you can use a simple html form, for default you could point your browser to:
 
 > - **http://nodeServerIp/test/**   *or try* [localhost](http://localhost:3000/test/)        
 > - **http://nodeServerIp:3000/test/**  *or try* [localhost](http://localhost:3000/test/) 
 
->or use curl
+
+>or you could use curl:
 
     curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload
     
