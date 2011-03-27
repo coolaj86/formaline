@@ -36,7 +36,7 @@ var log = console.log,
     config = null,
     dir =  '/tmp/';
     
-var handleFormRequest = function(req,res,next){
+var handleFormRequest = function( req, res, next ){
     receivedFiles = {};
     removedFiles = {};
     receivedFields = {};
@@ -48,6 +48,10 @@ var handleFormRequest = function(req,res,next){
             //default is /tmp/ -->
         uploadRootDir: dir,
         
+            //default is false
+            //return sha1 digests for files received? 
+        sha1sum: true,
+        
             // default is false, or integer chunk factor, 
             // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
             // minimum factor value is 2 -->
@@ -55,7 +59,7 @@ var handleFormRequest = function(req,res,next){
         
             // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        //uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
+        uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
             //until uploadThreshold bytes are written. 
@@ -74,36 +78,36 @@ var handleFormRequest = function(req,res,next){
         
             //listeners
         listeners: {
-                'warning': function(msg){
+                'warning': function( msg ){
                     log('\n warning  -->',msg);
                 },
-                'headersexception': function(isUpload,errmsg,res,next){
+                'headersexception': function( isUpload, errmsg, res, next){
                     log('\n headersexception  -->',errmsg);
                     next();               
                 },
-                'exception': function(isUpload,errmsg,res,next){
+                'exception': function( isUpload, errmsg, res, next){
                     log('\n exception --> ',errmsg);
                     next();
                 },
-                'pathexception': function(path,errmsg,res,next){//there is a file upload
+                'pathexception': function( path, errmsg, res, next){//there is a file upload
                     log('\n pathexception -->',path,'msg:',errmsg+'\n');        
                     next();
                 },
-                'field': function(fname,fvalue){
+                'field': function( fname, fvalue ){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
                 },
-                'filereceived': function(filename,origfilename,filedir,filetype,filesize,filefield) {
-                    receivedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield };
+                'filereceived': function( filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
+                    receivedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
                     log('\n filereceived -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
                 },
-                'fileremoved': function(filename,origfilename,filedir,filetype,filesize,filefield) {
+                'fileremoved': function( filename, origfilename, filedir, filetype, filesize, filefield ) {
                     log('\n fileremoved -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
                     removedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                     //log(' updated list of files removed: ',removedFiles);
 
                 },
-                'dataprogress': function(bytesReceived, chunksReceived) {
+                'dataprogress': function( bytesReceived, chunksReceived ) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
                 },
                 'end': function( incompleteFiles, stats, res, next) {
@@ -115,12 +119,13 @@ var handleFormRequest = function(req,res,next){
                         res.write( '-> bytes upload threshold : ' + config.uploadThreshold + ' \n');
                         res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
                         res.write( '-> holdFilesExtensions: ' + config.holdFilesExtensions + '\n');
+                        res.write( '-> sha1sum: ' + config.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + config.removeIncompleteFiles + '\n');
                         res.write( '-> emitDataProgress: ' + config.emitDataProgress + '\n');
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify(receivedFields) + '\n');
-                        res.write( '\n-> files received: ( { hashname: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
+                        res.write( '\n-> files received: ( { sha1name: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
                         if( config.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( { hashname: {..} }, { .. } )\n   **************\n' + JSON.stringify(removedFiles) + '\n');
+                            res.write( '\n-> files removed: ( { sha1name: {..} }, { .. } )\n   **************\n' + JSON.stringify(removedFiles) + '\n');
                         }else{
                             if( incompleteFiles.length !== 0 ){
                                 res.write( '-> incomplete files (not removed) : ' + incompleteFiles + '\n');

@@ -33,7 +33,8 @@ with git:
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ).
 > - Many events for control of the module execution. 
 > - **Very Fast and Simple Parser** (see parser-benchmarks directory).
-> - It Handles filename collisions.
+> - It Handles filename collisions ( 40 hex string with SHA1 checksum )
+> - It is also possible to return the SHA1 checksum of received files
 > - Exceptions handling is Fluid.
 > - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
 > - It easily integrates with **connect middleware**.
@@ -92,7 +93,7 @@ You could create a formaline instance with some configuration options :
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true**.
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
-> - **'checkContentLength'** : ( *boolean* ) the **default** value is **false**.
+> - **'checkContentLength'** : ( *boolean* )  **default** value is **false**.
 >   - formaline doesn't stop if ( Content-Length > uploadThreshold ), It will try to receive all data for request, and write to disk the bytes received, until it reaches the upload threshold. 
 >   - if value is set to true, if  the header Content-Length exceeds uploadThreshold, It stops receiving data,
 
@@ -100,6 +101,9 @@ You could create a formaline instance with some configuration options :
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
 >   - if false, no event is emitted, but the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
 
+> - **'sha1sum'** : ( *boolean* )  **default** value is **false**.
+>   - it is possible to check the file data integrity calculating the sha1 checksum (  40 hex string ) 
+>   - it is calculated iteratively when file data is received
 
 > - **'logging'** : ( *string* ) the **default** value is **'debug:off,1:on,2:on,3:on'** (debug is off).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
@@ -167,18 +171,20 @@ You could create a formaline instance with some configuration options :
 
     
     var config = { 
+        
+        logging: 'debug:on,1:on,2:on,3:off'
     
-        uploadRootDir:    '/var/www/upload/',
+        uploadRootDir: '/var/www/upload/',
             
-        checkContentLength:   false,
+        checkContentLength: false,
             
-        uploadThreshold:    3949000,  
+        uploadThreshold: 3949000,  
           
-        removeIncompleteFiles:    true,
+        removeIncompleteFiles: true,
             
-        emitDataProgress:    false, 
-            
-        logging:    'debug:on,1:on,2:on,3:off'
+        emitDataProgress: false, 
+        
+        sha1sum: true,
             
         listeners: {
                 
