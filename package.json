@@ -2,11 +2,11 @@
     "name": "formaline"
   , "version": "0.2.5"
   , "description": "fast and multi-features module for handling forms ( HTTP POST ) and for parsing of file uploads,  it is also ready to use with connect middleware"
-    "homepage": "https://github.com/rootslab/formaline",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/rootslab/formaline.git"
-    },
+  , "homepage": "https://github.com/rootslab/formaline"
+  , "repository": {
+        "type": "git"
+        ,"url": "git://github.com/rootslab/formaline.git"
+    }
   , "keywords": ["form","upload","multipart","formaline"]
   , "author": "Guglielmo Ferri <44gatti@gmail.com>"
   , "dependencies": {}
