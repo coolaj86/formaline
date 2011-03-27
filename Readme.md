@@ -41,7 +41,7 @@ with git:
 > - It easily integrates with **connect middleware**.
 > - It is possible to track the progress ratio of data received
 > - Works!
-> - etc.. in progress
+> - etc.. 
 
 
 
