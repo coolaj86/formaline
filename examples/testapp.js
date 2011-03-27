@@ -50,33 +50,40 @@ var handleFormRequest = function( req, res, next ){
         
             //default is false
             //return sha1 digests for files received? 
+        
         sha1sum: true,
         
             // default is false, or integer chunk factor, 
             // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
             // minimum factor value is 2 -->
-        emitDataProgress: !true,//false,true,3,10,100
+        
+        emitDataProgress: true,//false,true,3,10,100
         
             // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
+        
+        //uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
             //until uploadThreshold bytes are written. 
             //if true -> stop receiving data, when headers content length exceeds uploadThreshold
+        
         checkContentLength: !true,
         
             //remove file not completed due to uploadThreshold, 
             //if true formaline emit fileremoved event, 
             //otherwise return a path array of incomplete files 
+        
         removeIncompleteFiles : true,
         
             //enable various logging levels
             //it is possible to switch on/off one or more levels at the same time
             //debug: 'off' turn off logging
+        
         logging: 'debug:on,1:on,2:on,3:off',
         
             //listeners
+        
         listeners: {
                 'warning': function( msg ){
                     log('\n warning  -->',msg);
@@ -107,8 +114,8 @@ var handleFormRequest = function( req, res, next ){
                     //log(' updated list of files removed: ',removedFiles);
 
                 },
-                'dataprogress': function( bytesReceived, chunksReceived ) {
-                    log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived);
+                'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
+                    log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived,' ratio:',  ratio  );
                 },
                 'end': function( incompleteFiles, stats, res, next) {
                         log( '\n-> Post Done' );
