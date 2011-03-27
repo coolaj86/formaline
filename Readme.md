@@ -39,6 +39,7 @@ with git:
 > - It supports duplicate names for fields .
 > - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
 > - It easily integrates with **connect middleware**.
+> - It is possible to track the progress ratio of data received
 > - Works!
 > - etc.. in progress
 
