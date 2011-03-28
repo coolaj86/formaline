@@ -32,7 +32,7 @@ with git:
 > - It is Possible to create module instances with a **configuration object**.
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ).
 > - Many events for control of the module execution. 
-> - **Very Fast and Simple Parser** (see parser-benchmarks directory).
+> - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory).
 > - It Handles filename collisions ( 40 hex string with SHA1 checksum )
 > - It is also possible to return the SHA1 checksum of received files .
 > - Exceptions handling is Fluid.
@@ -351,8 +351,8 @@ Links
 
 - **HTTP 1.1**: [RFC2616](http://www.ietf.org/rfc/rfc2616.txt)
    - 19.4 Differences Between HTTP Entities and RFC 2045 Entities.
-   - 19.4.1 MIME-Version ( .. HTTP is not a MIME-compliant protocol .. )
-   - 19.4.5 No Content-Transfer-Encoding ( .. HTTP does not use the Content-Transfer-Encoding (CTE) field of RFC 2045.. )
+   - 19.4.1 MIME-Version *( .. HTTP is not a MIME-compliant protocol .. )*
+   - 19.4.5 No Content-Transfer-Encoding *( .. HTTP does not use the Content-Transfer-Encoding (CTE) field of RFC 2045.. )*
 
 - **(MIME) Part Two: Media Types**: [RFC2046](http://www.ietf.org/rfc/rfc2046.txt)
    - 5.1.1 Common Syntax
