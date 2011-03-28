@@ -34,7 +34,7 @@ with git:
 > - Many events for control of the module execution. 
 > - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory).
 > - It Handles filename collisions ( 40 hex string with SHA1 checksum )
-> - It is also possible to return the SHA1 checksum of received files .
+> - It is also possible to return the **SHA1 data checksum** of received files .
 > - Exceptions handling is Fluid.
 > - It supports duplicate names for fields .
 > - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
