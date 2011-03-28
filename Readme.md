@@ -340,8 +340,24 @@ When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becom
 
  - for minimizing the time 't' to do a single comparison, **I have used two simple char lookup tables**, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern string to match, one for CRLFCRLF sequence). 
 
-The only limit in this implementation is that it doesn't support a boundary length more than 254 bytes, **for now it doesn't seem a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length.
+The only limit in this implementation is that it doesn't support a boundary length more than 254 bytes, **it doesn't seem to be a real problem with all major browsers I have tested**, they are all using a boundary totally made of ASCII chars, typically ~60bytes in length. -->
 
+> [RFC2046](http://www.ietf.org/rfc/rfc2049.txt) page19 excerpt:
+
+**Boundary delimiters must not appear within the encapsulated material, and must be no longer than 70 characters, not counting the two leading hyphens.**
+
+Links
+-----
+
+- **HTTP 1.1**: [RFC2616](http://www.ietf.org/rfc/rfc2616.txt).
+   - 19.4 Differences Between HTTP Entities and RFC 2045 Entities.
+   - 19.4.1 MIME-Version ( .. HTTP is not a MIME-compliant protocol .. )
+
+- 19.4.5 No Content-Transfer-Encoding
+
+> HTTP does not use the Content-Transfer-Encoding (CTE) field of RFC 2045.
+
+- **(MIME) Part Two: Media Types**: [RFC2046](http://www.ietf.org/rfc/rfc2046.txt)
 
  Future Releases
 -----------------
