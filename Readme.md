@@ -352,9 +352,7 @@ Links
 - **HTTP 1.1**: [RFC2616](http://www.ietf.org/rfc/rfc2616.txt)
    - 19.4 Differences Between HTTP Entities and RFC 2045 Entities.
    - 19.4.1 MIME-Version ( .. HTTP is not a MIME-compliant protocol .. )
-   - 19.4.5 No Content-Transfer-Encoding
-
-> HTTP does not use the Content-Transfer-Encoding (CTE) field of RFC 2045.
+   - 19.4.5 No Content-Transfer-Encoding ( .. HTTP does not use the Content-Transfer-Encoding (CTE) field of RFC 2045.. )
 
 - **(MIME) Part Two: Media Types**: [RFC2046](http://www.ietf.org/rfc/rfc2046.txt)
    - 5.1.1 Common Syntax
