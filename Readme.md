@@ -33,7 +33,7 @@ with git:
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ).
 > - Many events for control of the module execution. 
 > - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory).
-> - It Handles filename collisions ( 40 hex string builded with SHA1 )
+> - It Handles filename collisions ( filename is a 40 hex string builded with SHA1 )
 > - It is also possible to return the **SHA1 data checksum** of received files .
 > - Exceptions handling is Fluid.
 > - It supports duplicate names for fields .
