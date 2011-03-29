@@ -96,7 +96,7 @@ You could create a formaline instance with some configuration options :
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
 
 > - **'checkContentLength'** : ( *boolean* )  **default** value is **false**.
->   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, it will write to disk the bytes received, until they reaches the upload. 
+>   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, it will write to disk the bytes received, until they reaches the upload threshold . 
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, It stops receiving data,
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) the **default** value is **true**.
