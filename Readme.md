@@ -323,7 +323,7 @@ I try to explain me:
 
 >   ( T ) * ( k ) * ( c * d )  ~= ( n / m ) * ( t ) * ( k ) * ( c * d )  
 
-When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, calls 10^4 times a function , is an heavy job compared to call it only 1 time. 
+When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becomes a considerable weigth in terms of time consumption; I think it's obvious that, for the system, call 10^4 times a function , is an heavy job compared to call it only 1 time. 
 
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
