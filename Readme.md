@@ -153,7 +153,7 @@ You could create a formaline instance with some configuration options :
  
 > - **'dataprogress'**: `function ( bytesReceived, chunksReceived, ratio ) { .. }`,
  
-> - **'end'**: `function ( incompleteFiles, stats, response, next ) { .. }`
+> - **'end'**: `function ( incompleteFiles, stats, res, next ) { .. }`
  
  
 
