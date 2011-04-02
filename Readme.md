@@ -360,6 +360,11 @@ Links
 - **(MIME) Part Two: Media Types**: [RFC2046](http://www.ietf.org/rfc/rfc2046.txt)
    - 5.1.1 Common Syntax
  
+Other
+_____
+
+[nodeJS Italian LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
+
  Future Releases
 -----------------
  
