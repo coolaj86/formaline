@@ -58,7 +58,7 @@ with git:
     form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
     ...
  
-  ** the listed params ( sha1filename, filedir, .. ) are already attached to the function callback!** 
+  ** the listed params ( sha1filename, origfilename, filedir, .. ) are already attached to the function callback!** 
   
   > for example, if I write an anonymous function myListener:
   
@@ -300,7 +300,7 @@ I try to explain me:
       or  for simplicity  
      O( n / m ) * O(t) 
    
- O(t) is considered to be a constant value, but it still has a non zero value. 
+ t is considered to be a constant value, but it still has a non zero value. 
  (for the purists, O stands for Theta, Complexity). 
 
 > Anyway, I set T = (average time to execute the parser on a single chunk ) then :  
