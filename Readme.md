@@ -361,9 +361,9 @@ Links
    - 5.1.1 Common Syntax
  
 Other
-_____
+---------
 
-[nodeJS Italian LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
+> **for Italian GitHubbers** -> [LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
 
  Future Releases
 -----------------
