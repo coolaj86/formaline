@@ -298,9 +298,9 @@ I try to explain me:
 
      O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
       or  for simplicity  
-     O( n / m ) * O(t) 
+     O( n / m ) * O(t) = O( n / m )
    
- t is considered to be a constant value, but it still has a non zero value. 
+ t is considered to be a constant value. It doesn't add anything in terms of complexity, but it still is a non zero value.  
  (for the purists, O stands for Theta, Complexity). 
 
 > Anyway, I set T = (average time to execute the parser on a single chunk ) then :  
