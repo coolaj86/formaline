@@ -55,17 +55,17 @@ with git:
    *add events listener:*
 
     ...
-    form.on( 'filereceived', function( filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
+    form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
     ...
  
-  ** the listed params ( filename, filedir, .. ) are already attached to the function callback!** 
+  ** the listed params ( sha1filename, filedir, .. ) are already attached to the function callback!** 
   
   > for example, if I write an anonymous function myListener:
   
      ...
      var myListener = function( ){ console.log( arguments ); }
      ..
-     form.on( 'filereceived', myListener ); <-- myListener get filename, origfilename, etc.. as arguments
+     form.on( 'filereceived', myListener ); <-- myListener get sha1filename, origfilename, etc.. as arguments
      ..
    
 
@@ -147,9 +147,9 @@ You could create a formaline instance with some configuration options :
  
 > - **'field'**: `function ( fname, fvalue ) { .. }`,
  
-> - **'filereceived'**: `function ( filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { .. }`,
+> - **'filereceived'**: `function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { .. }`,
  
-> - **'fileremoved'**: `function ( filename, origfilename, filedir, filetype, filesize, filefield ) { .. }`,
+> - **'fileremoved'**: `function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { .. }`,
  
 > - **'dataprogress'**: `function ( bytesReceived, chunksReceived, ratio ) { .. }`,
  
@@ -208,10 +208,10 @@ You could create a formaline instance with some configuration options :
             'field': function ( fname, fvalue ) { 
                 ...
             },
-            'filereceived': function ( filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { 
+            'filereceived': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { 
                 ... 
             },
-            'fileremoved': function ( filename, origfilename, filedir, filetype, filesize, filefield ) { 
+            'fileremoved': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { 
                 ...
             },
             'dataprogress': function ( bytesReceived, chunksReceived, ratio ) {
@@ -271,7 +271,7 @@ When a file is found in the data stream:
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*.
+ - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*, *sha1sum*.
  
  
  Parser Implementation  & Performance

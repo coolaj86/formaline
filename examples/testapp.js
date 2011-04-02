@@ -97,13 +97,13 @@ var handleFormRequest = function( req, res, next ){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
                 },
-                'filereceived': function( filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
-                    receivedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
-                    log('\n filereceived -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
+                'filereceived': function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
+                    receivedFiles[sha1filename] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
+                    log('\n filereceived -->  sha1name: '+sha1filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes: '+filesize+', field: '+filefield+'\n');
                 },
-                'fileremoved': function( filename, origfilename, filedir, filetype, filesize, filefield ) {
-                    log('\n fileremoved -->  name: '+filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
-                    removedFiles[filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
+                'fileremoved': function( sha1filename, origfilename, filedir, filetype, filesize, filefield ) {
+                    log('\n fileremoved -->  sha1name: '+sha1filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
+                    removedFiles[sha1filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                     //log(' updated list of files removed: ',removedFiles);
 
                 },
