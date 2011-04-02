@@ -294,14 +294,15 @@ I try to explain me:
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
 > - network throughput == network bandwidth (wow),
  
- reaches a time complexity (in the best case) of : 
+ reaches a time complexity (in the best case) of :   
 
      O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
       or  for simplicity  
      O( n / m ) * O(t) = O( n / m )
    
- t is considered to be a constant value. It doesn't add anything in terms of complexity, but it still is a non zero value.  
- (for the purists, O stands for Theta, Complexity). 
+> **t** is considered to be a constant value. It doesn't add anything in terms of complexity, but it still is a non zero value.  
+
+(for the purists, O stands for Theta, Complexity).
 
 > Anyway, I set T = (average time to execute the parser on a single chunk ) then :  
     
