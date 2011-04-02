@@ -314,7 +314,7 @@ I try to explain me:
 >  - data is chopped,
 >  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough it's not totally correct .   
 >  - network throughput < network bandwidth,
->  - the time 't' to do a single comparison, depends on how the comparison is implemented,
+>  - **the time 't' to do a single comparison, depends on how the comparison is implemented**
 
  **the average time will becomes something like**:
    
