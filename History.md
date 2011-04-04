@@ -48,3 +48,8 @@
  * + added code to catch more exceptions
  * + modifications to Documentation
  * + added some comments
+ 
+ 0.2.7 / 2011-04-05
+==================
+
+ * + resolved some bugs in code for exceptions
