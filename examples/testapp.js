@@ -116,7 +116,7 @@ var handleFormRequest = function( req, res, next ){
                         res.write( '-> all data received! \n');
                         res.write( '\n-> stats -> ' + JSON.stringify(stats) + '\n');
                         res.write( '\n-> upload root dir: ' + config.uploadRootDir + ' \n');
-                        res.write( '-> bytes upload threshold : ' + ( ( config.uploadThreshold ) ? config.uploadThreshold : 'default' )+ ' \n');
+                        res.write( '-> bytes upload threshold : ' + ( ( this.uploadThreshold ) ? config.uploadThreshold : 'default' )+ ' \n');
                         res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
                         res.write( '-> holdFilesExtensions: ' + config.holdFilesExtensions + '\n');
                         res.write( '-> sha1sum: ' + config.sha1sum + '\n');
