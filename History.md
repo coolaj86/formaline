@@ -47,4 +47,4 @@
 
  * + added code to catch more exceptions
  * + modifications to Documentation
- * + adde some comments
+ * + added some comments
