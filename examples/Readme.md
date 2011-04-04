@@ -1,5 +1,6 @@
 ### Basic Example
 
+
 > *require connect middleware, but for basic usage you could comment out it in the code.*
 
 >Generic Usage:
@@ -19,3 +20,4 @@
     curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload
     
 
+> **this basic example is compatible with all older browsers**

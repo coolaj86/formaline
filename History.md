@@ -42,4 +42,9 @@
  * + added sha1 digest for file data
  * - resolved a little bug in overall stats logging
  
+0.2.6 / 2011-04-05
+==================
 
+ * + added code to catch more exceptions
+ * + modifications to Documentation
+ * + adde some comments
