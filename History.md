@@ -53,3 +53,8 @@
 ==================
 
  * + resolved some bugs in code for exceptions
+ 
+  0.2.8 / 2011-04-05
+==================
+
+ * + added support for multiple uploads from multiple browsers to testapp.js

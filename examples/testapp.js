@@ -30,17 +30,16 @@ var getHtmlForm = function(req, res,next) {
   }
 };
 var log = console.log,
-    receivedFiles,
-    removedFiles,
-    receivedFields,
-    config = null,
     dir =  '/tmp/';
+
+
     
 var handleFormRequest = function( req, res, next ){
-    receivedFiles = {};
-    removedFiles = {};
-    receivedFields = {};
-    config = {
+    var receivedFiles = {},
+        removedFiles = {},
+        receivedFields = {},
+        form = null,
+        config = {
         
             //default is true -->
         holdFilesExtensions : true,
@@ -114,23 +113,25 @@ var handleFormRequest = function( req, res, next ){
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> all data received! \n');
-                        res.write( '\n-> stats -> ' + JSON.stringify(stats) + '\n');
-                        res.write( '\n-> upload root dir: ' + config.uploadRootDir + ' \n');
-                        res.write( '-> bytes upload threshold : ' + ( ( this.uploadThreshold ) ? config.uploadThreshold : 'default' )+ ' \n');
-                        res.write( '-> checkContentLength: ' + config.checkContentLength + '\n');
-                        res.write( '-> holdFilesExtensions: ' + config.holdFilesExtensions + '\n');
-                        res.write( '-> sha1sum: ' + config.sha1sum + '\n');
-                        res.write( '-> removeIncompleteFiles: ' + config.removeIncompleteFiles + '\n');
-                        res.write( '-> emitDataProgress: ' + config.emitDataProgress + '\n');
+
+                        res.write( '\n-> upload root dir: ' + form.uploadRootDir + ' \n');
+                        res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');
+                        res.write( '-> checkContentLength: ' + form.checkContentLength + '\n');
+                        res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n');
+                        res.write( '-> sha1sum: ' + form.sha1sum + '\n');
+                        res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n');
+                        res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
+                        
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify(receivedFields) + '\n');
                         res.write( '\n-> files received: ( { sha1name: {..} }, { .. } )\n   ***************\n ' + JSON.stringify(receivedFiles) + '\n');
-                        if( config.removeIncompleteFiles ){
+                        if( form.removeIncompleteFiles ){
                             res.write( '\n-> files removed: ( { sha1name: {..} }, { .. } )\n   **************\n' + JSON.stringify(removedFiles) + '\n');
                         }else{
                             if( incompleteFiles.length !== 0 ){
                                 res.write( '-> incomplete files (not removed) : ' + incompleteFiles + '\n');
                             }
                         }
+                        res.write( '\n-> stats -> ' + JSON.stringify(stats) + '\n');
                         receivedFiles = {};
                         removedFiles = {};
                         receivedFields = {};
@@ -142,7 +143,8 @@ var handleFormRequest = function( req, res, next ){
                         
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         log( ' -> req url :', req.url );
-        new formaline(config).parse(req,res,next);
+        form = new formaline(config);
+        form.parse(req,res,next);
   
     } else {
         log( ' -> req url 404 error :', req.url );    
