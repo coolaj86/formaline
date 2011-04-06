@@ -54,7 +54,9 @@
 
  * + resolved some bugs in code for exceptions
  
-  0.2.8 / 2011-04-05
+  0.2.8 / 2011-04-0x
 ==================
 
  * + added support for multiple uploads from multiple browsers to testapp.js
+ * + added link to Boyer Moore algorithm
+ * + Some corrections to docs

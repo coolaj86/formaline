@@ -29,18 +29,18 @@ with git:
 ----------
 
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
-> - It is Possible to create module instances with a **configuration object**.
-> - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ).
-> - Many events for control of the module execution. 
-> - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory).
-> - It Handles filename collisions ( the filenames are translated to a 40 hex string builded with SHA1 )
+> - It is Possible to create module instances with a **configuration object** .
+> - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ) .
+> - Many events for control of the module execution . 
+> - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory) .
+> - It **Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 )
 > - It is also possible to return the **SHA1 data checksum** of received files .
-> - Exceptions handling is Fluid.
+> - Exceptions handling is Fluid .
 > - It supports duplicate names for fields .
-> - It is possible to preserve or remove uploaded files if they are not completed, due to exceeding of the upload total threshold.
+> - It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold .
 > - It easily integrates with **connect middleware**.
-> - It is possible to track the progress ratio of data received
-> - **It Works!**
+> - It is possible to track the progress ratio ( also chunks and bytes ) of data received . 
+> - **It Works !**
 > - etc.. 
 
 
@@ -286,7 +286,7 @@ Unfortunately, sending data over the cloud is sometime a long-time task, the dat
 
 I try to explain me:
 
-( using a super-fast Booyer-Moore parser )
+( using a super-fast [Boyer-Moore](http://www-igm.univ-mlv.fr/~lecroq/string/node14.html#SECTION00140) parser )
 
 >__ In the world of Fairies :__
  
@@ -376,8 +376,8 @@ Other
  - give choice to changing the parser with a custom one .
  - find some weird boundary string types .
  - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..) . 
- - Restify?
- - add unit tests
+ - Restify ?
+ - add unit tests .
 
 
 
