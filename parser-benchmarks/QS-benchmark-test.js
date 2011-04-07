@@ -145,7 +145,7 @@ var buildBuffer = function(p,MBsize,gapFactor){
 var printStats = function( stats ){
     //log( 'results:', stats.results );        
     log( ' ->\ttotal matches:', stats.matches );
-    log( ' ->\tstep cycles: '+stats.steps+'\n ->\tinner cycles: '+stats.cycles+'\n ->\ttext bytes: '+stats.tbytes+'\n ->\tpattern bytes: '+stats.pbytes );
+    log( ' ->\tstep cycles: '+stats.steps+'\n ->\tinner cycles: '+stats.cycles+'\n ->\tdata bytes: '+stats.tbytes+'\n ->\tpattern bytes: '+stats.pbytes );
     log( ' ->\tmatching time:', ( stats.millis )/1000,'secs' );
     log( ' ->\taverage parsing speed:',(stats.tbytes/stats.millis) / 1024, 'MB/s\n' );    
 };
