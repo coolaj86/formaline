@@ -44,7 +44,7 @@
 >     ->	total matches: 3965
 >     ->	step cycles: 12676085
 >     ->	inner cycles: 234335
->     ->	text bytes: 734108057
+>     ->	data bytes: 734108057
 >     ->	pattern bytes: 57
 >     ->	matching time: 1.195 secs
 >     ->	average parsing speed: 599.9183258695084 MB/s
