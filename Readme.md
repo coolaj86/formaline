@@ -290,7 +290,7 @@ I try to explain me:
 
 ( using a super-fast [Boyer-Moore](http://www-igm.univ-mlv.fr/~lecroq/string/node14.html#SECTION00140) parser )
 
->__ In the world of Fairies :__
+>__In the world of Fairies :__
  
 >  - the data received is not chopped, 
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
