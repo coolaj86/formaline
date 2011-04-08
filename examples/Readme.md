@@ -17,7 +17,7 @@
 
 >or you could use curl:
 
-    curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload
+    curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
     
 
 > **this basic example is compatible with all older browsers**
