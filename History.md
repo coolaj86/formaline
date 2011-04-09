@@ -60,3 +60,10 @@
  * + added support for multiple uploads from multiple browsers to testapp.js
  * + added link to Boyer Moore algorithm
  * + Some corrections to docs
+
+  0.2.9 / 2011-04-xx
+==================
+
+ * + removed possible 0 result from Math.random fro generating random directory name
+
+
