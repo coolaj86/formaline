@@ -371,9 +371,8 @@ Other
 -----------------
  
 
-
- - add some other server-side security checks, and write about it .
- - add a readable stream from files while they are uploaded .  
+ - add a readable stream from files while they are uploaded .
+ - add some other server-side security checks, and write about it .  
  - some code performance modifications in quickSearch.js and formaline.js .
  - some code cleaning in formaline.js for some variables .
  - give choice to changing the parser with a custom one .
