@@ -30,7 +30,7 @@ with git:
  Features
 ----------
 
-> - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
+> - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers . For now, it doesn't support HTML5 AJAX powered file uploads .
 > - It is Possible to create module instances with a **configuration object** .
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ) .
 > - Many events for control of the module execution . 
