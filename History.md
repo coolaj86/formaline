@@ -64,6 +64,6 @@
   0.2.9 / 2011-04-xx
 ==================
 
- * + removed possible 0 result from Math.random fro generating random directory name
-
-
+ * + removed possible 0 result from Math.random, when generating random directory name
+ * + send empty response after that an fatal exception was thrown ( for example, on missing headers )
+ * + 
