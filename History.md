@@ -61,7 +61,7 @@
  * + added link to Boyer Moore algorithm
  * + Some corrections to docs
 
-  0.2.9 / 2011-04-xx
+  0.2.9 / 2011-04-29
 ==================
 
  * + send empty response after that a fatal exception was thrown ( for example, on missing or empty request headers )
