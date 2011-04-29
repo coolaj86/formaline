@@ -370,7 +370,7 @@ Other
  Future Releases
 -----------------
  
-
+ - Add HTML5 handling for multiple xhr requests
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
  - some code performance modifications in quickSearch.js and formaline.js .
