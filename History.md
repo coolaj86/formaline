@@ -64,6 +64,7 @@
   0.2.9 / 2011-04-xx
 ==================
 
+ * + send empty response after that a fatal exception was thrown ( for example, on missing or empty request headers )
  * + removed possible 0 result from Math.random, when generating random directory name
- * + send empty response after that an fatal exception was thrown ( for example, on missing headers )
- * + 
+
+
