@@ -16,18 +16,19 @@ var getHtmlForm = function(req, res,next) {
                 .progress { width: 200px; border: 1px solid #BBB; background-color: #FFF; padding: 0; }\
                 .progress span { display: block; width: 0px; height: 16px; background-color: #C8B5E3; }\
               </style>\
-              <script type="text/javascript" src="sendFile.js"></script>\
-              <script type="text/javascript" src="loadForm.js" ></script>
+              <script type="text/javascript" src="client/sendFile.js"></script>\
+              <script type="text/javascript" src="client/loadForm.js" ></script>\
               </head><body></body></html>'
     );
   } else {
-    next();
+    //if (req.url === '/test/client/') {
+    //}else{
+      next();
+    //}
   }
 };
 var log = console.log,
     dir =  '/tmp/';
-
-
     
 var handleFormRequest = function( req, res, next ){
     var receivedFiles = {},
@@ -148,8 +149,8 @@ var handleFormRequest = function( req, res, next ){
     }
 
 };
-
-server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
+console.log(__dirname);
+server = connect(  getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
 
 server.listen(3000);
 
