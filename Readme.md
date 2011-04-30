@@ -61,7 +61,7 @@ with git:
     form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
     ...
  
-  ** the listed params ( sha1filename, origfilename, filedir, .. ) are already attached to the function callback!** 
+  **the listed params ( sha1filename, origfilename, filedir, .. ) are already attached to the function callback!** 
   
   > for example, if I write an anonymous function myListener:
   
