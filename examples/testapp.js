@@ -58,12 +58,12 @@ var handleFormRequest = function( req, res, next ){
         
             // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        //uploadThreshold: 3949000,//bytes ex.: 1024*1024*1024, 512
+        uploadThreshold: 1024*1024*1024,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
             //until uploadThreshold bytes are written. 
             //if true -> stop receiving data, when headers content length exceeds uploadThreshold
-        checkContentLength: !true,
+        checkContentLength: false,
         
             //remove file not completed due to uploadThreshold, 
             //if true formaline emit fileremoved event, 
@@ -112,7 +112,7 @@ var handleFormRequest = function( req, res, next ){
                 'end': function( incompleteFiles, stats, res, next) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
-                        res.write( '-> all data received! \n');
+                        res.write( '-> all requests received! \n');
 
                         res.write( '\n-> upload root dir: ' + form.uploadRootDir + ' \n');
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');

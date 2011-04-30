@@ -67,4 +67,8 @@
  * + send empty response after that a fatal exception was thrown ( for example, on missing or empty request headers )
  * + removed possible 0 result from Math.random, when generating random directory name
 
+  0.3.0 / 2011-04-30
+==================
 
+ * + added handling of HTML5 AJAX powered multiple file uploads
+ * + added client side example with AJAX powered multiple file uploads
