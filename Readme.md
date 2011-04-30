@@ -31,7 +31,7 @@ with git:
 ----------
 
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
-> - It supports HTML5 AJAX powered multiple file uploads ( XMLHttpRequest Version 2 ).
+> - It supports **HTML5 AJAX-powered multiple file uploads** ( XMLHttpRequest Version 2 ).
 > - It is Possible to create module instances with a **configuration object** .
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ) .
 > - Many events for control of the module execution . 
