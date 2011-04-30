@@ -1,6 +1,7 @@
 
 
 var http = require('http'),
+    fs = require('fs'),
     formaline = require('../lib/formaline').formaline,
     connect = require('connect'),
     server;
@@ -21,10 +22,11 @@ var getHtmlForm = function(req, res,next) {
               </head><body></body></html>'
     );
   } else {
-    //if (req.url === '/test/client/') {
-    //}else{
+    if ( ~req.url.indexOf('/test/client/') ) {
+        res.end(fs.readFileSync(__dirname+req.url.replace('/test/','/'), 'utf8' ));    
+    }else{
       next();
-    //}
+    }
   }
 };
 var log = console.log,
@@ -150,7 +152,7 @@ var handleFormRequest = function( req, res, next ){
 
 };
 console.log(__dirname);
-server = connect(  getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
+server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
 
 server.listen(3000);
 
