@@ -1,6 +1,5 @@
-/** Basic upload manager for single or multiple files (Safari 4 Compatible)
- * @author  Andrea Giammarchi
- * @blog    WebReflection [webreflection.blogspot.com]
+/** Basic upload manager for single or multiple files ( Chrome 10, Firefox 4, Safari 4 Compatible)
+ * based on script by Andrea Giammarchi WebReflection [webreflection.blogspot.com]
  * @license Mit Style License
  */
 
