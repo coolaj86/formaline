@@ -14,18 +14,20 @@ sendFile = (function(toString, maxSize){
         len = split.length;
     return function(handler){
         if(maxSize && maxSize < handler.file.fileSize){
-            if(isFunction(handler.onerror))
+            if(isFunction(handler.onerror)){
                 handler.onerror();
+            }
             return;
-        };
-        var xhr = new XMLHttpRequest,
-            upload = xhr.upload;
+        }
+        //var xhr = new XMLHttpRequest,
+        //    upload = xhr.upload;
             //console.log(handler);
         for(var xhr = new XMLHttpRequest, upload = xhr.upload, i = 0; i < len; i++ ){
             upload[split[i]] = ( function(event){
                 return function(rpe){
-                    if(isFunction(handler[event]))
+                    if(isFunction(handler[event])){
                         handler[event].call(handler, rpe, xhr);
+                    }
                 };
             })(split[i]);
         }
@@ -40,8 +42,9 @@ sendFile = (function(toString, maxSize){
                         if(isFunction(handler.onload)){
                             handler.onload(rpe, xhr);
                         }
-                    } else
+                    }else{
                         setTimeout(arguments.callee, 15);
+                    }                
                 }, 15);
             }
         };
@@ -69,8 +72,9 @@ function sendMultipleFiles(handler){
     handler.current = 0;
     handler.total = 0;
     handler.sent = 0;
-    while(handler.current < len)
+    while(handler.current < len){
         handler.total += handler.files[handler.current++].fileSize;
+    }
     handler.current = 0;
     if(len){
         handler.file = handler.files[handler.current];
@@ -87,7 +91,7 @@ function sendMultipleFiles(handler){
                 handler.onload(rpe, xhr);
             }
         };
-    };
+    }
     return  handler;
-};
+}
 
