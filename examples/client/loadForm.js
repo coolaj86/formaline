@@ -12,10 +12,10 @@ onload = function(){
             // create elements
             var field = document.body.appendChild(document.createElement("input")),
                 br = document.body.appendChild(document.createElement("br")),
-                br1 = document.body.appendChild(document.createElement("br")),
+
                 input = document.body.appendChild(document.createElement("input")),
-                br2 = document.body.appendChild(document.createElement("br")),
-                br3 = document.body.appendChild(document.createElement("br")),                 
+
+
                 bar = document.body.appendChild(document.createElement("div")).appendChild(document.createElement("span")),
                 div = document.body.appendChild(document.createElement("div"));
             
@@ -48,7 +48,6 @@ onload = function(){
                     
                     // do something during upload ...
                     onprogress:function(rpe, xhr){ //chunk
-                        //console.log(this.file.fileName);
                         div.innerHTML = [
                         " ",
                             "Uploading: " + this.file.fileName,
@@ -58,9 +57,6 @@ onload = function(){
                         bar.style.width = ( rpe.loaded * 200 / rpe.total >> 0) + "px";//(((this.sent + rpe.loaded) * 200 / this.total) >> 0) + "px";
                     },
                     onfileload:function(rpe, xhr, file, end){
-                        //console.log('rpe:',rpe);
-                        //console.log('xhr:',xhr);
-                        //console.log('file:',file);
                         
                         bar.style.width = "200px";//(((this.sent + rpe.loaded) * 200 / this.total) >> 0) + "px";
                         var bdy = document.getElementsByTagName("body")[0], // body element
@@ -71,14 +67,13 @@ onload = function(){
                             newBarContainer.className = 'progress';
                         var newBar = newBarContainer.appendChild(document.createElement("span"));
                         
-                        /**/
 
                         div.innerHTML = [
                             "Uploading: " + file.fileName,
                             "Sent: " + size(file.fileSize) + " of " + size(file.fileSize),//+ size(rpe.loaded) + " of " + size(rpe.total),
                             "----------------------------------------"
                         ].join("<br/>");
-                        /**/
+
                         if(end){
                             div.appendChild(newDiv);
                             newDiv.innerHTML = [
