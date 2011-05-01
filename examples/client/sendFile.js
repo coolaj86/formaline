@@ -83,7 +83,7 @@ function sendMultipleFiles(handler){
                 //handler.onload(rpe, xhr);
             } else if(onload) {
                 handler.onload = onload;
-                handler.onfileload(rpe,xhr,handler.file,len,true);
+                handler.onfileload(rpe,xhr,handler.file,true);
                 handler.onload(rpe, xhr);
             }
         };

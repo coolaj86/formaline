@@ -112,7 +112,7 @@ var handleFormRequest = function( req, res, next ){
                 'end': function( incompleteFiles, stats, res, next) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
-                        res.write( '-> all requests received! \n');
+                        res.write( '-> request processed! \n');
 
                         res.write( '\n-> upload root dir: ' + form.uploadRootDir + ' \n');
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');

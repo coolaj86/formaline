@@ -10,7 +10,7 @@ var getHtmlForm = function(req, res,next) {
   if (req.url === '/test/') {
     log( ' -> req url :', req.url );
     res.writeHead(200, {'content-type': 'text/html'});
-    res.end(  '<html><head>\
+    res.end(  '<!DOCTYPE html><head>\
               <title>HTML5 Multiple File Upload With Progress Bar</title>\
               <style type="text/css">\
                 * { font-family: Verdana, Helvetica, sans-serif; font-size: 8pt; }\
@@ -23,6 +23,7 @@ var getHtmlForm = function(req, res,next) {
     );
   } else {
     if ( ~req.url.indexOf('/test/client/') ) {
+        res.writeHead(200,{'Content-Type': 'text/javascript'});
         res.end(fs.readFileSync(__dirname+req.url.replace('/test/','/'), 'utf8' ));    
     }else{
       next();
@@ -110,7 +111,7 @@ var handleFormRequest = function( req, res, next ){
                 'end': function( incompleteFiles, stats, res, next) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
-                        res.write( '-> all requests received! \n');
+                        res.write( '-> request processed! \n');
 
                         res.write( '\n-> upload root dir: ' + form.uploadRootDir + ' \n');
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');

@@ -62,7 +62,7 @@ onload = function(){
                         //console.log('xhr:',xhr);
                         //console.log('file:',file);
                         
-                        bar.style.width = 200;//(((this.sent + rpe.loaded) * 200 / this.total) >> 0) + "px";
+                        bar.style.width = "200px";//(((this.sent + rpe.loaded) * 200 / this.total) >> 0) + "px";
                         var bdy = document.getElementsByTagName("body")[0], // body element
                             newDiv = document.createElement("div"),
                             newDiv2 = document.createElement("div"),
@@ -71,12 +71,14 @@ onload = function(){
                             newBarContainer.className = 'progress';
                         var newBar = newBarContainer.appendChild(document.createElement("span"));
                         
+                        /**/
+
                         div.innerHTML = [
                             "Uploading: " + file.fileName,
-                            "Sent: " + size(rpe.loaded) + " of " + size(rpe.total),
+                            "Sent: " + size(file.fileSize) + " of " + size(file.fileSize),//+ size(rpe.loaded) + " of " + size(rpe.total),
                             "----------------------------------------"
                         ].join("<br/>");
-                        
+                        /**/
                         if(end){
                             div.appendChild(newDiv);
                             newDiv.innerHTML = [
