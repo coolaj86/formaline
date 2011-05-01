@@ -85,7 +85,7 @@ onload = function(){
                                 "<br/> Server Response: " + xhr.responseText.replace( /\n/g, '<br/>' ),
                                 "----------------------------------------"
                             ].join("<br />")+"<br />";
-                            newDiv2.innerHTML = "<br/>**************************<br/> Total Sent: " + size(this.sent + rpe.loaded) + " of " + size(this.total)+"<br/>**************************<br/>";
+                            newDiv2.innerHTML = "<br/>**************************<br/> Total Sent: " +size(this.total) + " of " + size(this.total)+"<br/>**************************<br/>";// + size(this.sent + rpe.loaded) + " of " + size(this.total)+"<br/>**************************<br/>";
                             bdy.appendChild(newDiv2);
                         }else{
                           bdy.appendChild(newBarContainer);
