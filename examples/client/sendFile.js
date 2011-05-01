@@ -21,7 +21,7 @@ sendFile = (function(toString, maxSize){
         }
         //var xhr = new XMLHttpRequest,
         //    upload = xhr.upload;
-            //console.log(handler);
+
         for(var xhr = new XMLHttpRequest, upload = xhr.upload, i = 0; i < len; i++ ){
             upload[split[i]] = ( function(event){
                 return function(rpe){
@@ -48,7 +48,7 @@ sendFile = (function(toString, maxSize){
                 }, 15);
             }
         };
-        //console.log(handler.file);
+
         xhr.open("post", handler.url || "?upload=true", true);
         xhr.setRequestHeader("If-Modified-Since", "Mon, 26 Jul 1997 05:00:00 GMT");
         xhr.setRequestHeader("Cache-Control", "no-cache");
@@ -66,7 +66,6 @@ sendFile = (function(toString, maxSize){
 function sendMultipleFiles(handler){
     var len = handler.files.length,
         i = 0,
-        //onFileLoad = handler.onFileLoad,
         onload = handler.onload;
 
     handler.current = 0;
