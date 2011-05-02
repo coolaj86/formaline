@@ -1,6 +1,6 @@
-### Basic Example 
+### Basic Example ( testapp.js )
 
-
+> **this basic example is compatible with all browsers**
 > *require connect middleware, but for basic usage you could comment out it in the code.*
 
 >Generic Usage:
@@ -20,4 +20,9 @@
     curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
     
 
-> **this basic example is compatible with all older browsers**
+
+
+### Custom Example with Progress Bar ( testXHR.js )
+
+> **this custom XHR example is not compatible with older browser (not HTML5 or XHR2 capable ), tested with Firefox 3.6+, Safari and Chrome**
+> it is based on example by Andrea Giammarchi ( webreflection blog )
