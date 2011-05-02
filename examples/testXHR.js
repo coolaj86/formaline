@@ -5,8 +5,11 @@ var http = require('http'),
     formaline = require('../lib/formaline').formaline,
     connect = require('connect'),
     server;
-    
-var getHtmlForm = function(req, res,next) {
+
+// CUSTOM multiple XHR example, not compliant, without boundary strings
+// with progress bar
+
+var getHtmlForm = function(req, res,next) { 
   if (req.url === '/test/') {
     log( ' -> req url :', req.url );
     res.writeHead(200, {'content-type': 'text/html'});
@@ -30,6 +33,7 @@ var getHtmlForm = function(req, res,next) {
     }
   }
 };
+/**/
 var log = console.log,
     dir =  '/tmp/';
     
@@ -160,4 +164,46 @@ server.listen(3000);
 log('\nlistening on http://localhost:3000/');
 log(' -> upload directory is:',dir);
 
+
+/** /    
+var getHtmlForm = function(req, res,next) { //FORMDATA example with multiple file selection 
+  if (req.url === '/test/') {
+      log( ' -> req url :', req.url );
+      res.writeHead(200, {'content-type': 'text/html'});
+      res.end(  '<html><head>\
+                  <script type="text/javascript">\
+                  function sendForm() {\
+                    var output = document.getElementById("output");\
+                    var data = new FormData(document.getElementById("fileinfo"));\
+                    data.append("CustomField", "This is some extra data");\
+                    var xhr = new XMLHttpRequest();\
+                    xhr.open("POST", "/test/upload", true);\
+                    xhr.send(data);\
+                    if (xhr.status === 200) {\
+                      output.innerHTML += "Uploaded!<br />";\
+                    } else {\
+                      output.innerHTML += "Error " + xhr.status + " occurred uploading your file.<br />";\
+                    }\
+                  }\
+                  </script>\
+                  </head>\
+                  <body>\
+                  <form enctype="multipart/form-data" method="post" name="fileinfo" id="fileinfo">\
+                    <label>Your email address:</label>\
+                    <input type="email" autocomplete="on" autofocus name="userid" placeholder="email" required size="32" maxlength="64"><br />\
+                    <label>Custom file ID:</label>\
+                    <input type="text" name="fileid" size="12" maxlength="32"><br />\
+                    <label>File :</label>\
+                    <input type="file" name="file" required multiple>\
+                  </form>\
+                  <div id="output"></div>\
+                  <a href="javascript:sendForm()">Upload file!</a>\
+                  </body>\
+                  </html>'
+      );
+  }else{
+      next();
+  }
+};
+/**/
 

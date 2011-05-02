@@ -48,13 +48,14 @@ sendFile = (function(toString, maxSize){
             }
         };
 
-        xhr.open("post", handler.url || "?upload=true", true);
+        xhr.open("post", handler.url , true);
         xhr.setRequestHeader("If-Modified-Since", "Mon, 26 Jul 1997 05:00:00 GMT");
         xhr.setRequestHeader("Cache-Control", "no-cache");
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.setRequestHeader("X-File-Name", handler.file.fileName);
         xhr.setRequestHeader("X-File-Size", handler.file.fileSize);
-        xhr.setRequestHeader("X-File-Type", handler.file.type);        
+        xhr.setRequestHeader("X-File-Type", handler.file.type || 'application/octet-stream');
+        xhr.setRequestHeader("X-File-FieldName", handler.input.name || ''); //CUSTOM HEADER
         xhr.setRequestHeader("Content-Type", "multipart/form-data");
         xhr.send(handler.file);
         return  handler;
@@ -66,7 +67,6 @@ function sendMultipleFiles(handler){
     var len = handler.files.length,
         i = 0,
         onload = handler.onload;
-
     handler.current = 0;
     handler.total = 0;
     handler.sent = 0;

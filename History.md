@@ -70,5 +70,5 @@
   0.3.0 / 2011-04-30
 ==================
 
- * + added handling of HTML5 AJAX powered multiple file uploads
- * + added client side example with AJAX powered multiple file uploads
+ * + tested with HTML5 AJAX powered multiple file uploads
+ * + added client side example with multiple custom XHR

@@ -31,7 +31,7 @@ with git:
 ----------
 
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
-> - It supports **HTML5 AJAX-powered multiple file uploads** ( XMLHttpRequest Version 2 ).
+> - It works with **HTML5 AJAX-powered multiple file uploads ** .
 > - It is Possible to create module instances with a **configuration object** .
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ) .
 > - Many events for control of the module execution . 
@@ -371,7 +371,7 @@ Other
  Future Releases
 -----------------
  
- - add handling of HTML5-powered Ajax file uploads
+ - add choice to build JSON response
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
  - some code performance modifications in quickSearch.js and formaline.js .

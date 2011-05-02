@@ -10,7 +10,7 @@ onload = function(){
             };
 
             // create elements
-            var field = document.body.appendChild(document.createElement("input")),
+            var //field = document.body.appendChild(document.createElement("input")),
                 br = document.body.appendChild(document.createElement("br")),
 
                 input = document.body.appendChild(document.createElement("input")),
@@ -19,9 +19,9 @@ onload = function(){
                 bar = document.body.appendChild(document.createElement("div")).appendChild(document.createElement("span")),
                 div = document.body.appendChild(document.createElement("div"));
             
-            field.setAttribute( "type", "text" );
-            field.setAttribute( "name", "myfield" );
-            field.setAttribute( "name", "myfield" );                        
+            //field.setAttribute( "type", "text" );
+            //field.setAttribute( "name", "myfield" );
+            input.setAttribute( "name", "uploads[]" );                        
             // set input type as file
             input.setAttribute("type", "file");
             
@@ -39,6 +39,8 @@ onload = function(){
                     url: '/test/upload',
                     // list of files to upload
                     files:input.files,
+                    
+                    input:input,
                     
                     // clear the container 
                     onloadstart:function(){
