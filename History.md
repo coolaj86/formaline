@@ -79,4 +79,9 @@
  * + added upload example with iframe
  * + resolved little bug for application/x-www-form-urlencoded
  * + added some text in Readme
+ 
+   0.3.2 / 2011-05-04
+====================
+
+ * + resolved new introduced bug for fields
 
