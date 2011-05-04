@@ -133,7 +133,7 @@ You could create a formaline instance with some configuration options :
  
  
 
-> - *'fatal' exceptions* : headersexception, pathexception, exception (the data transmission is interrupted). 
+> - *'fatal' exceptions* : headersexception, pathexception, exception ( the data transmission is interrupted, and the 'end' event is thrown ). 
 > - *informational* : filereceived, field, dataprogress, end 
 > - *warning* : fileremoved, warning 
 
