@@ -6,7 +6,7 @@
 >Generic Usage:
 
 
-     $ node examples/testapp.js
+     $ node examples/simpleUpload.js
 
 
 >you can use this simple html form, for default you could point your browser to:
@@ -22,8 +22,8 @@
 
 
 
-### Custom Example with Progress Bar ( testXHR.js )
+### Custom Example with Progress Bar ( customXHR.js )
 
-> **this custom XHR example is not compatible with older browser (not HTML5 or XHR2 capable ), tested with Firefox 3.6+, Safari and Chrome .**
-
+> **this is a custom XHR example, is not compatible with older browser (not HTML5 or XHR2 capable ), tested with Firefox 3.6+, Safari and Chrome .**
+ 
 > It is based on example by [Andrea Giammarchi](http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html) .
