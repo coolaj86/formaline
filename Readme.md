@@ -68,9 +68,10 @@ with git:
      ...
      var myListener = function( ){ console.log( arguments ); }
      ..
-     form.on( 'filereceived', myListener ); <-- myListener get sha1filename, origfilename, etc.. as arguments
+     form.on( 'filereceived', myListener ); <----
      ..
    
+   >  myListener function gets sha1filename, origfilename, etc.. as arguments
 
 >  see **Event & Listeners** section for a complete list of callbacks signatures!
       
