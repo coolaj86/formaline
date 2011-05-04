@@ -4,7 +4,7 @@
 
 > *require connect middleware, but for basic usage you could comment out it in the code.*
 
-> *It contains 3 simple html forms ( with multiple file selection for HTML5 browsers )
+> *It contains 3 simple html forms ( with multiple file selection for HTML5 browsers )*
 
 >Generic Usage:
 
