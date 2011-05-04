@@ -270,7 +270,9 @@ When a file is found in the data stream:
    >In this way, It assures us that the first file will not overwritten.
 
  - when a file reaches the upload threshold allowed:
+ 
    > - if *removeIncompleteFiles === true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
+   
    > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted, an array with paths ( which lists incomplete files ) is passed to 'end' callback.
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
