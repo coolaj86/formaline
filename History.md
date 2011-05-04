@@ -72,3 +72,9 @@
 
  * + tested with HTML5 AJAX powered multiple file uploads
  * + added client side example with multiple custom XHR
+
+  0.3.1 / 2011-05-xx
+==================
+
+ * + added upload example with iframe
+
