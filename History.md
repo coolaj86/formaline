@@ -78,4 +78,5 @@
 
  * + added upload example with iframe
  * + resolved little bug for application/x-www-form-urlencoded
+ * + added some text in Readme
 
