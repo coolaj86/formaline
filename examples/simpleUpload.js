@@ -24,7 +24,7 @@ var getHtmlForm = function(req, res,next) {
              <input type="text" name="simplefield2"><br>\
              <input type="text" name="simplefield3"><br>\
              <input type="submit" value="Submit">\
-             </form>\
+             </form><br/>\
              <b>Iframe Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
              <input type="file" name="file" multiple  src="" frameborder="1" />\

@@ -50,31 +50,32 @@
  * + added some comments
  
  0.2.7 / 2011-04-05
-==================
+===================
 
  * + resolved some bugs in code for exceptions
  
   0.2.8 / 2011-04-08
-==================
+====================
 
  * + added support for multiple uploads from multiple browsers to testapp.js
  * + added link to Boyer Moore algorithm
  * + Some corrections to docs
 
   0.2.9 / 2011-04-29
-==================
+====================
 
  * + send empty response after that a fatal exception was thrown ( for example, on missing or empty request headers )
  * + removed possible 0 result from Math.random, when generating random directory name
 
   0.3.0 / 2011-04-30
-==================
+====================
 
  * + tested with HTML5 AJAX powered multiple file uploads
  * + added client side example with multiple custom XHR
 
-  0.3.1 / 2011-05-xx
-==================
+  0.3.1 / 2011-05-04
+====================
 
  * + added upload example with iframe
+ * + resolved little bug for application/x-www-form-urlencoded
 
