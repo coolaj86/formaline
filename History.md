@@ -84,4 +84,9 @@
 ====================
 
  * + resolved new introduced bug for fields
+ 
+  0.3.3 / 2011-05-xx
+====================
+
+ * + resolved new introduced bug for customXHR
 
