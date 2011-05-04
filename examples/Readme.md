@@ -4,13 +4,15 @@
 
 > *require connect middleware, but for basic usage you could comment out it in the code.*
 
+> *It contains 3 simple html forms ( with multiple file selection for HTML5 browsers )
+
 >Generic Usage:
 
 
      $ node examples/simpleUpload.js
 
 
->you can use this simple html form, for default you could point your browser to:
+> for default you could point your browser to:
 
 > - **http://nodeServerIp/test/**   *or try* [localhost](http://localhost:3000/test/)        
 > - **http://nodeServerIp:3000/test/**  *or try* [localhost](http://localhost:3000/test/) 
