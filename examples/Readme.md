@@ -1,6 +1,7 @@
 ### Basic Example ( simpleUpload.js )
 
 > **this basic example doesn't make use of ajax for uploads**
+
 > *require connect middleware, but for basic usage you could comment out it in the code.*
 
 >Generic Usage:
