@@ -75,7 +75,7 @@
 
   0.3.1 / 2011-05-04
 ====================
-
+ * + This version in unstable, move to 0.3.2
  * + added upload example with iframe
  * + resolved little bug for application/x-www-form-urlencoded
  * + added some text in Readme
