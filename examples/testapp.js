@@ -9,7 +9,8 @@ var getHtmlForm = function(req, res,next) {
   if (req.url === '/test/') {
     log( ' -> req url :', req.url );
     res.writeHead(200, {'content-type': 'text/html'});
-    res.end('<b>Multiple File Upload:</b><br/><br/>\
+    res.end('<html><head></head><body>\
+             <b>Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" enctype="multipart/form-data" method="post">\
              <input type="text" name="demotitle1"><br>\
              <input type="file" name="multiplefield1" multiple="multiple"><br>\
@@ -23,7 +24,15 @@ var getHtmlForm = function(req, res,next) {
              <input type="text" name="simplefield2"><br>\
              <input type="text" name="simplefield3"><br>\
              <input type="submit" value="Submit">\
-             </form>'
+             </form>\
+             <b>Iframe Multiple File Upload:</b><br/><br/>\
+             <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
+             <input type="file" name="file" multiple  src="" frameborder="1" />\
+             <input type="submit" />\
+             </form>\
+             <iframe name="iframe" width="100%" height="400px"></iframe>\
+             </form>\
+             </body></html>'
     );
   } else {
     next();
