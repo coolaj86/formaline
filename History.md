@@ -85,8 +85,11 @@
 
  * + resolved new introduced bug for fields
  
-  0.3.3 / 2011-05-xx
+  0.3.3 / 2011-05-05
 ====================
 
- * + resolved new introduced bug for customXHR
+ * + resolved bug with data buffer indexes
+ * + resolved bug, reset fileStream after closing it 
+ * + resolved new introduced bug for my customXHR
+
 

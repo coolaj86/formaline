@@ -7,7 +7,8 @@
 
  Installation
 --------------
-     
+
+    
 with npm:
 
     $ npm install formaline
@@ -25,7 +26,7 @@ with git:
 
 >change the path and the port with yours. 
 
-
+**Please update at least to version 0.3.3 . Previous versions are buggy .**
 
  Features
 ----------
@@ -374,7 +375,8 @@ Other
  Future Releases
 -----------------
  
- - add choice to build JSON response
+ - code refactoring .
+ - add choice to build JSON response .
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
  - some code performance modifications in quickSearch.js and formaline.js .
