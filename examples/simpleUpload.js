@@ -16,6 +16,8 @@ var getHtmlForm = function(req, res,next) {
              <input type="file" name="multiplefield1" multiple="multiple"><br>\
              <input type="text" name="demotitle2"><br>\
              <input type="file" name="multiplefield2" multiple="multiple"><br>\
+             <input type="text" name="demotitle3"><br>\
+             <input type="file" name="multiplefield3" multiple="multiple"><br>\
              <input type="submit" value="Upload">\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
