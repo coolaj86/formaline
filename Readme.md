@@ -378,17 +378,16 @@ Other
  Future Releases
 -----------------
  
- - code refactoring .
+ - code refactoring ( performance modifications in quickSearch.js , code cleaning formaline.js ) .
+ - add others examples with AJAX, writing about tested client-side uploader .
  - add choice to build JSON response .
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
- - some code performance modifications in quickSearch.js and formaline.js .
- - some code cleaning in formaline.js for some variables .
  - give choice to changing the parser with a custom one .
- - find some weird boundary string types .
- - handle exceptions with a single listener, passings a type of exception field (headerexception, pathexception..) . 
- - Restify ?
+ - find and test some weird boundary string types .
+ - handle exceptions with a single listener, passings an exception type field (headerexception, pathexception..) . 
  - add unit tests .
+ - Restify ?
 
 
 
