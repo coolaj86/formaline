@@ -378,7 +378,7 @@ Other
  Future Releases
 -----------------
  
- - code refactoring ( performance modifications in quickSearch.js , code cleaning formaline.js ) .
+ - code refactoring ( performance modifications in quickSearch.js , code cleaning in formaline.js ) .
  - add others examples with AJAX, writing about tested client-side uploader .
  - add choice to build JSON response .
  - add a readable stream from files while they are uploaded .
