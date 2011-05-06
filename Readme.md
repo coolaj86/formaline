@@ -372,6 +372,9 @@ Other
 
 > **for Italian GitHubbers** -> [LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
 
+Thanks to [dvv](https://github.com/dvv) and [mrxot87](https://github.com/mrxot87)  for supporting me
+
+
  Future Releases
 -----------------
  
