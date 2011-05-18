@@ -55,9 +55,15 @@ with git:
  Client-Side
 --------------
 
-> **formaline** is succesfully tested against browsers like **Firefox**, **Chrome**, **Safari**, **Opera** and **IE5.5+** ..
-
-> and with some different kinds of client-side POSTs: 
+> **formaline** is succesfully tested ( *for now* ) against : 
+  
+> browsers like:
+  
+  -  **Firefox 3+**, **Chrome 9+**, **Safari 4**, **Opera 10+** and **IE5.5+** ..
+  -  **Links2**, **Lynx**
+  
+  
+>  some different kinds of client-side POSTs: 
 
  > *( multiple files selection is available only for HTML5 capable browsers )*  
  
@@ -74,7 +80,7 @@ with git:
  > - HTML5 AJAX powered POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
  
- > **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used** 
+ > **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
  
 
  Simple Usage
