@@ -59,7 +59,7 @@ with git:
   
 > browsers like:
   
->  -  **Firefox 3+**, **Chrome 9+**, **Safari 4**, **Opera 10+** and **IE5.5+** ..
+>  -  **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
 
 >  -  **Links2**, **Lynx**
   
