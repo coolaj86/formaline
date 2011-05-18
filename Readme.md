@@ -55,7 +55,7 @@ with git:
  Client-Side
 --------------
 
-> **formaline** is succesfully tested with browsers like *Firefox*, *Chrome*, *Safari*, *Opera* and  *IE6+* ..
+> **formaline** is succesfully tested against browsers like *Firefox*, *Chrome*, *Safari*, *Opera* and  *IE5.5+* ..
 > and with some different kinds of client-side POSTs: 
 
  > *( multiple files selection is available only for HTML5 capable browsers )*  
@@ -220,7 +220,7 @@ You could create a formaline instance with some configuration options :
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:off'
+    logging: 'debug:on,1:on,2:on,3:off'
     
      uploadRootDir: '/var/www/upload/',
             
