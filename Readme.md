@@ -59,11 +59,17 @@ with git:
 > and with some different kinds of client-side POSTs: 
 
  > *( multiple files selection is available only for HTML5 capable browsers )*  
+ 
  > - [curl](https://github.com/rootslab/formaline/tree/master/examples) ( command-line tool )
+ 
  > - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
- > - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)      
+ 
+ > - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)
+  
  > - [swfUploader 2+](http://swfupload.org/) ( flash uploader )
+ 
  > - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
+ 
  > - HTML5 AJAX powered POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )  
   
 
