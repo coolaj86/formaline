@@ -30,7 +30,7 @@ with git:
 
 >change the path and the port with yours. 
 
-**Please update at least to version 0.3.3 . Previous versions are a little buggy .**
+**Please always update to latest release . This library is in active development .**
 
  Features
 ----------
