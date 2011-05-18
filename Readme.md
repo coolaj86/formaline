@@ -70,7 +70,7 @@ with git:
  
  > - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
  
- > - HTML5 AJAX powered POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )  
+ > - HTML5 AJAX powered POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
 
  Simple Usage
