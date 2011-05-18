@@ -60,7 +60,7 @@ with git:
 ``` javascript
 
  var formaline = require('formaline'),
- form = new formaline( { } );           // <-- empty config object
+     form = new formaline( { } );           // <-- empty config object
 
 ```
    
@@ -107,20 +107,20 @@ with git:
 
 You could create a formaline instance with some configuration options : 
 
-> - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'**.
+> - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
 >   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it  throws an exception )
->   - a new sub-directory with a random name is created for every upload request.
+>   - **a new sub-directory with a random name is created for every upload request** .
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
->   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping  writing to disk,
->   - it also limits data received with serialized fields (x-www-urlencoded). 
+>   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping writing to disk .
+>   - it also limits data received with serialized fields (x-www-urlencoded) . 
   
-> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true**.
->   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. )
+> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
+>   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
-> - **'checkContentLength'** : ( *boolean* )  **default** value is **false**.
+> - **'checkContentLength'** : ( *boolean* )  **default** value is **false** .
 >   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
->   - if value is set to true, if the header Content-Length exceeds uploadThreshold, It stops receiving data.
+>   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) the **default** value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
@@ -250,9 +250,7 @@ You could create a formaline instance with some configuration options :
             res.end();
             //next();
          }
-            
      }//end listener config
- 
  };
         
 ```  
