@@ -12,13 +12,13 @@
 with npm:
 
 ``` bash
-    $ npm install formaline
+ $ npm install formaline
 ```
 
 with git:
 
 ``` bash
-    $ git clone git://github.com/rootslab/formaline.git
+ $ git clone git://github.com/rootslab/formaline.git
 ```
 
 >if you want to use nodeJS, only for testing purpose, together with Apache, a simple way to do this is to enable apache *mod-proxy* and add this lines to your apache virtualhost:
@@ -57,25 +57,36 @@ with git:
  Simple Usage
 --------------
 
-    var formaline = require('formaline'),
-        form = new formaline( { } );           // <-- empty config object
+``` javascript
+
+ var formaline = require('formaline'),
+ form = new formaline( { } );           // <-- empty config object
+
+```
    
    *add events listener:*
 
-    ...
-    form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
-    ...
+``` javascript
+ 
+ ...
+ form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
+ ...
+
+```
  
   **the listed params ( sha1filename, origfilename, filedir, .. ) are already attached to the function callback!** 
   
   > for example, if I write an anonymous function myListener:
-  
-     ...
-     var myListener = function( ){ console.log( arguments ); }
-     ..
-     form.on( 'filereceived', myListener ); <---- myListener function gets sha1filename, origfilename, etc.. as arguments
-     ..
-   
+
+``` javascript  
+
+ ...
+ var myListener = function( ){ console.log( arguments ); }
+ ..
+ form.on( 'filereceived', myListener ); <---- myListener function gets sha1filename, origfilename, etc.. as arguments
+ ..
+
+```
 
 
 >  see **Event & Listeners** section for a complete list of callbacks signatures!
@@ -84,9 +95,12 @@ with git:
 
    *then, parse request:*    
 
+``` javascript  
 
-    form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
-    
+ form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
+
+```
+
 
  Configuration Options
 -----------------------
@@ -174,81 +188,91 @@ You could create a formaline instance with some configuration options :
 
 *require the module:*
 
+``` javascript
+  
+ var formaline = require('formaline');
 
-    var formaline = require('formaline');
-    
+
+```    
 
 *build a config object:*
 
+``` javascript  
     
-    var config = { 
+ var config = { 
         
-        logging: 'debug:on,1:on,2:on,3:off'
+     logging: 'debug:on,1:on,2:on,3:off'
     
-        uploadRootDir: '/var/www/upload/',
+     uploadRootDir: '/var/www/upload/',
             
-        checkContentLength: false,
+     checkContentLength: false,
             
-        uploadThreshold: 3949000,  
+     uploadThreshold: 3949000,  
           
-        removeIncompleteFiles: true,
+     removeIncompleteFiles: true,
             
-        emitDataProgress: false, 
+     emitDataProgress: false, 
         
-        sha1sum: true,
+     sha1sum: true,
             
-        listeners: {
+     listeners: {
                 
-            'warning': function(msg){
-                ...
-            },
-            'headersexception': function ( isUpload, errmsg, res, next ) {
-                ...
-                next();               
-            },
-            'exception': function ( isUpload, errmsg, res, next ) {
-                ...
-                next();
-            },
-            'pathexception': function ( path, errmsg, res, next ) {
-                ...
-                next();
-            },
-            'field': function ( fname, fvalue ) { 
-                ...
-            },
-            'filereceived': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { 
-                ... 
-            },
-            'fileremoved': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { 
-                ...
-            },
-            'dataprogress': function ( bytesReceived, chunksReceived, ratio ) {
-                ...
-            },
-            'end': function ( incompleteFiles, stats, res, next ) {
-                ...
-                res.writeHead(200, {'content-type': 'text/plain'});
-                res.end();
-                //next();
-            }
+        'warning': function(msg){
+            ...
+         },
+         'headersexception': function ( isUpload, errmsg, res, next ) {
+            ...
+            next();               
+         },
+         'exception': function ( isUpload, errmsg, res, next ) {
+            ...
+            next();
+         },
+         'pathexception': function ( path, errmsg, res, next ) {
+            ...
+            next();
+         },
+         'field': function ( fname, fvalue ) { 
+            ...
+         },
+         'filereceived': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { 
+            ... 
+         },
+         'fileremoved': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { 
+            ...
+         },
+         'dataprogress': function ( bytesReceived, chunksReceived, ratio ) {
+            ...
+         },
+         'end': function ( incompleteFiles, stats, res, next ) {
+            ...
+            res.writeHead(200, {'content-type': 'text/plain'});
+            res.end();
+            //next();
+         }
             
-        }//end listener config
-    };
+     }//end listener config
+ 
+ };
         
+```  
 
 *create an instance with config, then parse the request:*
    
+``` javascript  
 
-    new formaline( config ).parse( req, res, next );
-    
+ new formaline( config ).parse( req, res, next );
+
+```
 
   *or*
 
+``` javascript  
 
-    var form = new formaline(config); 
-    form.parse( req, res, next);
-    
+ var form = new formaline(config); 
+ form.parse( req, res, next);
+
+```   
     
 
  **See Also :**
