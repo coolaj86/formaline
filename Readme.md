@@ -52,6 +52,10 @@ with git:
 > - etc.. 
 
 
+ Browser Tested
+-----------------
+
+> formaline is succesfully tested with Firefox, Chrome, Safari, Opera, IE6+ ..
 
 
  Simple Usage
