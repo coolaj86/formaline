@@ -26,7 +26,7 @@
 
 
 
-### Custom Example with Progress Bar ( customXHR.js )
+### Custom Example with Progress Bar ( [customXHR.js](https://github.com/rootslab/formaline/blob/master/examples/customXHR.js) )
 
 > **this is a custom XHR2 ( AJAX ) example, is not compatible with older browser (not HTML5 or XHR2 capable ), tested with Firefox 3.6+, Safari and Chrome .**
  
