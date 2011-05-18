@@ -55,7 +55,7 @@ with git:
  Client-Side
 --------------
 
-> **formaline** is succesfully tested against browsers like *Firefox*, *Chrome*, *Safari*, *Opera* and  *IE5.5+* ..
+> **formaline** is succesfully tested against browsers like **Firefox**, **Chrome**, **Safari**, **Opera** and **IE5.5+** ..
 > and with some different kinds of client-side POSTs: 
 
  > *( multiple files selection is available only for HTML5 capable browsers )*  
