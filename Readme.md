@@ -30,7 +30,7 @@ with git:
 
 >change the path and the port with yours. 
 
-**Please update at least to version 0.3.3 . Previous versions are buggy .**
+**Please update at least to version 0.3.3 . Previous versions are a little buggy .**
 
  Features
 ----------
@@ -55,7 +55,7 @@ with git:
  Browser Tested
 -----------------
 
-> formaline is succesfully tested with Firefox, Chrome, Safari, Opera, IE6+ ..
+> **formaline** is succesfully tested with *Firefox*, *Chrome*, *Safari*, *Opera*, *IE6+* ..
 
 
  Simple Usage
