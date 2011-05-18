@@ -52,11 +52,26 @@ with git:
 > - etc.. 
 
 
- Browser Tested
------------------
+ Client-Side
+--------------
 
-> **formaline** is succesfully tested with *Firefox*, *Chrome*, *Safari*, *Opera*, *IE6+* ..
+> **formaline** is succesfully tested with browsers like *Firefox*, *Chrome*, *Safari*, *Opera* and  *IE6+* ..
+> and with some different kinds of client-side POSTs: 
 
+  *( multiple files selection is available only for HTML5 capable browsers )*  
+  
+  - [curl](https://github.com/rootslab/formaline/tree/master/examples) ( command-line tool )
+  
+  - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
+  
+  - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)      
+  
+  - [swfUploader 2+](http://swfupload.org/) ( flash uploader )
+  
+  - AJAX POSTS ( XHR )
+  
+  - HTML5 AJAX powered POSTS ( XHR2 )  
+  
 
  Simple Usage
 --------------
