@@ -8,9 +8,9 @@
 
 >Generic Usage:
 
-
+``` bash
      $ node examples/simpleUpload.js
-
+```    
 
 > for default you could point your browser to:
 
@@ -20,8 +20,9 @@
 
 >or you could use curl:
 
+``` bash
     curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
-    
+```    
 
 
 
