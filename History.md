@@ -91,5 +91,12 @@
  * + resolved bug with data buffer indexes
  * + resolved bug, reset fileStream after closing it 
  * + resolved new introduced bug for my customXHR
+ 
+   0.3.4 / 2011-05-18
+=====================
+
+ * + resolved some index bugs
+ * + tested more browser streams 
+ * + added some comments in Readme, and markdown changed
 
 
