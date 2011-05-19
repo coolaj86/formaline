@@ -125,7 +125,7 @@ var handleFormRequest = function( req, res, next ){
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> request processed! \n');
 
-                        res.write( '\n-> upload root dir: ' + form.uploadRootDir + ' \n');
+                        res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n');
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');
                         res.write( '-> checkContentLength: ' + form.checkContentLength + '\n');
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n');
