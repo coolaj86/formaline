@@ -316,7 +316,7 @@ You could create a formaline instance with some configuration options :
  
 When a file is found in the data stream:
  
- - this is directly written to disk, chunk per chunk, until the end of file is reached.
+ - this is directly written to disk, chunk to chunk, until the end of file is reached.
 
  - a directory with a random integer name is created in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
    it assures no collisions on file names, for every different POST .
