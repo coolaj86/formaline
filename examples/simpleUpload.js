@@ -12,24 +12,27 @@ var getHtmlForm = function(req, res,next) {
     res.end('<html><head></head><body>\
              <b>Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" enctype="multipart/form-data" method="post">\
-             <input type="text" name="demotitle1"><br>\
-             <input type="file" name="multiplefield1" multiple="multiple"><br>\
-             <input type="text" name="demotitle2"><br>\
-             <input type="file" name="multiplefield2" multiple="multiple"><br>\
-             <input type="text" name="demotitle3"><br>\
-             <input type="file" name="multiplefield3" multiple="multiple"><br>\
-             <input type="submit" value="Upload">\
+             <input type="text" name="demotitle1"/><br/>\
+             <input type="file" name="multiplefield1" multiple="multiple"><br/>\
+             <input type="text" name="demotitle2/"><br/>\
+             <input type="file" name="multiplefield2" multiple="multiple"><br/>\
+             <input type="text" name="demotitle3"/><br/>\
+             <input type="file" name="multiplefield3" multiple="multiple"><br/>\
+             <input type="submit" value="Upload"/>\
              </form><br/>\
              <b>Simple Post:</b><br/><br/>\
              <form action="/test/post" method="post">\
-             <input type="text" name="simplefield1"><br>\
-             <input type="text" name="simplefield2"><br>\
-             <input type="text" name="simplefield3"><br>\
+             <input type="text" name="simplefield1"/><br/>\
+             <input type="text" name="simplefield2"/><br/>\
+             <input type="text" name="simplefield3"/><br/>\
              <input type="submit" value="Submit">\
              </form><br/>\
              <b>Iframe Multiple File Upload:</b><br/><br/>\
              <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
-             <input type="file" name="file" multiple  src="" frameborder="1" />\
+             <input type="text" name="iframefield1"/><br/>\
+             <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
+             <input type="text" name="iframefield2"/><br/>\
+             <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
              <input type="submit" />\
              </form>\
              <iframe name="iframe" width="100%" height="400px"></iframe>\
