@@ -99,4 +99,9 @@
  * + tested more browser streams 
  * + added some comments in Readme, and markdown changed
 
+   0.3.5 / 2011-05-19
+=====================
 
+ * + permits ; in filenames
+ * + emit 'filereceived' for empty uploaded files  
+ * + added text to Readme
