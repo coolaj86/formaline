@@ -84,7 +84,7 @@ var handleFormRequest = function( req, res, next ){
             //enable various logging levels
             //it is possible to switch on/off one or more levels at the same time
             //debug: 'off' turn off logging
-        logging: 'debug:on,1:on,2:on,3:on',
+        logging: 'debug:on,1:on,2:on,3:off',
         
             //listeners
         listeners: {
