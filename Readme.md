@@ -334,7 +334,7 @@ When a file is found in the data stream:
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*, and *sha1sum* only when the file was received . 
+ - the **filereceived** and **fileremoved** events are emitted with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*, and *sha1sum* only when the file was received . 
  
  - When the mime type is not recognized by the file extension, the default value for **filetype** will be **'application/octet-stream'** .
  
