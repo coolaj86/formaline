@@ -59,9 +59,9 @@ with git:
   
 > browsers like:
   
->  -  **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
+>  - **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
 
->  -  **Links2**, **Lynx**
+>  - **Links2**, **Lynx**
   
   
 >  some different kinds of client-side POSTs: 
@@ -231,7 +231,7 @@ You could create a formaline instance with some configuration options :
     
  var config = { 
         
-    logging: 'debug:on,1:on,2:on,3:off'
+     logging: 'debug:on,1:on,2:on,3:off'
     
      uploadRootDir: '/var/www/upload/',
             
@@ -319,7 +319,7 @@ When a file is found in the data stream:
  - this is directly written to disk, chunk per chunk, until the end of file is reached.
 
  - a directory with a random integer name is created in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
-   it assures no collisions on file names, for every upload.
+   it assures no collisions on file names, for every different POST .
    
 - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 - when two files with the same name are uploaded through the same post action, the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis);
@@ -334,7 +334,7 @@ When a file is found in the data stream:
 
  - when a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*, *sha1sum*.
+ - the **filereceived** and **fileremoved** events are emitted together with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield* and *sha1sum* ( only for filereceived ).
  
  
  Parser Implementation  & Performance
