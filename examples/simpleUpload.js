@@ -72,7 +72,7 @@ var handleFormRequest = function( req, res, next ){
         
             // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
-        uploadThreshold: 1024*1024,//bytes ex.: 1024*1024*1024, 512
+        uploadThreshold: 1024*1024*1024,//bytes ex.: 1024*1024*1024, 512
         
             //default false, bypass headers value, continue to write to disk 
             //until uploadThreshold bytes are written. 
@@ -87,7 +87,7 @@ var handleFormRequest = function( req, res, next ){
             //enable various logging levels
             //it is possible to switch on/off one or more levels at the same time
             //debug: 'off' turn off logging
-        logging: 'debug:on,1:on,2:on,3:off',
+        logging: 'debug:on,1:on,2:on,3:on',
         
             //listeners
         listeners: {
