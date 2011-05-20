@@ -92,14 +92,14 @@ var handleFormRequest = function( req, res, next ){
             //listeners
         listeners: {
                 'warning': function( isUpload, msg ){
-                    log('\n warning  -->', isUpload, msg);
+                    //log('\n warning  -->', isUpload, msg);
                 },
                 'headersexception': function( isUpload, errmsg, res, next){
                     log('\n headersexception  -->',errmsg);
                     next();               
                 },
                 'exception': function( isUpload, errmsg, res, next){
-                    log('\n exception --> ',errmsg);
+                    //log('\n exception --> ',errmsg);
                     next();
                 },
                 'pathexception': function( path, errmsg, res, next){//there is a file upload
