@@ -68,7 +68,7 @@ var handleFormRequest = function( req, res, next ){
             // default is false, or integer chunk factor, 
             // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
             // minimum factor value is 2 -->
-        emitDataProgress: false,//false,true,3,10,100
+        emitDataProgress: !false,//false,true,3,10,100
         
             // max bytes allowed, this is the max bytes written to disk before stop to write 
             // this is also true for serialzed fields not only for files upload  -->
