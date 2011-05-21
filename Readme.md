@@ -244,7 +244,6 @@ You could create a formaline instance with some configuration options :
          'exception': function ( etype, isupload, errmsg, isfatal ) {
             ...
          },
-         
          'field': function ( fname, fvalue ) { 
             ...
          },
