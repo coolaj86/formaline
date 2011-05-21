@@ -106,8 +106,13 @@
  * + emit 'filereceived' for empty uploaded files  
  * + added text to Readme
  
-  0.4.0 / 2011-05-xx
+  0.4.0 / 2011-05-20
 =====================
 
- * + code total refactoring
+ * + code total refactoring ( -30% )
 
+  0.4.1 / 2011-05-21
+=====================
+
+ * + changed exceptions listeners to a single entry point
+ * + removed callback param from exception listener
