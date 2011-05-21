@@ -176,15 +176,16 @@ You could create a formaline instance with some configuration options :
 
            
  Events & Listeners
---------
+--------------------
 
-#### Type of events:
+#### Exception Types:
  
  
+> - *fatal exceptions* : headersexception, pathexception, bufferexception, streamexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
 
-> - *'fatal' exceptions* : headersexception, pathexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
 > - *informational exceptions* : filereceived, field, dataprogress, end 
-> - *not 'fatal' exceptions* : fileremoved, warning 
+
+> - *warning exceptions* : fileremoved, warning 
 
  
 #### Listeners are called with following listed arguments, they are already attached to the callbacks : 
