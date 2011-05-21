@@ -105,3 +105,9 @@
  * + permits ; in filenames
  * + emit 'filereceived' for empty uploaded files  
  * + added text to Readme
+ 
+  0.4.0 / 2011-05-xx
+=====================
+
+ * + code total refactoring
+
