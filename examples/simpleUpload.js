@@ -113,8 +113,8 @@ var handleFormRequest = function( req, res, next ){
                 'end': function( incompleteFiles, stats, res, next) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
-                        res.write( '-> request processed! \n');
-
+                        res.write( '-> ' + new Date() + '\n' );
+                        res.write( '-> request processed! \n')
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n');
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n');
                         res.write( '-> checkContentLength: ' + form.checkContentLength + '\n');
@@ -137,7 +137,7 @@ var handleFormRequest = function( req, res, next ){
                         removedFiles = {};
                         receivedFields = {};
                         res.end();
-                        //next();//test
+                        //next(); //test
                 }
             }
     };//end config obj
