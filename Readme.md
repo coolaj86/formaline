@@ -182,21 +182,15 @@ You could create a formaline instance with some configuration options :
  
  
 
-> - *'fatal' exceptions* : headersexception, pathexception, exception ( the data transmission is interrupted, and the 'end' event is thrown ). 
-> - *informational* : filereceived, field, dataprogress, end 
-> - *warning* : fileremoved, warning 
+> - *'fatal' exceptions* : headersexception, pathexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
+> - *informational exceptions* : filereceived, field, dataprogress, end 
+> - *not 'fatal' exceptions* : fileremoved, warning 
 
  
 #### Listeners are called with following listed arguments, they are already attached to the callbacks : 
 
 
-> - **'warning'**: `function( msg ){ ... }`,
- 
-> - **'headersexception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
- 
-> - **'exception'**: `function ( isUpload, errmsg, res, next ) { .. }`,
- 
-> - **'pathexception'**: `function ( path, errmsg, res, next ) { .. }`,
+> - **'exception'**: `function ( etype, isupload, errmsg, isfatal ) { .. }`,
  
 > - **'field'**: `function ( fname, fvalue ) { .. }`,
  
@@ -247,7 +241,7 @@ You could create a formaline instance with some configuration options :
             
      listeners: {
               
-         'exception': function ( etype, isUpload, errmsg ) {
+         'exception': function ( etype, isupload, errmsg, isfatal ) {
             ...
          },
          

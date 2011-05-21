@@ -91,9 +91,8 @@ var handleFormRequest = function( req, res, next ){
         
             //listeners
         listeners: {
-                'exception': function( etype, isUpload, errmsg, isFatal ){//, res, next){
+                'exception': function( etype, isupload, errmsg, isfatal ){
                     //log('\n exception --> ',errmsg);
-                    //next();
                 },
                 'field': function( fname, fvalue ){
                     receivedFields[fname] = fvalue;
@@ -107,7 +106,6 @@ var handleFormRequest = function( req, res, next ){
                     log('\n fileremoved -->  sha1name: '+sha1filename+', original name: '+origfilename+', path: '+filedir+', type: '+filetype+', bytes received: '+filesize+', field: '+filefield+'\n');
                     removedFiles[sha1filename] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                     //log(' updated list of files removed: ',removedFiles);
-
                 },
                 'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived,' ratio:',  ratio  );
