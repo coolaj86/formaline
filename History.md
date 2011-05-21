@@ -116,3 +116,10 @@
 
  * + changed exceptions listeners to a single entry point
  * + removed callback param from exception listener
+ 
+   0.4.2 / 2011-05-21
+=====================
+
+ * + removed all methods from this object to inner variable with binding
+ * + 
+ 
