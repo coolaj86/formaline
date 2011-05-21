@@ -108,9 +108,9 @@ var handleFormRequest = function( req, res, next ){
                     next();
                 },
                 /**/
-                'exception': function( etype, isUpload, errmsg, res, next){
+                'exception': function( etype, isUpload, errmsg){//, res, next){
                     //log('\n exception --> ',errmsg);
-                    next();
+                    //next();
                 },
                 'field': function( fname, fvalue ){
                     receivedFields[fname] = fvalue;
