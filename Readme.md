@@ -246,22 +246,11 @@ You could create a formaline instance with some configuration options :
      sha1sum: true,
             
      listeners: {
-                
-        'warning': function(msg){
+              
+         'exception': function ( etype, isUpload, errmsg ) {
             ...
          },
-         'headersexception': function ( isUpload, errmsg, res, next ) {
-            ...
-            next();               
-         },
-         'exception': function ( isUpload, errmsg, res, next ) {
-            ...
-            next();
-         },
-         'pathexception': function ( path, errmsg, res, next ) {
-            ...
-            next();
-         },
+         
          'field': function ( fname, fvalue ) { 
             ...
          },
@@ -436,15 +425,14 @@ Other
  Future Releases
 -----------------
  
- - code refactoring ( performance modifications in quickSearch.js , code cleaning in formaline.js ) .
+ - more performance modifications in quickSearch.js .
  - add others examples with AJAX, writing about tested client-side uploader .
  - add choice to build JSON response .
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
  - give choice to changing the parser with a custom one .
  - find and test some weird boundary string types .
- - handle exceptions with a single listener, passings an exception type field (headerexception, pathexception..) . 
- - add unit tests .
+ - add some unit tests .
  - Restify ?
 
 

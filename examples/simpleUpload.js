@@ -91,7 +91,7 @@ var handleFormRequest = function( req, res, next ){
         
             //listeners
         listeners: {
-                'exception': function( etype, isUpload, errmsg){//, res, next){
+                'exception': function( etype, isUpload, errmsg, isFatal ){//, res, next){
                     //log('\n exception --> ',errmsg);
                     //next();
                 },
