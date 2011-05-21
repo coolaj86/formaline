@@ -2,7 +2,7 @@
 
 var http = require('http'),
     fs = require('fs'),
-    formaline = require('../lib/formaline').formaline,
+    formaline = require('../../lib/formaline').formaline,
     connect = require('connect'),
     server;
 

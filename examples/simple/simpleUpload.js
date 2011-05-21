@@ -1,7 +1,7 @@
 
 
 var http = require( 'http' ),
-    formaline = require( '../lib/formaline' ).formaline,
+    formaline = require( '../../lib/formaline' ).formaline,
     connect = require( 'connect' ),
     server,
     log = console.log,
