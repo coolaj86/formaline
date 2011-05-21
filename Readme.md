@@ -181,11 +181,11 @@ You could create a formaline instance with some configuration options :
 #### Exception Types:
  
  
-> - *fatal exceptions* : headersexception, pathexception, bufferexception, streamexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
+> - *fatal* : headersexception, pathexception, bufferexception, streamexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
 
-> - *informational exceptions* : filereceived, field, dataprogress, end 
+> - *informational* : filereceived, field, dataprogress, end 
 
-> - *warning exceptions* : fileremoved, warning 
+> - *need attention* : fileremoved, warning 
 
  
 #### Listeners are called with following listed arguments, they are already attached to the callbacks : 
