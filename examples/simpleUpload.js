@@ -68,7 +68,7 @@ var http = require( 'http' ),
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload  -->
-                uploadThreshold: 1024 * 1024 * 1024, // bytes ex.: 1024*1024*1024, 512
+                uploadThreshold: 1024 * 4 * 1024, // bytes ex.: 1024*1024*1024, 512
                 
                     //default false, bypass headers value, continue to write to disk 
                     //until uploadThreshold bytes are written. 
@@ -92,7 +92,7 @@ var http = require( 'http' ),
                     },
                     'field': function( fname, fvalue ){
                         receivedFields[ fname ] = fvalue;
-                        log( '\n field received--> filename: ', fname + ', value: ' + fvalue );
+                        log( '\n field received--> filename: "'+ fname + '"' + ( ( fvalue ) ? ( ', value: "' + fvalue + '"') : '') );
                     },
                     'filereceived': function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
                         receivedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
@@ -106,7 +106,7 @@ var http = require( 'http' ),
                     'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
                         log( '\n dataprogress --> bytes:', bytesReceived, 'chunks:', chunksReceived, ' ratio:', ratio );
                     },
-                    'end': function( incompleteFiles, stats, res, next) {
+                    'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );

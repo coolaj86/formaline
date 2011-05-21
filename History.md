@@ -120,6 +120,6 @@
    0.4.2 / 2011-05-21
 =====================
 
- * + removed all methods from this object to inner variable with binding
- * + 
+ * + removed all methods from this object to inner variables with binding
+ * + cleaned some code
  
