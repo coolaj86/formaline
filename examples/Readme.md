@@ -9,7 +9,7 @@
 >Generic Usage:
 
 ``` bash
- $ node examples/simpleUpload.js
+ $ node examples/simple/simpleUpload.js
 ```    
 
 > for default you could point your browser to:
@@ -24,6 +24,8 @@
  $ curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
 ```    
 
+
+**CUSTOM XHR EXAMPLE IS NOT PORTED TO VERSION >= 0.4.0 ( FOR NOW, SEE YOU LATER )**
 
 ### Custom Example with Progress Bar ( [customXHR.js](https://github.com/rootslab/formaline/blob/master/examples/customXHR.js) )
 

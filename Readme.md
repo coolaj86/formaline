@@ -36,7 +36,7 @@ with git:
 ----------
 
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
-> - It works with **HTML5 AJAX-powered multiple file uploads** .
+> - It works with **HTML5-powered AJAX multiple file uploads** .
 > - It is Possible to create module instances with a **configuration object** .
 > - Some Useful configuration parameters ( **listeners**, uploadThreshold, logging .. ) .
 > - Many events for control of the module execution . 
@@ -78,7 +78,7 @@ with git:
  
  > - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
  
- > - HTML5 AJAX powered POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
+ > - HTML5-powered AJAX POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
  
  > **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 

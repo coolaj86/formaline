@@ -25,17 +25,17 @@ var getHtmlForm = function(req, res,next) {
               </head><body></body></html>'
     );
   } else {
-    if ( ~req.url.indexOf('/test/client/') ) {
-        res.writeHead(200,{'Content-Type': 'text/javascript'});
-        res.end(fs.readFileSync(__dirname+req.url.replace('/test/','/'), 'utf8' ));    
+    if ( ~req.url.indexOf( '/test/client/' ) ) {
+        res.writeHead( 200, { 'Content-Type': 'text/javascript' } );
+        res.end( fs.readFileSync( __dirname + req.url.replace( '/test/', '/' ), 'utf8' ) );    
     }else{
       next();
     }
   }
 };
-/**/
+
 var log = console.log,
-    dir =  '/tmp/';
+    dir = '/tmp/';
     
 var handleFormRequest = function( req, res, next ){
     var receivedFiles = {},
