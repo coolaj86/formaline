@@ -91,6 +91,7 @@ var handleFormRequest = function( req, res, next ){
         
             //listeners
         listeners: {
+                /** /
                 'warning': function( isUpload, errmsg ){
                     //log('\n warning  -->', isUpload, errmsg);
                 },
@@ -104,6 +105,11 @@ var handleFormRequest = function( req, res, next ){
                 },
                 'pathexception': function( path, errmsg, res, next){//there is a file upload
                     //log('\n pathexception -->',path,'msg:',errmsg+'\n');        
+                    next();
+                },
+                /**/
+                'exception': function( etype, isUpload, errmsg, res, next){
+                    //log('\n exception --> ',errmsg);
                     next();
                 },
                 'field': function( fname, fvalue ){
