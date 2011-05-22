@@ -413,7 +413,7 @@ Other
 
 > **for Italian GitHubbers** -> [LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
 
-> Special thanks to [dvv](https://github.com/dvv) and [mrxot87](https://github.com/mrxot87) for supporting me.
+> Special thanks to [dvv](https://github.com/dvv) for his precious suggestions, and [mrxot87](https://github.com/mrxot87) for having tested formaline with Opera .
 
 
  Future Releases
