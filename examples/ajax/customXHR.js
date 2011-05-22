@@ -9,10 +9,10 @@ var http = require('http'),
 // CUSTOM multiple XHR example, not compliant, without boundary strings
 // with progress bar
 
-var getHtmlForm = function(req, res,next) { 
-  if (req.url === '/test/') {
+var getHtmlForm = function( req, res, next ) { 
+  if ( req.url === '/test/' ) {
     log( ' -> req url :', req.url );
-    res.writeHead(200, {'content-type': 'text/html'});
+    res.writeHead( 200, { 'content-type': 'text/html' } );
     res.end(  '<!DOCTYPE html><head>\
               <title>HTML5 Multiple File Upload With Progress Bar</title>\
               <style type="text/css">\
@@ -20,12 +20,12 @@ var getHtmlForm = function(req, res,next) {
                 .progress { width: 200px; border: 1px solid #BBB; background-color: #FFF; padding: 0; }\
                 .progress span { display: block; width: 0px; height: 16px; background-color: #C8B5E3; }\
               </style>\
-              <script type="text/javascript" src="client/sendFile.js"></script>\
-              <script type="text/javascript" src="client/loadForm.js" ></script>\
+              <script type="text/javascript" src="client-code/sendFile.js"></script>\
+              <script type="text/javascript" src="client-code/loadForm.js" ></script>\
               </head><body></body></html>'
     );
   } else {
-    if ( ~req.url.indexOf( '/test/client/' ) ) {
+    if ( ~req.url.indexOf( '/test/client-code/' ) ) {
         res.writeHead( 200, { 'Content-Type': 'text/javascript' } );
         res.end( fs.readFileSync( __dirname + req.url.replace( '/test/', '/' ), 'utf8' ) );    
     }else{
@@ -80,21 +80,9 @@ var handleFormRequest = function( req, res, next ){
         
             //listeners
         listeners: {
-                'warning': function( msg ){
-                    log('\n warning  -->',msg);
-                },
-                'headersexception': function( isUpload, errmsg, res, next){
-                    log('\n headersexception  -->',errmsg);
-                    next();               
-                },
-                'exception': function( isUpload, errmsg, res, next){
-                    log('\n exception --> ',errmsg);
-                    next();
-                },
-                'pathexception': function( path, errmsg, res, next){//there is a file upload
-                    log('\n pathexception -->',path,'msg:',errmsg+'\n');        
-                    next();
-                },
+                'exception': function( etype, isupload, errmsg, isfatal ){
+                        //log('\n exception --> ',errmsg);
+                    },
                 'field': function( fname, fvalue ){
                     receivedFields[fname] = fvalue;
                     log('\n field--> ',fname,fvalue);
@@ -112,7 +100,7 @@ var handleFormRequest = function( req, res, next ){
                 'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
                     log('\n dataprogress --> bytes:', bytesReceived,'chunks:', chunksReceived,' ratio:',  ratio  );
                 },
-                'end': function( incompleteFiles, stats, res, next) {
+                'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> request processed! \n');
@@ -146,17 +134,19 @@ var handleFormRequest = function( req, res, next ){
                         
     if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
         log( ' -> req url :', req.url );
-        form = new formaline(config);
-        form.parse(req,res,next);
+        form = new formaline( config );
+        form.parse( req, res, next );
   
     } else {
         log( ' -> req url 404 error :', req.url );    
-        res.writeHead(404, {'content-type': 'text/plain'});
-        res.end('404');
+        res.writeHead( 404, { 'content-type': 'text/plain' } );
+        res.end( '404' );
     }
 
 };
-console.log(__dirname);
+
+//console.log( __dirname );
+
 server = connect( getHtmlForm , handleFormRequest, function(){console.log('\nHi!, I\'m next() function!');} );
 
 server.listen(3000);
