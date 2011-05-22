@@ -108,9 +108,10 @@
  
   0.4.0 / 2011-05-20
 =====================
-
+ 
+ * + new development branch
  * + code total refactoring ( -30% )
-
+ 
   0.4.1 / 2011-05-21
 =====================
 
@@ -123,3 +124,9 @@
  * + removed all methods from this object to inner variables with binding
  * + cleaned some code
  
+   0.4.3 / 2011-05-22
+=====================
+
+ * + resolved some little bugs
+ * + commented out customXHR2 code, now start to develop this feature
+ * + merged development branch with master branch
