@@ -130,3 +130,10 @@
  * + resolved some little bugs
  * + commented out customXHR2 code, now start to develop this feature
  * + merged development branch with master branch
+
+   0.4.4 / 2011-05-xx
+=====================
+
+ * + resolved some little configuration bugs
+ * + 
+ * + merged development branch with master branch

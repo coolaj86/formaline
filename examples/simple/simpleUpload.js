@@ -51,42 +51,52 @@ var http = require( 'http' ),
             form = null,
             config = {
                 
-                    //default is true -->
+                    // default is true -->
                 holdFilesExtensions : true,
                 
-                    //default is /tmp/ -->
+                    // default is /tmp/ -->
                 uploadRootDir: dir,
                 
-                    //default is false
-                    //return sha1 digests for files received?  -->
+                    // retrieve session ID for creating unique upload directory for authenticated users
+                    // the upload directory gets its name from the returned session identifier,
+                    // and will remain the same across multiple posts ( for the authenticated user with this session identifier )
+                    // a function that return the request property that holds session id 
+                    // session id must be a String 
+                    // the function takes request as a parameter at run-time 
+                getSessionID: function( req ){
+                    return emptyFn; 
+                },
+  
+                    // default is false
+                    // return sha1 digests for files received?  
                 sha1sum: true,
                 
                     // default is false, or integer chunk factor, 
-                    // every n chunk emit event 1+(0*n) 1+(1*n),1+(2*n),1+(3*n), 
-                    // minimum factor value is 2 -->
+                    // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
+                    // minimum factor value is 2 
                 emitDataProgress: false, // 3, 10, 100
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
-                    // this is also true for serialzed fields not only for files upload  -->
+                    // this is also true for serialzed fields not only for files upload 
                 uploadThreshold: 1024 * 1024 * 1024, // bytes ex.: 1024*1024*1024, 512
                 
-                    //default false, bypass headers value, continue to write to disk 
-                    //until uploadThreshold bytes are written. 
-                    //if true -> stop receiving data, when headers content length exceeds uploadThreshold
+                    // default false, bypass headers value, continue to write to disk 
+                    // until uploadThreshold bytes are written. 
+                    // if true -> stop receiving data, when headers content length exceeds uploadThreshold
                 checkContentLength: false,
                 
-                    //remove file not completed due to uploadThreshold, 
-                    //if true formaline emit fileremoved event, 
-                    //otherwise return a path array of incomplete files 
+                    // remove file not completed due to uploadThreshold, 
+                    // if true formaline emit fileremoved event, 
+                    // otherwise return a path array of incomplete files 
                 removeIncompleteFiles : true,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
-                    //enable various logging levels
-                    //it is possible to switch on/off one or more levels at the same time
-                    //debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:on,3:off',
+                    // enable various logging levels
+                    // it is possible to switch on/off one or more levels at the same time
+                    // debug: 'off' turn off logging
+                logging: 'debug:off,1:on,2:on,3:off',
                 
-                    //listeners
+                    // listeners
                 listeners: {
                     'exception': function( etype, isupload, errmsg, isfatal ){
                         log( '\n ' + ( ( isfatal ) ? 'fatal exception type--> "' : 'exception type--> "') + etype + '", msg: ' + errmsg );
