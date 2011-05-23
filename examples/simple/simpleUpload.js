@@ -88,7 +88,7 @@ var http = require( 'http' ),
                     //listeners
                 listeners: {
                     'exception': function( etype, isupload, errmsg, isfatal ){
-                        log( '\n ' + ( ( isfatal ) ? 'fatal exception --> "' : 'exception --> "') + etype + '", msg: ' + errmsg );
+                        log( '\n ' + ( ( isfatal ) ? 'fatal exception type--> "' : 'exception type--> "') + etype + '", msg: ' + errmsg );
                     },
                     'field': function( fname, fvalue ){
                         receivedFields[ fname ] = fvalue;
