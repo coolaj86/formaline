@@ -71,14 +71,6 @@ var http = require( 'http' ),
                     }finally{
                         return sid;
                     }
-                    /** /
-                    try{
-                        var sid = req.session.id; 
-                    }catch( err ){
-                        console.log( '\nformaline, exception: getSessionID( req ) unable to access session request property -> ', err.message );
-                        return sid;
-                    }
-                    /**/
                 },
   
                     // default is false
