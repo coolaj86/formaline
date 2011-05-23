@@ -61,10 +61,24 @@ var http = require( 'http' ),
                     // the upload directory gets its name from the returned session identifier,
                     // and will remain the same across multiple posts ( for the authenticated user with this session identifier )
                     // a function that return the request property that holds session id 
-                    // session id must be a String 
+                    // session id param returned must contains a String 
                     // the function takes request as a parameter at run-time 
                 getSessionID: function( req ){
-                    return emptyFn; 
+                    try{
+                        var sid = req.session.id; 
+                    }catch( err ){
+                        console.log( '\nformaline, exception: getSessionID( req ) unable to access session request property -> ', err.message );
+                    }finally{
+                        return sid;
+                    }
+                    /** /
+                    try{
+                        var sid = req.session.id; 
+                    }catch( err ){
+                        console.log( '\nformaline, exception: getSessionID( req ) unable to access session request property -> ', err.message );
+                        return sid;
+                    }
+                    /**/
                 },
   
                     // default is false
