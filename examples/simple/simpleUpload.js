@@ -60,9 +60,9 @@ var http = require( 'http' ),
                     // retrieve session ID for creating unique upload directory for authenticated users
                     // the upload directory gets its name from the returned session identifier,
                     // and will remain the same across multiple posts ( for the authenticated user with this session identifier )
-                    // a function that return the request property that holds session id 
-                    // session id param returned must contains a String 
-                    // the function takes request as a parameter at run-time 
+                    // this function have to return the request property that holds session id 
+                    // session id param returned must contains a String, not a function or an object 
+                    // the function takes http request as a parameter at run-time 
                 getSessionID: function( req ){
                     try{
                         var sid = req.session.id; 
