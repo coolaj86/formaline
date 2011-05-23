@@ -63,14 +63,8 @@ var http = require( 'http' ),
                     // this function have to return the request property that holds session id 
                     // session id param returned must contains a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
-                getSessionID: function( req ){
-                    try{
-                        var sid = req.session.id; 
-                    }catch( err ){
-                        console.log( '\nformaline, exception: getSessionID( req ) unable to access session request property -> ', err.message );
-                    }finally{
-                        return sid;
-                    }
+                getSessionID: function( req ){ 
+                        return ( req.session && req.session.id ) ? req.session.id : null;
                 },
   
                     // default is false
