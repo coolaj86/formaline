@@ -80,6 +80,7 @@ var http = require( 'http' ),
                     //otherwise return a path array of incomplete files 
                 removeIncompleteFiles : true,
                 
+                    // default is 'debug:off,1:on,2:on,3:off';
                     //enable various logging levels
                     //it is possible to switch on/off one or more levels at the same time
                     //debug: 'off' turn off logging
