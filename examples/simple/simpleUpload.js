@@ -94,22 +94,23 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:on,3:off',
+                logging: 'debug:off,1:on,2:on,3:off',
                 
                     // listeners
                 listeners: {
-                    'exception': function( etype, isupload, errmsg, isfatal ){
+                    'exception': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
+                      log(json);
                     },
-                    'dataprogress': function( obj ) {                              
+                    'dataprogress': function( json ) {                              
                     },
-                    'field': function( obj ){
-                        receivedFields[ obj.name ] = obj;
+                    'field': function( json ){
+                        receivedFields[ json.name ] = json;
                     },
-                    'filereceived': function( obj ) {
-                        receivedFiles[ obj.origname ] = obj;
+                    'filereceived': function( json ) {
+                        receivedFiles[ json.origname ] = json;
                     },
-                    'fileremoved': function( obj ) {
-                        removedFiles[ obj.origname ] = obj;
+                    'fileremoved': function( json ) {
+                        removedFiles[ json.origname ] = json;
                     },
                     'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
@@ -138,7 +139,7 @@ var http = require( 'http' ),
                         removedFiles = {};
                         receivedFields = {};
                         res.end();
-                        next(); //test
+                        next(); // test callback
                     }
                 }
             };//end config obj
