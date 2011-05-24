@@ -74,7 +74,7 @@ var http = require( 'http' ),
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitDataProgress: false, // 3, 10, 100
+                emitDataProgress: !false, // 3, 10, 100
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
@@ -94,22 +94,25 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:on,3:off',
+                logging: 'debug:on,1:on,2:on,3:on',
                 
                     // listeners
                 listeners: {
+                    'event': function( obj ){
+                        //console.log(obj);    
+                    },
                     'exception': function( etype, isupload, errmsg, isfatal ){
                     },
                     'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
                     },
                     'field': function( fname, fvalue ){
-                        receivedFields[ fname ] = fvalue;
+                        //receivedFields[ fname ] = fvalue;
                     },
                     'filereceived': function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
-                        receivedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
-                        },
+                        //receivedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
+                    },
                     'fileremoved': function( sha1filename, origfilename, filedir, filetype, filesize, filefield ) {
-                        removedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
+                        //removedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                     },
                     'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
