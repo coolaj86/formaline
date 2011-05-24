@@ -99,23 +99,17 @@ var http = require( 'http' ),
                     // listeners
                 listeners: {
                     'exception': function( etype, isupload, errmsg, isfatal ){
-                       // log( '\n ' + ( ( isfatal ) ? 'fatal exception type--> "' : 'exception type--> "') + etype + '", msg: ' + errmsg );
+                    },
+                    'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
                     },
                     'field': function( fname, fvalue ){
                         receivedFields[ fname ] = fvalue;
-                       // log( '\n field received--> filename: "'+ fname + '"' + ( ( fvalue ) ? ( ', value: "' + fvalue + '"') : '') );
                     },
                     'filereceived': function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
                         receivedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
-                       // log( '\n filereceived -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes: ' + filesize + ', field: ' + filefield + '\n' );
                         },
                     'fileremoved': function( sha1filename, origfilename, filedir, filetype, filesize, filefield ) {
-                       // log( '\n fileremoved -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes received: ' + filesize + ', field: ' + filefield + '\n' );
                         removedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
-                        //log(' updated list of files removed: ',removedFiles);
-                    },
-                    'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
-                       // log( '\n dataprogress --> bytes:', bytesReceived, 'chunks:', chunksReceived, ' ratio:', ratio );
                     },
                     'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
