@@ -194,60 +194,60 @@ You could create a formaline instance with some configuration options :
 
 > - **'exception'**: `function ( json ) { .. }`, 
 
-``` javascript     
+> ``` javascript     
 >     json = { 
 >          type: <String>, 
 >          isupload: <Boolean>, 
 >          msg: <String>, 
 >          isfatal: <Boolean> 
 >      }
-``` 
+>``` 
 
 > - **'field'**: `function ( json ) { .. }`,
 
 ``` javascript     
->     json = { 
->          name: <String>, 
->          value: <String>
->      }
+     json = { 
+          name: <String>, 
+          value: <String>
+      }
 ``` 
  
 > - **'filereceived'**: `function ( json ) { .. }`,
 
 ``` javascript     
->     json = { 
->          sha1name:  <String>, 
->          origname: <String>, 
->          path: <String>, 
->          type: <String>, 
->          size: <Integer, 
->          fieldname: <String>, 
->          datasha1sum: <String> 
->      }
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer, 
+          fieldname: <String>, 
+          datasha1sum: <String> 
+      }
 ``` 
 
 > - **'fileremoved'**: `function ( json  ) { .. }`,
 
 ``` javascript     
->     json = { 
->          sha1name:  <String>, 
->          origname: <String>, 
->          path: <String>, 
->          type: <String>, 
->          size: <Integer>, 
->          fieldname: <String>, 
->          datasha1sum: 'not calculated' 
->      }
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer>, 
+          fieldname: <String>, 
+          datasha1sum: 'not calculated' 
+      }
 ``` 
  
 > - **'dataprogress'**: `function ( json ) { .. }`,
 
 ``` javascript     
->     json = { 
->          bytes: <Integer>,
->          chunks: <Integer>,
->          ratio: <Integer> 
->      }
+     json = { 
+          bytes: <Integer>,
+          chunks: <Integer>,
+          ratio: <Integer> 
+      }
 ``` 
  
 > - **'end'**: `function ( json, res, next ) { .. }`
