@@ -279,13 +279,13 @@ You could create a formaline instance with some configuration options :
 >          */
 >          completed: {
 >             'file1 hash name (sha1name)' : {  
->                 sha1name:  '..',  -> 40 HEX SHA1 STRING
->                 origname: '..',   -> FILE ORIGINAL NAME  
->                 path: '..',       -> FILE PATH       
->                 type: '..',       -> MIME TYPE
->                 size: 999,        -> BYTES 
->                 fieldname: '..',  -> FILE FIELD NAME 
->                 datasha1sum: '..' -> 40 HEX SHA1 STRING
+>                 sha1name:  '..',  //<-- 40 HEX SHA1 STRING
+>                 origname: '..',   //<-- FILE ORIGINAL NAME  
+>                 path: '..',       //<-- FILE PATH       
+>                 type: '..',       //<-- MIME TYPE
+>                 size: 999,        //<-- BYTES 
+>                 fieldname: '..',  //<-- FILE FIELD NAME 
+>                 datasha1sum: '..' //<-- 40 HEX SHA1 STRING
 >             }, 
 >             'file2 hash name': { .. } 
 >             ..
