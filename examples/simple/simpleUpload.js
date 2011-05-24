@@ -32,7 +32,7 @@ var http = require( 'http' ),
                  <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
                  <input type="text" name="iframefield1"/><br/>\
                  <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield2"/><br/>\
+                 <input type="text" name="iframefield"/><br/>\
                  <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
                  <input type="submit" />\
                  </form>\
@@ -92,23 +92,22 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:off',
+                logging: 'debug:on,1:on,2:on,3:off',
                 
                     // listeners
                 listeners: {
                     'exception': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
-                      //log(json);
                     },
                     'dataprogress': function( json ) {                              
                     },
                     'field': function( json ){
-                        receivedFields[ json.name ] = json;
                     },
                     'filereceived': function( json ) {
                     },
                     'fileremoved': function( json ) {
                     },
                     'end': function( json, res, next ) {
+                    console.log(json.incomplete)
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
@@ -121,17 +120,17 @@ var http = require( 'http' ),
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
                         res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
-                                
-                        res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( receivedFields ) + '\n' );
+                        res.write( '-> logging: "' + form.logging + '"\n' );
+                        
+                        res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
                         res.write( '\n-> files received: ( { sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
                         if( form.removeIncompleteFiles ){
                             res.write( '\n-> files removed: ( { sha1 filename: {..} }, { .. } )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
-                            if( incompleteFiles.length !== 0 ){
-                                res.write( '-> incomplete files (not removed) : ' + JSON.stringify( json.incomplete ) + '\n' );
+                            if( json.incomplete.length !== 0 ){
+                                res.write( '\n-> incomplete files (not removed): \n   ****************\n' + JSON.stringify( json.incomplete ) + '\n' );
                             }
                         }
-                        receivedFields = {};
                         res.end();
                         next(); // test callback
                     }

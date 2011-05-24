@@ -144,5 +144,4 @@
    0.4.5 / 2011-05-xx
 =====================
 
- * + added 'complete' property to JSON reponse object, for 'end' event; it contains files that were completely written to disk.
- * 
+ * + moved all response objects to JSON format, also for fields
