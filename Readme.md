@@ -178,15 +178,18 @@ You could create a formaline instance with some configuration options :
  Events & Listeners
 --------------------
 
-#### Exception Types:
+#### Exception Event Types:
  
  
-> - *fatal* : headersexception, pathexception, bufferexception, streamexception ( the data transmission is interrupted, and the 'end' event is thrown ). 
+> - fatal : **headersexception**, **pathexception**, **bufferexception**, **streamexception** *( the data transmission is interrupted, and the 'end' event is thrown )*. 
+> - attention : warning 
 
-> - *informational* : filereceived, field, dataprogress, end 
+#### Informational Event Types:
 
-> - *need attention* : fileremoved, warning 
-
+ > - file:  filereceived, fileremoved,
+ > - field: field, 
+ > - flow:  dataprogress, end 
+ 
  
 #### Listeners are called at run-time with a JSON response object : 
 
