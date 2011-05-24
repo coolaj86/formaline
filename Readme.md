@@ -250,8 +250,14 @@ You could create a formaline instance with some configuration options :
       }
 ``` 
  
-> - **'end'**: `function ( incompleteFiles, stats, res, next ) { .. }`
- 
+> - **'end'**: `function (json ) { .. }`
+
+``` javascript     
+     json : { 
+          stats: <Object>,
+          incomplete: <Array> 
+      }
+``` 
  
 
 
