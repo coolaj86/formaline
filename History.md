@@ -137,5 +137,5 @@
  * + resolved some little configuration bugs
  * + better logging, better events emitting
  * + added config function param getSessionID, for generating upload directory name using the user session id
- * + better event emitting code
+ * + better event emitting code, builded json objects in code
  * + changed listeners signatures for receiving only a JSON object   

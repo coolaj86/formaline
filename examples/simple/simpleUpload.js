@@ -94,12 +94,12 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:off,1:off,2:off,3:off',
+                logging: 'debug:on,1:on,2:on,3:off',
                 
                     // listeners
                 listeners: {
                     'exception': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
-                      log(json);
+                      //log(json);
                     },
                     'dataprogress': function( json ) {                              
                     },
