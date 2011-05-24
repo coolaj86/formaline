@@ -135,5 +135,6 @@
 =====================
 
  * + resolved some little configuration bugs
- * + 
- * + merged development branch with master branch
+ * + better logging, better events emitting
+ * + added config function param getSessionID, for generating upload directory name using the user session id
+ 
