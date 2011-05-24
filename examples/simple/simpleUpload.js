@@ -32,7 +32,7 @@ var http = require( 'http' ),
                  <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
                  <input type="text" name="iframefield1"/><br/>\
                  <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield1"/><br/>\
+                 <input type="text" name="iframefield2"/><br/>\
                  <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
                  <input type="submit" />\
                  </form>\
