@@ -257,10 +257,31 @@ You could create a formaline instance with some configuration options :
 
 >``` javascript     
 >     json = { 
->          stats: <Object>,       //some statistics
->          incomplete: <Array>,   // an array containing the list of files, that did not were totally written to disk due to exceeding upload threshold
->          completed: <Object>,   // an hash containing all completed files
->          fields: <Array>        // an array containing the list of received fields
+>          
+>          stats: {  // some numbers
+>             bytesReceived: .. ,
+>             bytesWrittenToDisk: .. ,
+>             chunksReceived: .. ,
+>             overallSecs: .. ,
+>             filesCompleted: .. ,
+>             filesRemoved:  
+>          },
+>          
+>          incomplete: [ 'path1', 'path2', .. ],  // an array containing the list of files, that did not were totally written to disk due to exceeding upload threshold
+>          
+>          completed: {  // an hash containing all completed files
+>             'file1 hash name' : { 
+>                 // see filereceived JSON oobject  
+>             }, 
+>             'file2 hash name': { .. } 
+>             ..
+>          },  
+>          
+>          fields: [ // an array containing the list of received fields
+>             { name: '*', value: '*' }, 
+>             { name: '*', value: '*' }, 
+>             .. 
+>           ]
 >      };     
 >``` 
  
