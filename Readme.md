@@ -100,7 +100,7 @@ Features
 ``` javascript
  
  ...
- form.on( 'filereceived', function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ){ .. }  )  
+ form.on( 'filereceived', function( jsonData ){ .. }  )  
  ...
 
 ```
@@ -112,9 +112,9 @@ Features
 ``` javascript  
 
  ...
- var myListener = function( ){ console.log( arguments ); }
+ var myListener = function( jsonData ){ console.log( jsonData ); }
  ..
- form.on( 'filereceived', myListener ); <---- myListener function gets sha1filename, origfilename, etc.. as arguments
+ form.on( 'filereceived', myListener ); <---- myListener function gets a json data object as argument
  ..
 
 ```
@@ -189,18 +189,66 @@ You could create a formaline instance with some configuration options :
 > - *need attention* : fileremoved, warning 
 
  
-#### Listeners are called with following listed arguments, they are already attached to the callbacks : 
+#### Listeners are called at run-time with a JSON object contains data : 
 
 
-> - **'exception'**: `function ( etype, isupload, errmsg, isfatal ) { .. }`,
+> - **'exception'**: `function ( json ) { .. }`, 
+
+'''javascript     
+     json = { 
+          type: <String>, 
+          isupload: <boolean> , 
+          msg: <String>, 
+          isfatal: <boolean> 
+      }
+'''
+
+> - **'field'**: `function ( json ) { .. }`,
+
+'''javascript     
+     json = { 
+          name: <String>, 
+          value: <String>
+      }
+'''
  
-> - **'field'**: `function ( fname, fvalue ) { .. }`,
+> - **'filereceived'**: `function ( json ) { .. }`,
+
+'''javascript     
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer, 
+          fieldname: <String>, 
+          datasha1sum: <String> 
+      }
+'''
+
+> - **'fileremoved'**: `function ( json  ) { .. }`,
+
+'''javascript     
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer, 
+          fieldname: <String>, 
+          datasha1sum: 'not calculated' 
+      }
+'''
  
-> - **'filereceived'**: `function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { .. }`,
- 
-> - **'fileremoved'**: `function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { .. }`,
- 
-> - **'dataprogress'**: `function ( bytesReceived, chunksReceived, ratio ) { .. }`,
+> - **'dataprogress'**: `function ( json ) { .. }`,
+
+'''javascript     
+     json : { 
+          bytes: <Integer>,
+          chunks: <Integer>,
+          ratio: <Integer> 
+      }
+'''
  
 > - **'end'**: `function ( incompleteFiles, stats, res, next ) { .. }`
  
@@ -243,19 +291,19 @@ You could create a formaline instance with some configuration options :
             
      listeners: {
               
-         'exception': function ( etype, isupload, errmsg, isfatal ) {
+         'exception': function ( json ) {
             ...
          },
-         'field': function ( fname, fvalue ) { 
+         'field': function ( json ) { 
             ...
          },
-         'filereceived': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) { 
+         'filereceived': function ( json ) { 
             ... 
          },
-         'fileremoved': function ( sha1filename, origfilename, filedir, filetype, filesize, filefield ) { 
+         'fileremoved': function ( json ) { 
             ...
          },
-         'dataprogress': function ( bytesReceived, chunksReceived, ratio ) {
+         'dataprogress': function ( json ) {
             ...
          },
          'end': function ( incompleteFiles, stats, res, next ) {
