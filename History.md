@@ -140,3 +140,9 @@
  * + better event emitting code, builded json objects in code
  * + changed listeners signatures for receiving only a JSON object
  * - remove customXHR example, I'll develop this for future releases 
+  
+   0.4.5 / 2011-05-xx
+=====================
+
+ * + added 'complete' property to JSON reponse object, for 'end' event; it contains files that were completely written to disk.
+ * 

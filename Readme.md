@@ -195,69 +195,70 @@ You could create a formaline instance with some configuration options :
 > - **'exception'**: `function ( json ) { .. }`, 
 
 ``` javascript     
-     json = { 
-          type: <String>, 
-          isupload: <boolean> , 
-          msg: <String>, 
-          isfatal: <boolean> 
-      }
+>     json = { 
+>          type: <String>, 
+>          isupload: <Boolean>, 
+>          msg: <String>, 
+>          isfatal: <Boolean> 
+>      }
 ``` 
 
 > - **'field'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          name: <String>, 
-          value: <String>
-      }
+>     json = { 
+>          name: <String>, 
+>          value: <String>
+>      }
 ``` 
  
 > - **'filereceived'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer, 
-          fieldname: <String>, 
-          datasha1sum: <String> 
-      }
+>     json = { 
+>          sha1name:  <String>, 
+>          origname: <String>, 
+>          path: <String>, 
+>          type: <String>, 
+>          size: <Integer, 
+>          fieldname: <String>, 
+>          datasha1sum: <String> 
+>      }
 ``` 
 
 > - **'fileremoved'**: `function ( json  ) { .. }`,
 
 ``` javascript     
-     json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer, 
-          fieldname: <String>, 
-          datasha1sum: 'not calculated' 
-      }
+>     json = { 
+>          sha1name:  <String>, 
+>          origname: <String>, 
+>          path: <String>, 
+>          type: <String>, 
+>          size: <Integer>, 
+>          fieldname: <String>, 
+>          datasha1sum: 'not calculated' 
+>      }
 ``` 
  
 > - **'dataprogress'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json : { 
-          bytes: <Integer>,
-          chunks: <Integer>,
-          ratio: <Integer> 
-      }
+>     json = { 
+>          bytes: <Integer>,
+>          chunks: <Integer>,
+>          ratio: <Integer> 
+>      }
 ``` 
  
-> - **'end'**: `function (json ) { .. }`
+> - **'end'**: `function ( json, res, next ) { .. }`
 
 ``` javascript     
-     json : { 
+     json = { 
           stats: <Object>,
           incomplete: <Array>,
           completed: <Array>
-      }
+      };
+      
 ``` 
  
 
@@ -282,7 +283,7 @@ You could create a formaline instance with some configuration options :
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:off'
+     logging: 'debug:on,1:off,2:on,3:off'
     
      uploadRootDir: '/var/www/upload/',
             
@@ -313,11 +314,11 @@ You could create a formaline instance with some configuration options :
          'dataprogress': function ( json ) {
             ...
          },
-         'end': function ( incompleteFiles, stats, res, next ) {
+         'end': function ( json, res, next ) {
             ...
             res.writeHead(200, {'content-type': 'text/plain'});
             res.end();
-            //next();
+            next();
          }
      }//end listener config
  };
