@@ -270,17 +270,25 @@ You could create a formaline instance with some configuration options :
 >          
 >          incomplete: [ 'path1', 'path2', .. ],  // an array containing the list of files, that did not were totally written to disk due to exceeding upload threshold
 >          
->          completed: {  // an hash containing all completed files
->             'file1 hash name' : { 
->                 // see filereceived JSON oobject  
+>          // an hash containing all completed files
+>          // the keys are the files hash  value ( sha1name property value ) 
+>          completed: {
+>             'file1 hash name (sha1name)' : {  
+>                 sha1name:  '..',  -> 40 HEX SHA1 STRING
+>                 origname: '..',   -> FILE ORIGINAL NAME  
+>                 path: '..',       -> FILE PATH       
+>                 type: '..',       -> MIME TYPE
+>                 size: 999,        -> BYTES 
+>                 fieldname: '..',  -> FILE FIELD NAME 
+>                 datasha1sum: '..' -> 40 HEX SHA1 STRING
 >             }, 
 >             'file2 hash name': { .. } 
 >             ..
 >          },  
 >          
 >          fields: [ // an array containing the list of received fields
->             { name: '*', value: '*' }, 
->             { name: '*', value: '*' }, 
+>             { name: '..', value: '..' }, 
+>             { name: '..', value: '..' }, 
 >             .. 
 >           ]
 >      };     
