@@ -41,6 +41,7 @@ Features
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - It is Possible to create module instances with a **configuration object** with some useful parameters ( **listeners**, uploadThreshold, logging .. ) . 
+> - **Returns data in JSON format** .
 > - **Multiple exceptions types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - It supports duplicate names for fields .
