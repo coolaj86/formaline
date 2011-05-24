@@ -258,8 +258,9 @@ You could create a formaline instance with some configuration options :
 
 >``` javascript     
 >     json = { 
->          
->          stats: {  // some numbers
+>  
+>          /* some numbers */        
+>          stats: {  
 >             bytesReceived: .. ,
 >             bytesWrittenToDisk: .. ,
 >             chunksReceived: .. ,
@@ -267,11 +268,18 @@ You could create a formaline instance with some configuration options :
 >             filesCompleted: .. ,
 >             filesRemoved:  
 >          },
+>           
+>          /* 
+>          an array containing the list of files, 
+>          that did not were totally written to disk 
+>          due to exceeding upload threshold
+>          */
+>          incomplete: [ 'path1', 'path2', .. ], 
 >          
->          incomplete: [ 'path1', 'path2', .. ],  // an array containing the list of files, that did not were totally written to disk due to exceeding upload threshold
->          
->          // an hash containing all completed files
->          // the keys are the files hash  value ( sha1name property value ) 
+>          /* 
+>          an hash containing all completed files
+>          the keys are the files hash values ( sha1name property value ) 
+>          */
 >          completed: {
 >             'file1 hash name (sha1name)' : {  
 >                 sha1name:  '..',  -> 40 HEX SHA1 STRING
@@ -285,8 +293,11 @@ You could create a formaline instance with some configuration options :
 >             'file2 hash name': { .. } 
 >             ..
 >          },  
->          
->          fields: [ // an array containing the list of received fields
+> 
+>          /*
+>          an array containing the list of received fields
+>          */          
+>          fields: [ 
 >             { name: '..', value: '..' }, 
 >             { name: '..', value: '..' }, 
 >             .. 
