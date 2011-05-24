@@ -192,7 +192,8 @@ You could create a formaline instance with some configuration options :
  > - flow :  **dataprogress**, **end** 
  
  
-#### Listeners are called at run-time with a JSON response object : 
+ 
+#### All Listeners are called at run-time with a response object in JSON format: 
 
 
 > - **'exception'**: `function ( json ) { .. }`, 
@@ -499,12 +500,12 @@ Other
  Future Releases
 -----------------
  
- - more performance modifications in quickSearch.js .
+ - add transaction identifiers
  - add others examples with AJAX, writing about tested client-side uploader .
- - add choice to build JSON response .
  - add a readable stream from files while they are uploaded .
  - add some other server-side security checks, and write about it .  
  - give choice to changing the parser with a custom one .
+ - more performance modifications in quickSearch.js .
  - find and test some weird boundary string types .
  - add some unit tests .
  - Restify ?
