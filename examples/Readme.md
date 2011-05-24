@@ -25,13 +25,3 @@
 ```    
 
 
-**CUSTOM XHR EXAMPLE IS NOT PORTED TO VERSION >= 0.4.0 ( FOR NOW, SEE YOU LATER )**
-
-### Custom Example with Progress Bar ( [customXHR.js](https://github.com/rootslab/formaline/blob/master/examples/customXHR.js) )
-
-> **this is a custom XHR2 ( AJAX ) example, is not compatible with older browser (not HTML5 or XHR2 capable ), tested with Firefox 3.6+, Safari and Chrome .**
- 
->  This example launches multiple ajax post requests, one for each file selected. 
->  Test it with multiple big files for seeing progress bars. 
- 
-> It is based on example by [Andrea Giammarchi](http://webreflection.blogspot.com/2009/03/safari-4-multiple-upload-with-progress.html) .
