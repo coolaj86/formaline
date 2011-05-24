@@ -64,7 +64,7 @@ var http = require( 'http' ),
                     // session id param returned must contains a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
                 getSessionID: function( req ){ 
-                    return ( req.session && req.session.id ) ? req.session.id : null;
+                    return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
                 },
   
                     // default is false
