@@ -138,4 +138,5 @@
  * + better logging, better events emitting
  * + added config function param getSessionID, for generating upload directory name using the user session id
  * + better event emitting code, builded json objects in code
- * + changed listeners signatures for receiving only a JSON object   
+ * + changed listeners signatures for receiving only a JSON object
+ * - remove customXHR example, I'll develop this for future releases 
