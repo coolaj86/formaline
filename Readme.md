@@ -174,7 +174,6 @@ You could create a formaline instance with some configuration options :
 
 
 
-
            
  Events & Listeners
 --------------------
@@ -205,63 +204,61 @@ You could create a formaline instance with some configuration options :
 
 > - **'field'**: `function ( json ) { .. }`,
 
-``` javascript     
-     json = { 
-          name: <String>, 
-          value: <String>
-      }
-``` 
+>``` javascript     
+>     json = { 
+>          name: <String>, 
+>          value: <String>
+>      }
+>``` 
  
 > - **'filereceived'**: `function ( json ) { .. }`,
 
-``` javascript     
-     json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer, 
-          fieldname: <String>, 
-          datasha1sum: <String> 
-      }
-``` 
+>``` javascript
+>     json = { 
+>          sha1name:  <String>, 
+>          origname: <String>, 
+>          path: <String>, 
+>          type: <String>, 
+>          size: <Integer, 
+>          fieldname: <String>, 
+>          datasha1sum: <String> 
+>      }
+>``` 
 
 > - **'fileremoved'**: `function ( json  ) { .. }`,
 
-``` javascript     
-     json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer>, 
-          fieldname: <String>, 
-          datasha1sum: 'not calculated' 
-      }
-``` 
+>``` javascript     
+>     json = { 
+>          sha1name:  <String>, 
+>          origname: <String>, 
+>          path: <String>, 
+>          type: <String>, 
+>          size: <Integer>, 
+>          fieldname: <String>, 
+>          datasha1sum: 'not calculated' 
+>      }
+>``` 
  
 > - **'dataprogress'**: `function ( json ) { .. }`,
 
-``` javascript     
-     json = { 
-          bytes: <Integer>,
-          chunks: <Integer>,
-          ratio: <Integer> 
-      }
-``` 
+>``` javascript     
+>     json = { 
+>          bytes: <Integer>,
+>          chunks: <Integer>,
+>          ratio: <Integer> 
+>      }
+>``` 
  
 > - **'end'**: `function ( json, res, next ) { .. }`
 
-``` javascript     
-     json = { 
-          stats: <Object>,
-          incomplete: <Array>,
-          completed: <Array>
-      };
-      
-``` 
+>``` javascript     
+>     json = { 
+>          stats: <Object>,
+>          incomplete: <Array>,
+>          completed: <Array>
+>      };     
+>``` 
  
-
 
 
   Advanced Usage
