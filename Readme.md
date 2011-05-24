@@ -189,7 +189,7 @@ You could create a formaline instance with some configuration options :
 > - *need attention* : fileremoved, warning 
 
  
-#### Listeners are called at run-time with a JSON object contains data : 
+#### Listeners are called at run-time with a JSON response object : 
 
 
 > - **'exception'**: `function ( json ) { .. }`, 
