@@ -131,10 +131,11 @@
  * + commented out customXHR2 code, now start to develop this feature
  * + merged development branch with master branch
 
-   0.4.4 / 2011-05-xx
+   0.4.4 / 2011-05-24
 =====================
 
  * + resolved some little configuration bugs
  * + better logging, better events emitting
  * + added config function param getSessionID, for generating upload directory name using the user session id
- 
+ * + better event emitting code
+ * + changed listeners signatures for receiving only a JSON object   
