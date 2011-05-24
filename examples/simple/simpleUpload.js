@@ -94,7 +94,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:off,1:on,2:on,3:off',
+                logging: 'debug:off,1:off,2:off,3:off',
                 
                     // listeners
                 listeners: {
@@ -127,9 +127,9 @@ var http = require( 'http' ),
                         res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
                                 
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( receivedFields ) + '\n' );
-                        res.write( '\n-> files received: ( { sha1name: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( receivedFiles ) + '\n' );
+                        res.write( '\n-> files received: ( { orginal name: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( receivedFiles ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( { sha1name: {..} }, { .. } )\n   **************\n' + JSON.stringify (removedFiles ) + '\n' );
+                            res.write( '\n-> files removed: ( { original name: {..} }, { .. } )\n   **************\n' + JSON.stringify (removedFiles ) + '\n' );
                         }else{
                             if( incompleteFiles.length !== 0 ){
                                 res.write( '-> incomplete files (not removed) : ' + incompleteFiles + '\n' );
