@@ -194,27 +194,27 @@ You could create a formaline instance with some configuration options :
 
 > - **'exception'**: `function ( json ) { .. }`, 
 
-'''javascript     
+``` javascript     
      json = { 
           type: <String>, 
           isupload: <boolean> , 
           msg: <String>, 
           isfatal: <boolean> 
       }
-'''
+``` 
 
 > - **'field'**: `function ( json ) { .. }`,
 
-'''javascript     
+``` javascript     
      json = { 
           name: <String>, 
           value: <String>
       }
-'''
+``` 
  
 > - **'filereceived'**: `function ( json ) { .. }`,
 
-'''javascript     
+``` javascript     
      json = { 
           sha1name:  <String>, 
           origname: <String>, 
@@ -224,11 +224,11 @@ You could create a formaline instance with some configuration options :
           fieldname: <String>, 
           datasha1sum: <String> 
       }
-'''
+``` 
 
 > - **'fileremoved'**: `function ( json  ) { .. }`,
 
-'''javascript     
+``` javascript     
      json = { 
           sha1name:  <String>, 
           origname: <String>, 
@@ -238,17 +238,17 @@ You could create a formaline instance with some configuration options :
           fieldname: <String>, 
           datasha1sum: 'not calculated' 
       }
-'''
+``` 
  
 > - **'dataprogress'**: `function ( json ) { .. }`,
 
-'''javascript     
+``` javascript     
      json : { 
           bytes: <Integer>,
           chunks: <Integer>,
           ratio: <Integer> 
       }
-'''
+``` 
  
 > - **'end'**: `function ( incompleteFiles, stats, res, next ) { .. }`
  
