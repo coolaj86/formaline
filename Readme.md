@@ -180,15 +180,15 @@ You could create a formaline instance with some configuration options :
 
 #### Exception Event Types:
  
- 
 > - fatal : **headersexception**, **pathexception**, **bufferexception**, **streamexception** *( the data transmission is interrupted, and the 'end' event is thrown )*. 
-> - attention : warning 
+> - attention : **warning** 
+
 
 #### Informational Event Types:
 
- > - file:  filereceived, fileremoved,
- > - field: field, 
- > - flow:  dataprogress, end 
+ > - file :  **filereceived**, **fileremoved**
+ > - field : **field**
+ > - flow :  **dataprogress**, **end** 
  
  
 #### Listeners are called at run-time with a JSON response object : 
@@ -198,10 +198,10 @@ You could create a formaline instance with some configuration options :
 
 > ``` javascript     
 >     json = { 
->          type: <String>, 
->          isupload: <Boolean>, 
->          msg: <String>, 
->          isfatal: <Boolean> 
+>          type: < String >,      // exception event type 
+>          isupload: < Boolean >, // is an upload?
+>          msg: <String>,         // exception debug message
+>          isfatal: <Boolean>     // is exception fatal? a true value means that 'end' event was emitted
 >      }
 >``` 
 
@@ -209,8 +209,8 @@ You could create a formaline instance with some configuration options :
 
 >``` javascript     
 >     json = { 
->          name: <String>, 
->          value: <String>
+>          name: <String>,        // field name
+>          value: <String>        // field value
 >      }
 >``` 
  
@@ -246,9 +246,9 @@ You could create a formaline instance with some configuration options :
 
 >``` javascript     
 >     json = { 
->          bytes: <Integer>,
->          chunks: <Integer>,
->          ratio: <Integer> 
+>          bytes: <Integer>,      // bytes received
+>          chunks: <Integer>,     // chunks received
+>          ratio: <Integer>       // ratio completion
 >      }
 >``` 
  
@@ -256,9 +256,9 @@ You could create a formaline instance with some configuration options :
 
 >``` javascript     
 >     json = { 
->          stats: <Object>,
->          incomplete: <Array>,
->          completed: <Array>
+>          stats: <Object>,       //some statistics
+>          incomplete: <Array>,   // an object containing a list of files, that did not were totally written to disk due to exceeding upload threshold
+>          completed: <Array>     // an object containing completed files 
 >      };     
 >``` 
  
