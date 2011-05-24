@@ -64,7 +64,7 @@ var http = require( 'http' ),
                     // session id param returned must contains a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
                 getSessionID: function( req ){ 
-                        return ( req.session && req.session.id ) ? req.session.id : null;
+                    return ( req.session && req.session.id ) ? req.session.id : null;
                 },
   
                     // default is false
@@ -74,7 +74,7 @@ var http = require( 'http' ),
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitDataProgress: false, // 3, 10, 100
+                emitDataProgress: !false, // 3, 10, 100
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
@@ -94,28 +94,28 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:off,1:on,2:on,3:off',
+                logging: 'debug:on,1:off,2:off,3:on',
                 
                     // listeners
                 listeners: {
                     'exception': function( etype, isupload, errmsg, isfatal ){
-                        log( '\n ' + ( ( isfatal ) ? 'fatal exception type--> "' : 'exception type--> "') + etype + '", msg: ' + errmsg );
+                       // log( '\n ' + ( ( isfatal ) ? 'fatal exception type--> "' : 'exception type--> "') + etype + '", msg: ' + errmsg );
                     },
                     'field': function( fname, fvalue ){
                         receivedFields[ fname ] = fvalue;
-                        log( '\n field received--> filename: "'+ fname + '"' + ( ( fvalue ) ? ( ', value: "' + fvalue + '"') : '') );
+                       // log( '\n field received--> filename: "'+ fname + '"' + ( ( fvalue ) ? ( ', value: "' + fvalue + '"') : '') );
                     },
                     'filereceived': function( sha1filename, origfilename, filedir, filetype, filesize, filefield, filesha1sum ) {
                         receivedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, size: filesize, field: filefield, sha1sum: filesha1sum  };
-                        log( '\n filereceived -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes: ' + filesize + ', field: ' + filefield + '\n' );
+                       // log( '\n filereceived -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes: ' + filesize + ', field: ' + filefield + '\n' );
                         },
                     'fileremoved': function( sha1filename, origfilename, filedir, filetype, filesize, filefield ) {
-                        log( '\n fileremoved -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes received: ' + filesize + ', field: ' + filefield + '\n' );
+                       // log( '\n fileremoved -->  sha1name: ' + sha1filename + ', original name: ' + origfilename + ', path: ' + filedir + ', type: ' + filetype + ', bytes received: ' + filesize + ', field: ' + filefield + '\n' );
                         removedFiles[ sha1filename ] = { path: filedir, origName: origfilename, type: filetype, filesize: filesize, field: filefield };
                         //log(' updated list of files removed: ',removedFiles);
                     },
                     'dataprogress': function( bytesReceived, chunksReceived, ratio ) {
-                        log( '\n dataprogress --> bytes:', bytesReceived, 'chunks:', chunksReceived, ' ratio:', ratio );
+                       // log( '\n dataprogress --> bytes:', bytesReceived, 'chunks:', chunksReceived, ' ratio:', ratio );
                     },
                     'end': function( incompleteFiles, stats, res, next ) {
                         log( '\n-> Post Done' );
