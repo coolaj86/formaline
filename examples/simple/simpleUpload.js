@@ -45,9 +45,7 @@ var http = require( 'http' ),
         }
     },
     handleFormRequest = function( req, res, next ){
-        var receivedFiles = {},
-            removedFiles = {},
-            receivedFields = {},
+        var receivedFields = {},
             form = null,
             config = {
                 
@@ -94,7 +92,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:on,3:off',
+                logging: 'debug:on,1:on,2:off,3:off',
                 
                     // listeners
                 listeners: {
@@ -107,10 +105,8 @@ var http = require( 'http' ),
                         receivedFields[ json.name ] = json;
                     },
                     'filereceived': function( json ) {
-                        receivedFiles[ json.origname ] = json;
                     },
                     'fileremoved': function( json ) {
-                        removedFiles[ json.origname ] = json;
                     },
                     'end': function( json, res, next ) {
                         log( '\n-> Post Done' );
@@ -127,16 +123,14 @@ var http = require( 'http' ),
                         res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
                                 
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( receivedFields ) + '\n' );
-                        res.write( '\n-> files received: ( { orginal name: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( receivedFiles ) + '\n' );
+                        res.write( '\n-> files received: ( { sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( { original name: {..} }, { .. } )\n   **************\n' + JSON.stringify (removedFiles ) + '\n' );
+                            res.write( '\n-> files removed: ( { sha1 filename: {..} }, { .. } )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
                             if( incompleteFiles.length !== 0 ){
-                                res.write( '-> incomplete files (not removed) : ' + json.incomplete + '\n' );
+                                res.write( '-> incomplete files (not removed) : ' + JSON.stringify( json.incomplete ) + '\n' );
                             }
                         }
-                        receivedFiles = {};
-                        removedFiles = {};
                         receivedFields = {};
                         res.end();
                         next(); // test callback

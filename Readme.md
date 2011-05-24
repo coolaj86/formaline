@@ -255,7 +255,8 @@ You could create a formaline instance with some configuration options :
 ``` javascript     
      json : { 
           stats: <Object>,
-          incomplete: <Array> 
+          incomplete: <Array>,
+          completed: <Array>
       }
 ``` 
  
