@@ -46,7 +46,7 @@ Features
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - It supports duplicate names for fields .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 )
-> - **It is also possible to return the **SHA1 data checksum** of received files** .
+> - **It is also possible to return the SHA1 data checksum of received files** .
 > - It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold .
 > - It is possible to track the progress ratio ( also chunks and bytes ) of data received . 
 > - It easily integrates with **connect middleware**.
