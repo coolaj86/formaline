@@ -182,108 +182,108 @@ Features
 
 > - **'exception'**: `function ( json ) { .. }`, 
 
-> ``` javascript     
->     json = { 
->          type: < String >,      // exception event type 
->          isupload: < Boolean >, // is an upload?
->          msg: <String>,         // exception debug message
->          isfatal: <Boolean>     // is exception fatal? a true value means that 'end' event was emitted
->      }
->``` 
+ ``` javascript     
+     json = { 
+          type: < String >,      // exception event type 
+          isupload: < Boolean >, // is an upload?
+          msg: <String>,         // exception debug message
+          isfatal: <Boolean>     // is exception fatal? a true value means that 'end' event was emitted
+      }
+``` 
 
 > - **'field'**: `function ( json ) { .. }`,
 
->``` javascript     
->     json = { 
->          name: <String>,        // field name
->          value: <String>        // field value
->      }
->``` 
+``` javascript     
+     json = { 
+          name: <String>,        // field name
+          value: <String>        // field value
+      }
+``` 
  
 > - **'filereceived'**: `function ( json ) { .. }`,
 
->``` javascript
->     json = { 
->          sha1name:  <String>, 
->          origname: <String>, 
->          path: <String>, 
->          type: <String>, 
->          size: <Integer, 
->          fieldname: <String>, 
->          datasha1sum: <String> 
->      }
->``` 
+``` javascript
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer, 
+          fieldname: <String>, 
+          datasha1sum: <String> 
+      }
+``` 
 
 > - **'fileremoved'**: `function ( json  ) { .. }`,
 
->``` javascript     
->     json = { 
->          sha1name:  <String>, 
->          origname: <String>, 
->          path: <String>, 
->          type: <String>, 
->          size: <Integer>, 
->          fieldname: <String>, 
->          datasha1sum: 'not calculated' 
->      }
->``` 
+``` javascript     
+     json = { 
+          sha1name:  <String>, 
+          origname: <String>, 
+          path: <String>, 
+          type: <String>, 
+          size: <Integer>, 
+          fieldname: <String>, 
+          datasha1sum: 'not calculated' 
+      }
+``` 
  
 > - **'dataprogress'**: `function ( json ) { .. }`,
 
->``` javascript     
->     json = { 
->          bytes: <Integer>,      // bytes received
->          chunks: <Integer>,     // chunks received
->          ratio: <Integer>       // ratio completion
->      }
->``` 
+``` javascript     
+     json = { 
+          bytes: <Integer>,      // bytes received
+          chunks: <Integer>,     // chunks received
+          ratio: <Integer>       // ratio completion
+      }
+``` 
  
 > - **'end'**: `function ( json, res, next ) { .. }`
 
->``` javascript     
->     json = {   
->          /* some numbers */        
->          stats: {  
->             bytesReceived: .. ,
->             bytesWrittenToDisk: .. ,
->             chunksReceived: .. ,
->             overallSecs: .. ,
->             filesCompleted: .. ,
->             filesRemoved:  
->          },          
->          /* 
->          an array containing the list of files, 
->          that did not were totally written to disk 
->          due to exceeding upload threshold
->          */
->          incomplete: [ 'path1', 'path2', .. ],        
->          /* 
->          an hash containing all completed files
->          the keys are the files hash values ( sha1name property value ) 
->          */
->          completed: {
->             'file1 hash name (sha1name)' : {  
->                 sha1name:  '..',  //<-- 40 HEX SHA1 STRING
->                 origname: '..',   //<-- FILE ORIGINAL NAME  
->                 path: '..',       //<-- FILE PATH       
->                 type: '..',       //<-- MIME TYPE
->                 size: 999,        //<-- BYTES 
->                 fieldname: '..',  //<-- FILE FIELD NAME 
->                 datasha1sum: '..' //<-- 40 HEX SHA1 STRING
->             }, 
->             'file2 hash name': { .. } 
->             ..
->          },  
->          /*
->          an array containing the list of received fields
->          */          
->          fields: [ 
->             { name: '..', value: '..' }, 
->             { name: '..', value: '..' }, 
->             .. 
->           ]
->      };     
->``` 
+``` javascript     
+     json = {   
+          /* some numbers */        
+          stats: {  
+             bytesReceived: .. ,
+             bytesWrittenToDisk: .. ,
+             chunksReceived: .. ,
+             overallSecs: .. ,
+             filesCompleted: .. ,
+             filesRemoved:  
+          },          
+          /* 
+          an array containing the list of files, 
+          that did not were totally written to disk 
+          due to exceeding upload threshold
+          */
+          incomplete: [ 'path1', 'path2', .. ],        
+          /* 
+          an hash containing all completed files
+          the keys are the files hash values ( sha1name property value ) 
+          */
+          completed: {
+             'file1 hash name (sha1name)' : {  
+                 sha1name:  '..',  //<-- 40 HEX SHA1 STRING
+                 origname: '..',   //<-- FILE ORIGINAL NAME  
+                 path: '..',       //<-- FILE PATH       
+                 type: '..',       //<-- MIME TYPE
+                 size: 999,        //<-- BYTES 
+                 fieldname: '..',  //<-- FILE FIELD NAME 
+                 datasha1sum: '..' //<-- 40 HEX SHA1 STRING
+             }, 
+             'file2 hash name': { .. } 
+             ..
+          },  
+          /*
+          an array containing the list of received fields
+          */          
+          fields: [ 
+             { name: '..', value: '..' }, 
+             { name: '..', value: '..' }, 
+             .. 
+           ]
+      };     
+``` 
  
 
 
