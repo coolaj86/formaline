@@ -103,10 +103,8 @@ Features
  ...
  form.on( 'filereceived', function( json ){ .. }  )  
  ...
-
-// or 
-
- var myListener = function( jsonData ){ console.log( jsonData ); }
+ // or 
+ var myListener = function( ){ console.log( arguments ); }
  ..
  form.on( 'filereceived', myListener ); <---- myListener function gets a json data object as argument
  ..
