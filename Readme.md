@@ -68,8 +68,6 @@ Features
   
 >  - **some different kinds of client-side POSTs**: 
 
->  *( multiple files selection is available only for HTML5 capable browsers )*  
- 
 >     - [curl](https://github.com/rootslab/formaline/tree/master/examples) ( command-line tool )
  
 >     - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
@@ -82,8 +80,9 @@ Features
  
 >     - HTML5-powered AJAX POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
- 
- > **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
+>  *( multiple files selection is available only for HTML5 capable browsers )*
+
+> **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
  
 
  Simple Usage
