@@ -188,7 +188,7 @@ Features
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
           isfatal: true             // <-- IS IT A FATAL EXCEPTION? 
-          ( a true value means that an 'end' event was emitted, and that the response was sended  )
+          // ( a true value means that an 'end' event was emitted, and that the response was sended  )
       }
 ``` 
 
