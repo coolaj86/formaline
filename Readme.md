@@ -406,7 +406,7 @@ Features
 
 > - **default behaviour** : 
 
->     - a subdirectory was created, with a random number name, in the path of upload root directory (default is /tmp/), for example: */tmp/123456789098/*, it assures no collisions on file names, **for every different POST** .
+>     - **for every different POST** was created a subdirectory with a random number name. ( in the path of upload root directory, default is /tmp/, for example: */tmp/123456789098/*, it assures no collisions on file names ) .
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 >     - when two files, with the same name, are uploaded through :
 
@@ -421,20 +421,20 @@ Features
 >     - when two files, with the same name, are uploaded through :
 
 >          - **Same POST** action, ( the same as default behaviour, see above )
->          - *Different POSTs** actions, the genereated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
+>          - **Different POSTs** actions, the genereated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
 >     - the data stream is written to disk in a file, until is reached the end of the file's data, or the maximum data threshold for uploads .
 
 
-- **When a file reaches the upload threshold allowed**:
+- **When the remaining data for the file are exceeding the upload threshold**:
 
  
-   > - if **removeIncompleteFiles** is true, the file is auto-removed and a **'fileremoved'** event is emitted; 
-   > - otherwise, the file is kept in the filesystem
+   > - if configuration param **removeIncompleteFiles** is true, the file is auto-removed and a **'fileremoved'** event is emitted; 
+   > - otherwise, the file is kept partial in the filesystem, and no event is emitted .
 
 
- - **When a file is totally received, a *'filereceived'* event  is emitted**. 
+ - **When all the data for a file is totally received, a *'filereceived'* event  is emitted**. 
 
 
 > - the **filereceived** and **fileremoved** events are emitted with a json parameter that holds file information: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( only when the file was received ) . 
