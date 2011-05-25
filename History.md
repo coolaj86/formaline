@@ -141,7 +141,9 @@
  * + changed listeners signatures for receiving only a JSON object
  * - remove customXHR example, I'll develop this for future releases 
   
-   0.4.5 / 2011-05-xx
+   0.4.5 / 2011-05-25
 =====================
 
  * + moved all response objects to JSON format, also for fields
+ * + rewritten documentation for new listeners signatures
+ * + added session documentation
