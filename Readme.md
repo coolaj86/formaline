@@ -130,7 +130,7 @@ Features
 
 > - **'getSessionID'**: (*function* ) the **default** value is **null** .
 >   -  the function is used for retrieving session ID from request; it is used for creating a unique upload directory for an authenticated user .
->   -  this function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object** . 
+>   -  this function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
