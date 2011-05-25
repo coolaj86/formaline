@@ -108,21 +108,13 @@ Features
  ..
  form.on( 'filereceived', myListener ); <---- myListener function gets a json data object as argument
  ..
-
+  // then, parse request:
+ form.parse( req, res, next ); // next is your callback function( .. ){ .. }  
 ```
 
 
 >  see **Event & Listeners** section for a complete list of callbacks signatures!
       
-    
-
-   *then, parse request:*    
-
-``` javascript  
-
- form.parse( req, res, next ); // next is your callback function( .. ){ .. }
-
-```
 
 
  Configuration Options
