@@ -420,7 +420,7 @@ Features
 
 > - **with session support** : 
 
->     - for an authenticated user the upload subdirectory name will remain the same across multiple POSTs, . 
+>     - **for an authenticated user the upload subdirectory name will remain the same across multiple POSTs** . 
 >     - the user session identifier is used for generating directory name,  
 >     - when two files, with the same name, are uploaded through :
 
