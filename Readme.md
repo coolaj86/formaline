@@ -411,7 +411,7 @@ Features
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 >     - when two files with the same name **are uploaded through the same POST action**, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
 
-> - **with session support**.. _(TODO)_
+> - **with session support** the upload directory name will reamin the same across multiple POSTs, for the same authenticated user. If two file with the same name are uploaded through different POSTs, the genereated SHA1 file name will be the same, and the file is overwritten by the new one.   
 
 
 - **When a file reaches the upload threshold allowed**:
