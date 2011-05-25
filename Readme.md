@@ -371,9 +371,10 @@ Features
 ``` javascript  
  var form = new formaline( config ); 
  form.parse( req, res, next);
+ ```   
+ ``` javascript  
  /* or directly */
  new formaline( config ).parse( req, res, next );
-
 
 ```   
     
