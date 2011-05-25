@@ -410,7 +410,7 @@ Features
 
 - **When a file reaches the upload threshold allowed**:
  
-   > - if **removeIncompleteFiles** is true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
+   > - if **removeIncompleteFiles** is true, the file is auto-removed and a **'fileremoved'** event is emitted; 
    > - otherwise, the file is kept in the filesystem
 
  - **When a file is totally received, a *'filereceived'* event  is emitted**. 
