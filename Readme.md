@@ -41,6 +41,7 @@ Features
 > - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - It is Possible to create module instances with a **configuration object** with some useful parameters ( **listeners**, uploadThreshold, logging .. ) . 
+> - **Session support**. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user.   
 > - **Returns data in JSON format** .
 > - **Multiple exceptions types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
@@ -125,7 +126,12 @@ Features
 > - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
 >   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it throws a fatal exception )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
->   - **with session support**, .. (_TODO_)
+>   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
+
+> - **'getSessionID'**: (*function* ) the **default** value is **null** .
+>   -  the function is used for retrieving session ID from request; it is used for creating a unique upload directory for an authenticated user .
+>   -  this function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object** . 
+>   -  the function takes req ( http request ) as a parameter at run-time .
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
 >   - it indicates the upload threshold in bytes for the data written to disk (multipart/form-data) .
@@ -328,7 +334,11 @@ Features
      logging: 'debug:on,1:off,2:on,3:off'
     
      uploadRootDir: '/var/www/upload/',
-            
+     
+     getSessionID: function( req ){ 
+         return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
+     },
+     
      checkContentLength: false,
             
      uploadThreshold: 3949000,  
@@ -400,7 +410,7 @@ Features
 > - **the default behaviour** is to create a directory with a random integer name, in the path of upload directory (default is /tmp/), for example: */tmp/123456789098/*, it assures no collisions on file names, **for every different POST** .
    
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
->     - when two files with the same name are uploaded through the same POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
+>     - when two files with the same name **are uploaded through the same POST action**, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
 
 > - **with session support**.. _(TODO)_
 
