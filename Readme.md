@@ -124,8 +124,8 @@ Features
 
 > - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
 >   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it throws a fatal exception )
->   - without session support, a new sub-directory with a random name is created for every upload request .
->   - with session support, .. (_TODO_)
+>   - **without session support**, a new sub-directory with a random name is created for every upload request .
+>   - **with session support**, .. (_TODO_)
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
 >   - it indicates the upload threshold in bytes for the data written to disk (multipart/form-data) .
