@@ -406,7 +406,11 @@ Features
 
 > - **default behaviour** : 
 
->     - **for every different POST** was created a subdirectory with a random number name. ( in the path of upload root directory, default is /tmp/, for example: */tmp/123456789098/*, it assures no collisions on file names ) .
+>     - **for every different POST** was created a subdirectory: ( it assures no collisions on file names, between different POST actions )
+
+>          - under the upload root directory, default is /tmp/ ( for example: */tmp/123456789098/* )
+>          - with a random number name .
+
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 >     - when two files, with the same name, are uploaded through :
 
