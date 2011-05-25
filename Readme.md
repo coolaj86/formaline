@@ -38,19 +38,19 @@ Features
 ----------
 
 > - **Very Fast and Simple Parser** (see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory) .
-> - Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers .
+> - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
-> - It is Possible to create module instances with a **configuration object** with some useful parameters ( **listeners**, uploadThreshold, logging .. ) . 
-> - **Session support**. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user.   
-> - **Returns data in JSON format (see listeners signatures)** .
+> - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
+> - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
+> - **Returns data in JSON format** (see listeners signatures) .
 > - **Multiple exceptions types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
-> - It supports duplicate names for fields .
-> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 )
+> - **It supports duplicate names for fields** .
+> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is also possible to return the SHA1 data checksum of received files** .
-> - It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold .
-> - It is possible to track the progress ratio ( also chunks and bytes ) of data received . 
-> - It easily integrates with **connect middleware**.
+> - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
+> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** . 
+> - **It easily integrates with connect middleware** .
 > - **It Works !**
 
 
