@@ -372,8 +372,10 @@ Features
  var form = new formaline( config ); 
  form.parse( req, res, next);
  ```   
+ *or directly*
+ 
  ``` javascript  
- /* or directly */
+
  new formaline( config ).parse( req, res, next );
 
 ```   
