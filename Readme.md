@@ -92,24 +92,29 @@ Features
 ``` javascript
 
  var formaline = require('formaline'),
-     form = new formaline( { } );           // <-- empty config object
+     form = new formaline( { } );        // <-- empty config object
 
 ```
    
    *add events listener:*
 
 ``` javascript
- 
- ...
+ ..
  form.on( 'filereceived', function( json ){ .. }  )  
- ...
- // or 
+ ..
+ /*
+ or
+ */ 
  var myListener = function( ){ console.log( arguments ); }
  ..
- form.on( 'filereceived', myListener ); <---- myListener function gets a json data object as argument
+ form.on( 'filereceived', myListener ); // <-- myListener function gets a json data object as argument
  ..
-  // then, parse request:
- form.parse( req, res, next ); // next is your callback function( .. ){ .. }  
+ /*
+ then, parse request:
+ */
+ form.parse( req, res, next );          // <-- next is your callback function( .. ){ .. }
+ ..
+   
 ```
 
 
