@@ -187,7 +187,8 @@ Features
           type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- IS IT A FATAL EXCEPTION? ( a true value means that an 'end' event was emitted, and that the response was sended  )
+          isfatal: true             // <-- IS IT A FATAL EXCEPTION? 
+          ( a true value means that an 'end' event was emitted, and that the response was sended  )
       }
 ``` 
 
@@ -262,14 +263,14 @@ Features
           the keys are the files hash values ( sha1name property value ) 
           */
           completed: {
-             'file1 hash name (sha1name)' : {  
-                 sha1name:  '..',  // <-- 40 HEX SHA1 STRING
-                 origname: '..',   // <-- FILE ORIGINAL NAME  
-                 path: '..',       // <-- FILE PATH       
-                 type: '..',       // <-- MIME TYPE
-                 size: 217,        // <-- BYTES 
-                 fieldname: '..',  // <-- FILE FIELD NAME 
-                 datasha1sum: '..' // <-- 40 HEX SHA1 STRING
+             'file1 hash name (sha1name)' : { // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+                 sha1name:  '..',   
+                 origname: '..',     
+                 path: '..',              
+                 type: '..',       
+                 size: 217,         
+                 fieldname: '..',   
+                 datasha1sum: '..' 
              }, 
              'file2 hash name': { .. } 
              ..
@@ -277,7 +278,7 @@ Features
           /*
           an array containing the list of received fields
           */          
-          fields: [ 
+          fields: [ // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
              { name: '..', value: '..' }, 
              { name: '..', value: '..' }, 
              .. 
