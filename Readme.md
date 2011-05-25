@@ -59,28 +59,28 @@ Features
 
 > **formaline is succesfully tested** ( *for now* ) **against**  : 
   
->  **browsers like**:
+>  - **browsers like**:
   
->  - **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
+>     - **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
 
->  - **Links2**, **Lynx**
+>     - **Links2**, **Lynx**
   
   
->  **some different kinds of client-side POSTs**: 
+>  - **some different kinds of client-side POSTs**: 
 
- > *( multiple files selection is available only for HTML5 capable browsers )*  
+>  *( multiple files selection is available only for HTML5 capable browsers )*  
  
- > - [curl](https://github.com/rootslab/formaline/tree/master/examples) ( command-line tool )
+>     - [curl](https://github.com/rootslab/formaline/tree/master/examples) ( command-line tool )
  
- > - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
+>     - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
  
- > - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)
+>     - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)
   
- > - [swfUploader 2+](http://swfupload.org/) ( flash uploader )
+>     - [swfUploader 2+](http://swfupload.org/) ( flash uploader )
  
- > - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
+>     - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
  
- > - HTML5-powered AJAX POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
+>     - HTML5-powered AJAX POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
  
  > **the library is capable of handling the receiving of multiple files that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
