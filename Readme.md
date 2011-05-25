@@ -57,16 +57,16 @@ Features
  Client-Side
 --------------
 
-> **formaline** is succesfully tested ( *for now* ) against : 
+> **formaline is succesfully tested** ( *for now* ) **against**  : 
   
-> browsers like:
+>  **browsers like**:
   
 >  - **Firefox 3+**, **Chrome 9+**, **Safari 4+**, **Opera 10+** and **IE5.5+** ..
 
 >  - **Links2**, **Lynx**
   
   
->  some different kinds of client-side POSTs: 
+>  **some different kinds of client-side POSTs**: 
 
  > *( multiple files selection is available only for HTML5 capable browsers )*  
  
