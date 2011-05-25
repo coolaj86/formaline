@@ -395,29 +395,32 @@ Features
 -----------------
  
  
-When a file is found in the data stream:
+- When a file is found in the data stream:
  
- - this is directly written to disk, chunk to chunk, until the end of file is reached.
+> - this is directly written to disk, chunk to chunk, until the end of file is reached.
 
- - a directory with a random integer name is created in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
-   it assures no collisions on file names, for every different POST .
+> - the default behaviour is to create a directory with a random integer name, in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
+>   it assures no collisions on file names, for every different POST .
    
-- the file name is cleaned of weird chars, then converted to an hash string with SHA1.
-- when two files with the same name are uploaded through the same post action, the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis);
+>     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
+>     - when two files with the same name are uploaded through the same POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis);
   
-   >In this way, It assures us that the first file will not overwritten.
+> In this way, It assures us that the first file will not overwritten.
 
- - when a file reaches the upload threshold allowed:
+> - with session support.. (TODO)
+
+
+- When a file reaches the upload threshold allowed:
  
    > - if *removeIncompleteFiles === true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
    
-   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem, **'end'** event is emitted, an array with paths ( which lists incomplete files ) is passed to 'end' callback.
+   > - if *removeIncompleteFiles === false*, the file is kept in the filesystem
 
- - when a file is totally received, a **'filereceived'** event  is emitted. 
+ - When a file is totally received, a **'filereceived'** event  is emitted. 
 
- - the **filereceived** and **fileremoved** events are emitted with these parameters attached: *sha1filename*, *origfilename*, *filedir*, *filetype*, *filesize*, *filefield*, and *sha1sum* ( only when the file was received ) . 
+> - the **filereceived** and **fileremoved** events are emitted with a json parameter that holds file information: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( only when the file was received ) . 
  
- - When the mime type is not recognized by the file extension, the default value for **filetype** will be **'application/octet-stream'** .
+> - When the mime type is not recognized by the file extension, the default value for **filetype** will be **'application/octet-stream'** .
  
  
  Parser Implementation  & Performance
