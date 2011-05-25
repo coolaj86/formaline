@@ -369,11 +369,11 @@ Features
 *create an instance with config, then parse the request:*
    
 ``` javascript  
-
- new formaline( config ).parse( req, res, next );
- /* or */
  var form = new formaline(config); 
  form.parse( req, res, next);
+ /* or directly */
+ new formaline( config ).parse( req, res, next );
+
 
 ```   
     
