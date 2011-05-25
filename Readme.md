@@ -89,36 +89,31 @@ Features
  Simple Usage
 --------------
 
-``` javascript
+>``` javascript
+>   
+> var formaline = require('formaline'),
+>     form = new formaline( { } ); // <-- empty config object
+>```
 
- var formaline = require('formaline'),
-     form = new formaline( { } );        // <-- empty config object
+ **add event listener:**
 
-```
-   
-   *add events listener:*
-
-``` javascript
- ..
- form.on( 'filereceived', function( json ){ .. }  )  
- ..
- /*
- or
- */ 
- var myListener = function( ){ console.log( arguments ); }
- ..
- form.on( 'filereceived', myListener ); // <-- myListener function gets a json data object as argument
- ..
- /*
- then, parse request:
- */
- form.parse( req, res, next );          // <-- next is your callback function( .. ){ .. }
- ..
-   
-```
+>``` javascript
+>   ..
+>   form.on( 'filereceived', function( json ){ .. }  )  
+>   ..
+>   /* or */ 
+>   var myListener = function( ){ console.log( arguments ); }
+>   ..
+>   form.on( 'filereceived', myListener ); // <-- myListener function gets a json data object as argument
+>   ..
+>   /* then parse request */
+>   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
+>   ..
+>   
+>```
 
 
->  see **Event & Listeners** section for a complete list of callbacks signatures!
+  see **Event & Listeners** section for a complete list of callbacks signatures!
       
 
 
