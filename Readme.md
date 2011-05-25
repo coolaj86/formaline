@@ -371,14 +371,11 @@ Features
 ``` javascript  
 
  new formaline( config ).parse( req, res, next );
-
-```
-
-  *or*
-
-``` javascript  
-
+ 
+ /* or */
+ 
  var form = new formaline(config); 
+ 
  form.parse( req, res, next);
 
 ```   
