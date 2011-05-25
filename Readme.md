@@ -163,21 +163,38 @@ Features
  Events & Listeners
 --------------------
 
-#### Exception Event Types:
- 
-> - fatal : **headersexception**, **pathexception**, **bufferexception**, **streamexception** *( the data transmission is interrupted, and the 'end' event is thrown )*. 
-> - attention : **warning** 
+## Exception Events: 
+
+> There is only one event to listen for the exceptions: 'exception',
+> but there are different kinds of exceptions, types are:
+
+> - fatal exceptions: *( the data transmission is interrupted, and the 'end' event is thrown )*. 
+>     - **headersexception**
+>     - **pathexception**
+>     - **bufferexception**
+>     - **streamexception**
+
+> - exceptions that not need special attention: 
+>     - **warning** 
 
 
-#### Informational Event Types:
+## Informational Events :
 
- > - file :  **filereceived**, **fileremoved**
- > - field : **field**
- > - flow :  **dataprogress**, **end** 
+> - related to file:
+>    - **filereceived**
+>    - **fileremoved**
+ 
+> - related to field:
+>    - field : **field**
+
+> - related to the request's good flow:  
+>     - **dataprogress**
+>     - **end** 
  
  
  
-#### All Listeners are called at run-time with a response object in JSON format: 
+ 
+## All Listeners are called at run-time with a response object in JSON format: 
 
 
 > - **'exception'**: `function ( json ) { .. }`, 
