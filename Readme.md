@@ -405,12 +405,17 @@ Features
  
 > - this is directly written to disk, until the end of file is reached.
 
-> - **the default behaviour** is to create a directory with a random integer name, in the path of upload directory (default is /tmp/), for example: */tmp/123456789098/*, it assures no collisions on file names, **for every different POST** .
-   
->     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
->     - when two files with the same name **are uploaded through the same POST action**, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
+> - **default behaviour** : 
 
-> - **with session support** the upload directory name will remain the same across multiple POSTs, for the same authenticated user. If two file with the same name are uploaded through different POSTs, the genereated SHA1 file name will be the same, and the file is overwritten by the new one.   
+>     - a subdirectory was created, with a random number name, in the path of upload root directory (default is /tmp/), for example: */tmp/123456789098/*, it assures no collisions on file names, **for every different POST** .
+>     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
+>     - when two files with the same name **are uploaded through the SAME POST action**, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
+
+> - **with session support** 
+
+>     - for an authenticated user the upload subdirectory name will remain the same across multiple POSTs, . 
+>     - the user session identifier is used for generating directory name,  
+>     - when two files, with the same name, **are uploaded through DIFFERENTS POSTs**, the genereated SHA1 files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
 - **When a file reaches the upload threshold allowed**:
