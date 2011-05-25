@@ -101,14 +101,12 @@ Features
 ``` javascript
  
  ...
- form.on( 'filereceived', function( jsonData ){ .. }  )  
+ form.on( 'filereceived', function( json ){ .. }  )  
  ...
 
 ```
- 
-  **the listed params ( sha1filename, origfilename, filedir, .. ) are already attached to the function callback!** 
   
-  > for example, if I write an anonymous function myListener:
+  > or 
 
 ``` javascript  
 
@@ -129,7 +127,7 @@ Features
 
 ``` javascript  
 
- form.parse( req, res, next ); // next is a callback  function( .. ){ .. }
+ form.parse( req, res, next ); // next is your callback function( .. ){ .. }
 
 ```
 
@@ -137,14 +135,15 @@ Features
  Configuration Options
 -----------------------
 
-You could create a formaline instance with some configuration options : 
+You could create a formaline instance also with some configuration options : 
 
 > - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
->   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it  throws an exception )
->   - **a new sub-directory with a random name is created for every upload request** .
+>   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it throws a fatal exception )
+>   - without session support, a new sub-directory with a random name is created for every upload request .
+>   - with session support, .. (TODO)
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
->   - it indicates the upload threshold in bytes for file uploads (multipart/form-data) before of stopping writing to disk .
+>   - it indicates the upload threshold in bytes for the data written to disk (multipart/form-data) .
 >   - it also limits data received with serialized fields (x-www-urlencoded) . 
   
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
@@ -156,7 +155,7 @@ You could create a formaline instance with some configuration options :
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) the **default** value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
->   - if false, no event is emitted, but the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
+>   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
 
 > - **'sha1sum'** : ( *boolean* )  **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum (  40 hex string ) 
