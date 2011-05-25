@@ -42,7 +42,7 @@ Features
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - It is Possible to create module instances with a **configuration object** with some useful parameters ( **listeners**, uploadThreshold, logging .. ) . 
 > - **Session support**. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user.   
-> - **Returns data in JSON format** .
+> - **Returns data in JSON format (see listeners signatures)** .
 > - **Multiple exceptions types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - It supports duplicate names for fields .
@@ -52,7 +52,6 @@ Features
 > - It is possible to track the progress ratio ( also chunks and bytes ) of data received . 
 > - It easily integrates with **connect middleware**.
 > - **It Works !**
-> - etc.. 
 
 
  Client-Side
