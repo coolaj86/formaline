@@ -395,7 +395,7 @@ Features
 -----------------
  
  
-- When a file is found in the data stream:
+- **When a file is found in the data stream**:
  
 > - this is directly written to disk, chunk to chunk, until the end of file is reached.
 
@@ -410,13 +410,13 @@ Features
 > - with session support.. (TODO)
 
 
-- When a file reaches the upload threshold allowed:
+- **When a file reaches the upload threshold allowed**:
  
    > - if *removeIncompleteFiles === true*, the file is auto-removed and a **'fileremoved'** event is emitted; 
    
    > - if *removeIncompleteFiles === false*, the file is kept in the filesystem
 
- - When a file is totally received, a **'filereceived'** event  is emitted. 
+ - **When a file is totally received, a *'filereceived'* event  is emitted**. 
 
 > - the **filereceived** and **fileremoved** events are emitted with a json parameter that holds file information: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( only when the file was received ) . 
  
