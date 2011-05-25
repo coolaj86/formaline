@@ -163,7 +163,7 @@ Features
  Events & Listeners
 --------------------
 
-## Exception Events: 
+#### Exception Events: 
 
 > There is only one event to listen for the exceptions: **'exception'**,
 
