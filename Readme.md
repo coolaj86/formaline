@@ -165,7 +165,8 @@ Features
 
 ## Exception Events: 
 
-> There is only one event to listen for the exceptions: 'exception',
+> There is only one event to listen for the exceptions: **'exception'**,
+
 > but there are different kinds of exceptions, types are:
 
 > - fatal exceptions: *( the data transmission is interrupted, and the 'end' event is thrown )*. 
