@@ -425,7 +425,7 @@ Features
 >     - when two files, with the same name, are uploaded through :
 
 >          - **Same POST** action, ( the same as default behaviour, see above )
->          - **Different POSTs** actions, the genereated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
+>          - **Different POSTs** actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
 >     - the data stream is written to disk in a file, until is reached the end of the file's data, or the maximum data threshold for uploads .
