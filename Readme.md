@@ -132,8 +132,8 @@ Features
 >   -  the function takes req ( http request ) as a parameter at run-time .
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
->   - it indicates the upload threshold in bytes for the data written to disk (multipart/form-data) .
->   - it also limits data received with serialized fields (x-www-urlencoded) . 
+>   - it indicates the upload threshold in bytes for the data written to disk ( multipart/form-data ) .
+>   - it also limits data received with serialized fields ( x-www-urlencoded ) . 
   
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
@@ -147,7 +147,7 @@ Features
 >   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
 
 > - **'sha1sum'** : ( *boolean* )  **default** value is **false**.
->   - it is possible to check the file data integrity calculating the sha1 checksum (  40 hex string ) 
+>   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
 >   - it is calculated iteratively when file data is received
 
 > - **'logging'** : ( *string* ) the **default** value is **'debug:off,1:on,2:on,3:on'** (debug is off).
