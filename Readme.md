@@ -357,7 +357,7 @@ Features
          },
          'end': function ( json, res, next ) {
             ...
-            res.writeHead(200, {'content-type': 'text/plain'});
+            res.writeHead(200, { 'content-type': 'text/plain' } );
             res.end();
             next();
          }
@@ -369,7 +369,7 @@ Features
 *create an instance with config, then parse the request:*
    
 ``` javascript  
- var form = new formaline(config); 
+ var form = new formaline( config ); 
  form.parse( req, res, next);
  /* or directly */
  new formaline( config ).parse( req, res, next );
