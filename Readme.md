@@ -399,7 +399,7 @@ Features
  
 > - this is directly written to disk, chunk to chunk, until the end of file is reached.
 
-> - the default behaviour is to create a directory with a random integer name, in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
+> - **the default behaviour** is to create a directory with a random integer name, in the path of upload directory (default is /tmp/), for example:  */tmp/123456789098/*,
 >   it assures no collisions on file names, for every different POST .
    
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
@@ -407,7 +407,7 @@ Features
   
 > In this way, It assures us that the first file will not overwritten.
 
-> - with session support.. (TODO)
+> - **with session support**.. (TODO)
 
 
 - **When a file reaches the upload threshold allowed**:
