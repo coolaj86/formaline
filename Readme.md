@@ -403,7 +403,6 @@ Features
  
 - **When a file is found in the data stream**:
  
-> - this is directly written to disk, until the end of file is reached.
 
 > - **default behaviour** : 
 
@@ -411,12 +410,14 @@ Features
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 >     - when two files with the same name **are uploaded through the SAME POST action**, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
 
-> - **with session support** 
+> - **with session support** : 
 
 >     - for an authenticated user the upload subdirectory name will remain the same across multiple POSTs, . 
 >     - the user session identifier is used for generating directory name,  
 >     - when two files, with the same name, **are uploaded through DIFFERENTS POSTs**, the genereated SHA1 files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
+
+> -the data stream is written to disk in a file, until is reached the end of the file's data, or the maximum data threshold for uploads .
 
 - **When a file reaches the upload threshold allowed**:
  
