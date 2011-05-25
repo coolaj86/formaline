@@ -175,27 +175,27 @@ Features
 > but there are different kinds of exceptions, types are:
 
 > - fatal exceptions: *( the data transmission is interrupted, and the 'end' event is thrown )*. 
->     - **headersexception**
->     - **pathexception**
->     - **bufferexception**
->     - **streamexception**
+>     - **'headersexception'**
+>     - **'pathexception'**
+>     - **'bufferexception'**
+>     - **'streamexception'**
 
 > - exceptions that not need special attention: 
->     - **warning** 
+>     - **'warning'** 
 
 
 #### Informational Events :
 
 > - related to file:
->    - **filereceived**
->    - **fileremoved**
+>    - **'filereceived'**
+>    - **'fileremoved'**
  
 > - related to field:
->    - field : **field**
+>    - **'field'**
 
-> - related to the request's good flow:  
->     - **dataprogress**
->     - **end** 
+> - related to the request's flow:  
+>     - **'dataprogress'**
+>     - **'end'** 
  
  
 ###Listeners Signatures 
