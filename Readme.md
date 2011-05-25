@@ -184,10 +184,10 @@ Features
 
  ``` javascript     
      json = { 
-          type: < String >,      // exception event type 
-          isupload: < Boolean >, // is an upload?
-          msg: <String>,         // exception debug message
-          isfatal: <Boolean>     // is exception fatal? a true value means that 'end' event was emitted
+          type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
+          isupload: true,           // <-- IS IT AN UPLOAD ?
+          msg: 'blah, blah..',      // <-- DEBUG MESSAGE
+          isfatal: true             // <-- IS IT A FATAL EXCEPTION? ( a true value means that an 'end' event was emitted, and that the response was sended  )
       }
 ``` 
 
@@ -195,8 +195,8 @@ Features
 
 ``` javascript     
      json = { 
-          name: <String>,        // field name
-          value: <String>        // field value
+          name:  'field1',  // <-- FIELD NAME
+          value: 'value1'   // <-- FIELD VALUE
       }
 ``` 
  
@@ -204,13 +204,13 @@ Features
 
 ``` javascript
      json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer, 
-          fieldname: <String>, 
-          datasha1sum: <String> 
+          sha1name: '..',   // <-- 40 HEX SHA1 STRING
+          origname: '..',   // <-- FILE ORIGINAL NAME  
+          path: '..',       // <-- FILE PATH       
+          type: '..',       // <-- MIME TYPE
+          size: 217,        // <-- BYTES 
+          fieldname: '..',  // <-- FILE FIELD NAME 
+          datasha1sum: '..' // <-- 40 HEX SHA1 STRING
       }
 ``` 
 
@@ -218,13 +218,13 @@ Features
 
 ``` javascript     
      json = { 
-          sha1name:  <String>, 
-          origname: <String>, 
-          path: <String>, 
-          type: <String>, 
-          size: <Integer>, 
-          fieldname: <String>, 
-          datasha1sum: 'not calculated' 
+          sha1name:  '..', 
+          origname: '..', 
+          path: '..', 
+          type: '..', 
+          size: 217, 
+          fieldname: '..',
+          datasha1sum: 'not calculated'   // <-- THE HASH NAME IS NOT CALCULATED IF FILE IS INCOMPLETE
       }
 ``` 
  
@@ -232,9 +232,9 @@ Features
 
 ``` javascript     
      json = { 
-          bytes: <Integer>,      // bytes received
-          chunks: <Integer>,     // chunks received
-          ratio: <Integer>       // ratio completion
+          bytes: 8900,   // <-- BYTES RECEIVED
+          chunks: 2,     // <-- CHUNKS RECEIVED
+          ratio: 0.3     // <-- RATIO COMPLETION
       }
 ``` 
  
@@ -244,10 +244,10 @@ Features
      json = {   
           /* some numbers */        
           stats: {  
-             bytesReceived: 333,
-             bytesWrittenToDisk: 333,
+             bytesReceived: 754,
+             bytesWrittenToDisk: 217,
              chunksReceived: 1 ,
-             overallSecs: 0.03,
+             overallSecs: 0.048,
              filesCompleted: 1,
              filesRemoved: 0 
           },          
@@ -267,7 +267,7 @@ Features
                  origname: '..',   // <-- FILE ORIGINAL NAME  
                  path: '..',       // <-- FILE PATH       
                  type: '..',       // <-- MIME TYPE
-                 size: 999,        // <-- BYTES 
+                 size: 217,        // <-- BYTES 
                  fieldname: '..',  // <-- FILE FIELD NAME 
                  datasha1sum: '..' // <-- 40 HEX SHA1 STRING
              }, 
