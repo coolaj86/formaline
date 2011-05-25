@@ -205,8 +205,7 @@ Features
           type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- IS IT A FATAL EXCEPTION? 
-          // ( a true value means that an 'end' event was emitted, and that the response was sended  )
+          isfatal: true             // <-- TRUE VALUE MEANS THAT AN 'END' EVENT WAS EMITTED AND THAT THE RESPONSE WAS SENDED
       }
 ``` 
 
