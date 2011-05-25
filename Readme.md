@@ -244,12 +244,12 @@ Features
      json = {   
           /* some numbers */        
           stats: {  
-             bytesReceived: .. ,
-             bytesWrittenToDisk: .. ,
-             chunksReceived: .. ,
-             overallSecs: .. ,
-             filesCompleted: .. ,
-             filesRemoved:  
+             bytesReceived: 333,
+             bytesWrittenToDisk: 333,
+             chunksReceived: 1 ,
+             overallSecs: 0.03,
+             filesCompleted: 1,
+             filesRemoved: 0 
           },          
           /* 
           an array containing the list of files, 
@@ -263,13 +263,13 @@ Features
           */
           completed: {
              'file1 hash name (sha1name)' : {  
-                 sha1name:  '..',  //<-- 40 HEX SHA1 STRING
-                 origname: '..',   //<-- FILE ORIGINAL NAME  
-                 path: '..',       //<-- FILE PATH       
-                 type: '..',       //<-- MIME TYPE
-                 size: 999,        //<-- BYTES 
-                 fieldname: '..',  //<-- FILE FIELD NAME 
-                 datasha1sum: '..' //<-- 40 HEX SHA1 STRING
+                 sha1name:  '..',  // <-- 40 HEX SHA1 STRING
+                 origname: '..',   // <-- FILE ORIGINAL NAME  
+                 path: '..',       // <-- FILE PATH       
+                 type: '..',       // <-- MIME TYPE
+                 size: 999,        // <-- BYTES 
+                 fieldname: '..',  // <-- FILE FIELD NAME 
+                 datasha1sum: '..' // <-- 40 HEX SHA1 STRING
              }, 
              'file2 hash name': { .. } 
              ..
