@@ -150,7 +150,7 @@ Features
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
 >   - it is calculated iteratively when file data is received
 
-> - **'logging'** : ( *string* ) the **default** value is **'debug:off,1:on,2:on,3:on'** (debug is off).
+> - **'logging'** : ( *string* ) the **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
 >   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
       
