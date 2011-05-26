@@ -24,4 +24,4 @@
  $ curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
 ```    
 
-
+>The logging level is quite verbose, remember to modify 'logging' to your needs ( for example, turning off 2nd level debugging )
