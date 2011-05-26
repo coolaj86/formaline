@@ -148,6 +148,8 @@
  * + rewritten documentation for new listeners signatures
  * + tested session support, and added documentation
 
-   0.4.6 / 2011-05-xx
+   0.4.6 / 2011-05-26
 =====================
- * +
+ * + better code in directory creation
+ * + resolved minor bugs
+ * + better code for checking boundary string 
