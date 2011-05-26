@@ -403,7 +403,6 @@ Features
  
 - **When a file is found in the data stream**:
  
-
 > - **default behaviour** : 
 >
 >     - **for every different POST was created a subdirectory**:
@@ -443,7 +442,6 @@ Features
 
 
 - **When the remaining data for the file are exceeding the upload threshold**:
-
 
 >  - if removeIncompleteFile is: 
 >
