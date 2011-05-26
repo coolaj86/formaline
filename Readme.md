@@ -417,6 +417,7 @@ Features
 >       are uploaded through :
 
 >          - **Same POST** action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
+>          
 >          - **Different POSTs** actions, there is no collision between filenames, because they are written into different directories
 
 
@@ -424,12 +425,13 @@ Features
 >
 >     - **for an authenticated user the upload subdirectory name will remain the same across multiple POSTs** . 
 >
->     - the user session identifier is used for generating directory name,  
+>     - the user session identifier is used for generating directory name . 
 >
 >     - when two files, with the same name, 
 >       are uploaded through :
 
->          - **Same POST** action, ( the same as default behaviour, see above )
+>          - **Same POST** action, ( as default behaviour, see above )
+>
 >          - **Different POSTs** actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
