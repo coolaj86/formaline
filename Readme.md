@@ -406,12 +406,13 @@ Features
 
 > - **default behaviour** : 
 
->     - **for every different POST** was created a subdirectory: ( it assures no collisions on file names, between different POST actions )
+>     - **for every different POST was created a subdirectory**:
 
 >          - under the upload root directory, default is /tmp/ ( for example: */tmp/123456789098/* )
 >          - with a random number name .
 
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
+
 >     - when two files, with the same name, are uploaded through :
 
 >          - **Same POST** action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
@@ -421,7 +422,9 @@ Features
 > - **with session support** : 
 
 >     - **for an authenticated user the upload subdirectory name will remain the same across multiple POSTs** . 
+
 >     - the user session identifier is used for generating directory name,  
+
 >     - when two files, with the same name, are uploaded through :
 
 >          - **Same POST** action, ( the same as default behaviour, see above )
