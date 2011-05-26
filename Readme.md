@@ -329,7 +329,7 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:off,2:on,3:off'
+     logging: 'debug:on,1:on,2:on,3:off'
     
      uploadRootDir: '/var/www/upload/',
      
