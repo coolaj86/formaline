@@ -31,7 +31,7 @@ with git:
 >change the path and the port with yours. 
 
 
-**Please always update to latest release . This library is in active development .**
+**Please always update to latest release . This module is in active development .**
 
 
 Features
@@ -127,8 +127,8 @@ Features
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
 > - **'getSessionID'**: ( *function( **req** ){ }* ) the **default** value is **null** .
->   -  the function is used for retrieving session ID from request; it is used for creating a unique upload directory for an authenticated user .
->   -  this function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
+>   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
+>   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
@@ -379,7 +379,7 @@ Features
    
 ``` javascript  
  var form = new formaline( config ); 
- form.parse( req, res, next);
+ form.parse( req, res, next );
  ```   
  *or directly*
  
@@ -469,7 +469,7 @@ I try to explain me:
  reaches a time complexity (in the best case) of :   
 
      O( ( data chunk length ) / ( pattern length ) ) * O( time to do a single comparison ) 
-      or  for simplicity  
+      or, for simplicity  
      O( n / m ) * O(t) = O( n / m )
    
 > **t** is considered to be a constant value. It doesn't add anything in terms of complexity, but it still is a non zero value.  
