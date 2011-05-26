@@ -444,18 +444,18 @@ Features
 - **When the remaining data for the file are exceeding the upload threshold**:
 
 >  - if removeIncompleteFile is: 
->
 >     - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
 >
 >     - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
- - **When all the data for a file is totally received, a *'filereceived'* event  is emitted**. 
+- **When all the data for a file is totally received**:
+
+>  - *'filereceived'* event is emitted**. 
 
 
-> - the **'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) . 
- 
-> - When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
+> **'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) . 
+>  When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
  
  
  Parser Implementation & Performance
