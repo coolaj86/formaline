@@ -200,7 +200,7 @@ Features
 ###Listeners Signatures 
 
 
-**All Listeners are called at run-time with a response object in JSON format**: 
+**All Listeners functions are called at run-time with a response object argument in JSON format**: 
 
 
 > - **'exception'**: `function ( json ) { .. }`, 
