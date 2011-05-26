@@ -408,14 +408,15 @@ Features
 
 >     - **for every different POST was created a subdirectory**:
 
->          - under the upload root directory, default is /tmp/ ( for example: */tmp/123456789098/* )
->          - with a random number name .
+>          - under the upload root directory, default is /tmp/ .
+>          - with a random number name ( for example: */tmp/123456789098/* ) .
 
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
 
->     - when two files, with the same name, are uploaded through :
+>     - when two files, with the same name, 
+>       are uploaded through :
 
->          - **Same POST** action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten.
+>          - **Same POST** action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          - **Different POSTs** actions, there is no collision between filenames, because they are written into different directories
 
 
@@ -425,7 +426,8 @@ Features
 
 >     - the user session identifier is used for generating directory name,  
 
->     - when two files, with the same name, are uploaded through :
+>     - when two files, with the same name, 
+>       are uploaded through :
 
 >          - **Same POST** action, ( the same as default behaviour, see above )
 >          - **Different POSTs** actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
@@ -449,7 +451,7 @@ Features
 > - When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
  
  
- Parser Implementation  & Performance
+ Parser Implementation & Performance
 --------------------------------------
 
 ###A Note about Parsing Data Rate vs Network Throughput
