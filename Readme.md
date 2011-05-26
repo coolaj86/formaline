@@ -126,7 +126,7 @@ Features
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
-> - **'getSessionID'**: ( *function( **req** ){ }* ) the **default** value is **null** .
+> - **'getSessionID'**: ( *function( **req** ){ .. }* ) the **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
 >   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
