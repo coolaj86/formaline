@@ -15,7 +15,7 @@ var http = require( 'http' ),
                  <form action="/test/upload" enctype="multipart/form-data" method="post">\
                  <input type="text" name="demotitle1"/><br/>\
                  <input type="file" name="multiplefield1" multiple="multiple"><br/>\
-                 <input type="text" name="demotitle2/"><br/>\
+                 <input type="text" name="demotitle2"><br/>\
                  <input type="file" name="multiplefield2" multiple="multiple"><br/>\
                  <input type="text" name="demotitle3"/><br/>\
                  <input type="file" name="multiplefield3" multiple="multiple"><br/>\
