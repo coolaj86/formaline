@@ -53,7 +53,7 @@ var http = require( 'http' ),
                 holdFilesExtensions : true,
                 
                     // default is /tmp/ -->
-                uploadRootDir: //dir,
+                uploadRootDir: dir,
                 
                     // retrieve session ID for creating unique upload directory for authenticated users
                     // the upload directory gets its name from the returned session identifier,
@@ -62,8 +62,7 @@ var http = require( 'http' ),
                     // the returned session id param, must contain a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
                 getSessionID: function( req ){ 
-                    return 'caio';
-                    //return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
+                    return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
                 },
   
                     // default is false
