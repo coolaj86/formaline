@@ -147,3 +147,7 @@
  * + moved all response objects to JSON format, also for fields
  * + rewritten documentation for new listeners signatures
  * + tested session support, and added documentation
+
+   0.4.6 / 2011-05-xx
+=====================
+ * +
