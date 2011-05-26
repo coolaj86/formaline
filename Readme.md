@@ -314,7 +314,7 @@ Features
 ------------------
 
 
-*require the module:*
+> **require the module**:
 
 ``` javascript
   
@@ -323,7 +323,7 @@ Features
 
 ```    
 
-*build a config object:*
+> **build a config object**:
 
 ``` javascript  
     
@@ -375,7 +375,7 @@ Features
         
 ```  
 
-*create an instance with config, then parse the request:*
+> **create an instance with config, then parse the request**:
    
 ``` javascript  
  var form = new formaline( config ); 
@@ -405,7 +405,7 @@ Features
  
 
 > - **default behaviour** : 
-
+>
 >     - **for every different POST was created a subdirectory**:
 >
 >          - under the upload root directory, default is /tmp/ .
@@ -415,7 +415,7 @@ Features
 >
 >     - when two files, with the same name, 
 >       are uploaded through :
-
+>
 >          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          
 >          - **Different** POSTs actions, there is no collision between filenames, because they are written into different directories
@@ -429,7 +429,7 @@ Features
 >
 >     - when two files, with the same name, 
 >       are uploaded through :
-
+>
 >          - the **Same** POST action, ( as default behaviour, see above )
 >
 >          - **Different** POSTs actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
@@ -445,11 +445,11 @@ Features
 - **When the remaining data for the file are exceeding the upload threshold**:
 
 
->     - if removeIncompleteFile is: 
+>  - if removeIncompleteFile is: 
 >
->          - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
+>     - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
 >
->          - otherwise, the file is kept partial in the filesystem, no event is emitted .
+>     - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
  - **When all the data for a file is totally received, a *'filereceived'* event  is emitted**. 
