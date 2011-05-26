@@ -407,12 +407,12 @@ Features
 > - **default behaviour** : 
 
 >     - **for every different POST was created a subdirectory**:
-
+>
 >          - under the upload root directory, default is /tmp/ .
 >          - with a random number name ( for example: */tmp/123456789098/* ) .
-
+>
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
-
+>
 >     - when two files, with the same name, 
 >       are uploaded through :
 
@@ -421,11 +421,11 @@ Features
 
 
 > - **with session support** : 
-
+>
 >     - **for an authenticated user the upload subdirectory name will remain the same across multiple POSTs** . 
-
+>
 >     - the user session identifier is used for generating directory name,  
-
+>
 >     - when two files, with the same name, 
 >       are uploaded through :
 
