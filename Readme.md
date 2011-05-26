@@ -454,8 +454,10 @@ Features
 >  - *'filereceived'* event is emitted**. 
 
 
-> **'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) . 
->  When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
+**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) .
+
+
+When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
  
  
  Parser Implementation & Performance
