@@ -416,9 +416,9 @@ Features
 >     - when two files, with the same name, 
 >       are uploaded through :
 
->          - **Same POST** action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
+>          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          
->          - **Different POSTs** actions, there is no collision between filenames, because they are written into different directories
+>          - **Different** POSTs actions, there is no collision between filenames, because they are written into different directories
 
 
 > - **with session support** : 
@@ -430,25 +430,32 @@ Features
 >     - when two files, with the same name, 
 >       are uploaded through :
 
->          - **Same POST** action, ( as default behaviour, see above )
+>          - the **Same** POST action, ( as default behaviour, see above )
 >
->          - **Different POSTs** actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
+>          - **Different** POSTs actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
->     - the data stream is written to disk in a file, until is reached the end of the file's data, or the maximum data threshold for uploads .
+>     - the data stream is written to disk in the file, until:
+>
+>          - is reached end of the file's data .
+>
+>          - is reached the maximum data threshold for uploads .
 
 
 - **When the remaining data for the file are exceeding the upload threshold**:
 
  
-   > - if configuration param **removeIncompleteFiles** is true, the file is auto-removed and a **'fileremoved'** event is emitted; 
-   > - otherwise, the file is kept partial in the filesystem, and no event is emitted .
+>    - if config param **removeIncompleteFiles** is:
+>      
+>          - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted; 
+>   
+>          - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
  - **When all the data for a file is totally received, a *'filereceived'* event  is emitted**. 
 
 
-> - the **filereceived** and **fileremoved** events are emitted with a json parameter that holds file information: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( only when the file was received ) . 
+> - the **'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) . 
  
 > - When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
  
@@ -471,7 +478,7 @@ I try to explain me:
  
 >  - the data received is not chopped, 
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
-> - network throughput == network bandwidth (wow),
+> - network throughput == network bandwidth ( **wow **),
  
  reaches a time complexity (in the best case) of :   
 
