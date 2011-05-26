@@ -444,11 +444,11 @@ Features
 
 - **When the remaining data for the file are exceeding the upload threshold**:
 
- 
->    - if config param **removeIncompleteFiles** is:
->      
->          - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted; 
->   
+
+>     - if removeIncompleteFile is: 
+>
+>          - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
+>
 >          - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
