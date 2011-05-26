@@ -333,7 +333,7 @@ Features
     
      uploadRootDir: '/var/www/upload/',
      
-     getSessionID: function( req ){ 
+     getSessionID: function( req ){ // for example -->
          return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
      },
      
