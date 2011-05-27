@@ -7,7 +7,8 @@
         "type" : "git"
         ,"url" : "git://github.com/rootslab/formaline.git"
     }
-  , "keywords" : ["form","upload","multipart","urlencoded","formaline","parser","connect"]
+  , "keywords" : ["form","upload","multipart","urlencoded","formaline","parser","connect","post"]
+  , "tags":["form","upload","multipart","urlencoded","post"]
   , "author" : "Guglielmo Ferri <44gatti@gmail.com>"
   , "dependencies" : {}
   , "main" : "index"
