@@ -229,13 +229,13 @@ Features
 
 ``` javascript
      json = { 
-          sha1name: '..',   // <-- 40 HEX SHA1 STRING
+          sha1name: '..',   // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) REUSLTING HASH OF FILENAME )
           origname: '..',   // <-- FILE ORIGINAL NAME  
           path: '..',       // <-- FILE PATH       
           type: '..',       // <-- MIME TYPE
           size: 217,        // <-- BYTES 
           fieldname: '..',  // <-- FILE FIELD NAME 
-          datasha1sum: '..' // <-- 40 HEX SHA1 STRING
+          datasha1sum: '..' // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF FILE'S DATA )
       }
 ``` 
 
