@@ -153,3 +153,5 @@
  * + better code for sync directory creation
  * + resolved minor bugs
  * + better code for checking boundary string 
+ * + added direxception
+ * + little modification to Readme

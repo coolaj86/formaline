@@ -175,10 +175,11 @@ Features
 > but there are different kinds of exceptions, types are:
 
 > - fatal exceptions: *( the data transmission is interrupted, and the 'end' event is thrown )*. 
->     - **'headersexception'**
->     - **'pathexception'**
->     - **'bufferexception'**
->     - **'streamexception'**
+>     - **'headersexception'**    ->  bad headers
+>     - **'pathexception'**       ->  bad dir path
+>     - **'bufferexception'**     ->  error copying buffer 
+>     - **'streamexception'**     ->  error writing to file stream
+>     - **'direxception'**        ->  error creating directory
 
 > - exceptions that not need special attention: 
 >     - **'warning'** 
