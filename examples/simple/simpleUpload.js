@@ -52,6 +52,7 @@ var http = require( 'http' ),
                     // default is true -->
                 holdFilesExtensions : true,
                 
+                    // specify a path, with at least a trailing slash
                     // default is /tmp/ -->
                 uploadRootDir: dir,
                 
@@ -148,7 +149,7 @@ var http = require( 'http' ),
         }
 };
 
-server = connect( getHtmlForm , handleFormRequest, function(){ console.log( '\nHi!, I\'m the next() callback function!'); } );
+server = connect( getHtmlForm , handleFormRequest, function(){ form = null; console.log( '\nHi!, I\'m the next() callback function!'); } );
 
 server.listen( 3000 );
 

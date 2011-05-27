@@ -122,7 +122,8 @@ Features
 **You could create a formaline instance also with some configuration options:** 
 
 > - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
->   - it is the root directory for file uploads, must already exist! ( formaline will try to use '/tmp/', otherwise it throws a fatal exception )
+>   - specify a path, with at least a trailing slash .
+>   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal exception )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
