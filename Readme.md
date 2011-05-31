@@ -229,7 +229,7 @@ Features
 
 ``` javascript
      json = { 
-          sha1name: '..',   // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) REUSLTING HASH OF FILENAME )
+          sha1name: '..',   // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
           origname: '..',   // <-- FILE ORIGINAL NAME  
           path: '..',       // <-- FILE PATH       
           type: '..',       // <-- MIME TYPE
