@@ -159,3 +159,9 @@
    0.4.7 / 2011-05-31
 =====================
  * + removed a bug on the fileDataChunk index, when the file data are chopped there is an error while writing of the last chunk, obviously it has caused a bad hash calculation
+ 
+ 0.4.8 / 2011-05-31
+=====================
+ * + added requestTimeOut config parameter, now it is possible to specify a value different from default ( 120000 millisecs )
+ * + added 'timeoutexception' and 'abortedexception' events
+ * + added listeners for request 'close' event 

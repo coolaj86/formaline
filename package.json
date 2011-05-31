@@ -1,6 +1,6 @@
 {
     "name" : "formaline"
-  , "version" : "0.4.7"
+  , "version" : "0.4.8"
   , "description" : "formaline is a full-featured low-level module for handling form requests ( HTTP POST / PUT ) and for fast parsing of file uploads, it is also ready to use with connect middleware"
   , "homepage" : "https://github.com/rootslab/formaline"
   , "repository" : {
@@ -12,5 +12,5 @@
   , "author" : "Guglielmo Ferri <44gatti@gmail.com>"
   , "dependencies" : {}
   , "main" : "index"
-  , "engines" : { "node": "0.4.x" }
+  , "engines" : { "node": "0.4.8" }
 }

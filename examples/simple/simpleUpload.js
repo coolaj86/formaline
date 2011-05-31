@@ -65,7 +65,10 @@ var http = require( 'http' ),
                 getSessionID: function( req ){ 
                     return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
                 },
-  
+                    // default is 120000 milliseconds ( default nodeJS timeout for connection requests )
+                    // the client connection is closed after the specified milliseconds ( minimum is 100 millisecs )
+                requestTimeOut : 5000, // 5 secs
+                
                     // default is false
                     // return sha1 digests for files received?  
                 sha1sum: true,
@@ -120,8 +123,9 @@ var http = require( 'http' ),
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
                         res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
+                        res.write( '-> max request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
-                        
+                                                
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
                         res.write( '\n-> files received: ( { sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
                         if( form.removeIncompleteFiles ){
@@ -132,7 +136,7 @@ var http = require( 'http' ),
                             }
                         }
                         res.end();
-                        next(); // test callback
+                        next(); // test callback 
                     }
                 }
             };//end config obj

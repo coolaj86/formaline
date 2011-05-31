@@ -3,7 +3,9 @@
 > __formaline__ is a low-level ([nodeJS](http://nodejs.org/)) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
-> **Current Stable Version: 0.4.7**
+> **Current Stable Version: 0.4.8**
+
+> **this version is compatible with nodeJS >= v0.4.8**
 
  Installation
 --------------
@@ -127,12 +129,16 @@ Features
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
+> - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ).
+>   - it indicates the maximum value, after that the 'timeoutexception' event will be emitted and the client's request will be aborted .
+>   - minimum value is 100 millisecs .
+
 > - **'getSessionID'**: ( *function( **req** ){ .. }* ) the **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
 >   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
 
-> - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes (1GB).
+> - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes ( 1 GB ).
 >   - it indicates the upload threshold in bytes for the data written to disk ( multipart/form-data ) .
 >   - it also limits data received with serialized fields ( x-www-urlencoded ) . 
   
@@ -158,7 +164,7 @@ Features
 > - **'emitDataProgress'** : ( *boolean or integer > 1* ) the **default** value is **false**.
 >    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
-            
+         
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
 >    - **See below**
 
@@ -180,6 +186,8 @@ Features
 >     - **'bufferexception'**     ->  error copying buffer 
 >     - **'streamexception'**     ->  error writing to file stream
 >     - **'direxception'**        ->  error creating directory
+>     - **'timeoutexception''**   ->  the client request timeout was reached
+>     - **'abortedexception'**    ->   the request was aborted ( for example, when a user have stopped an upload )
 
 > - exceptions that not need special attention: 
 >     - **'warning'** 
@@ -338,7 +346,9 @@ Features
      getSessionID: function( req ){ // for example -->
          return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
      },
-     
+
+     requestTimeOut : 5000, // 5 secs
+    
      checkContentLength: false,
             
      uploadThreshold: 3949000,  
