@@ -156,6 +156,6 @@
  * + added direxception
  * + little modification to Readme
  
-   0.4.7 / 2011-xx-xx
+   0.4.7 / 2011-05-31
 =====================
  * + removed a bug on the fileDataChunk index, when the file data are chopped there is an error while writing of the last chunk, obviously it has caused a bad hash calculation
