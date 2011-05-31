@@ -235,7 +235,7 @@ Features
           type: '..',       // <-- MIME TYPE
           size: 217,        // <-- BYTES 
           fieldname: '..',  // <-- FILE FIELD NAME 
-          datasha1sum: '..' // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF FILE'S DATA )
+          datasha1sum: '..' // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
       }
 ``` 
 
@@ -249,7 +249,7 @@ Features
           type: '..', 
           size: 217, 
           fieldname: '..',
-          datasha1sum: 'not calculated'   // <-- THE HASH NAME IS NOT CALCULATED IF FILE IS INCOMPLETE
+          datasha1sum: 'not calculated'   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
       }
 ``` 
  
