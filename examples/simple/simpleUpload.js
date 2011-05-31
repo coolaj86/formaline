@@ -69,6 +69,11 @@ var http = require( 'http' ),
                     // the client connection is closed after the specified milliseconds ( minimum is 100 millisecs )
                 requestTimeOut : 5000, // 5 secs
                 
+                    // default is true
+                    // when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event
+                    // if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore  
+                resumeRequestOnFatalException: false,
+                
                     // default is false
                     // return sha1 digests for files received?  
                 sha1sum: true,
@@ -136,7 +141,7 @@ var http = require( 'http' ),
                             }
                         }
                         res.end();
-                       // next(); // test callback 
+                        next(); // test callback 
                     }
                 }
             };//end config obj
