@@ -122,8 +122,8 @@ var http = require( 'http' ),
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
-                        res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n');
-                        res.write( '-> max request timeout: ' + form.requestTimeOut + ' millisecs\n' );
+                        res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n' );
+                        res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
                                                 
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
@@ -136,12 +136,12 @@ var http = require( 'http' ),
                             }
                         }
                         res.end();
-                        next(); // test callback 
+                       // next(); // test callback 
                     }
                 }
             };//end config obj
                             
-        if ( (req.url === '/test/upload') || (req.url === '/test/post') ){
+        if ( ( req.url === '/test/upload' ) || ( req.url === '/test/post' ) ){
             log( ' -> req url :', req.url );
             form = new formaline( config ) ;
             form.parse( req, res, next );
@@ -153,7 +153,7 @@ var http = require( 'http' ),
         }
 };
 
-server = connect( getHtmlForm , handleFormRequest, function(){ form = null; console.log( '\nHi!, I\'m the next() callback function!'); } );
+server = connect( getHtmlForm , handleFormRequest, function(){ form = null; console.log( '\nHi!, I\'m the next() callback function!' ); } );
 
 server.listen( 3000 );
 
