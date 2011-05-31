@@ -155,3 +155,7 @@
  * + better code for checking boundary string 
  * + added direxception
  * + little modification to Readme
+ 
+   0.4.6 / 2011-05-26
+=====================
+ * + removed a bug on the fileDataChunk index, when the file data are chopped there is an error while writing of the last chunk, obviously it has caused a bad hash calculation
