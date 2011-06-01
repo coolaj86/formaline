@@ -137,7 +137,6 @@ Features
 >   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
 >   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
 
-
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) the **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
 >   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.

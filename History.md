@@ -166,7 +166,7 @@
  * + added 'timeoutexception' and 'abortedexception' events
  * + added listeners for request 'close' event
 
- 0.4.9 / 2011-06-xx
+ 0.4.9 / 2011-06-01
 =====================
  * + added config param 'resumeRequestOnFatalException'
  * + added 'mtime' ( last modified date ) attribute to files
