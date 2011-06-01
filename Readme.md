@@ -241,8 +241,8 @@ Features
 
 ``` javascript
      json = { 
-          sha1name: '..',     // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          origname: '..',     // <-- FILE ORIGINAL NAME  
+          hashname: '..',     // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
+          name: '..',     // <-- FILE ORIGINAL NAME  
           path: '..',         // <-- FILE PATH       
           type: '..',         // <-- MIME TYPE
           size: 217,          // <-- BYTES 
@@ -256,8 +256,8 @@ Features
 
 ``` javascript     
      json = { 
-          sha1name:  '..', 
-          origname: '..', 
+          hashname:  '..', 
+          name: '..', 
           path: '..', 
           type: '..', 
           size: 217, 
@@ -298,12 +298,12 @@ Features
           incomplete: [ 'path1', 'path2', .. ],        
           /* 
           an hash containing all completed files
-          the keys are the files hash values ( sha1name property value ) 
+          the keys are the files hash values ( hashname property value ) 
           */
           completed: {
-             'file1 hash name (sha1name)' : { // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
-                 sha1name:  '..',   
-                 origname: '..',     
+             'file1 hash name (sha1 hash name)' : { // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+                 hashname:  '..',   
+                 name: '..',     
                  path: '..',              
                  type: '..',       
                  size: 217,         
@@ -475,7 +475,7 @@ Features
 >  - *'filereceived'* event is emitted**. 
 
 
-**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *sha1name*, *origname*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) .
+**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) .
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .

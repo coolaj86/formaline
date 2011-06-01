@@ -132,9 +132,9 @@ var http = require( 'http' ),
                         res.write( '-> logging: "' + form.logging + '"\n' );
                                                 
                         res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
-                        res.write( '\n-> files received: ( { sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
+                        res.write( '\n-> files received: ( { hash sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( { sha1 filename: {..} }, { .. } )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
+                            res.write( '\n-> files removed: ( { hash sha1 filename: {..} }, { .. } )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
                             if( json.incomplete.length !== 0 ){
                                 res.write( '\n-> incomplete files (not removed): \n   ****************\n' + JSON.stringify( json.incomplete ) + '\n' );
