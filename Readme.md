@@ -133,7 +133,7 @@ Features
 >   - it indicates the maximum value, after that the 'timeoutexception' event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
 
-> - **'resumeRequestOnFatalException'** : ( *boolean* ) the default value is true
+> - **'resumeRequestOnError'** : ( *boolean* ) the default value is true
 >   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
 >   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
 
@@ -184,7 +184,7 @@ Features
 
 > but there are different kinds of exceptions, types are:
 
-> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnFatalException === false,  then the 'end' event is emitted )*. 
+> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false,  then the 'end' event is emitted )*. 
 >     - **'headersexception'**    ->  bad headers
 >     - **'pathexception'**       ->  bad dir path
 >     - **'bufferexception'**     ->  error copying buffer 
@@ -370,7 +370,7 @@ Features
 
      requestTimeOut : 5000, // 5 secs
      
-     resumeRequestOnFatalException: true,
+     resumeRequestOnError: true,
      
      checkContentLength: false,
             
