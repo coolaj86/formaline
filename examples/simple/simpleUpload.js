@@ -65,6 +65,7 @@ var http = require( 'http' ),
                 getSessionID: function( req ){ 
                     return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
                 },
+                
                     // default is 120000 milliseconds ( default nodeJS timeout for connection requests )
                     // the client connection is closed after the specified milliseconds ( minimum is 100 millisecs )
                 requestTimeOut : 5000, // 5 secs
