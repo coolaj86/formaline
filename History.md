@@ -176,4 +176,8 @@
 =====================
  * + I have changed file's attributes for being consistent with the W3C FILE API 
  * + Changed files received and files removed to array structure in json response object
- * + changed json.completed to json.files  
+ * + changed json.completed to json.files 
+ 
+  0.5.1 / 2011-06-xx
+=====================
+ * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data.
