@@ -40,7 +40,7 @@ with git:
 Features
 ----------
 
-> - **Very Fast and Simple Parser** ( see  [parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks) directory ) .
+> - **Very Fast and Simple Parser** ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) .
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
