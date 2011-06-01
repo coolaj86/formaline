@@ -3,7 +3,7 @@
 > __formaline__ is a low-level ([nodeJS](http://nodejs.org/)) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
-> **Current Stable Version: 0.4.9**
+> **Current Stable Version: 0.5.0**
 
 > **this version is compatible with nodeJS >= v0.4.8**
 
@@ -242,7 +242,7 @@ Features
 ``` javascript
      json = { 
           hashname: '..',     // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          name: '..',     // <-- FILE ORIGINAL NAME  
+          name: '..',         // <-- FILE ORIGINAL NAME  
           path: '..',         // <-- FILE PATH       
           type: '..',         // <-- MIME TYPE
           size: 217,          // <-- BYTES 
@@ -280,28 +280,13 @@ Features
 > - **'end'**: `function ( json, res, next ) { .. }`
 
 ``` javascript     
-     json = {   
-          /* some numbers */        
-          stats: {  
-             bytesReceived: 754,
-             bytesWrittenToDisk: 217,
-             chunksReceived: 1 ,
-             overallSecs: 0.048,
-             filesCompleted: 1,
-             filesRemoved: 0 
-          },          
-          /* 
-          an array containing the list of files, 
-          that did not were totally written to disk 
-          due to exceeding upload threshold
+     json = {          
+          /*
+           an hash containing all completed files
+           the keys are the files hash values ( hashname property value ) 
           */
-          incomplete: [ 'path1', 'path2', .. ],        
-          /* 
-          an hash containing all completed files
-          the keys are the files hash values ( hashname property value ) 
-          */
-          completed: {
-             'file1 hash name (sha1 hash name)' : { // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+          files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+             {
                  hashname:  '..',   
                  name: '..',     
                  path: '..',              
@@ -309,19 +294,48 @@ Features
                  size: 217,         
                  fieldname: '..',   
                  datasha1sum: '..',
-                 mtime: '..'
+                 lastModifiedDate: '..'
              }, 
-             'file2 hash name': { .. } 
+             { .. },
              ..
-          },  
+          ],
+          /* 
+           an array containing the list of files, 
+           that did not were totally written to disk 
+           due to exceeding upload threshold
+          */
+          incomplete: [ // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+            { 
+                 hashname:  '..',   
+                 name: '..',     
+                 path: '..',              
+                 type: '..',       
+                 size: 217,         
+                 fieldname: '..',   
+                 datasha1sum: '..',
+                 lastModifiedDate: '..'
+             }, 
+             { .. },
+          ],          
           /*
-          an array containing the list of received fields
+           an array containing the list of received fields
           */          
           fields: [     // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
              { name: '..', value: '..' }, 
              { name: '..', value: '..' }, 
              .. 
-           ]
+           ],
+          /* 
+           some numbers 
+          */        
+          stats: {  
+             bytesReceived: 754,
+             bytesWrittenToDisk: 217,
+             chunksReceived: 1 ,
+             overallSecs: 0.048,
+             filesCompleted: 1,
+             filesRemoved: 0 
+          },   
       };     
 ``` 
  
@@ -436,7 +450,7 @@ Features
 >     - when two files, with the same name, 
 >       are uploaded through :
 >
->          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated with adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
+>          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated, adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          
 >          - **Different** POSTs actions, there is no collision between filenames, because they are written into different directories
 
@@ -464,7 +478,8 @@ Features
 
 - **When the remaining data for the file are exceeding the upload threshold**:
 
->  - if removeIncompleteFile is: 
+>  - if removeIncompleteFile is:
+>
 >     - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
 >
 >     - otherwise, the file is kept partial in the filesystem, no event is emitted .
@@ -475,7 +490,7 @@ Features
 >  - *'filereceived'* event is emitted**. 
 
 
-**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not returned for partial files ) .
+**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not calculated for partial written/received files ) .
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .

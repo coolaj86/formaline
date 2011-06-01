@@ -87,15 +87,16 @@ var http = require( 'http' ),
                     // this is also true for serialzed fields not only for files upload 
                 uploadThreshold: 1024 * 1024 * 1024, // bytes ex.: 1024*1024*1024, 512
                 
-                    // default false, bypass headers value, continue to write to disk 
+                    // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
                     // if true -> stop receiving data, when headers content length exceeds uploadThreshold
                 checkContentLength: false,
-                
+                    
+                    // default is true
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : true,
+                removeIncompleteFiles : false,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels
@@ -131,10 +132,10 @@ var http = require( 'http' ),
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
                                                 
-                        res.write( '\n-> fields received: \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
-                        res.write( '\n-> files received: ( { hash sha1 filename: {..} }, { .. } )\n   ***************\n ' + JSON.stringify( json.completed ) + '\n' );
+                        res.write( '\n-> fields received: ( [ { .. } , { .. } ] )\n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
+                        res.write( '\n-> files received: ( [ { .. } , { .. } ] )\n   ***************\n ' + JSON.stringify( json.files ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( { hash sha1 filename: {..} }, { .. } )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
+                            res.write( '\n-> files removed: ( [ { .. } , { .. } ] )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
                             if( json.incomplete.length !== 0 ){
                                 res.write( '\n-> incomplete files (not removed): \n   ****************\n' + JSON.stringify( json.incomplete ) + '\n' );

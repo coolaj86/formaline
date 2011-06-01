@@ -170,4 +170,10 @@
 =====================
  * + added config param 'resumeRequestOnFatalException'
  * + added 'mtime' ( last modified date ) attribute to files
- * + better fatal exception handling  
+ * + better fatal exception handling
+
+ 0.5.0 / 2011-06-01
+=====================
+ * + I have changed file's attributes for being consistent with the W3C FILE API 
+ * + Changed files received and files removed to array structure in json response object
+ * + changed json.completed to json.files  
