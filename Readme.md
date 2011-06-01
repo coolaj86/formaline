@@ -124,7 +124,7 @@ Features
 
 **You could create a formaline instance also with some configuration options:** 
 
-> - **'uploadRootDir'** : ( *string* ) the **default** root directory for files uploads is **'/tmp/'** .
+> - **'uploadRootDir'** : ( *string* ) **default** root directory for files uploads is **'/tmp/'** .
 >   - specify a path, with at least a trailing slash .
 >   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal exception )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
@@ -134,11 +134,11 @@ Features
 >   - it indicates the maximum value, after that the 'timeoutexception' event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
 
-> - **'resumeRequestOnError'** : ( *boolean* ) the default value is true
+> - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
 >   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
 >   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
 
-> - **'getSessionID'** : ( *function( **req** ){ .. }* ) the **default** value is **null** .
+> - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
 >   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
@@ -150,23 +150,23 @@ Features
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
-> - **'checkContentLength'** : ( *boolean* )  **default** value is **false** .
+> - **'checkContentLength'** : ( *boolean* ) **default** value is **false** .
 >   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
-> - **'removeIncompleteFiles'** : ( *boolean* ) the **default** value is **true**.
+> - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
 >   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
 
-> - **'sha1sum'** : ( *boolean* )  **default** value is **false**.
+> - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
 >   - it is calculated iteratively when file data is received
 
-> - **'logging'** : ( *string* ) the **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
+> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
 >   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
       
-> - **'emitDataProgress'** : ( *boolean or integer > 1* ) the **default** value is **false**.
+> - **'emitDataProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
          
