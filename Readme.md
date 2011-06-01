@@ -7,6 +7,9 @@
 
 > **this version is compatible with nodeJS >= v0.4.8**
 
+> **Please always update to latest release . This module is in active development . Check the Readme for new modifications**
+
+
  Installation
 --------------
 
@@ -32,8 +35,6 @@ with git:
 
 >change the path and the port with yours. 
 
-
-**Please always update to latest release . This module is in active development .**
 
 
 Features

@@ -133,10 +133,10 @@ var http = require( 'http' ),
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
                                                 
-                        res.write( '\n-> fields received: ( [ { .. } , { .. } ] )\n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
-                        res.write( '\n-> files received: ( [ { .. } , { .. } ] )\n   ***************\n ' + JSON.stringify( json.files ) + '\n' );
+                        res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
+                        res.write( '\n-> files received: [ { .. } , { .. } ] \n   ***************\n ' + JSON.stringify( json.files ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> files removed: ( [ { .. } , { .. } ] )\n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
+                            res.write( '\n-> files removed: [ { .. } , { .. } ] \n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
                             if( json.incomplete.length !== 0 ){
                                 res.write( '\n-> incomplete files (not removed): \n   ****************\n' + JSON.stringify( json.incomplete ) + '\n' );
