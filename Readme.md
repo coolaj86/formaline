@@ -46,7 +46,7 @@ Features
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
 > - **Returns data in JSON format** ( see listeners signatures ) .
-> - **Where needed ( ie 'filereceived' ), the response object contain most of the attributes as for [FILE API](http://www.w3.org/TR/FileAPI/) ( *type*, *size*, *name*, *lastModifiedDate* )** 
+> - **Where needed ( i.e. for 'filereceived' listener ), the response object contain most of the attributes names as the [W3C FILE API](http://www.w3.org/TR/FileAPI/) ( *type*, *size*, *name*, *lastModifiedDate* )** 
 > - **Multiple exceptions types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - **It supports duplicate names for fields** .
