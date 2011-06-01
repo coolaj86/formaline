@@ -574,13 +574,13 @@ Other
 
 > **Special thanks to** :
 
->  - @dvv
+>  - [dvv](https://github.com/dvv)
 
->  - @coolaj86
+>  - [coolaj86](https://github.com/coolaj86)
 
->  - @desm
+>  - [desm](https://github.com/desm)
 
->  - @mrxot87
+>  - [mrxot87](https://github.com/mrxot87)
 
 
  Future Releases
