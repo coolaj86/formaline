@@ -241,14 +241,14 @@ Features
 
 ``` javascript
      json = { 
-          hashname: '..',     // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          name: '..',         // <-- FILE ORIGINAL NAME  
-          path: '..',         // <-- FILE PATH       
-          type: '..',         // <-- MIME TYPE
-          size: 217,          // <-- BYTES 
-          fieldname: '..',    // <-- FILE FIELD NAME 
-          datasha1sum: '..',  // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
-          mtime: '..'         // <-- LAST MODIFIED DATE       
+          hashname: '..',           // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
+          name: '..',               // <-- FILE ORIGINAL NAME  
+          path: '..',               // <-- FILE PATH       
+          type: '..',               // <-- MIME TYPE
+          size: 217,                // <-- BYTES 
+          fieldname: '..',          // <-- FILE FIELD NAME 
+          datasha1sum: '..',        // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
+          lastModifiedDate: '..'    // <-- FILE MTIME       
       }
 ``` 
 
@@ -263,7 +263,7 @@ Features
           size: 217, 
           fieldname: '..',
           datasha1sum: 'not calculated',   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
-          mtime: '..'                      // <-- LAST MODIFIED DATE  
+          lastModifiedDate: '..'           // <-- FILE MTIME  
       }
 ``` 
  
