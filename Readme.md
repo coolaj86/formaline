@@ -572,15 +572,15 @@ Other
 
 > **for Italian GitHubbers** -> [LinkedIn Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
 
-> **Special thanks to :
+> **Special thanks to** :
 
->  - [dvv](https://github.com/dvv)
+>  - @dvv
 
->  - [coolaj86](https://github.com/coolaj86)
+>  - @coolaj86
 
->  - [desm](https://github.com/desm)
+>  - @desm
 
->  - [mrxot87](https://github.com/mrxot87)
+>  - @mrxot87
 
 
  Future Releases
