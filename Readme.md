@@ -7,7 +7,9 @@
 
 > **this version is compatible with nodeJS >= v0.4.8**
 
-> **Please always update to latest release . This module is in active development . Check the Readme for new modifications**
+> **Please always update to latest release . This module is in active development .**
+
+> **Check the Readme for new modifications .**
 
 
  Installation
