@@ -580,7 +580,7 @@ Other
 
 >  - [mrxot87](https://github.com/mrxot87)
 
-> **for Italian GitHubbers** -> [LinkedIn NodeJS Italian Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
+> **for Italian GitHubbers** -> [LinkedIn NodeJS Group](http://www.linkedin.com/groups/nodeJS-Italia-3853987)
 
  Future Releases
 -----------------
