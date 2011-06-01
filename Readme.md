@@ -133,7 +133,12 @@ Features
 >   - it indicates the maximum value, after that the 'timeoutexception' event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
 
-> - **'getSessionID'**: ( *function( **req** ){ .. }* ) the **default** value is **null** .
+> - **'resumeRequestOnFatalException'** : ( *boolean* ) the default value is true
+>   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
+>   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
+
+
+> - **'getSessionID'** : ( *function( **req** ){ .. }* ) the **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
 >   -  the function have to return the request property that holds session id, **the returned value must contain a String, not a function or an object**.
 >   -  the function takes req ( http request ) as a parameter at run-time .
@@ -187,7 +192,7 @@ Features
 >     - **'streamexception'**     ->  error writing to file stream
 >     - **'direxception'**        ->  error creating directory
 >     - **'timeoutexception''**   ->  the client request timeout was reached
->     - **'abortedexception'**    ->   the request was aborted ( for example, when a user have stopped an upload )
+>     - **'abortedexception'**    ->  the request was aborted ( for example, when a user have stopped an upload )
 
 > - exceptions that not need special attention: 
 >     - **'warning'** 
@@ -237,13 +242,14 @@ Features
 
 ``` javascript
      json = { 
-          sha1name: '..',   // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          origname: '..',   // <-- FILE ORIGINAL NAME  
-          path: '..',       // <-- FILE PATH       
-          type: '..',       // <-- MIME TYPE
-          size: 217,        // <-- BYTES 
-          fieldname: '..',  // <-- FILE FIELD NAME 
-          datasha1sum: '..' // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
+          sha1name: '..',     // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
+          origname: '..',     // <-- FILE ORIGINAL NAME  
+          path: '..',         // <-- FILE PATH       
+          type: '..',         // <-- MIME TYPE
+          size: 217,          // <-- BYTES 
+          fieldname: '..',    // <-- FILE FIELD NAME 
+          datasha1sum: '..',  // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
+          mtime: '..'         // <-- LAST MODIFIED DATE       
       }
 ``` 
 
@@ -257,7 +263,8 @@ Features
           type: '..', 
           size: 217, 
           fieldname: '..',
-          datasha1sum: 'not calculated'   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
+          datasha1sum: 'not calculated',   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
+          mtime: '..'                      // <-- LAST MODIFIED DATE  
       }
 ``` 
  
@@ -302,7 +309,8 @@ Features
                  type: '..',       
                  size: 217,         
                  fieldname: '..',   
-                 datasha1sum: '..' 
+                 datasha1sum: '..',
+                 mtime: '..'
              }, 
              'file2 hash name': { .. } 
              ..
@@ -310,7 +318,7 @@ Features
           /*
           an array containing the list of received fields
           */          
-          fields: [ // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
+          fields: [     // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
              { name: '..', value: '..' }, 
              { name: '..', value: '..' }, 
              .. 
@@ -348,7 +356,9 @@ Features
      },
 
      requestTimeOut : 5000, // 5 secs
-    
+     
+     resumeRequestOnFatalException: true,
+     
      checkContentLength: false,
             
      uploadThreshold: 3949000,  
