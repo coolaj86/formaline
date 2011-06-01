@@ -162,6 +162,12 @@
  
  0.4.8 / 2011-05-31
 =====================
- * + added requestTimeOut config parameter, now it is possible to specify a value different from default ( 120000 millisecs )
+ * + added 'requestTimeOut' config parameter, now it is possible to specify a value different from default ( 120000 millisecs )
  * + added 'timeoutexception' and 'abortedexception' events
- * + added listeners for request 'close' event 
+ * + added listeners for request 'close' event
+
+ 0.4.9 / 2011-06-xx
+=====================
+ * + added config param 'resumeRequestOnFatalException'
+ * + added 'mtime' ( last modified date ) attribute to files
+ * + better fatal exception handling  

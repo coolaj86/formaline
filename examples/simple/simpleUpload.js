@@ -72,7 +72,7 @@ var http = require( 'http' ),
                     // default is true
                     // when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event
                     // if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore  
-                resumeRequestOnFatalException: false,
+                resumeRequestOnFatalException: true,
                 
                     // default is false
                     // return sha1 digests for files received?  

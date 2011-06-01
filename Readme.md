@@ -3,7 +3,7 @@
 > __formaline__ is a low-level ([nodeJS](http://nodejs.org/)) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
-> **Current Stable Version: 0.4.8**
+> **Current Stable Version: 0.4.9**
 
 > **this version is compatible with nodeJS >= v0.4.8**
 
