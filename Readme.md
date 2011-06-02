@@ -47,7 +47,7 @@ Features
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
 > - **Returns data in JSON format** ( see listeners signatures ) .
 > - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'filereceived' listener : *type*, *size*, *name*, *lastModifiedDate* ) 
-> - **Multiple exceptions types** .
+> - **Multiple  error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - **It supports duplicate names for fields** .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
@@ -127,7 +127,7 @@ Features
 
 > - **'uploadRootDir'** : ( *string* ) **default** root directory for files uploads is **'/tmp/'** .
 >   - specify a path, with at least a trailing slash .
->   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal exception )
+>   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal error )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
@@ -136,7 +136,7 @@ Features
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
->   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'loadend' event .
+>   - when a fatal error was thrown, the client request is resumed instead of immediately emitting 'loadend' event .
 >   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
@@ -180,22 +180,22 @@ Features
  Events & Listeners
 --------------------
 
-#### Exception Events: 
+#### Error Events: 
 
 > There is only one event to listen for exceptions: **'error'**,
 
 > but there are different kinds of errors, types are:
 
 > - fatal errors: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
->     - **'headers'**    ->  bad headers
->     - **'path'**       ->  bad dir path
->     - **'buffer'**     ->  error copying buffer 
->     - **'stream'**     ->  error writing to file stream
->     - **'mkdir'**      ->  error creating directory
+>     - **'headers'**     ->  bad headers
+>     - **'path'**        ->  bad dir path
+>     - **'buffer'**      ->  error copying buffer 
+>     - **'stream'**      ->  error writing to file stream
+>     - **'mkdir'**       ->  error creating directory
 
 > - connection errors: the 'loadend' event is immediately emitted
->     - **'timeout'**    ->  the client request timeout was reached
->     - **'abort'**    ->  the request was aborted ( for example, when a user have stopped an upload )
+>     - **'timeout'**     ->  the client request timeout was reached
+>     - **'abort'**       ->  the request was aborted ( for example, when a user have stopped an upload )
 
 > - errors that not need special attention: 
 >     - **'warning'** 
@@ -221,11 +221,11 @@ Features
 **All Listeners functions are called at run-time with a response object argument in JSON format**: 
 
 
-> - **'exception'**: `function ( json ) { .. }`, 
+> - **'error'**: `function ( json ) { .. }`, 
 
  ``` javascript     
      json = { 
-          type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
+          type: 'header',           // <-- ERROR EVENT TYPE
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
           isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING RECEIVED DATA TO DISK
