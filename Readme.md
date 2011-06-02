@@ -186,14 +186,14 @@ Features
 
 > but there are different kinds of errors, types are:
 
-> - **internal fatal errors**: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
+> - **internal fatal errors**: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
 >     - *'headers'*     ->  bad headers
 >     - *'path'*        ->  bad dir path
 >     - *'buffer'*      ->  error copying buffer 
 >     - *'stream'*      ->  error writing to file stream
 >     - *'mkdir'*       ->  error creating directory
 
-> - **connection fatal errors**: the 'loadend' event is immediately emitted
+> - **connection fatal errors**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
 >     - *'timeout'*     ->  the client request timeout was reached
 >     - *'abort'*       ->  the request was aborted ( for example, when a user have stopped an upload )
 
