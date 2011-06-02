@@ -203,14 +203,14 @@ Features
 
 #### Informational Events :
 
-> - related to file:
+> - **related to file**:
 >    - *'filereceived'*
 >    - *'fileremoved'*
  
-> - related to field:
+> - **related to field**:
 >    - *'field'*
 
-> - related to the request's flow:  
+> - **related to request's flow**:  
 >     - *'dataprogress'*
 >     - *'loadend'* 
  
