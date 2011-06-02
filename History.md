@@ -193,4 +193,4 @@
  * + Renamed 'dataprogress' to 'progress'
  * + Added 'loadstart' event
  * + Changed 3rd level logging , now it doesn't log filestream data
- * + 
+ * + Added startTime and endTime to 'loadend' stats

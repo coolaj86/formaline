@@ -123,7 +123,7 @@ var http = require( 'http' ),
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
-                        res.write( '-> request processed! \n' );
+                        res.write( '-> request processed! \n' );   
                         res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
