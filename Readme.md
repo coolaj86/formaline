@@ -167,7 +167,7 @@ Features
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
 >   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
       
-> - **'emitprogress'** : ( *boolean or integer > 1* ) **default** value is **false**.
+> - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
 >    - If you set it for example to  an integer k,  'progress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
          
