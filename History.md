@@ -180,12 +180,13 @@
  
   0.5.1 / 2011-06-02
 =====================
- * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data.
+ * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data
  * + Resolved incorrect event value for closeConnection
  * + Resolved bug for 'abortexception' and 'timeoutexception'
  
    0.5.2 / 2011-06-xx
 =====================
- * + Renamed 'exception' event name to 'error'.
- * + Removed the trailing string 'exception'  from event names
+ * + Renamed 'exception' event name to 'error'
+ * + Removed the trailing string 'exception' from event names
+ * + Renamed 'abortedexception' ( 'aborted' ) to 'abort'
 
