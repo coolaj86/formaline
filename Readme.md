@@ -186,7 +186,7 @@ Features
 
 > but there are different kinds of exceptions, types are:
 
-> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false,  then the 'end' event is emitted )*. 
+> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'end' event is emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
 >     - **'headersexception'**    ->  bad headers
 >     - **'pathexception'**       ->  bad dir path
 >     - **'bufferexception'**     ->  error copying buffer 
