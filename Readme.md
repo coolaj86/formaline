@@ -182,20 +182,22 @@ Features
 
 #### Exception Events: 
 
-> There is only one event to listen for the exceptions: **'exception'**,
+> There is only one event to listen for exceptions: **'error'**,
 
-> but there are different kinds of exceptions, types are:
+> but there are different kinds of errors, types are:
 
-> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'end' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
->     - **'headersexception'**    ->  bad headers
->     - **'pathexception'**       ->  bad dir path
->     - **'bufferexception'**     ->  error copying buffer 
->     - **'streamexception'**     ->  error writing to file stream
->     - **'direxception'**        ->  error creating directory
->     - **'timeoutexception''**   ->  the client request timeout was reached
->     - **'abortedexception'**    ->  the request was aborted ( for example, when a user have stopped an upload )
+> - fatal errors: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'end' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
+>     - **'headers'**    ->  bad headers
+>     - **'path'**       ->  bad dir path
+>     - **'buffer'**     ->  error copying buffer 
+>     - **'stream'**     ->  error writing to file stream
+>     - **'mkdir'**      ->  error creating directory
 
-> - exceptions that not need special attention: 
+> - connection errors: the 'end' event is immediately emitted
+>     - **'timeout'**    ->  the client request timeout was reached
+>     - **'aborted'**    ->  the request was aborted ( for example, when a user have stopped an upload )
+
+> - errors that not need special attention: 
 >     - **'warning'** 
 
 
