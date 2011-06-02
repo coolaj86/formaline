@@ -189,4 +189,5 @@
  * + Renamed 'exception' event name to 'error'
  * + Removed the trailing string 'exception' from event names
  * + Renamed 'abortedexception' ( 'aborted' ) to 'abort'
+ * + Renamed 'end' to 'loadend'
 

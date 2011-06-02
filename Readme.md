@@ -136,8 +136,8 @@ Features
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
->   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
->   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
+>   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'loadend' event .
+>   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
@@ -157,7 +157,7 @@ Features
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
->   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
+>   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'loadend' listener in the form of an array of paths. 
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
@@ -186,14 +186,14 @@ Features
 
 > but there are different kinds of errors, types are:
 
-> - fatal errors: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'end' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
+> - fatal errors: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
 >     - **'headers'**    ->  bad headers
 >     - **'path'**       ->  bad dir path
 >     - **'buffer'**     ->  error copying buffer 
 >     - **'stream'**     ->  error writing to file stream
 >     - **'mkdir'**      ->  error creating directory
 
-> - connection errors: the 'end' event is immediately emitted
+> - connection errors: the 'loadend' event is immediately emitted
 >     - **'timeout'**    ->  the client request timeout was reached
 >     - **'aborted'**    ->  the request was aborted ( for example, when a user have stopped an upload )
 
@@ -212,7 +212,7 @@ Features
 
 > - related to the request's flow:  
 >     - **'dataprogress'**
->     - **'end'** 
+>     - **'loadend'** 
  
  
 ###Listeners Signatures 
@@ -281,7 +281,7 @@ Features
       }
 ``` 
  
-> - **'end'**: `function ( json, res, next ) { .. }`
+> - **'loadend'**: `function ( json, res, next ) { .. }`
 
 ``` javascript     
      json = {          
@@ -405,7 +405,7 @@ Features
          'dataprogress': function ( json ) {
             ...
          },
-         'end': function ( json, res, next ) {
+         'loadend': function ( json, res, next ) {
             ...
             res.writeHead(200, { 'content-type': 'text/plain' } );
             res.end();
@@ -496,7 +496,7 @@ Features
 >  - *'filereceived'* event is emitted**. 
 
 
-**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not calculated for partial written/received files ) .
+**'filereceived'** and **'fileremoved'** listeners get a json argument that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not calculated for partial written/received files ) .
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .

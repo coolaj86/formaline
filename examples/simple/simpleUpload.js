@@ -117,7 +117,7 @@ var http = require( 'http' ),
                     },
                     'fileremoved': function( json ) {
                     },
-                    'end': function( json, res, next ) {
+                    'loadend': function( json, res, next ) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
