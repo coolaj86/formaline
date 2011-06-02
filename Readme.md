@@ -210,9 +210,10 @@ Features
 > - **related to field**:
 >    - *'field'*
 
-> - **related to request's flow**:  
->     - *'progress'*
->     - *'loadend'* 
+> - **related to request's flow**:
+>    - *'loadstart'*  
+>    - *'progress'*
+>    - *'loadend'* 
  
  
 ###Listeners Signatures 
@@ -268,6 +269,14 @@ Features
           fieldname: '..',
           datasha1sum: 'not calculated',   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
           lastModifiedDate: '..'           // <-- FILE MTIME  
+      }
+``` 
+
+> - **'loadstart'**: `function ( json ) { .. }`,
+
+``` javascript     
+     json = { 
+          time: 1307017842684,   // <-- time in millis  
       }
 ``` 
  
@@ -401,6 +410,8 @@ Features
          },
          'fileremoved': function ( json ) { 
             ...
+         },
+         'loadstart': function( json ){
          },
          'progress': function ( json ) {
             ...

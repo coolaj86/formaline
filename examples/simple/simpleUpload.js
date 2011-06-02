@@ -103,7 +103,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:on,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
@@ -116,6 +116,8 @@ var http = require( 'http' ),
                     'filereceived': function( json ) {
                     },
                     'fileremoved': function( json ) {
+                    },
+                    'loadstart': function( json ){
                     },
                     'loadend': function( json, res, next ) {
                         log( '\n-> Post Done' );
