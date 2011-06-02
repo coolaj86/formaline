@@ -107,7 +107,7 @@ var http = require( 'http' ),
                 
                     // listeners
                 listeners: {
-                    'exception': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
+                    'error': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
                     },
                     'dataprogress': function( json ) {                              
                     },
