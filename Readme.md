@@ -187,32 +187,32 @@ Features
 > but there are different kinds of errors, types are:
 
 > - **internal fatal errors**: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
->     - **'headers'**     ->  bad headers
->     - **'path'**        ->  bad dir path
->     - **'buffer'**      ->  error copying buffer 
->     - **'stream'**      ->  error writing to file stream
->     - **'mkdir'**       ->  error creating directory
+>     - *'headers'*     ->  bad headers
+>     - *'path'*        ->  bad dir path
+>     - *'buffer'*      ->  error copying buffer 
+>     - *'stream'*      ->  error writing to file stream
+>     - *'mkdir'*       ->  error creating directory
 
 > - **connection fatal errors**: the 'loadend' event is immediately emitted
->     - **'timeout'**     ->  the client request timeout was reached
->     - **'abort'**       ->  the request was aborted ( for example, when a user have stopped an upload )
+>     - *'timeout'*     ->  the client request timeout was reached
+>     - *'abort'*       ->  the request was aborted ( for example, when a user have stopped an upload )
 
 > - **errors that not need special attention**: 
->     - **'warning'** 
+>     - *'warning'* 
 
 
 #### Informational Events :
 
 > - related to file:
->    - **'filereceived'**
->    - **'fileremoved'**
+>    - *'filereceived'*
+>    - *'fileremoved'*
  
 > - related to field:
->    - **'field'**
+>    - *'field'*
 
 > - related to the request's flow:  
->     - **'dataprogress'**
->     - **'loadend'** 
+>     - *'dataprogress'*
+>     - *'loadend'* 
  
  
 ###Listeners Signatures 
