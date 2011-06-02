@@ -295,7 +295,7 @@ Features
 ``` javascript     
      json = {          
           /*
-           an hash containing all completed files
+           an array containing all completed files
            the keys are the files hash values ( hashname property value ) 
           */
           files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
