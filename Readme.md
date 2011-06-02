@@ -195,7 +195,7 @@ Features
 
 > - connection errors: the 'loadend' event is immediately emitted
 >     - **'timeout'**    ->  the client request timeout was reached
->     - **'aborted'**    ->  the request was aborted ( for example, when a user have stopped an upload )
+>     - **'abort'**    ->  the request was aborted ( for example, when a user have stopped an upload )
 
 > - errors that not need special attention: 
 >     - **'warning'** 
