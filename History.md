@@ -191,3 +191,4 @@
  * + Renamed 'abortedexception' ( 'aborted' ) to 'abort'
  * + Renamed 'end' to 'loadend'
  * + Renamed 'dataprogress' to 'progress'
+ * + Changed 3rd level logging , now it doesn't log filestream data
