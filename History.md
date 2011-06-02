@@ -178,6 +178,8 @@
  * + Changed files received and files removed to array structure in json response object
  * + changed json.completed to json.files 
  
-  0.5.1 / 2011-06-xx
+  0.5.1 / 2011-06-02
 =====================
  * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data.
+ * + Resolved incorrect event value for closeConnection
+ * + Resolved bug for 'abortexception' and 'timeoutexception' 
