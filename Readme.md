@@ -136,7 +136,7 @@ Features
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
->   - when a fatal error was thrown, the client request is resumed instead of immediately emitting 'loadend' event .
+>   - when a fatal error occurs in the module, the client request is resumed instead of immediately emitting 'loadend' event .
 >   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
@@ -229,7 +229,7 @@ Features
           type: 'headers',           // <-- ERROR EVENT TYPE
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING RECEIVED DATA TO DISK
+          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
       }
 ``` 
 
