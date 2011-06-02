@@ -82,7 +82,7 @@ var http = require( 'http' ),
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitDataProgress: false, // 3, 10, 100
+                emitProgress: !false, // 3, 10, 100
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
@@ -103,13 +103,13 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:off,3:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
                     'error': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
                     },
-                    'dataprogress': function( json ) {                              
+                    'progress': function( json ) {                              
                     },
                     'field': function( json ){
                     },
@@ -129,7 +129,7 @@ var http = require( 'http' ),
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
-                        res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n' );
+                        res.write( '-> emitProgress: ' + form.emitProgress + '\n' );
                         res.write( '-> resumeRequestOnError: ' + form.resumeRequestOnError + '\n' );
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
