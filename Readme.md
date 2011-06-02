@@ -226,7 +226,7 @@ Features
           type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
           isupload: true,           // <-- IS IT AN UPLOAD ?
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- A TRUE VALUE, MEANS THAT HTE MODULE HAS STOPPED WRITING RECEIVED DATA TO DISK
+          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING RECEIVED DATA TO DISK
       }
 ``` 
 
