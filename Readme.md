@@ -341,12 +341,14 @@ Features
           /* 
            some numbers 
           */        
-          stats: {  
-             bytesReceived: 754,
-             bytesWrittenToDisk: 217,
-             chunksReceived: 1 ,
-             overallSecs: 0.048,
-             filesCompleted: 1,
+          stats: {
+             startTime: 1307019846426,
+             endTime: 1307019846578
+             overallSecs: 0.152,
+             bytesReceived: 341917,
+             bytesWrittenToDisk: 337775,
+             chunksReceived: 10,
+             filesCompleted: 25,
              filesRemoved: 0 
           },   
       };     
