@@ -374,6 +374,8 @@ Features
      
      resumeRequestOnError: true,
      
+     holdFilesExtensions: true,
+     
      checkContentLength: false,
             
      uploadThreshold: 3949000,  
