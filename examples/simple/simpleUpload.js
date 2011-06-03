@@ -37,8 +37,8 @@ var http = require( 'http' ),
                  <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
                  <input type="text" name="iframefield2"/><br/>\
                  <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield3"/><br/>\
-                 <input type="file" name="iframefile3" multiple  src="" frameborder="1" /><br/>\
+                 <input type="text" name="iframefield2"/><br/>\
+                 <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
                  <input type="submit" />\
                  </form>\
                  <iframe name="iframe" width="100%" height="400px"></iframe>\

@@ -5,6 +5,7 @@
 
 > **Current Version: 0.5.3**
 
+
 > **the current version is compatible with nodeJS >= v0.4.8**
 
 > **Please always update to latest release , this module is in active development . Check the Readme for new modifications .**
@@ -308,7 +309,7 @@ Features
         files: [    
             {
               name: 'filefield1',
-              value: [    // <-- AN ARRAY CONTAINING MULTIPLE FILES UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
+              value: [    // <-- THIS ARRAY COULD CONTAIN MULTIPLE OR SINGLE FILE(S) UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
                   {       // <-- PROPERTIES ARE THE SAME OF 'LOAD' JSON OBJECTS
                     name: 'filename1',  // <-- FIELD NAME
                     value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
