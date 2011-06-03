@@ -157,8 +157,8 @@ Features
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
->   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'message' event with type: 'fileremoved', 
->   - if false, no 'message'.type = 'fileremoved' event is emitted, and the incomplete files list is passed to the 'loadend' listener in the form of an array of { name: '..', value: [..] } fields objects. 
+>   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'message' event with sub-type: 'fileremoved', 
+>   - if false, no 'message' event is emitted, but the 'loadend' listener will be receive a json object containing the list of incomplete files. 
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
