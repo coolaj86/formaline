@@ -102,12 +102,12 @@ Features
 
 >``` javascript
 >   ..
->   form.on( 'filereceived', function( json ){ .. }  )  
+>   form.on( 'load', function( json ){ .. }  )  
 >   ..
 >   /* or */ 
 >   var myListener = function( ){ console.log( arguments ); }
 >   ..
->   form.on( 'filereceived', myListener ); // <-- myListener function gets a json data object as argument
+>   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
 >   ..
 >   /* then parse request */
 >   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
@@ -156,8 +156,8 @@ Features
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
->   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
->   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'loadend' listener in the form of an array of paths. 
+>   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'message' event with type: 'fileremoved', 
+>   - if false, no 'message'.type = 'fileremoved' event is emitted, and the incomplete files list is passed to the 'loadend' listener in the form of an array of { name: '..', value: [..] } fields objects. 
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
@@ -186,33 +186,36 @@ Features
 
 > but there are different kinds of errors, types are:
 
-> - **internal fatal errors**: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
+> - **internal fatal exceptions**: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
 >     - *'headers'*     ->  bad headers
 >     - *'path'*        ->  bad dir path
 >     - *'buffer'*      ->  error copying buffer 
 >     - *'stream'*      ->  error writing to file stream
 >     - *'mkdir'*       ->  error creating directory
 
-> - **connection fatal errors**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
+> - **connection exceptions**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
 >     - *'timeout'*     ->  the client request timeout was reached
 >     - *'abort'*       ->  the request was aborted ( for example, when a user have stopped an upload )
 
-> - **errors that not need special attention**: 
->     - *'warning'* 
+
 
 
 #### Informational Events :
 
-> - **related to file**:
->    - *'filereceived'*
->    - *'fileremoved'*
+> - **message**:
+>    - type: *'warning'* 
+>    - type: *'fileremoved'*
  
-> - **related to field**:
->    - *'field'*
-
-> - **related to request's flow**:
+> - **request received**:
 >    - *'loadstart'*  
+ 
+> - **some data was parsed **:
+>    - *'load'*
+
+> - **request progression**:
 >    - *'progress'*
+
+> - **request end**:
 >    - *'loadend'* 
  
  
@@ -222,46 +225,10 @@ Features
 **All Listeners functions are called at run-time with a response object argument in JSON format**: 
 
 
-> - **'error'**: `function ( json ) { .. }`, 
-
- ``` javascript     
-     json = { 
-          type: 'headers',           // <-- ERROR EVENT TYPE
-          isupload: true,           // <-- IS IT AN UPLOAD ?
-          msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
-      }
-``` 
-
-> - **'field'**: `function ( json ) { .. }`,
+> - **'message'**: `function ( json  ) { .. }`,
 
 ``` javascript     
-     json = { 
-          name:  'field1',  // <-- FIELD NAME
-          value: 'value1'   // <-- FIELD VALUE
-      }
-``` 
- 
-> - **'filereceived'**: `function ( json ) { .. }`,
-
-``` javascript
-     json = { 
-          hashname: '..',           // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          name: '..',               // <-- FILE ORIGINAL NAME  
-          path: '..',               // <-- FILE PATH       
-          type: '..',               // <-- MIME TYPE
-          size: 217,                // <-- BYTES 
-          fieldname: '..',          // <-- FILE FIELD NAME 
-          datasha1sum: '..',        // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
-          lastModifiedDate: '..'    // <-- FILE MTIME       
-      }
-``` 
-
-> - **'fileremoved'**: `function ( json  ) { .. }`,
-
-``` javascript     
-     json = { 
-          hashname:  '..', 
+    json = { 
           name: '..', 
           path: '..', 
           type: '..', 
@@ -272,86 +239,130 @@ Features
       }
 ``` 
 
+> - **'error'**: `function ( json ) { .. }`, 
+
+ ``` javascript     
+     json = { 
+          type: 'headers',          // <-- ERROR EVENT TYPE
+          isupload: true,           // <-- IS IT AN UPLOAD ?
+          msg: 'blah, blah..',      // <-- DEBUG MESSAGE
+          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+      }
+``` 
+
+> - **'abort'**, **'timeout'**: `function ( json ) { .. }`,
+
+``` javascript     
+    json = {
+        isupload: true,           // <-- IS IT AN UPLOAD ?
+        msg: 'blah, blah..',      // <-- DEBUG MESSAGE
+        isfatal: true             // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+    }
+``` 
+
+
 > - **'loadstart'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          time: 1307017842684,   // <-- time in millis  
-      }
+    json = { 
+        time: 1307017842684,   // <-- time in millis  
+    }
+``` 
+
+> - **'load'**: `function ( json ) { .. }`,
+
+``` javascript
+     
+    json = { 
+        name:   'field1',   // <-- FIELD NAME
+        value:  'value1'    // <-- FIELD VALUE IS A STRING
+    }
+    
+    // or 
+      
+    json = {                
+        name: 'filename1',  // <-- FIELD NAME
+        value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
+            name: '..',             // <-- FILE ORIGINAL NAME
+            path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
+            type: '..',             // <-- MIME TYPE
+            size: 270,              // <-- BYTES
+            lastModifiedDate: '..', // <-- FILE MTIME
+            datasha1sum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+        }
+    }
+      
 ``` 
  
 > - **'progress'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          bytes: 8900,   // <-- BYTES RECEIVED
-          chunks: 2,     // <-- CHUNKS RECEIVED
-          ratio: 0.3     // <-- RATIO COMPLETION
-      }
+    json = { 
+        bytes: 8900,   // <-- BYTES RECEIVED
+        chunks: 2,     // <-- CHUNKS RECEIVED
+        ratio: 0.3     // <-- RATIO COMPLETION
+    }
 ``` 
- 
+
 > - **'loadend'**: `function ( json, res, next ) { .. }`
 
 ``` javascript     
-     json = {          
-          /*
-           an array containing all completed files
-          */
-          files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
-             {
-                 hashname:  '..',   
-                 name: '..',     
-                 path: '..',              
-                 type: '..',       
-                 size: 217,         
-                 fieldname: '..',   
-                 datasha1sum: '..',
-                 lastModifiedDate: '..'
-             }, 
-             { .. },
-             ..
-          ],
-          /* 
-           an array containing the list of files, 
-           that did not were totally written to disk 
-           due to exceeding upload threshold
-          */
-          incomplete: [ // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+    json = {          
+        /*
+        an array containing all completed files
+        */
+        files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+            {
+            
+            
+            }, 
+            { .. },
+            ..
+        ],
+        /* 
+        an array containing the list of files, 
+        that did not were totally written to disk 
+        due to exceeding upload threshold
+        */
+        incomplete: [ // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
             { 
-                 hashname:  '..',   
-                 name: '..',     
-                 path: '..',              
-                 type: '..',       
-                 size: 217,         
-                 fieldname: '..',   
-                 datasha1sum: '..',
-                 lastModifiedDate: '..'
-             }, 
-             { .. },
-          ],          
-          /*
-           an array containing the list of received fields
-          */          
-          fields: [     // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
-             { name: '..', value: '..' }, 
-             { name: '..', value: '..' }, 
-             .. 
-           ],
-          /* 
-           some numbers 
-          */        
-          stats: {
-             startTime: 1307019846426,
-             endTime: 1307019846578
-             overallSecs: 0.152,
-             bytesReceived: 341917,
-             bytesWrittenToDisk: 337775,
-             chunksReceived: 10,
-             filesCompleted: 25,
-             filesRemoved: 0 
-          },   
-      };     
+  
+            }, 
+            { .. },
+        ],          
+        /*
+        an array containing the list of received fields
+        */          
+        fields: [     
+            { 
+              name: 'field1', 
+              value: [ '..', '..', .. ]   // <-- RESULT FROM MULTIPLE FIELDS WITH THE SAME NAME 'FIELD1'
+            },
+            { 
+              name: 'field2', 
+              value: [ '..' ]             // <-- RESULT FROM FIELD WITH UNIQUE NAME 'FIELD2'
+            },
+            .. 
+        ],
+        /* 
+        some numbers 
+        */        
+        stats: {
+            startTime: 1307019846426,
+            endTime: 1307019846578
+            overallSecs: 0.152,
+            bytesReceived: 341917,
+            bytesWrittenToDisk: 337775,
+            chunksReceived: 10,
+            filesCompleted: 25,
+            filesRemoved: 0 
+        },   
+    };   
 ``` 
+
+
+
+
  
 
 
