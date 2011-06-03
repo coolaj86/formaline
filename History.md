@@ -200,5 +200,5 @@
  
     0.5.3 / 2011-06-03
 ======================
- * + the json response now contains files grouped by field name, like url encoded fields
+ * + all json responses now contain files/fields values grouped by field name
  * + moved 'field' event to 'load'
