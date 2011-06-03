@@ -186,7 +186,7 @@ Features
 
 > but there are different kinds of errors, types are:
 
-> - **internal fatal exceptions**: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
+> - **module internal errors **: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
 >     - *'headers'*     ->  bad headers
 >     - *'path'*        ->  bad dir path
 >     - *'buffer'*      ->  error copying buffer 
@@ -202,14 +202,15 @@ Features
 
 #### Informational Events :
 
-> - **message**:
->    - type: *'warning'* 
->    - type: *'fileremoved'*
- 
+> - **need attention**:
+>    - *'message'*: 
+>       - types are: 'warning' or 'fileremoved'
+>  
+
 > - **request received**:
 >    - *'loadstart'*  
  
-> - **some data was parsed **:
+> - **request data parsed**:
 >    - *'load'*
 
 > - **request progression**:
@@ -228,14 +229,10 @@ Features
 > - **'message'**: `function ( json  ) { .. }`,
 
 ``` javascript     
-    json = { 
-          name: '..', 
-          path: '..', 
-          type: '..', 
-          size: 217, 
-          fieldname: '..',
-          datasha1sum: 'not calculated',   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
-          lastModifiedDate: '..'           // <-- FILE MTIME  
+    json = {
+          type: 'warning' | 'fileremoved',  // <-- ERROR EVENT TYPE
+          msg: 'blah, blah..',              // <-- DEBUG MESSAGE   
+          isupload: true | false            // <-- IS IT AN UPLOAD ?
       }
 ``` 
 
@@ -243,10 +240,10 @@ Features
 
  ``` javascript     
      json = { 
-          type: 'headers',          // <-- ERROR EVENT TYPE
-          isupload: true,           // <-- IS IT AN UPLOAD ?
-          msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+          type: 'headers' | 'path' | 'buffer' | 'stream' | 'mkdir',   // <-- ERROR EVENT TYPE
+          msg: 'blah, blah..',      // <-- DEBUG MESSAGE      
+          isupload: true | false,   // <-- IS IT AN UPLOAD ?
+          isfatal: true | false     // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
       }
 ``` 
 
@@ -254,9 +251,9 @@ Features
 
 ``` javascript     
     json = {
-        isupload: true,           // <-- IS IT AN UPLOAD ?
-        msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-        isfatal: true             // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+        msg: 'blah, blah..',        // <-- DEBUG MESSAGE
+        isupload: true | false,     // <-- IS IT AN UPLOAD ?
+        isfatal: true | false       // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
     }
 ``` 
 
@@ -265,20 +262,22 @@ Features
 
 ``` javascript     
     json = { 
-        time: 1307017842684,   // <-- time in millis  
+        time: 1307017842684,    // <-- MILLISECS  
     }
 ``` 
 
 > - **'load'**: `function ( json ) { .. }`,
 
 ``` javascript
-     
+    
+    // if a field was received --> 
+    
     json = { 
         name:   'field1',   // <-- FIELD NAME
         value:  'value1'    // <-- FIELD VALUE IS A STRING
     }
     
-    // or 
+    // if a file was received --> 
       
     json = {                
         name: 'filename1',  // <-- FIELD NAME
@@ -311,10 +310,24 @@ Features
         /*
         an array containing all completed files
         */
-        files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+        files: [    // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
             {
-            
-            
+              name: 'filefield1',
+              value: [            // <-- AN ARRAY CONTAINING MULTIPLE FILES UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
+                  {
+                    name: 'filename1',  // <-- FIELD NAME
+                    value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
+                        name: '..',             // <-- FILE ORIGINAL NAME
+                        path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
+                        type: '..',             // <-- MIME TYPE
+                        size: 270,              // <-- BYTES
+                        lastModifiedDate: '..', // <-- FILE MTIME
+                        datasha1sum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+                    }
+                  },          
+                  {..},
+                  ..
+              ]  
             }, 
             { .. },
             ..
@@ -324,32 +337,36 @@ Features
         that did not were totally written to disk 
         due to exceeding upload threshold
         */
-        incomplete: [ // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+        incomplete: [             // <-- PROPERTIES ARE THE SAME OF 'FILES' JSON OBJECT 
             { 
-  
+            ..
             }, 
             { .. },
         ],          
         /*
         an array containing the list of received fields
-        */          
-        fields: [     
-            { 
-              name: 'field1', 
-              value: [ '..', '..', .. ]   // <-- RESULT FROM MULTIPLE FIELDS WITH THE SAME NAME 'FIELD1'
+        */
+        fields: [
+            {
+              name: 'field1',
+              value: [              // <-- AN ARRAY CONTAINING MULTIPLE VALUES FROM FIELDS WITH THE SAME NAME 'FIELD1'
+                  'string1',
+                  'string2',
+                  ..
+              ]
             },
             { 
               name: 'field2', 
-              value: [ '..' ]             // <-- RESULT FROM FIELD WITH UNIQUE NAME 'FIELD2'
+              value: [ 'string3' ]  // <-- AN ARRAY CONTAINING SINGLE VALUE FROM A FIELD WITH UNIQUE NAME 'FIELD2'
             },
-            .. 
+            ..
         ],
         /* 
-        some numbers 
-        */        
+        some numbers
+        */
         stats: {
             startTime: 1307019846426,
-            endTime: 1307019846578
+            endTime: 1307019846578,
             overallSecs: 0.152,
             bytesReceived: 341917,
             bytesWrittenToDisk: 337775,
@@ -411,25 +428,28 @@ Features
             
      listeners: {
               
-         'exception': function ( json ) {
-            ...
+         'message':function( json ){ // json:{ type: '..', isupload: true/false , msg: '..' }
+            ..
          },
-         'field': function ( json ) { 
-            ...
+         'error': function( json ){ // json:{ type: '', isupload: true/false , msg: '..', fatal: true }
+            ..
          },
-         'filereceived': function ( json ) { 
-            ... 
+         'abort': function( json ) {   
+            ..
          },
-         'fileremoved': function ( json ) { 
-            ...
+         'timeout': function( json ) {   
+            ..
          },
          'loadstart': function( json ){
-            ...
+            ..
          },
-         'progress': function ( json ) {
-            ...
+         'progress': function( json ) {                              
+            ..
          },
-         'loadend': function ( json, res, next ) {
+         'load': function( json ){
+            ..
+         },
+         'loadend': function( json, res, next ) {
             ...
             res.writeHead(200, { 'content-type': 'text/plain' } );
             res.end();
