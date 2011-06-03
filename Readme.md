@@ -182,7 +182,7 @@ Features
 
 #### Error Events: 
 
-> There is only one event to listen for exceptions: **'error'**,
+> - **'error'**,
 
 > but there are different kinds of errors, types are:
 
@@ -193,6 +193,7 @@ Features
 >     - *'stream'*      ->  error writing to file stream
 >     - *'mkdir'*       ->  error creating directory
 
+
 > - **connection exceptions**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
 >     - *'timeout'*     ->  the client request timeout was reached
 >     - *'abort'*       ->  the request was aborted ( for example, when a user have stopped an upload )
@@ -202,22 +203,21 @@ Features
 
 #### Informational Events :
 
-> - **need attention**:
->    - *'message'*: 
->       - types are: 'warning' or 'fileremoved'
->  
+>  - **'message'**: 
+>    - need attention
+>    - types are 'warning', 'fileremoved'
 
-> - **request received**:
->    - *'loadstart'*  
- 
-> - **request data parsed**:
->    - *'load'*
+> - **'loadstart'**  
+>    - start parsing request
 
-> - **request progression**:
->    - *'progress'*
+> - **'load'**:
+>    - loaded some data 
 
-> - **request end**:
->    - *'loadend'* 
+> - **'progress'**:
+>    - request progression
+
+> - **loadend**:
+>    - request end 
  
  
 ###Listeners Signatures 
@@ -243,7 +243,7 @@ Features
           type: 'headers' | 'path' | 'buffer' | 'stream' | 'mkdir',   // <-- ERROR EVENT TYPE
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE      
           isupload: true | false,   // <-- IS IT AN UPLOAD ?
-          isfatal: true | false     // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+          isfatal: true             // <--  MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
       }
 ``` 
 
@@ -253,7 +253,7 @@ Features
     json = {
         msg: 'blah, blah..',        // <-- DEBUG MESSAGE
         isupload: true | false,     // <-- IS IT AN UPLOAD ?
-        isfatal: true | false       // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+        isfatal: true               // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
     }
 ``` 
 
@@ -269,16 +269,13 @@ Features
 > - **'load'**: `function ( json ) { .. }`,
 
 ``` javascript
-    
     // if a field was received --> 
-    
     json = { 
         name:   'field1',   // <-- FIELD NAME
         value:  'value1'    // <-- FIELD VALUE IS A STRING
     }
     
     // if a file was received --> 
-      
     json = {                
         name: 'filename1',  // <-- FIELD NAME
         value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
@@ -287,7 +284,7 @@ Features
             type: '..',             // <-- MIME TYPE
             size: 270,              // <-- BYTES
             lastModifiedDate: '..', // <-- FILE MTIME
-            datasha1sum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+            sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
         }
     }
       
@@ -313,7 +310,7 @@ Features
         files: [    // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
             {
               name: 'filefield1',
-              value: [            // <-- AN ARRAY CONTAINING MULTIPLE FILES UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
+              value: [    // <-- AN ARRAY CONTAINING MULTIPLE FILES UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
                   {
                     name: 'filename1',  // <-- FIELD NAME
                     value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
@@ -322,7 +319,7 @@ Features
                         type: '..',             // <-- MIME TYPE
                         size: 270,              // <-- BYTES
                         lastModifiedDate: '..', // <-- FILE MTIME
-                        datasha1sum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+                        sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
                     }
                   },          
                   {..},
@@ -337,9 +334,9 @@ Features
         that did not were totally written to disk 
         due to exceeding upload threshold
         */
-        incomplete: [             // <-- PROPERTIES ARE THE SAME OF 'FILES' JSON OBJECT 
+        incomplete: [   // <-- PROPERTIES ARE THE SAME OF 'FILES' JSON OBJECT 
             { 
-            ..
+            ..          // <-- SHA1 CHECKSUM IS NOT CALCULATED FOR PARTIAL WRITTEN/RECEIVED FILES .
             }, 
             { .. },
         ],          
@@ -349,7 +346,7 @@ Features
         fields: [
             {
               name: 'field1',
-              value: [              // <-- AN ARRAY CONTAINING MULTIPLE VALUES FROM FIELDS WITH THE SAME NAME 'FIELD1'
+              value: [    // <-- AN ARRAY CONTAINING MULTIPLE VALUES FROM FIELDS WITH THE SAME NAME 'FIELD1'
                   'string1',
                   'string2',
                   ..
@@ -530,17 +527,14 @@ Features
 
 >  - if removeIncompleteFile is:
 >
->     - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
+>     - true ( default ), the file is auto-removed and a **'message'->'fileremoved'** event is emitted . 
 >
 >     - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
 - **When all the data for a file is totally received**:
 
->  - *'filereceived'* event is emitted**. 
-
-
-**'filereceived'** and **'fileremoved'** listeners get a json argument that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not calculated for partial written/received files ) .
+>  - *'load'* event is emitted**. 
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
