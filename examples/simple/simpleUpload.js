@@ -111,13 +111,18 @@ var http = require( 'http' ),
                     },
                     'progress': function( json ) {                              
                     },
+                    
+                    /** /
                     'field': function( json ){
                     },
                     'filereceived': function( json ) {
                     },
                     'fileremoved': function( json ) {
                     },
+                    /**/
                     'loadstart': function( json ){
+                    },
+                    'load': function( json ){
                     },
                     'loadend': function( json, res, next ) {
                         log( '\n-> Post Done' );
