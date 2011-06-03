@@ -184,7 +184,7 @@
  * + Resolved incorrect event value for closeConnection
  * + Resolved bug for 'abortexception' and 'timeoutexception'
  
-   0.5.2 / 2011-06-xx
+   0.5.2 / 2011-06-03
 =====================
  * + Renamed 'exception' event name to 'error'
  * + Removed the trailing string 'exception' from event names
@@ -197,3 +197,7 @@
  * + Added 'load' event
  * + Moved 'warning' and 'fileremoved' to 'message' event subtype
  * + Changed all JSON response to same structure
+ 
+    0.5.3 / 2011-06-xx
+=====================
+ * + TODO create array of files/fields in json ? add stats and result for abort / timeout and fatal exception
