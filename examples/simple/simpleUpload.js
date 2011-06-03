@@ -82,7 +82,7 @@ var http = require( 'http' ),
                 
                     // default is false
                     // return sha1 digests for files received?  
-                sha1sum: true,
+                sha1sum: !true,
                 
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
