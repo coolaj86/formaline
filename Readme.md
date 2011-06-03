@@ -184,7 +184,7 @@ Features
 
 > - **'module errors'**: the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk . 
 >
->     - **'error'*
+>     - **'error'**
 
 > - there are different kinds of module errors, sub-types are:
 >
