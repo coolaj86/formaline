@@ -184,15 +184,13 @@ Features
 
 > - **'module errors'**: the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk . 
 >
->     - **'error'**
-
-> - there are different kinds of module errors, sub-types are:
+>     - **'error'**, there are different kinds of module errors, sub-types are:
 >
->     - **'headers'**     ->  bad headers
->     - **'path'**        ->  bad dir path
->     - **'buffer'**      ->  error copying buffer 
->     - **'stream'**      ->  error writing to file stream
->     - **'mkdir'**       ->  error creating directory
+>         - **'headers'**     ->  bad headers
+>         - **'path'**        ->  bad dir path
+>         - **'buffer'**      ->  error copying buffer 
+>         - **'stream'**      ->  error writing to file stream
+>         - **'mkdir'**       ->  error creating directory
 
 
 > - **connection errors**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
