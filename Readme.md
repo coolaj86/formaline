@@ -274,7 +274,7 @@ Features
     
     // if a file was received --> 
     json = {                
-        name: 'filename1',  // <-- FIELD NAME
+        name: 'field1',  // <-- FIELD NAME
         value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
             name: '..',             // <-- FILE ORIGINAL NAME
             path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
