@@ -47,7 +47,7 @@ Features
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
 > - **Returns data in JSON format** ( see listeners signatures ) .
 > - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like : *type*, *size*, *name*, *lastModifiedDate* )
-> - **It supports the same event names as [W3C XHR2 API](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'**
+> - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'**
 > - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - **It supports duplicate names for fields** .
