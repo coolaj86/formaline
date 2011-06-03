@@ -204,21 +204,17 @@ Features
 
 #### Informational Events :
 
-> - **'message'**: 
->     - need attention
->     - types are 'warning', 'fileremoved'
+> - **'message'**, need attention, subtypes:
+>     - **'warning'**
+>     - **'fileremoved'**
 
-> - **'loadstart'**  
->     - start parsing request
+> - **'loadstart'**, start parsing request
 
-> - **'load'**:
->     - loaded some data 
+> - **'load'**, loaded some data 
 
-> - **'progress'**:
->     - request progression
+> - **'progress'**, request progression
 
-> - **loadend**:
->     - request end 
+> - **loadend**, request end 
  
  
 ###Listeners Signatures 
