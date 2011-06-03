@@ -305,11 +305,11 @@ Features
         /*
         an array containing all completed files
         */
-        files: [    // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+        files: [    
             {
               name: 'filefield1',
               value: [    // <-- AN ARRAY CONTAINING MULTIPLE FILES UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
-                  {
+                  {       // <-- PROPERTIES ARE THE SAME OF 'LOAD' JSON OBJECTS
                     name: 'filename1',  // <-- FIELD NAME
                     value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
                         name: '..',             // <-- FILE ORIGINAL NAME
@@ -332,7 +332,7 @@ Features
         that did not were totally written to disk 
         due to exceeding upload threshold
         */
-        incomplete: [   // <-- PROPERTIES ARE THE SAME OF 'FILES' JSON OBJECT 
+        incomplete: [   // <-- PROPERTIES ARE THE SAME OF PREVIOUS 'FILES' ARRAY 
             { 
             ..          // <-- SHA1 CHECKSUM IS NOT CALCULATED FOR PARTIAL WRITTEN/RECEIVED FILES .
             }, 
