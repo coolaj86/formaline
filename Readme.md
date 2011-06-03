@@ -128,7 +128,7 @@ Features
 
 > - **'uploadRootDir'** : ( *string* ) **default** root directory for files uploads is **'/tmp/'** .
 >   - specify a path, with at least a trailing slash .
->   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal error )
+>   - it is the root directory for file uploads, must already exist! ( **if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal error** )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
@@ -153,12 +153,12 @@ Features
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
 > - **'checkContentLength'** : ( *boolean* ) **default** value is **false** .
->   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
+>   - formaline, for default, doesn't stop if it finds that the header **Content-Length > uploadThreshold**, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
->   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'message' event with sub-type: 'fileremoved', 
->   - if false, no 'message' event is emitted, but the 'loadend' listener will be receive a json object containing the list of incomplete files. 
+>   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a **'message'** event with sub-type: **'fileremoved'**, 
+>   - if false, no **'message'** event is emitted, but the **'loadend'** listener will be receive a json object containing the list of incomplete files. 
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
@@ -166,7 +166,7 @@ Features
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
->   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
+>   - debug: **'off'** turns off logging, to see parser stats you have to enable the 2nd level.
       
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
