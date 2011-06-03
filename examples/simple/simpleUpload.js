@@ -21,7 +21,7 @@ var http = require( 'http' ),
                  <input type="file" name="multiplefield3" multiple="multiple"><br/>\
                  <input type="submit" value="Upload"/>\
                  </form><br/>\
-                 <b>Simple Post:</b><br/><br/>\
+                 <b>Simple urlencoded Post:</b><br/><br/>\
                  <form action="/test/post" method="post">\
                  <input type="text" name="simplefield1"/><br/>\
                  <input type="text" name="simplefield2"/><br/>\
