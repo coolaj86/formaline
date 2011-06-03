@@ -194,3 +194,6 @@
  * + Added 'loadstart' event
  * + Changed 3rd level logging , now it doesn't log filestream data
  * + Added startTime and endTime to 'loadend' stats
+ * + Added 'load' event
+ * + Moved 'warning' and 'fileremoved' to 'message' event subtype
+ * + Changed all JSON response to same structure
