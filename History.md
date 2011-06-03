@@ -198,6 +198,7 @@
  * + Moved 'warning' and 'fileremoved' to 'message' event subtype
  * + Changed all JSON response to same structure
  
-    0.5.3 / 2011-06-xx
-=====================
- * + TODO create array of files/fields in json ? add stats and result for abort / timeout and fatal exception
+    0.5.3 / 2011-06-03
+======================
+ * + the json response now contains files grouped by field name, like url encoded fields
+ * + moved 'field' event to 'load'
