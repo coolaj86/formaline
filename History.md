@@ -202,3 +202,4 @@
 ======================
  * + all json responses now contain files/fields values grouped by field name
  * + moved 'field' event to 'load'
+ * + changed 'datasha1sum' file property name to 'sha1checksum'
