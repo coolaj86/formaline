@@ -25,6 +25,9 @@ var http = require( 'http' ),
                  <form action="/test/post" method="post">\
                  <input type="text" name="simplefield1"/><br/>\
                  <input type="text" name="simplefield2"/><br/>\
+                 <input type="text" name="simplefield2"/><br/>\
+                 <input type="text" name="simplefield3"/><br/>\
+                 <input type="text" name="simplefield3"/><br/>\
                  <input type="text" name="simplefield3"/><br/>\
                  <input type="submit" value="Submit">\
                  </form><br/>\
