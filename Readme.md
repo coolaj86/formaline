@@ -182,11 +182,12 @@ Features
 
 #### Error Events: 
 
-> - **'error'**,
+> - **'module internal exceptions'**: * the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk * . 
 
-> but there are different kinds of errors, types are:
+>     - *'error'*
 
-> - **module internal errors **: *( the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )* . 
+> there are different kinds of errors, sub-types are:
+
 >     - *'headers'*     ->  bad headers
 >     - *'path'*        ->  bad dir path
 >     - *'buffer'*      ->  error copying buffer 
@@ -195,7 +196,9 @@ Features
 
 
 > - **connection exceptions**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
+
 >     - *'timeout'*     ->  the client request timeout was reached
+
 >     - *'abort'*       ->  the request was aborted ( for example, when a user have stopped an upload )
 
 
@@ -203,21 +206,21 @@ Features
 
 #### Informational Events :
 
->  - **'message'**: 
->    - need attention
->    - types are 'warning', 'fileremoved'
+> - **'message'**: 
+>     - need attention
+>     - types are 'warning', 'fileremoved'
 
 > - **'loadstart'**  
->    - start parsing request
+>     - start parsing request
 
 > - **'load'**:
->    - loaded some data 
+>     - loaded some data 
 
 > - **'progress'**:
->    - request progression
+>     - request progression
 
 > - **loadend**:
->    - request end 
+>     - request end 
  
  
 ###Listeners Signatures 
