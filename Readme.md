@@ -46,8 +46,9 @@ Features
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
 > - **Returns data in JSON format** ( see listeners signatures ) .
-> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'filereceived' listener : *type*, *size*, *name*, *lastModifiedDate* ) 
-> - **Multiple  error types** .
+> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'filereceived' listener : *type*, *size*, *name*, *lastModifiedDate* )
+> - **It supports the same event names as [W3C XHR2 API](http://www.w3.org/TR/XMLHttpRequest2/#events) , 'loadstart','progress','load','loadend','abort','timeout'**
+> - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
 > - **It supports duplicate names for fields** .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
