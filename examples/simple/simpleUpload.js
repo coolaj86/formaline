@@ -104,7 +104,7 @@ var http = require( 'http' ),
                 uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                
                     // max bytes allowed for a single field / file
-                maxFieldSize: 3 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                //maxFieldSize: 3 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
@@ -115,7 +115,7 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : true,
+                removeIncompleteFiles : !true,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels
