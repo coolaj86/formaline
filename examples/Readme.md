@@ -6,6 +6,8 @@
 
 > *It contains 3 simple html forms ( with multiple file selection for HTML5 browsers )*
 
+> *It uses some fields with the same name, for showing how the json objects are builded up 
+
 >Generic Usage:
 
 ``` bash
