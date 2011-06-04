@@ -97,7 +97,7 @@ Features
 
 >``` javascript
 >   
-> var formaline = require('formaline'),
+> var formaline = require( 'formaline' ),
 >     form = new formaline( { } ); // <-- empty config object
 >```
 
@@ -173,7 +173,7 @@ Features
       
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
->    - If you set it for example to  an integer k,  'progress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
+>    - If you set it for example to  an integer k,  **'progress'** is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
          
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
 >    - **See below**
@@ -187,9 +187,9 @@ Features
 #### Error Events: 
 
 > - **'module errors'**: the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk . 
->
+> 
 >     - **'error'**, there are different kinds of module errors, sub-types are:
->
+> 
 >         - **'headers'**     ->  bad headers
 >         - **'path'**        ->  bad dir path
 >         - **'buffer'**      ->  error copying buffer 
@@ -198,11 +198,11 @@ Features
 
 
 > - **connection errors**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
->
+> 
 >     - **'timeout'**     ->  the client request timeout was reached
->
+> 
 >     - **'abort'**       ->  the request was aborted ( for example, when a user have stopped an upload )
->
+
 
 
 
@@ -487,55 +487,55 @@ Features
 - **When a file is found in the data stream**:
  
 > - **default behaviour** : 
->
+> 
 >     - **for every different POST was created a subdirectory**:
->
+> 
 >          - under the upload root directory, default is /tmp/ .
 >          - with a random number name ( for example: */tmp/123456789098/* ) .
->
+> 
 >     - the file name is cleaned of weird chars, then converted to an hash string with SHA1.
->
+> 
 >     - when two files, with the same name, 
 >       are uploaded through :
->
+> 
 >          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated, adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          
 >          - **Different** POSTs actions, there is no collision between filenames, because they are written into different directories
 
 
 > - **with session support** : 
->
+> 
 >     - **for an authenticated user the upload subdirectory name will remain the same across multiple POSTs** . 
->
+> 
 >     - the user session identifier is used for generating directory name . 
->
+> 
 >     - when two files, with the same name, 
 >       are uploaded through :
->
+> 
 >          - the **Same** POST action, ( as default behaviour, see above )
->
+> 
 >          - **Different** POSTs actions, the generated ( SHA1 ) files names will be the same, and the file is overwritten by the new one ( because are uploaded in the same upload directory ).   
 
 
 >     - the data stream is written to disk in the file, until:
->
+> 
 >          - is reached end of the file's data .
->
+> 
 >          - is reached the maximum data threshold for uploads .
 
 
 - **When the remaining data for the file are exceeding the upload threshold**:
 
 >  - if removeIncompleteFile is:
->
+> 
 >     - true ( default ), the file is auto-removed and a **'message'->'fileremoved'** event is emitted . 
->
+> 
 >     - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
 - **When all the data for a file is totally received**:
 
->  - *'load'* event is emitted**. 
+>  - *'load'* event is emitted. 
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .
@@ -645,7 +645,7 @@ Other
  Future Releases
 -----------------
  
- - add single file max size
+ - add config for single file max size
  - add transaction identifiers
  - add others examples with AJAX, writing about tested client-side uploader .
  - add a readable stream from files while they are uploaded .
