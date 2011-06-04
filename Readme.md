@@ -138,7 +138,7 @@ Features
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
->   - when a fatal error occurs in the module, the client request is resumed instead of immediately emitting 'loadend' event .
+>   - when a fatal error occurs in the module, the client request is resumed instead of immediately emitting **'loadend'** event .
 >   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
