@@ -204,3 +204,9 @@
  * + moved 'field' event to 'load'
  * + changed 'datasha1sum' file property name to 'sha1checksum'
  * + better html for example
+ 
+   0.5.4 / 2011-06-xx
+======================
+ * + corrected 'rbytes' property of incomplete files to 'size'
+ * + aded new config param maxFieldSize for fields / files
+ * + 
