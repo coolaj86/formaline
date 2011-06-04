@@ -89,7 +89,9 @@ var http = require( 'http' ),
                 resumeRequestOnError: true,
                 
                     // default is false
-                    // return sha1 digests for files received?  
+                    // return sha1 digests for files received?
+                    // turn off for better perfomances
+                    
                 sha1sum: !true,
                 
                     // default is false, or integer chunk factor, 
