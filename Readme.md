@@ -9,8 +9,8 @@
 
 > **Please always update to latest release , this module is in active development . Check the Readme for new modifications .**
 
-> **Current version implements W3C XHR2 event API, W3C FILE API, and many other features .   
-> **See History v0.5.2 - v0.5.3 for changelog**
+> **Current version implements W3C XHR2 event API, W3C FILE API, and many other features .**   
+> **See History.md v0.5.2 - v0.5.3 for changelog**
 
 
  Installation
