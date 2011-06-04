@@ -3,9 +3,9 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Version: 0.5.3, compatible with nodeJS >= v0.4.8**
+> **Current Version: 0.5.3 and Last Stable Version: 0.5.1, are compatible with nodeJS >= v0.4.8**
 
-> **Last Stable Version: 0.5.1**
+
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/), and many other features. Check the Readme for new modifications .**
 
@@ -42,7 +42,7 @@ with git:
 Features
 ----------
 
-> - **Very Fast and Simple Parser**, this module is faster ( with sha1 checksum disabled ) than formidable one ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) .
+> - **Very Fast and Simple Parser**, this module is faster ( with sha1 checksum disabled ) than formidable one ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and have many more features.
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
