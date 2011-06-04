@@ -101,10 +101,10 @@ var http = require( 'http' ),
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
-                uploadThreshold: 4 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                
                     // max bytes allowed for a single field / file
-                //maxFieldSize: 3 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                maxFieldSize: 3 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
@@ -115,7 +115,7 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : !true,
+                removeIncompleteFiles : true,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels
@@ -158,12 +158,12 @@ var http = require( 'http' ),
                         res.write( '-> logging: "' + form.logging + '"\n' );
                                                 
                         res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
-                        res.write( '\n-> files written: [ { .. } , { .. } ] \n   ***************\n ' + JSON.stringify( json.files ) + '\n' );
+                        res.write( '\n-> files written: [ { .. } , { .. } ] \n   **************\n ' + JSON.stringify( json.files ) + '\n' );
                         if( form.removeIncompleteFiles ){
-                            res.write( '\n-> partially written ( removed ): [ { .. } , { .. } ] \n   **************\n '+ JSON.stringify( json.incomplete ) + '\n' );
+                            res.write( '\n-> partially written ( removed ): [ { .. } , { .. } ] \n   *****************\n'+ JSON.stringify( json.incomplete ) + '\n' );
                         }else{
                             if( json.incomplete.length !== 0 ){
-                                res.write( '\n-> partially written ( not removed ): \n   ****************\n' + JSON.stringify( json.incomplete ) + '\n' );
+                                res.write( '\n-> partially written ( not removed ): \n   *****************\n' + JSON.stringify( json.incomplete ) + '\n' );
                             }
                         }
                         res.end();
