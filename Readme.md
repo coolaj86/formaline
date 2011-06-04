@@ -44,18 +44,18 @@ Features
 > - **Very Fast and Simple Parser**, this module is fast ( with sha1 checksum disabled ) as formidable one ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) .
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
-> - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
-> - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
+> - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
+> - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
 > - **Returns data in JSON format** ( see listeners signatures ) .
 > - **It is also possible to return the SHA1 data checksum of received files, disabling sha1sum improves dramatically performances !!** .
 > - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
 > - **Multiple error types** .
-> - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
+> - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
 > - **It supports duplicate names for fields** .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
-> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** . 
+> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
 

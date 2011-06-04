@@ -11,35 +11,44 @@ var http = require( 'http' ),
         log( ' -> req url :', req.url );
         res.writeHead( 200, { 'content-type': 'text/html' } );
         res.end( '<html><head></head><body>\
+                 <style type="text/css">\
+                 label,input { display: block; width: 160px; float: left; margin: 2px 4px 4px 4px; }\
+                 label { text-align: center; width: 110px; color: #444; background-color: #f0f0f0; border: 1px solid #a0a0a0; padding: 1px; font-size: 14px; }\
+                 form { margin-bottom: 20px; border: 1px solid #b0b0b0; padding: 16px; height: 200px;}\
+                 form#mufile{ width: 360px; }\
+                 form#simple{ width: 310px; }\
+                 form#mframe{ width: 360px; }\
+                 br { clear: left;}\
+                 </style>\
                  <b>Multiple File Upload:</b><br/><br/>\
-                 <form action="/test/upload" enctype="multipart/form-data" method="post">\
-                 <input type="text" name="demotitle1"/><br/>\
-                 <input type="file" name="multiplefield1" multiple="multiple"><br/>\
-                 <input type="text" name="demotitle2"><br/>\
-                 <input type="file" name="multiplefield2" multiple="multiple"><br/>\
-                 <input type="text" name="demotitle3"/><br/>\
-                 <input type="file" name="multiplefield3" multiple="multiple"><br/>\
+                 <form id="mufile" action="/test/upload" enctype="multipart/form-data" method="post">\
+                 <label for="id1">demotitle1</label> <input type="text" name="demotitle1" id="id1"/><br/>\
+                 <label for="id2">multiplefield1</label> <input type="file" name="multiplefield1" multiple="multiple" id="id2"><br/>\
+                 <label for="id3">demotitle2</label> <input type="text" name="demotitle2" id="id3"><br/>\
+                 <label for="id4">multiplefield2</label> <input type="file" name="multiplefield2" multiple="multiple" id="id4"><br/>\
+                 <label for="id5">demotitle3</label> <input type="text" name="demotitle3" id="id5"><br/>\
+                 <label for="id6">multiplefield2</label> <input type="file" name="multiplefield3" multiple="multiple" id="id6"><br/>\
                  <input type="submit" value="Upload"/>\
                  </form><br/>\
-                 <b>Simple urlencoded Post:</b><br/><br/>\
-                 <form action="/test/post" method="post">\
-                 <input type="text" name="simplefield1"/><br/>\
-                 <input type="text" name="simplefield2"/><br/>\
-                 <input type="text" name="simplefield2"/><br/>\
-                 <input type="text" name="simplefield3"/><br/>\
-                 <input type="text" name="simplefield3"/><br/>\
-                 <input type="text" name="simplefield3"/><br/>\
+                 <b>Simple Url Encoded Post:</b><br/><br/>\
+                 <form id="simple" action="/test/post" method="post">\
+                 <label for="sfield1">simplefield1</label> <input type="text" name="simplefield1" id="sfield1"/><br/>\
+                 <label for="sfield2">simplefield2</label> <input type="text" name="simplefield2" id="sfield2"/><br/>\
+                 <label for="sfield3">simplefield2</label> <input type="text" name="simplefield2" id="sfield3"/><br/>\
+                 <label for="sfield4">simplefield3</label> <input type="text" name="simplefield3" id="sfield4"/><br/>\
+                 <label for="sfield5">simplefield3</label> <input type="text" name="simplefield3" id="sfield5"/><br/>\
+                 <label for="sfield6">simplefield3</label> <input type="text" name="simplefield3" id="sfield6"/><br/>\
                  <input type="submit" value="Submit">\
                  </form><br/>\
                  <b>Iframe Multiple File Upload:</b><br/><br/>\
-                 <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
-                 <input type="text" name="iframefield1"/><br/>\
-                 <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield2"/><br/>\
-                 <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield2"/><br/>\
-                 <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
-                 <input type="submit" />\
+                 <form id="mframe" action="/test/upload" method="post" enctype="multipart/form-data" target="iframe" >\
+                 <label for="ffield1">iframefield1</label> <input type="text" name="iframefield1" id="ffield1"/><br/>\
+                 <label for="ffield2">iframefile1</label> <input type="file" name="iframefile1" multiple  src="" frameborder="1" id="ffield2"/><br/>\
+                 <label for="ffield3">iframefield2</label> <input type="text" name="iframefield2" id="ffield3"/><br/>\
+                 <label for="ffield4">iframefile2</label> <input type="file" name="iframefile2" multiple  src="" frameborder="1" id="ffield4"/><br/>\
+                 <label for="ffield5">iframefield2</label> <input type="text" name="iframefield2" id="ffield5"/><br/>\
+                 <label for="ffield6">iframefile2</label> <input type="file" name="iframefile2" multiple  src="" frameborder="1" id="ffield6"/><br/>\
+                 <input type="submit" value="Upload"/>\
                  </form>\
                  <iframe name="iframe" width="100%" height="400px"></iframe>\
                  </form>\
