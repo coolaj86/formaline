@@ -12,12 +12,10 @@ var http = require( 'http' ),
         res.writeHead( 200, { 'content-type': 'text/html' } );
         res.end( '<html><head></head><body>\
                  <style type="text/css">\
-                 label,input { display: block; width: 160px; float: left; margin: 2px 4px 4px 4px; }\
+                 label,input { display: block; width: 180px; float: left; margin: 2px 4px 4px 4px; }\
                  label { text-align: center; width: 110px; color: #444; background-color: #f0f0f0; border: 1px solid #a0a0a0; padding: 1px; font-size: 14px; }\
                  form { margin-bottom: 20px; border: 1px solid #b0b0b0; padding: 16px; height: 200px;}\
-                 form#mufile{ width: 360px; }\
-                 form#simple{ width: 310px; }\
-                 form#mframe{ width: 360px; }\
+                 form#mufile{ width: 360px; } form#simple{ width: 310px; } form#mframe{ width: 360px; }\
                  br { clear: left;}\
                  </style>\
                  <b>Multiple File Upload:</b><br/><br/>\
