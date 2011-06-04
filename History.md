@@ -198,7 +198,7 @@
  * + Moved 'warning' and 'fileremoved' to 'message' event subtype
  * + Changed all JSON response to same structure
  
-    0.5.3 / 2011-06-03
+   0.5.3 / 2011-06-03
 ======================
  * + all json responses now contain files/fields values grouped by field name
  * + moved 'field' event to 'load'
