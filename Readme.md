@@ -283,7 +283,7 @@ Features
             type: '..',             // <-- MIME TYPE
             size: 270,              // <-- BYTES
             lastModifiedDate: '..', // <-- FILE MTIME
-            sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+            sha1checksum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
         }
     }
       
@@ -318,7 +318,7 @@ Features
                         type: '..',             // <-- MIME TYPE
                         size: 270,              // <-- BYTES
                         lastModifiedDate: '..', // <-- FILE MTIME
-                        sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+                        sha1checksum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
                     }
                   },          
                   {..},
