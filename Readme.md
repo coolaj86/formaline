@@ -645,6 +645,7 @@ Other
  Future Releases
 -----------------
  
+ - add single file max size
  - add transaction identifiers
  - add others examples with AJAX, writing about tested client-side uploader .
  - add a readable stream from files while they are uploaded .
