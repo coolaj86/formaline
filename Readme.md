@@ -150,6 +150,7 @@ Features
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes ( 1 GB ).
 >   - it indicates the upload threshold in bytes for the data written to disk ( multipart/form-data ) .
 >   - it also limits data received with serialized fields ( x-www-urlencoded ) . 
+>   - **it is a write threshold, the files ( received in the data stream ) that don't fit in the remaininng space are ignored ( never written to disk )** .
   
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
