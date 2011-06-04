@@ -5,10 +5,12 @@
 
 > **Current Version: 0.5.3**
 
-
 > **the current version is compatible with nodeJS >= v0.4.8**
 
 > **Please always update to latest release , this module is in active development . Check the Readme for new modifications .**
+
+> **Current version implements W3C XHR2 event API, W3C FILE API, and many other features .   
+> **See History v0.5.2 - v0.5.3 for changelog**
 
 
  Installation
@@ -164,6 +166,7 @@ Features
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
 >   - it is calculated iteratively when file data is received
+>   - obviuosly, enabling this feature degrades performances
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 

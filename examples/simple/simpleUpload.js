@@ -116,7 +116,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:off,2:on,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
