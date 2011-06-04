@@ -11,30 +11,43 @@ var http = require( 'http' ),
         log( ' -> req url :', req.url );
         res.writeHead( 200, { 'content-type': 'text/html' } );
         res.end( '<html><head></head><body>\
-                 <b>Multiple File Upload:</b><br/><br/>\
-                 <form action="/test/upload" enctype="multipart/form-data" method="post">\
-                 <input type="text" name="demotitle1"/><br/>\
-                 <input type="file" name="multiplefield1" multiple="multiple"><br/>\
-                 <input type="text" name="demotitle2"><br/>\
-                 <input type="file" name="multiplefield2" multiple="multiple"><br/>\
-                 <input type="text" name="demotitle3"/><br/>\
-                 <input type="file" name="multiplefield3" multiple="multiple"><br/>\
-                 <input type="submit" value="Upload"/>\
+                 <style type="text/css">\
+                 label,input { display: block; width: 236px; float: left; margin: 2px 4px 4px 4px; }\
+                 label { text-align: center; width: 110px; color: #444; background-color: #f0f0f0; border: 1px solid #a0a0a0; padding: 1px; font-size: 14px; }\
+                 form { margin-bottom: 10px; border: 1px solid #b0b0b0; padding: 16px; height: 200px;}\
+                 form#mufile{ width: 380px; } form#simple{ width: 380px; } form#mframe{ width: 380px; }\
+                 br { clear: left;}\
+                 </style>\
+                 <br/>\
+                 <b>Simple Url Encoded Post:</b><br/><br/>\
+                 <form id="simple" action="/test/post" method="post">\
+                 <label for="sfield1">simplefield1</label> <input type="text" name="simplefield1" id="sfield1"/><br/>\
+                 <label for="sfield2">simplefield2</label> <input type="text" name="simplefield2" id="sfield2"/><br/>\
+                 <label for="sfield3">simplefield2</label> <input type="text" name="simplefield2" id="sfield3"/><br/>\
+                 <label for="sfield4">simplefield3</label> <input type="text" name="simplefield3" id="sfield4"/><br/>\
+                 <label for="sfield5">simplefield3</label> <input type="text" name="simplefield3" id="sfield5"/><br/>\
+                 <label for="sfield6">simplefield3</label> <input type="text" name="simplefield3" id="sfield6"/><br/>\
+                 <input type="submit" value="Submit" id="submit1">\
                  </form><br/>\
-                 <b>Simple Post:</b><br/><br/>\
-                 <form action="/test/post" method="post">\
-                 <input type="text" name="simplefield1"/><br/>\
-                 <input type="text" name="simplefield2"/><br/>\
-                 <input type="text" name="simplefield3"/><br/>\
-                 <input type="submit" value="Submit">\
+                 <b>Multiple File Upload:</b><br/><br/>\
+                 <form id="mufile" action="/test/upload" enctype="multipart/form-data" method="post">\
+                 <label for="id1">demotitle1</label> <input type="text" name="demotitle1" id="id1"/><br/>\
+                 <label for="id2">multiplefield1</label> <input type="file" name="multiplefield1" multiple="multiple" id="id2"><br/>\
+                 <label for="id3">demotitle2</label> <input type="text" name="demotitle2" id="id3"><br/>\
+                 <label for="id4">multiplefield2</label> <input type="file" name="multiplefield2" multiple="multiple" id="id4"><br/>\
+                 <label for="id5">demotitle3</label> <input type="text" name="demotitle3" id="id5"><br/>\
+                 <label for="id6">multiplefield2</label> <input type="file" name="multiplefield3" multiple="multiple" id="id6"><br/>\
+                 <input type="submit" value="Upload" id="upload1"/>\
                  </form><br/>\
                  <b>Iframe Multiple File Upload:</b><br/><br/>\
-                 <form action="/test/upload" method="post" enctype="multipart/form-data" target="iframe">\
-                 <input type="text" name="iframefield1"/><br/>\
-                 <input type="file" name="iframefile1" multiple  src="" frameborder="1" /><br/>\
-                 <input type="text" name="iframefield"/><br/>\
-                 <input type="file" name="iframefile2" multiple  src="" frameborder="1" /><br/>\
-                 <input type="submit" />\
+                 <form id="mframe" action="/test/upload" method="post" enctype="multipart/form-data" target="iframe" >\
+                 <label for="ffield1">iframefield1</label> <input type="text" name="iframefield1" id="ffield1"/><br/>\
+                 <label for="ffield2">iframefile1</label> <input type="file" name="iframefile1" multiple  src="" frameborder="1" id="ffield2"/><br/>\
+                 <label for="ffield3">iframefield2</label> <input type="text" name="iframefield2" id="ffield3"/><br/>\
+                 <label for="ffield4">iframefile2</label> <input type="file" name="iframefile2" multiple  src="" frameborder="1" id="ffield4"/><br/>\
+                 <label for="ffield5">iframefield2</label> <input type="text" name="iframefield2" id="ffield5"/><br/>\
+                 <label for="ffield6">iframefile2</label> <input type="file" name="iframefile2" multiple  src="" frameborder="1" id="ffield6"/><br/>\
+                 <input type="submit" value="Upload" id="upload2"/>\
                  </form>\
                  <iframe name="iframe" width="100%" height="400px"></iframe>\
                  </form>\
@@ -71,22 +84,22 @@ var http = require( 'http' ),
                 requestTimeOut : 5000, // 5 secs
                 
                     // default is true
-                    // when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event
-                    // if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore  
+                    // when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'loadend' event
+                    // if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore  
                 resumeRequestOnError: true,
                 
                     // default is false
                     // return sha1 digests for files received?  
-                sha1sum: true,
+                sha1sum: !true,
                 
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitDataProgress: false, // 3, 10, 100
+                emitProgress: false, // 3, 10, 100
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
-                uploadThreshold: 1024 * 1024 * 1024, // bytes ex.: 1024*1024*1024, 512
+                uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
@@ -97,31 +110,35 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : false,
+                removeIncompleteFiles : true,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:off,2:on,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
-                    'exception': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
+                    'message':function( json ){
                     },
-                    'dataprogress': function( json ) {                              
+                    'error': function( json ){ // json:{ type: '..', isupload: true/false , msg: '..', fatal: true/false }
                     },
-                    'field': function( json ){
+                    'abort': function( json ) {   
                     },
-                    'filereceived': function( json ) {
+                    'timeout': function( json ) {   
                     },
-                    'fileremoved': function( json ) {
+                    'loadstart': function( json ){
                     },
-                    'end': function( json, res, next ) {
+                    'progress': function( json ) {                              
+                    },
+                    'load': function( json ){
+                    },
+                    'loadend': function( json, res, next ) {
                         log( '\n-> Post Done' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
-                        res.write( '-> request processed! \n' );
+                        res.write( '-> request processed! \n' );   
                         res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
@@ -129,7 +146,7 @@ var http = require( 'http' ),
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
                         res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
-                        res.write( '-> emitDataProgress: ' + form.emitDataProgress + '\n' );
+                        res.write( '-> emitProgress: ' + form.emitProgress + '\n' );
                         res.write( '-> resumeRequestOnError: ' + form.resumeRequestOnError + '\n' );
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );

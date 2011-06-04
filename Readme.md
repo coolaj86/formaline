@@ -3,11 +3,14 @@
 > __formaline__ is a low-level ([nodeJS](http://nodejs.org/)) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use with [connect middleware](https://github.com/senchalabs/connect).  
 
-> **Current Stable Version: 0.5.1**
+> **Current Version: 0.5.3**
 
 > **the current version is compatible with nodeJS >= v0.4.8**
 
 > **Please always update to latest release , this module is in active development . Check the Readme for new modifications .**
+
+> **Current version implements W3C XHR2 event API, W3C FILE API, and many other features .   
+> **See History v0.5.2 - v0.5.3 for changelog**
 
 
  Installation
@@ -40,20 +43,21 @@ with git:
 Features
 ----------
 
-> - **Very Fast and Simple Parser** ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) .
+> - **Very Fast and Simple Parser**, this module is fast ( with sha1 checksum disabled ) as formidable one ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) .
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
-> - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) . 
-> - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .   
+> - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
+> - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
 > - **Returns data in JSON format** ( see listeners signatures ) .
-> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'filereceived' listener : *type*, *size*, *name*, *lastModifiedDate* ) 
-> - **Multiple exceptions types** .
-> - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** . 
+> - **It is also possible to return the SHA1 data checksum of received files, disabling sha1sum improves dramatically performances !!** .
+> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
+> - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
+> - **Multiple error types** .
+> - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
 > - **It supports duplicate names for fields** .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
-> - **It is also possible to return the SHA1 data checksum of received files** .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
-> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** . 
+> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
 
@@ -102,12 +106,12 @@ Features
 
 >``` javascript
 >   ..
->   form.on( 'filereceived', function( json ){ .. }  )  
+>   form.on( 'load', function( json ){ .. }  )  
 >   ..
 >   /* or */ 
 >   var myListener = function( ){ console.log( arguments ); }
 >   ..
->   form.on( 'filereceived', myListener ); // <-- myListener function gets a json data object as argument
+>   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
 >   ..
 >   /* then parse request */
 >   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
@@ -127,7 +131,7 @@ Features
 
 > - **'uploadRootDir'** : ( *string* ) **default** root directory for files uploads is **'/tmp/'** .
 >   - specify a path, with at least a trailing slash .
->   - it is the root directory for file uploads, must already exist! ( if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal exception )
+>   - it is the root directory for file uploads, must already exist! ( **if it doesn't exist, formaline will try to use '/tmp/', otherwise it throws a fatal error** )
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
@@ -136,8 +140,8 @@ Features
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
->   - when a fatal exception was thrown, the client request is resumed instead of immediately emitting 'end' event .
->   - if false, the client request will be never resumed, the 'end' event will be emitted and the module doesn't handle the request anymore . 
+>   - when a fatal error occurs in the module, the client request is resumed instead of immediately emitting **'loadend'** event .
+>   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
@@ -152,24 +156,25 @@ Features
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
 > - **'checkContentLength'** : ( *boolean* ) **default** value is **false** .
->   - formaline, for default, doesn't stop if it finds that the header Content-Length > uploadThreshold, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
+>   - formaline, for default, doesn't stop if it finds that the header **Content-Length > uploadThreshold**, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
->   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a 'fileremoved' event, 
->   - if false, no fileremoved event is emitted, and the incomplete files list is passed to the 'end' listener in the form of an array of paths. 
+>   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a **'message'** event with sub-type: **'fileremoved'**, 
+>   - if false, no **'message'** event is emitted, but the **'loadend'** listener will be receive a json object containing the list of incomplete files. 
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
 >   - it is calculated iteratively when file data is received
+>   - obviuosly, enabling this feature degrades performances
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
 >   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
->   - debug: 'off' turns off logging, to see parser stats you have to enable the 2nd level.
+>   - debug: **'off'** turns off logging, to see parser stats you have to enable the 2nd level.
       
-> - **'emitDataProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
->    - when it is true, it emits a 'dataprogress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
->    - If you set it for example to  an integer k,  'dataprogress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
+> - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
+>    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
+>    - If you set it for example to  an integer k,  'progress' is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
          
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
 >    - **See below**
@@ -180,37 +185,41 @@ Features
  Events & Listeners
 --------------------
 
-#### Exception Events: 
+#### Error Events: 
 
-> There is only one event to listen for the exceptions: **'exception'**,
+> - **'module errors'**: the request was paused, the module interrupts writing data to disk. If resumeRequestOnError === false, then the 'loadend' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk . 
+>
+>     - **'error'**, there are different kinds of module errors, sub-types are:
+>
+>         - **'headers'**     ->  bad headers
+>         - **'path'**        ->  bad dir path
+>         - **'buffer'**      ->  error copying buffer 
+>         - **'stream'**      ->  error writing to file stream
+>         - **'mkdir'**       ->  error creating directory
 
-> but there are different kinds of exceptions, types are:
 
-> - fatal exceptions: *( the request was paused, the writing data to disk is interrupted, if resumeRequestOnError === false, then the 'end' event is immediately emitted, otherwise the request will be resumed, but no data will be written to disk )*. 
->     - **'headersexception'**    ->  bad headers
->     - **'pathexception'**       ->  bad dir path
->     - **'bufferexception'**     ->  error copying buffer 
->     - **'streamexception'**     ->  error writing to file stream
->     - **'direxception'**        ->  error creating directory
->     - **'timeoutexception''**   ->  the client request timeout was reached
->     - **'abortedexception'**    ->  the request was aborted ( for example, when a user have stopped an upload )
+> - **connection errors**: the 'loadend' event is immediately emitted, independently from resumeRequestOnError value .
+>
+>     - **'timeout'**     ->  the client request timeout was reached
+>
+>     - **'abort'**       ->  the request was aborted ( for example, when a user have stopped an upload )
+>
 
-> - exceptions that not need special attention: 
->     - **'warning'** 
 
 
 #### Informational Events :
 
-> - related to file:
->    - **'filereceived'**
->    - **'fileremoved'**
- 
-> - related to field:
->    - **'field'**
+> - **'message'**, need attention, subtypes:
+>     - **'warning'**
+>     - **'fileremoved'**
 
-> - related to the request's flow:  
->     - **'dataprogress'**
->     - **'end'** 
+> - **'loadstart'**, start parsing request
+
+> - **'load'**, loaded some data 
+
+> - **'progress'**, request progression
+
+> - **loadend**, request end 
  
  
 ###Listeners Signatures 
@@ -219,127 +228,157 @@ Features
 **All Listeners functions are called at run-time with a response object argument in JSON format**: 
 
 
-> - **'exception'**: `function ( json ) { .. }`, 
+> - **'message'**: `function ( json  ) { .. }`,
+
+``` javascript     
+    json = {
+          type: 'warning' | 'fileremoved',  // <-- ERROR EVENT TYPE
+          msg: 'blah, blah..',              // <-- DEBUG MESSAGE   
+          isupload: true | false            // <-- IS IT AN UPLOAD ?
+      }
+``` 
+
+> - **'error'**: `function ( json ) { .. }`, 
 
  ``` javascript     
      json = { 
-          type: 'headerexception',  // <-- EXCEPTION EVENT TYPE
-          isupload: true,           // <-- IS IT AN UPLOAD ?
-          msg: 'blah, blah..',      // <-- DEBUG MESSAGE
-          isfatal: true             // <-- A TRUE VALUE, MEANS THAT THE MODULE HAS STOPPED WRITING RECEIVED DATA TO DISK
+          type: 'headers' | 'path' | 'buffer' | 'stream' | 'mkdir',   // <-- ERROR EVENT TYPE
+          msg: 'blah, blah..',      // <-- DEBUG MESSAGE      
+          isupload: true | false,   // <-- IS IT AN UPLOAD ?
+          isfatal: true             // <--  MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
       }
 ``` 
 
-> - **'field'**: `function ( json ) { .. }`,
+> - **'abort'**, **'timeout'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          name:  'field1',  // <-- FIELD NAME
-          value: 'value1'   // <-- FIELD VALUE
-      }
+    json = {
+        msg: 'blah, blah..',        // <-- DEBUG MESSAGE
+        isupload: true | false,     // <-- IS IT AN UPLOAD ?
+        isfatal: true               // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+    }
 ``` 
- 
-> - **'filereceived'**: `function ( json ) { .. }`,
+
+
+> - **'loadstart'**: `function ( json ) { .. }`,
+
+``` javascript     
+    json = { 
+        time: 1307017842684,    // <-- MILLISECS  
+    }
+``` 
+
+> - **'load'**: `function ( json ) { .. }`,
 
 ``` javascript
-     json = { 
-          hashname: '..',           // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING HASH OF FILENAME )
-          name: '..',               // <-- FILE ORIGINAL NAME  
-          path: '..',               // <-- FILE PATH       
-          type: '..',               // <-- MIME TYPE
-          size: 217,                // <-- BYTES 
-          fieldname: '..',          // <-- FILE FIELD NAME 
-          datasha1sum: '..',        // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING HASH OF THE FILE'S DATA )
-          lastModifiedDate: '..'    // <-- FILE MTIME       
-      }
-``` 
-
-> - **'fileremoved'**: `function ( json  ) { .. }`,
-
-``` javascript     
-     json = { 
-          hashname:  '..', 
-          name: '..', 
-          path: '..', 
-          type: '..', 
-          size: 217, 
-          fieldname: '..',
-          datasha1sum: 'not calculated',   // <-- THE HASH NAME IS NOT CALCULATED IF THE FILE IS INCOMPLETE
-          lastModifiedDate: '..'           // <-- FILE MTIME  
-      }
+    // if a field was received --> 
+    json = { 
+        name:   'field1',   // <-- FIELD NAME
+        value:  'value1'    // <-- FIELD VALUE IS A STRING
+    }
+    
+    // if a file was received --> 
+    json = {                
+        name: 'field1',  // <-- FIELD NAME
+        value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
+            name: '..',             // <-- FILE ORIGINAL NAME
+            path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
+            type: '..',             // <-- MIME TYPE
+            size: 270,              // <-- BYTES
+            lastModifiedDate: '..', // <-- FILE MTIME
+            sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING  ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+        }
+    }
+      
 ``` 
  
-> - **'dataprogress'**: `function ( json ) { .. }`,
+> - **'progress'**: `function ( json ) { .. }`,
 
 ``` javascript     
-     json = { 
-          bytes: 8900,   // <-- BYTES RECEIVED
-          chunks: 2,     // <-- CHUNKS RECEIVED
-          ratio: 0.3     // <-- RATIO COMPLETION
-      }
+    json = { 
+        bytes: 8900,   // <-- BYTES RECEIVED
+        chunks: 2,     // <-- CHUNKS RECEIVED
+        ratio: 0.3     // <-- RATIO COMPLETION
+    }
 ``` 
- 
-> - **'end'**: `function ( json, res, next ) { .. }`
+
+> - **'loadend'**: `function ( json, res, next ) { .. }`
 
 ``` javascript     
-     json = {          
-          /*
-           an hash containing all completed files
-           the keys are the files hash values ( hashname property value ) 
-          */
-          files: [  // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
-             {
-                 hashname:  '..',   
-                 name: '..',     
-                 path: '..',              
-                 type: '..',       
-                 size: 217,         
-                 fieldname: '..',   
-                 datasha1sum: '..',
-                 lastModifiedDate: '..'
-             }, 
-             { .. },
-             ..
-          ],
-          /* 
-           an array containing the list of files, 
-           that did not were totally written to disk 
-           due to exceeding upload threshold
-          */
-          incomplete: [ // <-- PROPERTIES ARE THE SAME OF 'FILERECEIVED' AND 'FILEREMOVED' JSON OBJECTS 
+    json = {          
+        /*
+        an array containing all completed files
+        */
+        files: [    
+            {
+              name: 'filefield1',
+              value: [    // <-- THIS ARRAY COULD CONTAIN MULTIPLE OR SINGLE FILE(S) UPLOADED FROM THE THE SAME FIELD 'FILEFIELD1'
+                  {       // <-- PROPERTIES ARE THE SAME OF 'LOAD' JSON OBJECTS
+                    name: 'filename1',  // <-- FIELD NAME
+                    value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
+                        name: '..',             // <-- FILE ORIGINAL NAME
+                        path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
+                        type: '..',             // <-- MIME TYPE
+                        size: 270,              // <-- BYTES
+                        lastModifiedDate: '..', // <-- FILE MTIME
+                        sha1cheksum: '..'       // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+                    }
+                  },          
+                  {..},
+                  ..
+              ]  
+            }, 
+            { .. },
+            ..
+        ],
+        /* 
+        an array containing the list of files, 
+        that did not were totally written to disk 
+        due to exceeding upload threshold
+        */
+        incomplete: [   // <-- PROPERTIES ARE THE SAME OF PREVIOUS 'FILES' ARRAY 
             { 
-                 hashname:  '..',   
-                 name: '..',     
-                 path: '..',              
-                 type: '..',       
-                 size: 217,         
-                 fieldname: '..',   
-                 datasha1sum: '..',
-                 lastModifiedDate: '..'
-             }, 
-             { .. },
-          ],          
-          /*
-           an array containing the list of received fields
-          */          
-          fields: [     // <-- PROPERTIES ARE THE SAME OF 'FIELD' JSON OBJECTS
-             { name: '..', value: '..' }, 
-             { name: '..', value: '..' }, 
-             .. 
-           ],
-          /* 
-           some numbers 
-          */        
-          stats: {  
-             bytesReceived: 754,
-             bytesWrittenToDisk: 217,
-             chunksReceived: 1 ,
-             overallSecs: 0.048,
-             filesCompleted: 1,
-             filesRemoved: 0 
-          },   
-      };     
+            ..          // <-- SHA1 CHECKSUM IS NOT CALCULATED FOR PARTIAL WRITTEN/RECEIVED FILES .
+            }, 
+            { .. },
+        ],          
+        /*
+        an array containing the list of received fields
+        */
+        fields: [
+            {
+              name: 'field1',
+              value: [    // <-- AN ARRAY CONTAINING MULTIPLE VALUES FROM FIELDS WITH THE SAME NAME 'FIELD1'
+                  'string1',
+                  'string2',
+                  ..
+              ]
+            },
+            { 
+              name: 'field2', 
+              value: [ 'string3' ]  // <-- AN ARRAY CONTAINING SINGLE VALUE FROM A FIELD WITH UNIQUE NAME 'FIELD2'
+            },
+            ..
+        ],
+        /* 
+        some numbers
+        */
+        stats: {
+            startTime: 1307019846426,
+            endTime: 1307019846578,
+            overallSecs: 0.152,
+            bytesReceived: 341917,
+            bytesWrittenToDisk: 337775,
+            chunksReceived: 10,
+            filesCompleted: 25,
+            filesRemoved: 0 
+        },   
+    };   
 ``` 
+
+
+
+
  
 
 
@@ -382,28 +421,34 @@ Features
           
      removeIncompleteFiles: true,
             
-     emitDataProgress: false, 
+     emitprogress: false, 
         
      sha1sum: true,
             
      listeners: {
               
-         'exception': function ( json ) {
-            ...
+         'message':function( json ){ // json:{ type: '..', isupload: true/false , msg: '..' }
+            ..
          },
-         'field': function ( json ) { 
-            ...
+         'error': function( json ){ // json:{ type: '', isupload: true/false , msg: '..', fatal: true }
+            ..
          },
-         'filereceived': function ( json ) { 
-            ... 
+         'abort': function( json ) {   
+            ..
          },
-         'fileremoved': function ( json ) { 
-            ...
+         'timeout': function( json ) {   
+            ..
          },
-         'dataprogress': function ( json ) {
-            ...
+         'loadstart': function( json ){
+            ..
          },
-         'end': function ( json, res, next ) {
+         'progress': function( json ) {                              
+            ..
+         },
+         'load': function( json ){
+            ..
+         },
+         'loadend': function( json, res, next ) {
             ...
             res.writeHead(200, { 'content-type': 'text/plain' } );
             res.end();
@@ -484,17 +529,14 @@ Features
 
 >  - if removeIncompleteFile is:
 >
->     - true ( default ), the file is auto-removed and a **'fileremoved'** event is emitted . 
+>     - true ( default ), the file is auto-removed and a **'message'->'fileremoved'** event is emitted . 
 >
 >     - otherwise, the file is kept partial in the filesystem, no event is emitted .
 
 
 - **When all the data for a file is totally received**:
 
->  - *'filereceived'* event is emitted**. 
-
-
-**'filereceived'** and **'fileremoved'** listeners get a json parameter that holds the file infos: *hashname*, *name*, *path*, *type*, *size*, *field*, and *sha1sum* ( sha1sum is not calculated for partial written/received files ) .
+>  - *'load'* event is emitted**. 
 
 
 When the mime type is not recognized by the file extension, the default value for file **type** will be **'application/octet-stream'** .

@@ -180,6 +180,27 @@
  
   0.5.1 / 2011-06-02
 =====================
- * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data.
+ * + Resolved bug for lastModifiedDate. I have added a more accurate value for this property for files received in only one chunk of data
  * + Resolved incorrect event value for closeConnection
- * + Resolved bug for 'abortexception' and 'timeoutexception' 
+ * + Resolved bug for 'abortexception' and 'timeoutexception'
+ 
+   0.5.2 / 2011-06-03
+=====================
+ * + Renamed 'exception' event name to 'error'
+ * + Removed the trailing string 'exception' from event names
+ * + Renamed 'abortedexception' ( 'aborted' ) to 'abort'
+ * + Renamed 'end' to 'loadend'
+ * + Renamed 'dataprogress' to 'progress'
+ * + Added 'loadstart' event
+ * + Changed 3rd level logging , now it doesn't log filestream data
+ * + Added startTime and endTime to 'loadend' stats
+ * + Added 'load' event
+ * + Moved 'warning' and 'fileremoved' to 'message' event subtype
+ * + Changed all JSON response to same structure
+ 
+   0.5.3 / 2011-06-03
+======================
+ * + all json responses now contain files/fields values grouped by field name
+ * + moved 'field' event to 'load'
+ * + changed 'datasha1sum' file property name to 'sha1checksum'
+ * + better html for example
