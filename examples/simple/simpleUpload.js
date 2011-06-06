@@ -101,7 +101,7 @@ var http = require( 'http' ),
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
-                uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                uploadThreshold: 4 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                
                     // max bytes allowed for a single field / file
                 //maxFieldSize: 3 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
