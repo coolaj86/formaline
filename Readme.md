@@ -274,13 +274,13 @@ Features
     // if a field was received --> 
     json = { 
         name:   'field1',   // <-- FIELD NAME
-        value:  'value1'    // <-- FIELD VALUE IS A STRING
+        value:  'value1'    // <-- **FIELD VALUE IS A STRING**
     }
     
     // if a file was received --> 
     json = {                
         name: 'field1',  // <-- FIELD NAME
-        value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
+        value: {            // <-- **FIELD VALUE IS A FILE JSON OBJECT**
             name: '..',             // <-- FILE ORIGINAL NAME
             path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
             type: '..',             // <-- MIME TYPE
