@@ -209,4 +209,4 @@
 ======================
  * + corrected 'rbytes' property of incomplete files to 'size'
  * + aded new config param maxFieldSize for fields / files
- * + 
+ * + corrected sha1checksum value, now default value is 'null' when 'sha1sum' config param  is false, or if the file is incomplete

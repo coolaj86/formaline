@@ -321,7 +321,7 @@ Features
                         type: '..',             // <-- MIME TYPE
                         size: 270,              // <-- BYTES
                         lastModifiedDate: '..', // <-- FILE MTIME
-                        sha1checksum: '..'      // <-- 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
+                        sha1checksum: '..'      // <-- 'NULL' OR 40 HEX SHA1 STRING ( IT IS THE (SHA1) RESULTING CHECKSUM OF THE FILE'S DATA )
                     }
                   },          
                   {..},
@@ -338,7 +338,7 @@ Features
         */
         incomplete: [   // <-- PROPERTIES ARE THE SAME OF PREVIOUS 'FILES' ARRAY 
             { 
-            ..          // <-- SHA1 CHECKSUM IS NOT CALCULATED FOR PARTIAL WRITTEN/RECEIVED FILES .
+            ..          // <-- SHA1 CHECKSUM IS NOT CALCULATED FOR PARTIAL WRITTEN/RECEIVED FILES, THE VLAUE IS 'NULL'.
             ..          // <-- SIZE PROPERTY IS THE SIZE OF PARTIAL WRITTEN FILE
             }, 
             { .. },
