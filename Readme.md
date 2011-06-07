@@ -509,7 +509,7 @@ Features
 >     - when two files, with the same name, 
 >       are uploaded through :
 > 
->          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated, adding a seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
+>          - **Same** POST action, then the resulting string (calculated with SHA1) is the same, for not causing a collision, the SHA1 string is regenerated, adding a random seed in the file name (current time in millis); in this way, it assures us that the first file will not overwritten .
 >          
 >          - **Different** POSTs actions, there is no collision between filenames, because they are written into different directories
 
