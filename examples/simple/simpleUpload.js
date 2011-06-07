@@ -101,10 +101,10 @@ var http = require( 'http' ),
                 
                     // max bytes allowed, this is the max bytes written to disk before stop to write 
                     // this is also true for serialzed fields not only for files upload 
-                uploadThreshold: 10 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
                
-                    // max bytes allowed for a single field / file
-                maxFieldSize: 2 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                    // max bytes allowed for a single file
+                maxFileSize: 2 * 1024 * 1024, // bytes, default 1GB
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
@@ -115,13 +115,13 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : true,
+                removeIncompleteFiles : !true,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:off,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
@@ -147,7 +147,7 @@ var http = require( 'http' ),
                         res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
-                        res.write( '-> maxFieldSize: ' + form.maxFieldSize + ' bytes \n' ); // TODO
+                        res.write( '-> maxFileSize: ' + form.maxFileSize + ' bytes \n' ); // TODO
                         res.write( '-> checkContentLength: ' + form.checkContentLength + '\n' );
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
