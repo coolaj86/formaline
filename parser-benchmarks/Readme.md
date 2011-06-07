@@ -12,20 +12,12 @@
  
 > **Generic Usage**:
 
-    
-    
->     $ node parser-benchmarks/QS-benchmark-test.js
+ 
+```bash    
+  $ node parser-benchmarks/QS-benchmark-test.js
+```
 
-
-
-> or
-
-
-
->     $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
-
-
->**typical results**:
+>**typical results with ~ 4000 files of 180K in size**:
 
 >     ->	Min Gap Factor: 2
 >     ->	Max Gap Factor: 5 
@@ -50,6 +42,41 @@
 >     ->	average parsing speed: 599.9183258695084 MB/s
 
 > long pattern boundaries (max 254 ascii chars) means best results. 
+
+
+> **Semi Custom Usage**:
+    
+>   $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
+
+
+```bash
+    $ node parser-benchmarks/QS-benchmark-test.js 700 4
+```
+
+
+>**typical results with 70 files of ~ 10M in size**:
+
+>     ->	Min Gap Factor: 2
+>     ->	Max Gap Factor: 5 
+>     ->	Current Gap Factor: 4
+
+>     ->	pattern: ---------------------------2046863043300497616870820724
+
+>     ->	max pattern length: 254 bytes
+>     ->	pattern length: 57 bytes
+>     ->	pattern gap: 10556001 bytes (distance in bytes of boundary occurrences)
+>     ->	plength / pgap: 0.0000053997721296161305 
+
+>     ->	buffer size in MB: 700
+>     ->	buffer creation time:  8.292 secs
+
+>     ->	total matches: 70
+>     ->	step cycles: 12670166
+>     ->	inner cycles: 10301
+>     ->	data bytes: 734003200
+>     ->	pattern bytes: 57
+>     ->	matching time: 1.075 secs
+>     ->	average parsing speed: 666.7906976744187 MB/s MB/s
 
 
 > in progress..
