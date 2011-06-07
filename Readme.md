@@ -149,7 +149,6 @@ Features
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes ( 1 GB ) .
 >   - it indicates the upload threshold in bytes for the data written to disk ( multipart/form-data ) .
->   - it also limits data received with serialized fields ( x-www-urlencoded ) . 
 >   - **it is a write threshold, the files ( received in the data stream ) that don't fit in the remaininng space are ignored ( never written to disk )** .
 
 > - **'maxFileSize'** : ( *integer* ) **default** value is 1024 * 1024 *1024 ( 1GB ) .
@@ -165,6 +164,10 @@ Features
 > - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **false**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a **'message'** event with sub-type: **'fileremoved'**, 
 >   - if false, no **'message'** event is emitted, but the **'loadend'** listener will be receive a json object containing the list of incomplete files. 
+
+> - **'serialzedFieldThreshold'** : ( *integer* ) **default** value is 1024 * 1204 * 1024 bytes ( 1GB )
+>   - it limits the parsing of data received with serialized fields ( x-www-urlencoded ) .
+>   - **formaline, for now, doesn't implement a streaming parser for urlencoded fields, when the threshold is exceeded, it will not return any data** .
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 

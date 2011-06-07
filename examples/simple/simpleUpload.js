@@ -99,12 +99,15 @@ var http = require( 'http' ),
                     // minimum factor value is 2 
                 emitProgress: false, // 3, 10, 100
                 
-                    // max bytes allowed, this is the max bytes written to disk before stop to write 
-                    // this is also true for serialzed fields not only for files upload 
-                uploadThreshold: 1024 * 1024 * 1024 ,//* 1024, // bytes ex.: 1024*1024*1024, 512
+                    // max bytes allowed for file uploads ( multipart/form-data ), it is a writing threshold, this is the max size of bytes written to disk before stopping
+                uploadThreshold: 1024 * 1024 * 1024 ,// bytes
+                
+                    // max bytes allowed for serialized fields, it limits the parsing of data received with serialized fields ( x-www-urlencoded ) 
+                    // when it was exceeded, no data was returned 
+                serialzedFieldThreshold: 4300,//1024 * 1024 * 1024,
                
                     // max bytes allowed for a single file
-                maxFileSize: 2 * 1024 * 1024, // bytes, default 1GB
+                maxFileSize: 1024 * 1024 * 1024, // bytes, default 1GB
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
@@ -121,7 +124,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:off,3:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
