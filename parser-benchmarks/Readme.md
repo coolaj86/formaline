@@ -1,8 +1,10 @@
 ### Basic Example
 
 
+**This is a parser performance benchmark! the module performances depend on many factors, network throughput, number of data chunks, chunk size, load, etc.. ( See *Parser Section* in the [Readme](https://github.com/rootslab/formaline/blob/master/Readme.md) )** .
+
 > default example:
- 
+
 > - uses a fixed boundary string of 57 bytes (ascii), 
 > - builds a data buffer of 700MB in RAM,  
 > - uses a sort of redundancy factor for boundary string presence into the data (gapFactor), actually it is a simple distance factor  between boundary strings. The bigger the value, the lesser are occurrences of boundary string into the text buffer. 
@@ -18,7 +20,7 @@
 ```
 
 
->**typical results with ~ 4000 files of 180K in size**:
+>**typical results on a Linux VM, with ~ 4000 files of 180K in size**:
 
 >     ->	Min Gap Factor: 2
 >     ->	Max Gap Factor: 5 
@@ -49,12 +51,14 @@
 
 
 ```bash
-    // use --> $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
+    // use --> 
+    $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
+    
     $ node parser-benchmarks/QS-benchmark-test.js 700 4
 ```
 
 
->**typical results with 70 files of ~ 10M in size**:
+>**typical results on a Linux VM, with 70 files of ~ 10M in size**:
 
 >     ->	Min Gap Factor: 2
 >     ->	Max Gap Factor: 5 

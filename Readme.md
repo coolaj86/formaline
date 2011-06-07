@@ -564,7 +564,7 @@ I try to explain me:
  
 >  - the data received is not chopped, 
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
-> - network throughput == network bandwidth ( **wow **),
+>  - network throughput == network bandwidth ( **wow **),
  
  reaches a time complexity (in the best case) of :   
 
