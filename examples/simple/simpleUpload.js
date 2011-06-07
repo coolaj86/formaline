@@ -92,7 +92,7 @@ var http = require( 'http' ),
                     // return sha1 digests for files received?
                     // turn off for better perfomances
                     
-                sha1sum: !true,
+                sha1sum: false,
                 
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
@@ -111,11 +111,11 @@ var http = require( 'http' ),
                     // if true ->  when headers content length exceeds uploadThreshold, module stops to receive data,
                 checkContentLength: false,
                     
-                    // default is true
+                    // default is false
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : !true,
+                removeIncompleteFiles : false,
                 
                     // default is 'debug:off,1:on,2:on,3:off';
                     // enable various logging levels

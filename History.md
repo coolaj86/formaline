@@ -208,6 +208,6 @@
    0.5.4 / 2011-06-xx
 ======================
  * + corrected 'rbytes' property of incomplete files to 'size'
- * + aded new config param 'maxFileSize'
+ * + added new config param 'maxFileSize'
  * + corrected the file checksum value, now default value is 'null' when 'sha1sum' config param  is false, or if the file is incomplete
  * + resolved some bugs for the creation of the list of incomplete files 

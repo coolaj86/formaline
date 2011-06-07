@@ -3,7 +3,7 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Version: 0.5.4 and Last Stable Version: 0.5.1, are compatible with nodeJS >= v0.4.8**
+> **Current Version: 0.5.4, compatible with nodeJS >= v0.4.8**
 
 
 
@@ -134,7 +134,7 @@ Features
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
-> - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ).
+> - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ) .
 >   - it indicates the maximum value, after that the **'timeout'** event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
 
@@ -152,7 +152,7 @@ Features
 >   - it also limits data received with serialized fields ( x-www-urlencoded ) . 
 >   - **it is a write threshold, the files ( received in the data stream ) that don't fit in the remaininng space are ignored ( never written to disk )** .
 
-> - **maxFileSize** : ( *integer* ) **default value is 1024 * 1024 *1024 ( 1GB ) .
+> - **'maxFileSize'** : ( *integer* ) **default** value is 1024 * 1024 *1024 ( 1GB ) .
 >   - it limits the maximum data written to disk for every file received
 
 > - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
@@ -162,7 +162,7 @@ Features
 >   - formaline, for default, doesn't stop if it finds that the header **Content-Length > uploadThreshold**, it will try to receive all data for request, and will write to disk the bytes received, until they reaches the upload threshold . 
 >   - if value is set to true, if the header Content-Length exceeds uploadThreshold, **It stops before receiving data payload** .
 
-> - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **true**.
+> - **'removeIncompleteFiles'** : ( *boolean* ) **default** value is **false**.
 >   - if true, formaline auto-removes files not completed because of exceeded upload threshold limit, then it emits a **'message'** event with sub-type: **'fileremoved'**, 
 >   - if false, no **'message'** event is emitted, but the **'loadend'** listener will be receive a json object containing the list of incomplete files. 
 
