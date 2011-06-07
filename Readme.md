@@ -170,13 +170,15 @@ Features
 >   - **formaline, for now, doesn't implement a streaming parser for urlencoded fields, when the threshold is exceeded, maybe it will not return any data** .
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
->   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
->   - it is calculated iteratively when file data is received
->   - obviuosly, enabling this feature degrades performances
+>   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) . 
+>   - it is calculated iteratively when file data is received .
+>   - obviuosly, enabling this feature degrades performances .
 
-> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:on'** ( debug is off ).
->   - it enables various logging levels, it is possible to switch on or  off one or more level at the same time. 
->   - debug: **'off'** turns off logging, to see parser stats you have to enable the 2nd level.
+> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,file:off,console:on''** ( debug is off ) .
+>   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
+>   - debug: **'off'** turns off logging, to see parser stats you have to enable the 2nd level .
+>   - the **'console'** property is used for switching ( on / off ) the console logging .
+>   - the **'file'** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory  . 
       
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
@@ -405,7 +407,7 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:off'
+    logging: 'debug:on,1:on,2:on,3:on,file:on,console:off'
     
      uploadRootDir: '/var/www/upload/',
      

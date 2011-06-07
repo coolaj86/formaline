@@ -205,10 +205,16 @@
  * + changed 'datasha1sum' file property name to 'sha1checksum'
  * + better html for example
  
-   0.5.4 / 2011-06-xx
+   0.5.4 / 2011-06-07
 ======================
  * + corrected 'rbytes' property of incomplete files to 'size'
  * + added new config param 'maxFileSize'
  * + added new config param 'serialzedFieldThreshold' for limiting the parsing of url encoded fields 
  * + corrected the file checksum value, now default value is 'null' when 'sha1sum' config param  is false, or if the file is incomplete
  * + resolved some bugs for the creation of the list of incomplete files 
+ 
+ 0.5.5 / 2011-06-xx
+======================
+ * + added better logging; now is possible to log messages to a file, and to switch ( on /off ) console logging
+ * + corrected minor bugs
+ 
