@@ -104,7 +104,7 @@ var http = require( 'http' ),
                 
                     // max bytes allowed for serialized fields, it limits the parsing of data received with serialized fields ( x-www-urlencoded ) 
                     // when it was exceeded, no data was returned 
-                serialzedFieldThreshold: 4300,//1024 * 1024 * 1024,
+                serialzedFieldThreshold: 1024 * 1024 * 1024,
                
                     // max bytes allowed for a single file
                 maxFileSize: 1024 * 1024 * 1024, // bytes, default 1GB
@@ -124,7 +124,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:off,3:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:on,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {

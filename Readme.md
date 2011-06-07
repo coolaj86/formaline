@@ -42,9 +42,10 @@ with git:
 Features
 ----------
 
-> - **Very Fast and Simple Parser**, this module is faster ( with sha1 checksum disabled ) and have many more features than formidable one ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and **Parser Implementation & Performance** section.
+> - **Very Fast and Simple Parser**, this module is fast as formidable ( disable sha1 checksum and logging ) and have many more features than formidable ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and **Parser Implementation & Performance** section.
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
+> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
 > - **Returns data in JSON format** ( see listeners signatures ) .
@@ -54,7 +55,6 @@ Features
 > - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
 > - **It supports duplicate names for fields** .
-> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 > - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
 > - **It easily integrates with connect middleware** .
@@ -149,7 +149,7 @@ Features
 
 > - **'uploadThreshold'** : ( *integer* ) **default** value is **1024 * 1024 * 1024** bytes ( 1 GB ) .
 >   - it indicates the upload threshold in bytes for the data written to disk ( multipart/form-data ) .
->   - **it is a write threshold, the files ( received in the data stream ) that don't fit in the remaininng space are ignored ( never written to disk )** .
+>   - **it is a write threshold, the files ( received in the data stream ) that don't fit in the remaining space will have a size between 0 and remaining free bytes** .
 
 > - **'maxFileSize'** : ( *integer* ) **default** value is 1024 * 1024 *1024 ( 1GB ) .
 >   - it limits the maximum data written to disk for every file received
@@ -167,7 +167,7 @@ Features
 
 > - **'serialzedFieldThreshold'** : ( *integer* ) **default** value is 1024 * 1204 * 1024 bytes ( 1GB )
 >   - it limits the parsing of data received with serialized fields ( x-www-urlencoded ) .
->   - **formaline, for now, doesn't implement a streaming parser for urlencoded fields, when the threshold is exceeded, it will not return any data** .
+>   - **formaline, for now, doesn't implement a streaming parser for urlencoded fields, when the threshold is exceeded, maybe it will not return any data** .
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) 
