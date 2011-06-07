@@ -57,7 +57,7 @@ Features
 > - **It supports duplicate names for fields and files** .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 > - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
-> - **It is possible to create log files**
+> - **It is possible to create log files** .
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
 
@@ -177,7 +177,7 @@ Features
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,file:off,console:on''** ( debug is off ) .
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
->   - debug: **'off'** turns off logging, to see parser stats you have to enable the 2nd level .
+>   - **debug**: **'off'** turns off logging, to see parser stats you have to enable the 2nd level .
 >   - the **'console'** property is used for switching ( on / off ) the console logging .
 >   - the **'file'** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory  . 
       
