@@ -504,7 +504,8 @@ Features
 >          - under the upload root directory, default is /tmp/ .
 >          - with a random number name ( for example: */tmp/123456789098/* ) .
 > 
->     - the file name is cleaned of weird chars, then converted to an hash string with SHA1 ( for example: **ed6175fe3a54c17a8018f715836791c3cc4c7d7c**[.gif] ) .
+>     - the file name is cleaned of weird chars, 
+>     - then converted to an hash string with SHA1 ( for example: **ed6175fe3a54c17a8018f715836791c3cc4c7d7c** ) .
 > 
 >     - when two files, with the same name, 
 >       are uploaded through :
