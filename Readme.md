@@ -177,7 +177,7 @@ Features
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,file:off,console:on''** ( debug is off ) .
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
->   - **debug**: **'off'** turns off all logging ( also errors ),
+>   - **debug**: **'off'** turns off all logging ( also errors ) .
 >   - **1**st level enables logging of warnings and parser statistics .
 >   - **2**nd level enables logging of module events .
 >   - **3**rd level enables logging of received data chunks , parser messages ..
