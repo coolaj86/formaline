@@ -124,7 +124,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:off,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:on,3:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
@@ -150,7 +150,8 @@ var http = require( 'http' ),
                         res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
-                        res.write( '-> maxFileSize: ' + form.maxFileSize + ' bytes \n' ); // TODO
+                        res.write( '-> maxFileSize: ' + form.maxFileSize + ' bytes \n' );
+                        res.write( '-> serialzedFieldThreshold: ' + form.serialzedFieldThreshold + ' bytes \n' );
                         res.write( '-> checkContentLength: ' + form.checkContentLength + '\n' );
                         res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
                         res.write( '-> sha1sum: ' + form.sha1sum + '\n');
