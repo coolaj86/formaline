@@ -54,9 +54,10 @@ Features
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
 > - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
-> - **It supports duplicate names for fields** .
+> - **It supports duplicate names for fields and files** .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 > - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
+> - **It is possible to create log files**
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
 
