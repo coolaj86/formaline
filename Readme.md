@@ -536,7 +536,7 @@ Features
 >          - is reached the maximum data threshold for uploads .
 
 
-- **When the remaining data for the file are exceeding the upload threshold**:
+- **When the remaining data for the file are exceeding the upload threshold or max file size properties**:
 
 >  - if removeIncompleteFile is:
 > 
