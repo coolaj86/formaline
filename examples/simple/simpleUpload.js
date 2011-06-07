@@ -108,7 +108,7 @@ var http = require( 'http' ),
                 
                     // default is false, bypass headers value, continue to write to disk 
                     // until uploadThreshold bytes are written. 
-                    // if true -> stop receiving data, when headers content length exceeds uploadThreshold
+                    // if true ->  when headers content length exceeds uploadThreshold, module stops to receive data,
                 checkContentLength: false,
                     
                     // default is true
@@ -121,7 +121,7 @@ var http = require( 'http' ),
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
-                logging: 'debug:on,1:on,2:on,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:off,1:on,2:off,3:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {

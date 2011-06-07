@@ -135,12 +135,12 @@ Features
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
 > - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ).
->   - it indicates the maximum value, after that the 'timeoutexception' event will be emitted and the client's request will be aborted .
+>   - it indicates the maximum value, after that the **'timeout'** event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
 
 > - **'resumeRequestOnError'** : ( *boolean* ) **default** value is true
 >   - when a fatal error occurs in the module, the client request is resumed instead of immediately emitting **'loadend'** event .
->   - if false, the client request will be never resumed, the 'loadend' event will be emitted and the module doesn't handle the request anymore . 
+>   - if false, the client request will be never resumed, the **'loadend'** event will be emitted and the module doesn't handle the request anymore . 
 
 > - **'getSessionID'** : ( *function( **req** ){ .. }* ) **default** value is **null** .
 >   -  here you can specify a function that is used for retrieving a session identifier from the current request; then, that ID will be used for creating a unique upload directory for every authenticated user .
