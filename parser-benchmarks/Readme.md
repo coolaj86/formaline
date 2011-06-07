@@ -10,12 +10,13 @@
 > **check if you have enough memory free!**
  
  
-> **Generic Usage**:
+ **Generic Usage**:
 
- 
+
 ```bash    
   $ node parser-benchmarks/QS-benchmark-test.js
 ```
+
 
 >**typical results with ~ 4000 files of 180K in size**:
 
@@ -44,12 +45,11 @@
 
 
 
-> **Semi Custom Usage**:
-    
->   $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
+ **Semi Custom Usage**:
 
 
 ```bash
+    // use --> $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
     $ node parser-benchmarks/QS-benchmark-test.js 700 4
 ```
 
