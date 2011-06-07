@@ -231,7 +231,7 @@ Features
 
 > - **'progress'**, request progression
 
-> - **loadend**, request end 
+> - **'loadend'**, request end 
  
  
 ###Listeners Signatures 
