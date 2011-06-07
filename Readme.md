@@ -3,13 +3,12 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Version: 0.5.4, Latest Stable Version 0.5.1, compatible with nodeJS >= v0.4.8, see History.md for the changelog**
-
+> **Current Version: 0.5.4 , compatible with nodeJS >= v0.4.8**
 
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/), and many other features. Check the Readme for new modifications .**
 
-> **See [History.md](https://github.com/rootslab/formaline/blob/master/History.md) ( v0.5.2 - v0.5.3 ) for Changelog .**
+> **See [History.md](https://github.com/rootslab/formaline/blob/master/History.md) for Changelog .**
 
 
  Installation
