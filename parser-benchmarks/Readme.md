@@ -41,7 +41,7 @@
 >     ->	matching time: 1.195 secs
 >     ->	average parsing speed: 599.9183258695084 MB/s
 
-> long pattern boundaries (max 254 ascii chars) means best results. 
+
 
 
 > **Semi Custom Usage**:
@@ -78,5 +78,7 @@
 >     ->	matching time: 1.075 secs
 >     ->	average parsing speed: 666.7906976744187 MB/s MB/s
 
+
+> **long pattern boundaries (max 254 ascii chars) means best results** .
 
 > in progress..
