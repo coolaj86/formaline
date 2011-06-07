@@ -179,8 +179,8 @@ Features
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
 >   - **debug**: **'off'** turns off all logging ( also errors ),
 >   - **1**st level enables logging of warnings and parser statistics .
->   - **2**nd level enables logging of request events .
->   - **3**rd level enables logging of chunks received, praser matches ..
+>   - **2**nd level enables logging of module events .
+>   - **3**rd level enables logging of received data chunks , parser messages ..
 >   - **console** property is used for switching ( on / off ) the console logging .
 >   - **file** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory  . 
       
