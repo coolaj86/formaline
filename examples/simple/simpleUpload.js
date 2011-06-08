@@ -120,13 +120,14 @@ var http = require( 'http' ),
                     // otherwise return a path array of incomplete files 
                 removeIncompleteFiles : false,
                 
-                    // default is 'debug:on,1:on,2:on,3:off,file:off,console:on';
+                    // default is 'debug:on,1:on,2:on,3:off,console:on,file:off,record:off';
                     // enable various logging levels
                     // it is possible to switch on/off one or more levels at the same time
                     // debug: 'off' turn off logging
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
-                logging: 'debug:on,1:on,2:on,3:off,file:off,console:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                    // record: 'on' --> record binary data from client request
+                logging: 'debug:on,1:on,2:on,3:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {

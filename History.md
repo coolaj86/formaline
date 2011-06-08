@@ -215,6 +215,9 @@
  
  0.5.5 / 2011-06-xx
 ======================
- * + added better logging; now is possible to log messages to a file, and to switch ( on /off ) console logging
- * + corrected minor bugs
+ * + added better logging
+ * + it is possible to switch ( on /off ) console logging
+ * + it is possible to log messages to a file in the current upload directory ( *.log )
+ * + it is possible to record the client request ( multipart/form-data & urlencoded ) to a file in the current upload directory ( *.req )
+ * + corrected minor code bugs ( JSLINT )
  

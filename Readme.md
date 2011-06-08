@@ -3,7 +3,7 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Version: 0.5.4 , compatible with nodeJS >= v0.4.8**
+> **Current Version: 0.5.5 , compatible with nodeJS >= v0.4.8**
 
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
@@ -56,6 +56,7 @@ Features
 > - **It supports duplicate names for fields and files** .
 > - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 > - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
+> - **It is possible to record binary data from a client request** .
 > - **It is possible to create log files** .
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
@@ -410,7 +411,7 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:on,file:on,console:off', // <-- log only to file
+     logging: 'debug:on,1:on,2:on,3:on,console:off,file:on,record:off', // <-- log only to file
     
      uploadRootDir: '/var/www/upload/',
      
