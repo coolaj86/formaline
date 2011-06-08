@@ -20,7 +20,7 @@
 ```
 
 
->**typical results on a Linux VM, with ~ 4000 files of 180K in size**:
+>**typical results on a Linux VM, with ~ 4000 files of 180K in size**: ~ 600 MB/s
 
 >     ->	Min Gap Factor: 2
 >     ->	Max Gap Factor: 5 
@@ -58,7 +58,7 @@
 ```
 
 
->**typical results on a Linux VM, with 70 files of ~ 10M in size**:
+>**typical results on a Linux VM, with 70 files of ~ 10M in size**: ~ 667 MB/s
 
 >     ->	Min Gap Factor: 2
 >     ->	Max Gap Factor: 5 
@@ -80,7 +80,7 @@
 >     ->	data bytes: 734003200
 >     ->	pattern bytes: 57
 >     ->	matching time: 1.075 secs
->     ->	average parsing speed: 666.7906976744187 MB/s MB/s
+>     ->	average parsing speed: 666.7906976744187 MB/s
 
 
 > **long pattern boundaries (max 254 ascii chars) means best results** .
