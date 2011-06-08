@@ -184,7 +184,7 @@ Features
 >   - **file** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory  . 
       
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
->    - when it is true, it emits a 'progress' event on every chunk. If you need to change the emitting factor ,( you could specify an integer > 1 ). 
+>    - when it is true, it emits a '**progress**' event on every chunk. If you need to change the emitting factor, you could specify an integer > 1 . 
 >    - If you set it for example to  an integer k,  **'progress'** is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
          
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
