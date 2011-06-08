@@ -410,7 +410,7 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:on,file:on,console:off',
+     logging: 'debug:on,1:on,2:on,3:on,file:on,console:off', // <-- log only to file
     
      uploadRootDir: '/var/www/upload/',
      
