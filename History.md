@@ -213,7 +213,7 @@
  * + corrected the file checksum value, now default value is 'null' when 'sha1sum' config param  is false, or if the file is incomplete
  * + resolved some bugs for the creation of the list of incomplete files 
  
- 0.5.5 / 2011-06-xx
+ 0.5.5 / 2011-06-08
 ======================
  * + added better logging
  * + it is possible to switch ( on /off ) console logging
