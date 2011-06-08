@@ -615,9 +615,9 @@ When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becom
 
 **For these reasons**: 
 
- - **instead of building a complex state-machine**, I have written a simple implementation of the [QuickSearch](http://www-igm.univ-mlv.fr/~lecroq/string/node19.html#SECTION00190) algorithm, using only high performance for-cycles.
+ - **instead of building a complex state-machine**, I have written a simple implementation of the [QuickSearch](http://www-igm.univ-mlv.fr/~lecroq/string/node19.html#SECTION00190) algorithm, **using only high performance for-cycles**.
 
- - I have tried to don't use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
+ - I have tried to not use long *switch( .. ){ .. }* statements or a long chain of *if(..){..} else {..}*,
 
  - for minimizing the time 't' to do a single comparison, **I have used two simple char lookup tables**, 255 bytes long, implemented with nodeJS Buffers. (one for boundary pattern string to match, one for CRLFCRLF sequence). 
 
