@@ -2,6 +2,7 @@
 ===================
 
  * + now it is possible to have multiple logs in the same upload directory 
+ * + changed 'new Date().getTime()' to 'Date.now()'
  
  0.5.5 / 2011-06-08
 ===================
