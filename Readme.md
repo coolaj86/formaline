@@ -185,7 +185,8 @@ Features
 >   - **file** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory, it will contain message logs .
 >   - **record** property is used for switching ( on / off ) client request recording; a file will be created in the current upload directory, with the same name as directory, it will contain binary data from the client request .
 >   - filenames are in the form: 
->       - **[ RequestStartTimeInMillis ] . [ UploadDirectoryName = ( SessionID | RandomNumber ) ] . [ log | req ]**, ie: 1307561134416.631416627550282.req .
+>       - **[ RequestStartTimeInMillis ] . [ UploadDirectoryName = ( SessionID | RandomNumber ) ] . [ log | req ]**
+>       - **example**: **1307561134416.631416627550282.req** .
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
 >    - when it is true, it emits a '**progress**' event on every chunk. If you need to change the emitting factor, you could specify an integer > 1 . 
 >    - If you set it for example to  an integer k,  **'progress'** is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
