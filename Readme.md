@@ -657,7 +657,8 @@ Other
  Future Releases
 -----------------
  
- - add multiple log files / record files 
+ - add multiple log files / record files, when user session identifier is defined .
+ - add the choice to write / pipe messages and recordings to a stream .
  - add transaction identifiers
  - add others examples with AJAX, writing about tested client-side uploader .
  - add a readable stream from files while they are uploaded .
