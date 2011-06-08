@@ -175,7 +175,7 @@ Features
 >   - **it is calculated iteratively when file data is received** .
 >   - obviously, enabling this feature degrades performances .
 
-> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,file:off,console:on''** ( debug is off ) .
+> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,console:on,file:off,record:off'** ( debug is off ) .
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
 >   - **debug**: **'off'** turns off all logging ( also errors ) .
 >   - **1**st level enables logging of warnings and parser statistics .
