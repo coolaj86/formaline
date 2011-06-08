@@ -171,8 +171,8 @@ Features
 
 > - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) . 
->   - it is calculated iteratively when file data is received .
->   - obviuosly, enabling this feature degrades performances .
+>   - **it is calculated iteratively when file data is received** .
+>   - obviously, enabling this feature degrades performances .
 
 > - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,file:off,console:on''** ( debug is off ) .
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
