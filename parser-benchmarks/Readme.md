@@ -51,9 +51,7 @@
 
 
 ```bash
-    // use --> 
-    $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
-    
+    // use --> $ node parser-benchmarks/QS-benchmark-test.js [NumberOfMegaBytes] [GapFactor] [patternString]
     $ node parser-benchmarks/QS-benchmark-test.js 700 4
 ```
 
