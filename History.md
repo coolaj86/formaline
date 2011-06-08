@@ -4,7 +4,7 @@
  * + added better logging
  * + it is possible to switch ( on /off ) console logging
  * + it is possible to log messages to a file in the current upload directory ( *.log )
- * + it is possible to record the client request ( multipart/form-data & urlencoded ) to a file in the current upload directory ( *.req )
+ * + it is possible to record the last client request ( multipart/form-data & urlencoded ) to a file in the current upload directory ( *.req )
  * + corrected minor code bugs ( JSLINT )
 
  0.5.4 / 2011-06-07
