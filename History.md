@@ -1,3 +1,8 @@
+ 0.5.5 / 2011-06-xx
+===================
+
+ * + now it is possible to have multiple logs in the same upload directory 
+ 
  0.5.5 / 2011-06-08
 ===================
 
