@@ -109,9 +109,9 @@ var http = require( 'http' ),
                     // max bytes allowed for a single file
                 maxFileSize: 1024 * 1024 * 1024, // bytes, default 1GB
                 
-                    // default is false, bypass headers value, continue to write to disk 
-                    // until uploadThreshold bytes are written. 
-                    // if true ->  when headers content length exceeds uploadThreshold, module stops to receive data,
+                    // default is false, bypass content-length header value ( it must be present, otherwise an 'error'->'header' will be emitted ), 
+                    // also if it exceeds max allowable bytes; the module continues to write to disk until |uploadThreshold| bytes are written. 
+                    // if true ->  when headers content length exceeds uploadThreshold, module stops to receive data
                 checkContentLength: false,
                     
                     // default is false
@@ -127,7 +127,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging: 'debug:on,1:on,2:on,3:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:on,3:on,console:off,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
@@ -195,7 +195,8 @@ server = connect( getHtmlForm , handleFormRequest, function(){ form = null; cons
 
 server.listen( 3000 );
 
-log( '\nlistening on http://localhost:3000/' );
+log(  '\n -> ' + new Date() );
+log( ' -> listening on http://localhost:3000/' );
 log( ' -> upload directory is:', dir );
 
 
