@@ -91,7 +91,6 @@ var http = require( 'http' ),
                     // default is false
                     // return sha1 digests for files received?
                     // turn off for better perfomances
-                    
                 sha1sum: false,
                 
                     // default is false, or integer chunk factor, 
@@ -100,7 +99,7 @@ var http = require( 'http' ),
                 emitProgress: false, // 3, 10, 100
                 
                     // max bytes allowed for file uploads ( multipart/form-data ), it is a writing threshold, this is the max size of bytes written to disk before stopping
-                uploadThreshold: 1024 * 1024 * 1024 ,// bytes
+                uploadThreshold:  1024 * 1024 * 1024 ,// bytes
                 
                     // max bytes allowed for serialized fields, it limits the parsing of data received with serialized fields ( x-www-urlencoded ) 
                     // when it was exceeded, no data was returned 
@@ -118,7 +117,7 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : false,
+                removeIncompleteFiles : !false,
                 
                     // default is 'debug:on,1:on,2:on,3:off,console:on,file:off,record:off';
                     // enable various logging levels
