@@ -1,3 +1,9 @@
+ 0.5.7 / 2011-06-11
+===================
+
+ * + Resolved index bug, that leads to incorrect file writing in particular situations
+ 
+ 
  0.5.6 / 2011-06-10
 ===================
 
