@@ -117,7 +117,7 @@ var http = require( 'http' ),
                     // remove file not completed due to uploadThreshold, 
                     // if true formaline emit fileremoved event, 
                     // otherwise return a path array of incomplete files 
-                removeIncompleteFiles : !false,
+                removeIncompleteFiles : false,
                 
                     // default is 'debug:on,1:on,2:on,3:off,console:on,file:off,record:off';
                     // enable various logging levels
