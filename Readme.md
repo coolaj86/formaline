@@ -91,7 +91,7 @@ Features
 >       - [uploadify](http://www.uploadify.com/)
 >       - [plupload](http://www.plupload.com/)
   
->  *( multiple files selection ( without flash ) is available only for HTML5 capable browsers )*
+>  *( multiple files selection, without flash, is available only for HTML5 capable browsers )*
 
 
 
