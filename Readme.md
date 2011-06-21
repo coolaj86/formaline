@@ -267,7 +267,7 @@ Features
           type: 'headers' | 'path' | 'buffer' | 'stream' | 'mkdir',   // <-- ERROR EVENT TYPE
           msg: 'blah, blah..',      // <-- DEBUG MESSAGE      
           isupload: true | false,   // <-- IS IT AN UPLOAD ?
-          isfatal: true             // <--  MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
+          isfatal: true             // <-- MEANS THAT THE MODULE HAS STOPPED WRITING THE RECEIVED DATA TO DISK
       }
 ``` 
 
@@ -303,7 +303,7 @@ Features
     json = {                
         name: 'field1',  // <-- FIELD NAME
         value: {            // <-- **FIELD VALUE IS A FILE JSON OBJECT**
-            name: '..',             // <-- FILE ORIGINAL NAME
+            name: '..',             // <-- ORIGINAL FILENAME
             path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
             type: '..',             // <-- MIME TYPE
             size: 270,              // <-- BYTES
@@ -338,7 +338,7 @@ Features
                   {       // <-- PROPERTIES ARE THE SAME OF 'LOAD' JSON OBJECTS
                     name: 'filename1',  // <-- FIELD NAME
                     value: {            // <-- FIELD VALUE IS A FILE JSON OBJECT
-                        name: '..',             // <-- FILE ORIGINAL NAME
+                        name: '..',             // <-- ORIGINAL FILENAME
                         path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
                         type: '..',             // <-- MIME TYPE
                         size: 270,              // <-- BYTES
