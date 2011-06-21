@@ -89,12 +89,9 @@ Features
 >  *( multiple files selection is available only for HTML5 capable browsers )*
 
 >     - Flash uploaders :
-  
->        - [swfUploader 2+](http://swfupload.org/)
-
->        - [uploadify](http://www.uploadify.com/)
-
->        - [plupload](http://www.plupload.com/)
+>       - [swfUploader 2+](http://swfupload.org/)
+>       - [uploadify](http://www.uploadify.com/)
+>       - [plupload](http://www.plupload.com/)
  
 
 > **the library is capable of handling the receiving of multiple files, that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
