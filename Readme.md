@@ -81,14 +81,21 @@ Features
 >     - [HTML form](https://github.com/rootslab/formaline/tree/master/examples) 
  
 >     - [HTML form with iframe](https://github.com/rootslab/formaline/tree/master/examples)
-  
->     - [swfUploader 2+](http://swfupload.org/) ( flash uploader )
- 
+
 >     - AJAX POSTS ( [XHR](http://www.w3.org/TR/XMLHttpRequest/) )
  
 >     - HTML5-powered AJAX POSTS ( [XHR2](http://www.w3.org/TR/XMLHttpRequest2/)  )
   
 >  *( multiple files selection is available only for HTML5 capable browsers )*
+
+>     - Flash uploaders :
+  
+>        - [swfUploader 2+](http://swfupload.org/)
+
+>        - [uploadify](http://www.uploadify.com/)
+
+>        - [plupload](http://www.plupload.com/)
+ 
 
 > **the library is capable of handling the receiving of multiple files, that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
  
