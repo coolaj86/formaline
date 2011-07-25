@@ -175,7 +175,7 @@ Features
 >   - it limits the parsing of data received with serialized fields ( x-www-urlencoded ) .
 >   - **formaline, for now, doesn't implement a streaming parser for urlencoded fields, when the threshold is exceeded, maybe it will not return any data** .
 
-> - **'sha1sum'** : ( *boolean* ) **default** value is **false**.
+> - **'sha1sum'** : ( *boolean* ) **default** value is **true**.
 >   - it is possible to check the file data integrity calculating the sha1 checksum ( 40 hex string ) . 
 >   - **it is calculated iteratively when file data is received** .
 >   - obviously, enabling this feature degrades performances .
