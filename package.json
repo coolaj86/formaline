@@ -12,5 +12,5 @@
   , "author" : "Guglielmo Ferri <44gatti@gmail.com>"
   , "dependencies" : {}
   , "main" : "index"
-  , "engines" : { "node": "0.4.8" }
+  , "engines" : { "node": ">=0.4.8" }
 }
