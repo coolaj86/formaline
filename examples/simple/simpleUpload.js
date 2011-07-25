@@ -145,8 +145,8 @@ var http = require( 'http' ),
                     'load': function( json ){
                     },
                     'loadend': function( json, res, next ) {
-                        log( '\n "loadend" -> Post Done' );
-                        log( '\n JSON response -> \n', json, '\n' );
+                        log( '\n Request "loadend" ' );
+                        log( '\n JSON -> \n', json, '\n' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
                         res.write( '-> request processed! \n' );   
