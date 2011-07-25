@@ -160,7 +160,7 @@ Features
 > - **'maxFileSize'** : ( *integer* ) **default** value is 1024 * 1024 *1024 ( 1GB ) .
 >   - it limits the maximum data written to disk for every file received
 
-> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
+> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **false** .
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
 > - **'checkContentLength'** : ( *boolean* ) **default** value is **false** .
