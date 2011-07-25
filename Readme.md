@@ -3,7 +3,7 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Stable Version: 0.5.7 , compatible with nodeJS >= v0.4.8**
+> **Current Stable Version: 0.5.8 , compatible with nodeJS >= v0.4.8**
 
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
@@ -160,7 +160,7 @@ Features
 > - **'maxFileSize'** : ( *integer* ) **default** value is 1024 * 1024 *1024 ( 1GB ) .
 >   - it limits the maximum data written to disk for every file received
 
-> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **true** .
+> - **'holdFilesExtensions'** : ( *boolean* ) **default** value is **false** .
 >   - it indicates to maintain or not, the extensions of uploaded files ( like .jpg, .txt, etc.. ) .
 
 > - **'checkContentLength'** : ( *boolean* ) **default** value is **false** .

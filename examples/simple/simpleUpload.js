@@ -62,7 +62,7 @@ var http = require( 'http' ),
             form = null,
             config = {
                 
-                    // default is true -->
+                    // default is false -->
                 holdFilesExtensions : true,
                 
                     // specify a path, with at least a trailing slash

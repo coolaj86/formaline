@@ -1,3 +1,9 @@
+ 0.5.8 / 2011-07-xx
+===================
+
+ * + Added correct json response object when the request is timed out or aborted 
+ * + Corrected some doc bugs
+
  0.5.7 / 2011-06-11
 ===================
 
