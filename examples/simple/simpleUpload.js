@@ -146,7 +146,7 @@ var http = require( 'http' ),
                     },
                     'loadend': function( json, res, next ) {
                         log( '\n Request "loadend" ' );
-                        log( '\n JSON -> \n', json, '\n' );
+                        // log( '\n JSON -> \n', json, '\n' );
                        
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
