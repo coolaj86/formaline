@@ -607,7 +607,7 @@ I try to explain me:
    
 >    ( average time to execute the parser on a single chunk ) *  ( average number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
 
-  or for simplify it, a number like:
+  or for simplicity, a number like:
 
 >   ( T ) * ( k ) * ( c * d )  ~= ( n / m ) * ( t ) * ( k ) * ( c * d )  
 
@@ -616,7 +616,7 @@ When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becom
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
  
-**However, in a general case**: 
+**However, in the general case**: 
  
  - we can do very little about reducing the time delay (**d**) of parser calls, and for reducing the number (**k**) of chunks ( or manually increasing their size ), these thinks don't totally depend on us. 
  - we could minimize the number **'c'**  of parser calls to a single call for every chunk, or  **c = 1**.
