@@ -1,6 +1,10 @@
  0.5.8 / 2011-07-xx
 ===================
-
+ * - Removed extensions.js and createDelegate Function
+ * + Cleaned code
+ * + Moved file unlink action to private method
+ * + Better style for logfile
+ * + Added 4th debug level for logging 'progress' event 
  * + Added correct json response object when the request is timed out or aborted 
  * + Corrected some doc bugs
 
