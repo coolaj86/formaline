@@ -8,7 +8,7 @@
  * + Moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
  * + Better style for logfile, added timestamp..
  * + Added 4th debug level for logging 'progress' event 
- * + Added correct json response object when the request is timed out or aborted 
+ * + Added correct json response object ( incomplete files list ), when the request is timed out or aborted 
  * + Corrected some doc bugs
 
  0.5.7 / 2011-06-11
