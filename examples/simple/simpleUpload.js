@@ -126,7 +126,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging: 'debug:on,1:on,2:off,3:off,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:off,2:off,3:on,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
@@ -147,7 +147,6 @@ var http = require( 'http' ),
                     'loadend': function( json, res, next ) {
                         log( '\nPost Done.. ' );
                         // log( '\n JSON -> \n', json, '\n' );
-                       
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
                         res.write( '-> request processed! \n' );   
