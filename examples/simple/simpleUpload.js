@@ -96,7 +96,7 @@ var http = require( 'http' ),
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitProgress: false, // 3, 10, 100
+                emitProgress: !false, // 3, 10, 100
                 
                     // max bytes allowed for file uploads ( multipart/form-data ), it is a writing threshold, this is the max size of bytes written to disk before stopping
                 uploadThreshold:  1024 * 1024 * 1024 ,// bytes
@@ -126,7 +126,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging: 'debug:on,1:off,2:off,3:on,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging: 'debug:on,1:on,2:on,3:on,4:off,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners: {
