@@ -1,5 +1,6 @@
  0.5.8 / 2011-07-xx
 ===================
+ *  + Added initialConfig property
  * - Removed extensions.js and createDelegate Function
  * + Moved apply to formaline.js
  * + Cleaned code
