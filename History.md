@@ -3,6 +3,7 @@
  *  + Added initialConfig property
  * - Removed extensions.js and createDelegate Function
  * + Moved apply to formaline.js
+ * + Added new recording file for headers, recording files and log files have been renamed ( .json, .bin, .log )
  * + Cleaned code
  * + Moved files unlinking to a private method
  * + Moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
