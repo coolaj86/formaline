@@ -596,7 +596,7 @@ I try to explain me:
     T = ( average number of comparisons ) * ( average time to do a single comparison ) ~= ( n / m ) * ( t )
 
 
->__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
+>__In real world, Murphy Laws assures that the best case will never occur:__ :O 
  
 >  - data is chopped,
 >  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough it's not totally correct .   
