@@ -152,7 +152,7 @@ var http = require( 'http' ),
                         res.write( '-> request processed! \n' );   
                         res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
                         res.write( '\n Initial Configuration : ' + JSON.stringify( form.initialConfig ) + '\n' );
-                        /**/
+
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
                         res.write( '-> maxFileSize: ' + form.maxFileSize + ' bytes \n' );
@@ -165,7 +165,7 @@ var http = require( 'http' ),
                         res.write( '-> resumeRequestOnError: ' + form.resumeRequestOnError + '\n' );
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
-                        /**/                        
+
                         res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
                         res.write( '\n-> files written: [ { .. } , { .. } ] \n   **************\n ' + JSON.stringify( json.files ) + '\n' );
                         if ( form.removeIncompleteFiles ) {
