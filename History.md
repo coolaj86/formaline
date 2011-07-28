@@ -1,4 +1,4 @@
- 0.5.8 / 2011-07-xx
+ 0.5.8 / 2011-07-28
 ===================
  *  + Added initialConfig property
  * - Removed extensions.js and createDelegate Function
