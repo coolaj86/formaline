@@ -6,7 +6,7 @@
  * + Cleaned code
  * + Moved files unlinking to a private method
  * + Moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
- * + Better style for logfile
+ * + Better style for logfile, added timestamp..
  * + Added 4th debug level for logging 'progress' event 
  * + Added correct json response object when the request is timed out or aborted 
  * + Corrected some doc bugs
