@@ -1,8 +1,10 @@
  0.5.8 / 2011-07-xx
 ===================
  * - Removed extensions.js and createDelegate Function
+ * + Moved apply to formaline.js
  * + Cleaned code
- * + Moved file unlink action to private method
+ * + Moved files unlinking to a private method
+ * + Moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
  * + Better style for logfile
  * + Added 4th debug level for logging 'progress' event 
  * + Added correct json response object when the request is timed out or aborted 
