@@ -10,7 +10,9 @@ var http = require( 'http' ),
         if (req.url === '/test/') {
         log( ' -> req url :', req.url );
         res.writeHead( 200, { 'content-type': 'text/html' } );
-        res.end( '<html><head></head><body>\
+        res.end( '<html><head>\
+                 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> \
+                 </head><body>\
                  <style type="text/css">\
                  label,input { display: block; width: 236px; float: left; margin: 2px 4px 4px 4px; }\
                  label { text-align: center; width: 110px; color: #444; background-color: #f0f0f0; border: 1px solid #a0a0a0; padding: 1px; font-size: 14px; }\

@@ -1,6 +1,7 @@
  0.5.8 / 2011-07-28
 ===================
- *  + Added initialConfig property
+ * + added charset=UTF-8 meta to simpleUpload example
+ * + Added initialConfig property
  * - Removed extensions.js and createDelegate Function
  * + Moved apply to formaline.js
  * + Added new recording file for headers, recording files and log files have been renamed ( .json, .bin, .log )
