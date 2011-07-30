@@ -665,16 +665,15 @@ Other
  Future Releases
 -----------------
  
- - add the choice to write / pipe messages and recordings to a stream .
- - add transaction identifiers
+ - add some unit tests .
+ - find and test some weird boundary string types .
  - add others examples with AJAX, writing about tested client-side uploader .
  - add a readable stream from files while they are uploaded .
+ - add the choice to write / pipe messages and recordings to a stream .
  - add some other server-side security checks, and write about it .  
  - give choice to changing the parser with a custom one .
  - more performance modifications in quickSearch.js .
- - find and test some weird boundary string types .
- - add some unit tests .
- - Restify ?
+ - add transaction identifiers
 
 
 
