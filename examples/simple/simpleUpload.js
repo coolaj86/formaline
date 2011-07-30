@@ -147,7 +147,7 @@ var http = require( 'http' ),
                     'load' : function ( json ){
                     },
                     'loadend' : function ( json, res, next ) {
-                        log( '\nPost Done.. ' );
+                        log( '\n\033[1;32mPost Done..\033[0m' );
                         // log( '\n JSON -> \n', json, '\n' );
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
@@ -195,12 +195,12 @@ var http = require( 'http' ),
         }
 };
 
-server = connect( getHtmlForm , handleFormRequest, function () { form = null; console.log( '\nHi!, I\'m the next() callback function!' ); } );
+server = connect( getHtmlForm , handleFormRequest, function () { form = null; console.log( '\n\033[1;33mHi!, I\'m the next() callback function!\033[0m' ); } );
 
 server.listen( 3000 );
 
-log(  '\n -> ' + new Date() );
-log( ' -> listening on http://localhost:3000/' );
-log( ' -> upload directory is:', dir );
+log(  '\n ->\033[1m started at: \033[32m' + new Date() + '\033[0m' );
+log( ' ->\033[1m listening on: \033[36mhttp://localhost:3000/\033[0m' );
+log( ' ->\033[1m upload directory is:\033[31m', dir + '\033[0m' );
 
 
