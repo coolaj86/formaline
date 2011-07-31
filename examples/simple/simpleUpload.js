@@ -199,8 +199,9 @@ server = connect( getHtmlForm , handleFormRequest, function () { form = null; co
 
 server.listen( 3000 );
 
-log(  '\n ->\033[1m started at: \033[32m' + new Date() + '\033[0m' );
+log();
+log( ' ->\033[1m started at: \033[32m' + new Date() + '\033[0m' );
 log( ' ->\033[1m listening on: \033[36mhttp://localhost:3000/\033[0m' );
-log( ' ->\033[1m upload directory is:\033[31m', dir + '\033[0m' );
+log( ' ->\033[1m upload directory is: \033[31m' + dir + '\033[0m' );
 
 
