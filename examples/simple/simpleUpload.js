@@ -97,6 +97,13 @@ var http = require( 'http' ),
                     // turn off for better perfomances
                 sha1sum : false,
                 
+                    // switch on/off 'fileprogress' event
+                    // default is false
+                    // it serves to monitor the progress of the file upload
+                    // and also to move the data to another stream, while the file is being uploaded 
+                emitFileProgress : false,
+                    
+                    // switch on/off 'progress' event
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
@@ -144,12 +151,16 @@ var http = require( 'http' ),
                     },
                     'loadstart' : function ( json ){
                     },
-                    'fileprogress' : function ( json, payload ) { // json is the same for 'load' event, 'payload' is a binary Buffer
+                    'fileprogress' : function ( json, payload ) { 
+                        // json is the same for 'load' event ( when a file was received, see Readme ) , 
+                        // 'payload' is a binary Buffer
                         // you can direct the data payload to another stream, while the file is being uploaded
+                        /** /
                         if( currFile === null ) {
                           currFile = new fs.WriteStream( json.value.path + '*' );
                         }
                         currFile.write( payload );
+                        /**/
                     },
                     'progress' : function ( json ) {                              
                     },
