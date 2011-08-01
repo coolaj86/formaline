@@ -1,27 +1,30 @@
  0.5.9 / 2011-08-xx
 ===================
+ 
+ * + added file progression event 'fileprogress', for monitoring the current file upload progress
+ * + added data payload to 'fileprogress' event, now is possible to move the data stream elsewhere, while the file is being uploaded
  * + added logging colors
  
 
  0.5.8 / 2011-07-28
 ===================
  * + added charset=UTF-8 meta to simpleUpload example
- * + Added initialConfig property
- * - Removed extensions.js and createDelegate Function
- * + Moved apply to formaline.js
- * + Added new recording file for headers, recording files and log files have been renamed ( .json, .bin, .log )
- * + Cleaned code
- * + Moved files unlinking to a private method
- * + Moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
- * + Better style for logfile, added timestamp..
- * + Added 4th debug level for logging 'progress' event 
- * + Added correct json response object ( incomplete files list ), when the request is timed out or aborted 
- * + Corrected some doc bugs
+ * + added initialConfig property
+ * - removed extensions.js and createDelegate Function
+ * + moved apply to formaline.js
+ * + added new recording file for headers, recording files and log files have been renamed ( .json, .bin, .log )
+ * + cleaned code
+ * + moved files unlinking to a private method
+ * + moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
+ * + better style for logfile, added timestamp..
+ * + added 4th debug level for logging 'progress' event 
+ * + added correct json response object ( incomplete files list ), when the request is timed out or aborted 
+ * + corrected some doc bugs
 
  0.5.7 / 2011-06-11
 ===================
 
- * + Resolved index bug, that leads to incorrect file writing in particular situations
+ * + resolved index bug, that leads to incorrect file writing in particular situations
  
  0.5.6 / 2011-06-10
 ===================
