@@ -1,3 +1,8 @@
+ 0.5.9 / 2011-08-xx
+===================
+ * + added logging colors
+ 
+
  0.5.8 / 2011-07-28
 ===================
  * + added charset=UTF-8 meta to simpleUpload example
