@@ -108,7 +108,7 @@ var http = require( 'http' ),
                 serialzedFieldThreshold : 1024 * 1024 * 1024,
                
                     // max bytes allowed for a single file
-                maxFileSize : 10, //24 * 1024 * 1024, // bytes, default 1GB
+                maxFileSize : 1024 * 1024 * 1024, // bytes, default 1GB
                 
                     // default is false, bypass content-length header value ( it must be present, otherwise an 'error'->'header' will be emitted ), 
                     // also if it exceeds max allowable bytes; the module continues to write to disk until |uploadThreshold| bytes are written. 
