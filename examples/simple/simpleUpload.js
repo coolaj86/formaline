@@ -95,13 +95,13 @@ var http = require( 'http' ),
                     // default is false
                     // return sha1 digests for files received?
                     // turn off for better perfomances
-                sha1sum : false,
+                sha1sum : !false,
                 
                     // switch on/off 'fileprogress' event
                     // default is false
                     // it serves to monitor the progress of the file upload
                     // and also to move the data to another stream, while the file is being uploaded 
-                emitFileProgress : false,
+                emitFileProgress : !false,
                     
                     // switch on/off 'progress' event
                     // default is false, or integer chunk factor, 
