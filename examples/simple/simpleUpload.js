@@ -137,7 +137,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging : 'debug:on,1:on,2:on,3:off,4:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging : 'debug:on,1:on,2:on,3:on,4:on,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners : {
