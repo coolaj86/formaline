@@ -6,7 +6,7 @@ var http = require( 'http' ),
     fs = require( 'fs' ),
     server,
     log = console.log,
-    dir =  '/tmpp/';
+    dir =  '/tmp/';
     getHtmlForm = function ( req, res, next ) {
         if (req.url === '/test/') {
         log( ' -> req url :', req.url );
