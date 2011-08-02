@@ -43,19 +43,20 @@ Features
 
 > - **Very Fast and Simple Parser**, this module is fast as formidable ( disable sha1 data checksum and logging! ) and have many more features than formidable ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and **Parser Implementation & Performance** section.
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
-> - **It is totally async** .
+> - **It is totally ASYNC** .
+> - **Returns data in JSON format** ( see listeners signatures ) .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
-> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
-> - **Returns data in JSON format** ( see listeners signatures ) .
-> - **It is also possible to return the SHA1 data checksum of received files, disabling sha1sum improves dramatically performances !!** .
-> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
+> - **It supports duplicate names for fields and files** . 
+> - **It supports the grouping by name for fields and for files results ** .
+> - **It is also possible to return the SHA1 data checksum of received files ( disabling sha1 ckecksum improves dramatically performances !! ) ** .
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
+> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
+> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
-> - **It supports duplicate names for fields and files** .
-> - **It is also possible to :
+> - **It is also possible to** :
 >   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 >   - **track the request progress ratio ( also chunks and bytes ) of data received** .
 >   - **track files progression** .
@@ -63,7 +64,7 @@ Features
 >   - **record binary data from a client request** .
 >   - **create a log file for debugging** .
 >   - **create and check directory in the async (default ) or in the sync way** .
-> - **It easily integrates with connect middleware** .
+> - **It easily integrates with middlewares like 'connect'** .
 > - **It Works !**
 
 
