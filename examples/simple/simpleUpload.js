@@ -6,7 +6,7 @@ var http = require( 'http' ),
     fs = require( 'fs' ),
     server,
     log = console.log,
-    dir =  '/tmp/';
+    dir =  '/tmpp/';
     getHtmlForm = function ( req, res, next ) {
         if (req.url === '/test/') {
         log( ' -> req url :', req.url );
@@ -67,11 +67,15 @@ var http = require( 'http' ),
             config = {
                 
                     // default is false -->
-                holdFilesExtensions : true,
+                holdFilesExtensions : !false,
                 
                     // specify a path, with at least a trailing slash
                     // default is /tmp/ -->
                 uploadRootDir : dir,
+                
+                    // default is false
+                    // to create and check directories existence in the sync way
+                mkDirSync : false,
                 
                     // retrieve session ID for creating unique upload directory for authenticated users
                     // the upload directory gets its name from the returned session identifier,
@@ -107,7 +111,7 @@ var http = require( 'http' ),
                     // default is false, or integer chunk factor, 
                     // every n chunk emits a dataprogress event:  1 + ( 0 * n ) 1 + ( 1 * n ), 1 + ( 2 * n ), 1 + ( 3 * n ), 
                     // minimum factor value is 2 
-                emitProgress : false, // 3, 10, 100
+                emitProgress : !false, // 3, 10, 100
                 
                     // max bytes allowed for file uploads ( multipart/form-data ), it is a writing threshold, this is the max size of bytes written to disk before stopping
                 uploadThreshold : 1024 * 1024 * 1024 ,// bytes
@@ -173,26 +177,13 @@ var http = require( 'http' ),
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
                         res.write( '-> request processed! \n' );   
-                        res.write( '\n-> stats -> ' + JSON.stringify( json.stats, null, 1 ) + '\n' );
+                        res.write( '\n-> stats -> ' + JSON.stringify( json.stats, null, 4 ) + '\n' );
                         res.write( '\n Initial Configuration : ' + JSON.stringify( form.initialConfig, function ( key, value ) {
                             if ( typeof value === 'function' ) {
                                 return '..';
                             } 
                             return value;
                         }, 4 ) + '\n' );
-
-                        res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
-                        res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
-                        res.write( '-> maxFileSize: ' + form.maxFileSize + ' bytes \n' );
-                        res.write( '-> serialzedFieldThreshold: ' + form.serialzedFieldThreshold + ' bytes \n' );
-                        res.write( '-> checkContentLength: ' + form.checkContentLength + '\n' );
-                        res.write( '-> holdFilesExtensions: ' + form.holdFilesExtensions + '\n' );
-                        res.write( '-> sha1sum: ' + form.sha1sum + '\n');
-                        res.write( '-> removeIncompleteFiles: ' + form.removeIncompleteFiles + '\n' );
-                        res.write( '-> emitProgress: ' + form.emitProgress + '\n' );
-                        res.write( '-> resumeRequestOnError: ' + form.resumeRequestOnError + '\n' );
-                        res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
-                        res.write( '-> logging: "' + form.logging + '"\n' );
 
                         res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields, null, 1 ) + '\n' );
                         res.write( '\n-> files written: [ { .. } , { .. } ] \n   **************\n ' + JSON.stringify( json.files, null, 1 ) + '\n' );
