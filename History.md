@@ -1,7 +1,9 @@
  0.6.0 / 2011-08-xx
 ===================
  
- * + moved directory creation to Async way
+ * + now formaline module is totally async
+ * + added async directory creation / checking
+ * + added 'mkDirSync' config param
  * + better JSON.stringify styling
 
   0.5.9 / 2011-08-02

@@ -142,6 +142,9 @@ Features
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
+> - **'mkDirSync'** : ( *boolean* ) **default** value is **'false'** .
+>   - if is set to true, directories for uploads are created and checked in the Syncronous way, instead of the Async way
+
 > - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ) .
 >   - it indicates the maximum value, after that the **'timeout'** event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
@@ -453,11 +456,13 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:on,console:off,file:on,record:off', // <-- log only to file
+     logging : 'debug:on,1:on,2:on,3:on,console:off,file:on,record:off', // <-- log only to file
     
-     uploadRootDir: '/var/www/upload/',
+     uploadRootDir : '/var/www/upload/',
      
-     getSessionID: function( req ){ // for example -->
+     mkDirSync : false,
+     
+     getSessionID : function( req ){ // for example -->
          return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
      },
 
@@ -479,10 +484,10 @@ Features
             
      listeners: {
               
-         'message':function( json ){ // json:{ type: '..', isupload: true/false , msg: '..' }
+         'message':function( json ){ // json : { type : '..', isupload : true/false , msg : '..' }
             ..
          },
-         'error': function( json ){ // json:{ type: '', isupload: true/false , msg: '..', fatal: true }
+         'error': function( json ){ // json : { type : '', isupload : true/false , msg : '..', fatal : true }
             ..
          },
          'abort': function( json ) {   
@@ -505,7 +510,7 @@ Features
          },
          'loadend': function( json, res, next ) {
             ...
-            res.writeHead(200, { 'content-type': 'text/plain' } );
+            res.writeHead(200, { 'content-type' : 'text/plain' } );
             res.end();
             next();
          }
