@@ -61,9 +61,9 @@ Features
 >   - **track the request progress ratio ( also chunks and bytes ) of data received** .
 >   - **track files progression** .
 >   - **move file data received to another stream, while the file is being uploaded** .
->   - **record binary data from a client request** .
->   - **create a log file for debugging** .
->   - **create and check directory in the async (default ) or in the sync way** .
+>   - **create log files for debugging purposes** .
+>   - **record headers and binary data from a client request** .
+>   - **to create and check directory existence in the sync way or async (default )** .
 > - **It easily integrates with middlewares like 'connect'** .
 > - **It Works !**
 
