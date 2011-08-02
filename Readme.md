@@ -54,7 +54,7 @@ Features
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
 > - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
-> - **Multiple error types** .
+> - **Multiple error / events types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
 > - **It is also possible to** :
 >   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
@@ -64,8 +64,8 @@ Features
 >   - **create log files for debugging purposes** .
 >   - **record headers and binary data from a client request** .
 >   - **to create and check directory existence in the sync way or async (default )** .
-> - **It easily integrates with middlewares like 'connect'** .
-> - **It Works !**
+>   - **to easily integrate it with middlewares like 'connect'** .
+> - **and then it Works !**
 
 
  Client-Side
