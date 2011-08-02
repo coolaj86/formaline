@@ -3,7 +3,7 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Stable Version: 0.5.9 , compatible with nodeJS >= v0.4.8**
+> **Current Stable Version: 0.6.0 , compatible with nodeJS >= v0.4.8**
 
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
@@ -43,6 +43,7 @@ Features
 
 > - **Very Fast and Simple Parser**, this module is fast as formidable ( disable sha1 data checksum and logging! ) and have many more features than formidable ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and **Parser Implementation & Performance** section.
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
+> - **It is totally async** .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
 > - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
@@ -54,12 +55,14 @@ Features
 > - **Multiple error types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
 > - **It supports duplicate names for fields and files** .
-> - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
-> - **It is possible to track the request progress ratio ( also chunks and bytes ) of data received** .
-> - **It is possible to track files progression** .
-> - **It is possible to move file data received to another stream, while the file is being uploaded** .
-> - **It is possible to record binary data from a client request** .
-> - **It is possible to create log files** .
+> - **It is also possible to :
+>   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
+>   - **track the request progress ratio ( also chunks and bytes ) of data received** .
+>   - **track files progression** .
+>   - **move file data received to another stream, while the file is being uploaded** .
+>   - **record binary data from a client request** .
+>   - **create a log file for debugging** .
+>   - **create and check directory in the async (default ) or in the sync way** .
 > - **It easily integrates with connect middleware** .
 > - **It Works !**
 
