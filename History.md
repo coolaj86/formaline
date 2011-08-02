@@ -3,8 +3,7 @@
  
  * + added file progression event 'fileprogress', for monitoring the current file upload progress
  * + added data payload to 'fileprogress' event, now is possible to move the data stream elsewhere, while the file is being uploaded
- * + added logging colors
- * + added IPs to log file
+ * + added console.log colors
  
 
  0.5.8 / 2011-07-28
