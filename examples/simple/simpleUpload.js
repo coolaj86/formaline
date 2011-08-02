@@ -137,7 +137,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging : 'debug:on,1:on,2:on,3:on,4:on,console:on,file:on,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging : 'debug:on,1:on,2:on,3:off,4:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners : {
@@ -173,8 +173,13 @@ var http = require( 'http' ),
                         res.writeHead( 200, { 'content-type': 'text/plain' } );
                         res.write( '-> ' + new Date() + '\n' );
                         res.write( '-> request processed! \n' );   
-                        res.write( '\n-> stats -> ' + JSON.stringify( json.stats ) + '\n' );
-                        res.write( '\n Initial Configuration : ' + JSON.stringify( form.initialConfig ) + '\n' );
+                        res.write( '\n-> stats -> ' + JSON.stringify( json.stats, null, 1 ) + '\n' );
+                        res.write( '\n Initial Configuration : ' + JSON.stringify( form.initialConfig, function ( key, value ) {
+                            if ( typeof value === 'function' ) {
+                                return '..';
+                            } 
+                            return value;
+                        }, 4 ) + '\n' );
 
                         res.write( '\n-> upload dir: ' + form.uploadRootDir + ' \n' );
                         res.write( '-> upload threshold : ' + ( form.uploadThreshold ) + ' bytes \n' );
@@ -189,13 +194,13 @@ var http = require( 'http' ),
                         res.write( '-> request timeout: ' + form.requestTimeOut + ' millisecs\n' );
                         res.write( '-> logging: "' + form.logging + '"\n' );
 
-                        res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields ) + '\n' );
-                        res.write( '\n-> files written: [ { .. } , { .. } ] \n   **************\n ' + JSON.stringify( json.files ) + '\n' );
+                        res.write( '\n-> fields received: [ { .. } , { .. } ] \n   ****************\n' + JSON.stringify( json.fields, null, 1 ) + '\n' );
+                        res.write( '\n-> files written: [ { .. } , { .. } ] \n   **************\n ' + JSON.stringify( json.files, null, 1 ) + '\n' );
                         if ( form.removeIncompleteFiles ) {
-                            res.write( '\n-> partially written ( removed ): [ { .. } , { .. } ] \n   *****************\n'+ JSON.stringify( json.incomplete ) + '\n' );
+                            res.write( '\n-> partially written ( removed ): [ { .. } , { .. } ] \n   *****************\n'+ JSON.stringify( json.incomplete, null, 1 ) + '\n' );
                         } else {
                             if ( json.incomplete.length !== 0 ) {
-                                res.write( '\n-> partially written ( not removed ): \n   *****************\n' + JSON.stringify( json.incomplete ) + '\n' );
+                                res.write( '\n-> partially written ( not removed ): \n   *****************\n' + JSON.stringify( json.incomplete, null, 1 ) + '\n' );
                             }
                         }
                         res.end();
