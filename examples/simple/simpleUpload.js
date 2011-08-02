@@ -8,9 +8,9 @@ var http = require( 'http' ),
     log = console.log,
     dir =  '/tmp/';
     getHtmlForm = function ( req, res, next ) {
-        if (req.url === '/test/') {
+        if ( req.url === '/test/' ) {
         log( ' -> req url :', req.url );
-        res.writeHead( 200, { 'content-type': 'text/html' } );
+        res.writeHead( 200, { 'content-type' : 'text/html' } );
         res.end( '<html><head>\
                  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/> \
                  </head><body>\
@@ -84,7 +84,7 @@ var http = require( 'http' ),
                     // the returned session id param, must contain a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
                 getSessionID : function ( req ) {
-                   return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
+                    return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
                 },
                 
                     // default is 120000 milliseconds ( default nodeJS timeout for connection requests )
@@ -141,7 +141,7 @@ var http = require( 'http' ),
                     // file: 'on' --> create a log file in the current upload directory with the same name and .log extension
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
-                logging : 'debug:on,1:on,2:on,3:off,4:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging : 'debug:on,1:on,2:on,3:on,4:on,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners : {
