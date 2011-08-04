@@ -343,7 +343,7 @@ Features
             name: '..',             // <-- ORIGINAL FILENAME
             path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
             type: '..',             // <-- MIME TYPE
-            size: 270,              // <-- BYTES
+            size: 270,              // <-- CURRENT RECEIVED BYTES
             lastModifiedDate: '..', // <-- FILE MTIME
             sha1checksum: null      // <-- IS ALWAYS NULL FOR FILEPROGRESS!!
         }
