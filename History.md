@@ -1,4 +1,4 @@
- 0.6.0 / 2011-08-xx
+ 0.6.0 / 2011-08-04
 ===================
  
  * + now formaline module is totally async
