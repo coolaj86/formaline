@@ -8,6 +8,22 @@ var log = console.log,
     lookupTable = function ( p ) {
         for( var b = new Buffer( 255 ), m = p.length, i = 255, j = 0, c = m + 1; i >= 0 ; b[ i ] = 0x00, i-- );
         for( ; c > 0; b[ p[ j++ ] ] = --c );
+        /** /
+        return {
+            containsChar : function ( c ) {
+                return ( b[ ( new Buffer( c ) )[ 0 ] ] & 1 );
+            },
+            getShift : function ( ncode ) {
+                return ( b[ ncode ] || m + 1 ); // if 0 return max shift, max m = 254
+            },
+            contains : function ( ncode ) {
+                return ( b[ ncode ] & 1 );
+            },
+            getRawBuffer : function () {
+                return b;
+            }
+        };
+        /**/
         return b;
     },
     
@@ -33,8 +49,6 @@ var log = console.log,
     },
     
     quickSearch = function ( p, t, cback ) {
-        var me = this;
-        me.pat = ( me.pat ) ? me.pat : lookupTable( p );
         var n = t.length,
             m = p.length,
             pmatches = 0,
@@ -43,7 +57,7 @@ var log = console.log,
             end = null,
             stats = {},
             beg = Date.now(),
-            lkb = me.pat,//lookupTable( p ),
+            lkb = lookupTable( p ),
             result = {},
             arr = new Array();
             
