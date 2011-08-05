@@ -3,7 +3,7 @@
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
 > it is also ready to use, for example, with **[connect middleware](https://github.com/senchalabs/connect)** .  
 
-> **Current Stable Version: 0.5.7 , compatible with nodeJS >= v0.4.8**
+> **Current Stable Version: 0.6.1 , compatible with nodeJS >= v0.4.8**
 
 
 > **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
@@ -43,23 +43,29 @@ Features
 
 > - **Very Fast and Simple Parser**, this module is fast as formidable ( disable sha1 data checksum and logging! ) and have many more features than formidable ( see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory ) and **Parser Implementation & Performance** section.
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
+> - **It is totally ASYNC** .
+> - **Returns data in JSON format** ( see listeners signatures ) .
 > - **It works with HTML5-powered AJAX multiple file uploads** .
-> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
-> - **Returns data in JSON format** ( see listeners signatures ) .
-> - **It is also possible to return the SHA1 data checksum of received files, disabling sha1sum improves dramatically performances !!** .
-> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
+> - **It supports duplicate names for fields and files** . 
+> - **It supports grouping fields by name in the result object** .
+> - **It is also possible to return the SHA1 data checksum of received files ( disabling sha1 ckecksum improves dramatically performances !! )** .
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
-> - **Multiple error types** .
+> - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
+> - **It Handles filename collisions** ( the filenames are translated to a 40 hex string builded with SHA1 ) .
+> - **Multiple error / events types** .
 > - **Tested against malicious / bad headers and not-HTTP-compliant multipart/form-data requests** .
-> - **It supports duplicate names for fields and files** .
-> - **It is possible to preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
-> - **It is possible to track the progress ratio ( also chunks and bytes ) of data received** .
-> - **It is possible to record binary data from a client request** .
-> - **It is possible to create log files** .
-> - **It easily integrates with connect middleware** .
-> - **It Works !**
+> - **It is also possible to** :
+>   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
+>   - **track the request progress ratio ( also chunks and bytes ) of data received** .
+>   - **track files progression** .
+>   - **move file data received to another stream, while the file is being uploaded** .
+>   - **create log files for debugging purposes** .
+>   - **record headers and binary data from a client request** .
+>   - **to create and check directory existence in the sync way or async (default )** .
+>   - **to easily integrate it with middlewares like 'connect'** .
+> - **and then it Works !**
 
 
  Client-Side
@@ -140,6 +146,9 @@ Features
 >   - **without session support**, a new sub-directory with a random name is created for every upload request .
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
+> - **'mkDirSync'** : ( *boolean* ) **default** value is **'false'** .
+>   - if is set to true, directories for uploads are created and checked in the Syncronous way, instead of the Async way
+
 > - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ) .
 >   - it indicates the maximum value, after that the **'timeout'** event will be emitted and the client's request will be aborted .
 >   - minimum value is 100 millisecs .
@@ -180,22 +189,31 @@ Features
 >   - **it is calculated iteratively when file data is received** .
 >   - obviously, enabling this feature degrades performances .
 
-> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,console:on,file:off,record:off'** ( debug is off ) .
+> - **'logging'** : ( *string* ) **default** value is **'debug:off,1:on,2:on,3:off,4:off,console:on,file:off,record:off'** ( debug is off ) .
 >   - it enables various logging levels, it is possible to switch on or off one or more levels at the same time . 
 >   - **debug**: **'off'** turns off all logging ( also errors ) .
 >   - **1**st level enables logging of warnings and parser statistics .
 >   - **2**nd level enables logging of module events .
 >   - **3**rd level enables logging of received data chunks , parser messages ..
+>   - **4**th level enables logging of 'progress' and 'fileprogress' events .
 >   - **console** property is used for switching ( on / off ) the console logging .
 >   - **file** property is used for switching ( on / off ) file logging; a file will be created in the current upload directory, with the same name as directory, it will contain message logs .
->   - **record** property is used for switching ( on / off ) client request recording; a file will be created in the current upload directory, with the same name as directory, it will contain binary data from the client request .
+>   - **record** property is used for switching ( on / off ) client request recording; two files will be created in the current upload directory, with the same name as directory, one file will contain binary data from the client request, and the other will contain the request headers in JSON .
 >   - **log filenames are in the form**: 
->       - [ **RequestStartTimeInMillis** ] **.** [ **UploadDirectoryName** *= ( SessionID | RandomNumber )* ] **.** [ **log** | **req** ]
+>       - [ **RequestStartTimeInMillis** ] **.** [ **UploadDirectoryName** *= ( SessionID | RandomNumber )* ] **.req.** [ **debug.log** | **headers.json** | **payload.bin** ] .
 >       - for example: **1307561134416.631416627550282.req** .
-> - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false**.
+
+> - **'emitFileProgress'** : ( *boolean* ) **default** value is **false** .
+>    - switch on/off 'fileprogress' event .
+>    - it serves for monitoring the current file upload progress .
+>    - the 'fileprogress' event is emitted together with a JSON object ( like for  'load' event ) and a **payload** parameter, which contains the data of current file on upload, **so it is possible to move this data stream elsewhere, while the file is being uploaded** .
+
+> - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false** .
+>    - switch on/off 'progress' event .
+>    - the 'progress' event signals the progression of the request, it is based on chunks received, not on file progression .
 >    - when it is true, it emits a '**progress**' event on every chunk. If you need to change the emitting factor, you could specify an integer > 1 . 
 >    - If you set it for example to  an integer k,  **'progress'** is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
-         
+
 > - **'listeners'** : ( *config object* ) It is possible to specify here a configuration object for listeners or adding them in normal way, with 'addListener' / 'on' . 
 >    - **See below**
 
@@ -236,6 +254,8 @@ Features
 > - **'loadstart'**, start parsing request
 
 > - **'load'**, loaded some data 
+
+> - **'fileprogress'**, current file progression
 
 > - **'progress'**, request progression
 
@@ -311,7 +331,28 @@ Features
     }
       
 ``` 
- 
+
+> - **'fileprogress'**: `function ( json, payload ) { .. }`,
+
+``` javascript
+
+    // you are receiving a file--> 
+    json = {                
+        name: 'field1',  // <-- FIELD NAME
+        value: {            // <-- **FIELD VALUE IS A FILE JSON OBJECT**
+            name: '..',             // <-- ORIGINAL FILENAME
+            path: '..',             // <-- FILE PATH, CONTAINS ALSO FILENAME AS 40 HEX (SHA1) HASH STRING 
+            type: '..',             // <-- MIME TYPE
+            size: 270,              // <-- CURRENT RECEIVED BYTES
+            lastModifiedDate: '..', // <-- FILE MTIME
+            sha1checksum: null      // <-- IS ALWAYS NULL FOR FILEPROGRESS!!
+        }
+    }
+    
+    payload = binary data ( nodeJS Buffer ) of the current file that is on upload
+      
+```
+
 > - **'progress'**: `function ( json ) { .. }`,
 
 ``` javascript     
@@ -419,11 +460,13 @@ Features
     
  var config = { 
         
-     logging: 'debug:on,1:on,2:on,3:on,console:off,file:on,record:off', // <-- log only to file
+     logging : 'debug:on,1:on,2:on,3:on,console:off,file:on,record:off', // <-- log only to file
     
-     uploadRootDir: '/var/www/upload/',
+     uploadRootDir : '/var/www/upload/',
      
-     getSessionID: function( req ){ // for example -->
+     mkDirSync : false,
+     
+     getSessionID : function( req ){ // for example -->
          return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
      },
 
@@ -445,10 +488,10 @@ Features
             
      listeners: {
               
-         'message':function( json ){ // json:{ type: '..', isupload: true/false , msg: '..' }
+         'message':function( json ){ // json : { type : '..', isupload : true/false , msg : '..' }
             ..
          },
-         'error': function( json ){ // json:{ type: '', isupload: true/false , msg: '..', fatal: true }
+         'error': function( json ){ // json : { type : '', isupload : true/false , msg : '..', fatal : true }
             ..
          },
          'abort': function( json ) {   
@@ -460,6 +503,9 @@ Features
          'loadstart': function( json ){
             ..
          },
+         'fileprogress': function( json, payload ) {                              
+            ..
+         },
          'progress': function( json ) {                              
             ..
          },
@@ -468,7 +514,7 @@ Features
          },
          'loadend': function( json, res, next ) {
             ...
-            res.writeHead(200, { 'content-type': 'text/plain' } );
+            res.writeHead(200, { 'content-type' : 'text/plain' } );
             res.end();
             next();
          }
@@ -596,7 +642,7 @@ I try to explain me:
     T = ( average number of comparisons ) * ( average time to do a single comparison ) ~= ( n / m ) * ( t )
 
 
->__In real world, Murphy Laws assures that the best case doesn't exists:__ :O 
+>__In real world, Murphy Laws assures that the best case will never occur:__ :O 
  
 >  - data is chopped,
 >  - in some cases (a very large CSV file) there is a big number of comparisons  between chars ( it decreases the data rate ), however for optimism and for simplicity, I'll take the  previous calculated time complexity O(n/m) for good, and then also the time T, altough it's not totally correct .   
@@ -607,7 +653,7 @@ I try to explain me:
    
 >    ( average time to execute the parser on a single chunk ) *  ( average number of data chunks ) * ( average number of parser calls per data chunk * average delay time of a single call )  
 
-  or for simplify it, a number like:
+  or for simplicity, a number like:
 
 >   ( T ) * ( k ) * ( c * d )  ~= ( n / m ) * ( t ) * ( k ) * ( c * d )  
 
@@ -616,7 +662,7 @@ When k, the number of data chunks, increases, the value  ( k ) * ( c * d ) becom
 `A single GB of data transferred, with a data chunk size of 40K, is typically splitted (on average) in ~ 26000 chunks!`
 
  
-**However, in a general case**: 
+**However, in the general case**: 
  
  - we can do very little about reducing the time delay (**d**) of parser calls, and for reducing the number (**k**) of chunks ( or manually increasing their size ), these thinks don't totally depend on us. 
  - we could minimize the number **'c'**  of parser calls to a single call for every chunk, or  **c = 1**.
@@ -665,16 +711,14 @@ Other
  Future Releases
 -----------------
  
- - add the choice to write / pipe messages and recordings to a stream .
- - add transaction identifiers
+ - add some unit tests .
+ - find and test some weird boundary string types .
  - add others examples with AJAX, writing about tested client-side uploader .
- - add a readable stream from files while they are uploaded .
+ - add the choice to pipe messages and recordings to a stream .
  - add some other server-side security checks, and write about it .  
  - give choice to changing the parser with a custom one .
  - more performance modifications in quickSearch.js .
- - find and test some weird boundary string types .
- - add some unit tests .
- - Restify ?
+ - add transaction identifiers
 
 
 

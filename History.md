@@ -1,7 +1,44 @@
+ 0.6.1 / 2011-08-05
+===================
+ 
+ * + better parser performances than previous versions ( average ~15% , less method calls )
+ * + new quickParser class / file
+ * + better variable declaration in formaline.js
+ 
+ 0.6.0 / 2011-08-04
+===================
+ 
+ * + now formaline module is totally async
+ * + added async directory creation / checking
+ * + added 'mkDirSync' config param
+ * + better JSON.stringify styling
+
+  0.5.9 / 2011-08-02
+===================
+ 
+ * + added file progression event 'fileprogress', for monitoring the current file upload progress
+ * + added data payload to 'fileprogress' event, now is possible to move the data stream elsewhere, while the file is being uploaded
+ * + added console.log colors
+
+ 0.5.8 / 2011-07-28
+===================
+ * + added charset=UTF-8 meta to simpleUpload example
+ * + added initialConfig property
+ * - removed extensions.js and createDelegate Function
+ * + moved apply to formaline.js
+ * + added new recording file for headers, recording files and log files have been renamed ( .json, .bin, .log )
+ * + cleaned code
+ * + moved files unlinking to a private method
+ * + moved internal config params to JSON objects ( defaultCfg and privateCfg ) 
+ * + better style for logfile, added timestamp..
+ * + added 4th debug level for logging 'progress' event 
+ * + added correct json response object ( incomplete files list ), when the request is timed out or aborted 
+ * + corrected some doc bugs
+
  0.5.7 / 2011-06-11
 ===================
 
- * + Resolved index bug, that leads to incorrect file writing in particular situations
+ * + resolved index bug, that leads to incorrect file writing in particular situations
  
  0.5.6 / 2011-06-10
 ===================
