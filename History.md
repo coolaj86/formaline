@@ -1,3 +1,8 @@
+ 0.6.1 / 2011-08-05
+===================
+ 
+ * + the parser has been boosted in performances ( ~15%, less method calls )
+ 
  0.6.0 / 2011-08-04
 ===================
  
