@@ -61,7 +61,7 @@ Features
 >   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 >   - **track the request progress ratio ( also chunks and bytes ) of data received** .
 >   - **track files progression** .
->   - **move file data received to another stream, while the file is being uploaded** .
+>   - **ability to pass incoming file stream to another stream, while the file is being uploaded** .
 >   - **create log files for debugging purposes** .
 >   - **record headers and binary data from a client request** .
 >   - **to create and check directory existence in the sync way or async (default )** .
