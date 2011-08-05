@@ -1,7 +1,9 @@
  0.6.1 / 2011-08-05
 ===================
  
- * + the parser has been boosted in performances ( ~15%, less method calls )
+ * + better parser performances than previous versions ( average ~15% , less method calls )
+ * + new quickParser class / file
+ * + better variable declaration in formaline.js
  
  0.6.0 / 2011-08-04
 ===================
