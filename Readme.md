@@ -50,7 +50,7 @@ Features
 > - **It is Possible to create module instances with a configuration object, with some useful parameters** ( listeners, uploadThreshold, logging .. ) .
 > - **Session support. Multiple uploads ( POSTs ) from the same authenticated user, are put in the same directory, its name is picked from the Session Identifier value for the user** .
 > - **It supports duplicate names for fields and files** . 
-> - **It supports grouping fields by name in the result object** .
+> - **It supports grouping fields by name in the result object (follows standard convention for arrays)** .
 > - **It is also possible to return the SHA1 data checksum of received files ( disabling sha1 ckecksum improves dramatically performances !! )** .
 > - **It supports the same event API as [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events), 'loadstart', 'progress', 'load', 'loadend', 'abort', 'timeout'** .
 > - **Where needed, the response object contain most of the attributes names as the** **[W3C FILE API](http://www.w3.org/TR/FileAPI/)** ( i.e. for 'load' listener, the json contains properties like :  *name*, *type*, *size*, *lastModifiedDate* ) .
