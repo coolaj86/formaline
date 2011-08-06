@@ -6,7 +6,7 @@
 > **Current Stable Version: 0.6.1 , compatible with nodeJS >= v0.4.8**
 
 
-> **This version implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
+> ** It implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
 
 > **See [History.md](https://github.com/rootslab/formaline/blob/master/History.md) for Changelog .**
 
@@ -61,7 +61,7 @@ Features
 >   - **preserve or auto-remove uploaded files if they are not completed, due to exceeding of the upload total threshold** .
 >   - **track the request progress ratio ( also chunks and bytes ) of data received** .
 >   - **track files progression** .
->   - **ability to pass incoming file stream to another stream, while the file is being uploaded** .
+>   - **pass incoming file stream to another stream, while the file is being uploaded** .
 >   - **create log files for debugging purposes** .
 >   - **record headers and binary data from a client request** .
 >   - **create and check directory existence in the sync way or async (default )** .
@@ -202,16 +202,16 @@ Features
 >   - **record** property is used for switching ( on / off ) client request recording; two files will be created in the current upload directory, with the same name as directory, one file will contain binary data from the client request, and the other will contain the request headers in JSON .
 >   - **log filenames are in the form**: 
 >       - [ **RequestStartTimeInMillis** ] **.** [ **UploadDirectoryName** *= ( SessionID | RandomNumber )* ] **.req.** [ **debug.log** | **headers.json** | **payload.bin** ] .
->       - for example: **1307561134416.631416627550282.req** .
+>       - for example: **1307561134416.631416627550282.req.payload.bin** .
 
 > - **'emitFileProgress'** : ( *boolean* ) **default** value is **false** .
->    - switch on/off 'fileprogress' event .
+>    - switch on/off **'fileprogress'** event .
 >    - it serves for monitoring the current file upload progress .
 >    - the 'fileprogress' event is emitted together with a JSON object ( like for  'load' event ) and a **payload** parameter, which contains the data of current file on upload, **so it is possible to move this data stream elsewhere, while the file is being uploaded** .
 
 > - **'emitProgress'** : ( *boolean or integer > 1* ) **default** value is **false** .
->    - switch on/off 'progress' event .
->    - the 'progress' event signals the progression of the request, it is based on chunks received, not on file progression .
+>    - switch on/off **'progress'** event .
+>    - **the 'progress' event signals the progression of the request, it is based on chunks received, not on file progression** .
 >    - when it is true, it emits a '**progress**' event on every chunk. If you need to change the emitting factor, you could specify an integer > 1 . 
 >    - If you set it for example to  an integer k,  **'progress'** is emitted every k data chunks received, starting from the first. ( it emits events on indexes: *1 + ( 0 * k )*, *1 + ( 1 * k )*, *1 + ( 2 * k )*, *1 + ( 3 * k )*, etc..           
 
