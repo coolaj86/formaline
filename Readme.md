@@ -43,7 +43,7 @@ Features
 
 > - **Very Fast and Simple Parser**, this module is :
 >   - **fast as formidable** ( you have to disable sha1 data checksum, logging and progress events! ) .
->   - **~25% faster than formidable on parsing big CSV and TXT files** .
+>   - **~25% faster than formidable on parsing big CSV and generally TXT files** .
 >   - **have many more features than formidable** .
 >   - see **[parser-benchmarks](https://github.com/rootslab/formaline/tree/master/parser-benchmarks)** directory and **Parser Implementation & Performance** section .
 > - **Real-time parsing of file uploads, also supports the "multiple" attribute, for HTML5 capable browsers** .
