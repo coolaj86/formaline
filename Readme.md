@@ -6,9 +6,9 @@
 > **Current Stable Version: 0.6.1 , compatible with nodeJS >= v0.4.8**
 
 
-> ** It implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications .**
+> **It implements [W3C XHR2](http://www.w3.org/TR/XMLHttpRequest2/#events) event API, [W3C FILE API](http://www.w3.org/TR/FileAPI/) properties, and many other features. Check the Readme for new modifications** .
 
-> **See [History.md](https://github.com/rootslab/formaline/blob/master/History.md) for Changelog .**
+> **See [History.md](https://github.com/rootslab/formaline/blob/master/History.md) for Changelog** .
 
 
  Installation
