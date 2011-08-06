@@ -148,7 +148,7 @@ Features
 >   - **with session support**, the upload directory gets its name from the returned session identifier, and will remain the same across multiple posts ( *see below* ) .
 
 > - **'mkDirSync'** : ( *boolean* ) **default** value is **'false'** .
->   - if is set to true, directories for uploads are created and checked in the Syncronous way, instead of the Async way
+>   - if is set to true, directories for uploads are created and checked in the Syncronous way ( blocking ), instead of the Async way .
 
 > - **'requestTimeOut'** : ( *integer* ) **default** value is **120000** millisecs ( 120 secs ) .
 >   - it indicates the maximum value, after that the **'timeout'** event will be emitted and the client's request will be aborted .
