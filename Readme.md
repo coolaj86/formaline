@@ -64,8 +64,8 @@ Features
 >   - **ability to pass incoming file stream to another stream, while the file is being uploaded** .
 >   - **create log files for debugging purposes** .
 >   - **record headers and binary data from a client request** .
->   - **to create and check directory existence in the sync way or async (default )** .
->   - **to easily integrate it with middlewares like 'connect'** .
+>   - **create and check directory existence in the sync way or async (default )** .
+>   - **easily integrate it with middlewares like 'connect'** .
 > - **and then it Works !**
 
 
