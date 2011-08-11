@@ -37,6 +37,35 @@ with git:
 >change the path and the port with yours. 
 
 
+ Simple Usage
+--------------
+
+>``` javascript
+>   
+> var formaline = require( 'formaline' ),
+>     form = new formaline( { } ); // <-- empty config object
+>```
+
+ **add event listener:**
+
+>``` javascript
+>   ..
+>   form.on( 'load', function( json ){ .. }  )  
+>   ..
+>   /* or */ 
+>   var myListener = function( ){ console.log( arguments ); }
+>   ..
+>   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
+>   ..
+>   /* then parse request */
+>   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
+>   ..
+>   
+>```
+
+
+  see **Event & Listeners** section for a complete list of callbacks signatures!
+
 
 Features
 ----------
@@ -108,36 +137,6 @@ Features
 
 > **the library is capable of handling the receiving of multiple files, that were uploaded with a single or multiple POSTs, indipendently of what kind of client code was used .** 
  
-
- Simple Usage
---------------
-
->``` javascript
->   
-> var formaline = require( 'formaline' ),
->     form = new formaline( { } ); // <-- empty config object
->```
-
- **add event listener:**
-
->``` javascript
->   ..
->   form.on( 'load', function( json ){ .. }  )  
->   ..
->   /* or */ 
->   var myListener = function( ){ console.log( arguments ); }
->   ..
->   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
->   ..
->   /* then parse request */
->   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
->   ..
->   
->```
-
-
-  see **Event & Listeners** section for a complete list of callbacks signatures!
-      
 
 
  Configuration Options
