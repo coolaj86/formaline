@@ -630,7 +630,7 @@ I try to explain me:
  
 >  - the data received is not chopped, 
 >  - there is a low repetition of pattern strings in the received data, ( this gets the result of n/m comparisons )
->  - network throughput == network bandwidth ( **wow **),
+>  - network throughput == network bandwidth ( **wow**),
  
  reaches a time complexity (in the best case) of :   
 
@@ -716,14 +716,13 @@ Other
  Future Releases
 -----------------
  
- - add some unit tests .
  - find and test some weird boundary string types .
+ - add some real useful tests .
  - add others examples with AJAX, writing about tested client-side uploader .
  - add the choice to pipe messages and recordings to a stream .
  - add some other server-side security checks, and write about it .  
  - give choice to changing the parser with a custom one .
- - more performance modifications in quickSearch.js .
- - add transaction identifiers
+ - add transaction identifiers .
 
 
 
