@@ -82,9 +82,10 @@ var http = require( 'http' ),
                     // this function have to return the request property that holds session id 
                     // the returned session id param, must contain a String, not a function or an object 
                     // the function takes http request as a parameter at run-time 
+                /** /
                 getSessionID : function ( req ) {
                     return ( ( req.sessionID ) || ( req.sid ) || ( ( req.session && req.session.id ) ? req.session.id : null ) );
-                },
+                },/**/
                 
                     // default is 120000 milliseconds ( default nodeJS timeout for connection requests )
                     // the client connection is closed after the specified milliseconds ( minimum is 100 millisecs )
