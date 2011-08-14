@@ -1,4 +1,4 @@
- 0.6.2 / 2011-08-xx
+ 0.6.2 / 2011-08-14
 ===================
  
  * + better handling for empty / already completed requests
