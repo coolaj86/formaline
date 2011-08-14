@@ -1,3 +1,9 @@
+ 0.6.2 / 2011-08-xx
+===================
+ 
+ * + better handling for empty / already completed requests
+ * + cleaned some code
+
  0.6.1 / 2011-08-05
 ===================
  
