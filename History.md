@@ -2,6 +2,7 @@
 ===================
  
  * + better handling for empty / already completed requests
+ * + minified code for adding request handlers
  * + cleaned some code
 
  0.6.1 / 2011-08-05
