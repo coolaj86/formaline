@@ -1,6 +1,7 @@
  0.6.2 / 2011-08-15
 ===================
  
+ * + resolved bug in parseUrlEncodedData method ( request hangs on multiple chunks )
  * + better handling for empty / already completed requests
  * + minified code for adding request handlers
  * + cleaned some code
