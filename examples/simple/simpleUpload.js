@@ -206,9 +206,14 @@ var http = require( 'http' ),
             form = new formaline( config ) ;
             form.parse( req, res, next );
         } else {
-            log( ' -> req url 404 error :', req.url );    
-            res.writeHead( 404, { 'content-type': 'text/plain' } );
-            res.end( '404' );
+            if ( req.url === '/favicon.ico' ) { // short-circuit annoying favicon requests
+                res.writeHead( 200, { 'Content-Type' : 'image/x-icon' } );
+                res.end();
+            } else {
+                log( ' -> req url 404 error :', req.url );    
+                res.writeHead( 404, { 'content-type' : 'text/plain' } );
+                res.end( '404' );
+            }
         }
 };
 
