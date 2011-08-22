@@ -476,47 +476,49 @@ Features
 
      requestTimeOut : 5000, // 5 secs
      
-     resumeRequestOnError: true,
+     resumeRequestOnError : true,
      
-     holdFilesExtensions: true,
+     holdFilesExtensions : true,
      
-     checkContentLength: false,
+     checkContentLength : false,
             
-     uploadThreshold: 3949000,  
+     uploadThreshold : 3949000,  
           
-     removeIncompleteFiles: true,
+     removeIncompleteFiles : true,
             
-     emitprogress: false, 
+     emitProgress : false,
+     
+     emitFileProgress : false
         
-     sha1sum: true,
+     sha1sum : true,
             
-     listeners: {
+     listeners : {
               
-         'message':function( json ){ // json : { type : '..', isupload : true/false , msg : '..' }
+         'message' : function( json ){ // json : { type : '..', isupload : true/false , msg : '..' }
             ..
          },
-         'error': function( json ){ // json : { type : '', isupload : true/false , msg : '..', fatal : true }
+         'error' : function( json ){ // json : { type : '', isupload : true/false , msg : '..', fatal : true }
             ..
          },
-         'abort': function( json ) {   
+         'abort' : function( json ) {   
             ..
          },
-         'timeout': function( json ) {   
+         'timeout' : function( json ) {   
             ..
          },
-         'loadstart': function( json ){
+         'loadstart' : function( json ){
             ..
          },
-         'fileprogress': function( json, payload ) {                              
+         'fileprogress' : function( json, payload ) {                              
             ..
          },
-         'progress': function( json ) {                              
+         'progress' : function( json ) {                              
             ..
          },
-         'load': function( json ){
+         'load' : function( json ){
             ..
          },
-         'loadend': function( json, res, next ) {
+         'loadend' : function( json, res, next ) {
             ...
             res.writeHead(200, { 'content-type' : 'text/plain' } );
             res.end();
