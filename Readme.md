@@ -488,7 +488,7 @@ Features
             
      emitProgress : false,
      
-     emitFileProgress : false
+     emitFileProgress : false,
         
      sha1sum : true,
             
