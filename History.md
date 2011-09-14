@@ -1,3 +1,9 @@
+ 0.6.3 / 2011-09-15
+===================
+ 
+ * + resolved a bug in the simple example ( connect 1.7.1 )
+ * + better require
+ 
  0.6.2 / 2011-08-15
 ===================
  

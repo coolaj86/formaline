@@ -1,5 +1,5 @@
 var http = require( 'http' ),
-    formaline = require( '../../lib/formaline' ).formaline,
+    formaline = require( '../../index' ).formaline,
     connect = require( 'connect' ),
     fs = require( 'fs' ),
     server,
@@ -172,7 +172,7 @@ var http = require( 'http' ),
                     'load' : function ( json ){
                         currFile = null;
                     },
-                    'loadend' : function ( json, res, next ) {
+                    'loadend' : function ( json, res, cback ) {
                         log( '\n\033[1;32mPost Done..\033[0m' );
                         // log( '\n JSON -> \n', json, '\n' );
                         res.writeHead( 200, { 'content-type' : 'text/plain' } );
@@ -196,15 +196,19 @@ var http = require( 'http' ),
                             }
                         }
                         res.end();
-                        next(); // test callback 
+                        try {
+                            cback();
+                        } catch ( err ) {
+                            log( 'error', err.stack );
+                        }
                     }
                 }
-            };//end config obj
+            }; //end config obj
                             
         if ( ( req.url === '/test/upload' ) || ( req.url === '/test/post' ) ) {
             log( ' -> req url :', req.url );
             form = new formaline( config ) ;
-            form.parse( req, res, next );
+            form.parse( req, res, hi );
         } else {
             if ( req.url === '/favicon.ico' ) { // short-circuit annoying favicon requests
                 res.writeHead( 200, { 'Content-Type' : 'image/x-icon' } );
@@ -215,9 +219,13 @@ var http = require( 'http' ),
                 res.end( '404' );
             }
         }
-};
+    },
+    hi = function () {
+        form = null;
+        console.log( '\n\033[1;33mHi!, I\'m the callback function!\033[0m' );
+    };
 
-server = connect( getHtmlForm , handleFormRequest, function () { form = null; console.log( '\n\033[1;33mHi!, I\'m the next() callback function!\033[0m' ); } );
+server = connect( getHtmlForm , handleFormRequest );
 
 server.listen( 3000 );
 
