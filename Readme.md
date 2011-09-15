@@ -58,7 +58,7 @@ with git:
 >   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
 >   ..
 >   /* then parse request */
->   form.parse( req, res, next ); // <-- next is your callback function( .. ){ .. }
+>   form.parse( req, res, cback ); // <-- cback is your callback function( .. ){ .. }
 >   ..
 >   
 >```
@@ -367,7 +367,7 @@ Features
     }
 ``` 
 
-> - **'loadend'**: `function ( json, res, next ) { .. }`
+> - **'loadend'**: `function ( json, res, cback ) { .. }`
 
 ``` javascript     
     json = {          
@@ -518,11 +518,11 @@ Features
          'load' : function( json ){
             ..
          },
-         'loadend' : function( json, res, next ) {
+         'loadend' : function( json, res, cback ) {
             ...
             res.writeHead(200, { 'content-type' : 'text/plain' } );
             res.end();
-            next();
+            cback();
          }
      }//end listener config
  };
@@ -533,13 +533,13 @@ Features
    
 ``` javascript  
  var form = new formaline( config ); 
- form.parse( req, res, next );
+ form.parse( req, res, cback );
  ```   
  *or directly*
  
  ``` javascript  
 
- new formaline( config ).parse( req, res, next );
+ new formaline( config ).parse( req, res, cback );
 
 ```   
     
