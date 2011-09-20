@@ -1,5 +1,5 @@
 var http = require( 'http' ),
-    formaline = require( '../../index' ).formaline,
+    formaline = require( '../../index' ),
     connect = require( 'connect' ),
     fs = require( 'fs' ),
     server,

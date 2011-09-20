@@ -1,1 +1,1 @@
-module.exports = require( './lib/formaline' );
+module.exports = require( './lib/formaline' ).formaline;
