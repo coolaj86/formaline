@@ -1,4 +1,9 @@
- 0.6.3 / 2011-09-15
+ 0.6.4 / 2011-09-20
+===================
+ 
+ * + Dummy version -> Corrected 'require' statements
+
+  0.6.3 / 2011-09-15
 ===================
  
  * + resolved a bug in the simple example ( connect 1.7.1 )
