@@ -42,7 +42,7 @@ with git:
 
 >``` javascript
 >   
-> var formaline = require( 'formaline' ),
+> var formaline = require( 'formaline' ).formaline,
 >     form = new formaline( { } ); // <-- empty config object
 >```
 
