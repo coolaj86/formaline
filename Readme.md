@@ -58,7 +58,7 @@ with git:
 >   form.on( 'load', myListener ); // <-- myListener function gets a json data object as argument
 >   ..
 >   /* then parse request */
->   form.parse( req, res, cback ); // <-- cback is your callback function( .. ){ .. }
+>   form.parse( req, res, cback ); // <-- cback is your callback function( .. ){ .. }, it is not strictly needed!
 >   ..
 >   
 >```
