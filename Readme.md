@@ -63,8 +63,11 @@ with git:
 >   
 >```
 
-  see **[examples](https://github.com/rootslab/formaline/tree/master/examples)** directory for a simple upload page!
-  see **Event & Listeners** section for a complete list of callbacks signatures!
+  see :
+  
+  - **[examples](https://github.com/rootslab/formaline/tree/master/examples)** directory for a simple upload page!
+  
+  - **Event & Listeners** section for a complete list of callbacks signatures!
 
 
 Features
