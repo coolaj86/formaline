@@ -35,4 +35,4 @@
  $ curl -X PUT -F name=test -F myfile="@psyco.jpg" http://yourserver:3000/test/upload
 ```
 
->Remember to modify 'logging' to your needs ( for example, turning off 2nd level debugging )
+>Remember to modify the __'logging'__ config parameter to your needs..
