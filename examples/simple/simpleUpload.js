@@ -114,11 +114,11 @@ var http = require( 'http' ),
                 emitProgress : false, // 3, 10, 100
                 
                     // max bytes allowed for file uploads ( multipart/form-data ), it is a writing threshold, this is the max size of bytes written to disk before stopping
-                uploadThreshold : 1024 * 1024 * 1024 ,// bytes
+                uploadThreshold : 1024 * 1024 * 1024 , // bytes
                 
                     // max bytes allowed for serialized fields, it limits the parsing of data received with serialized fields ( x-www-urlencoded ) 
                     // when it was exceeded, no data was returned 
-                serialzedFieldThreshold : 1024 * 1024 * 1024,
+                serialzedFieldThreshold : 10 * 1024 * 1024,
                
                     // max bytes allowed for a single file
                 maxFileSize : 1024 * 1024 * 1024, // bytes, default 1GB
