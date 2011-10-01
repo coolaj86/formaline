@@ -32,7 +32,7 @@
 -  with __PUT__ :
 
 ``` bash
- $ curl -X PUT -F myfile="@psyco.jpg" http://yourserver:3000/test/upload
+ $ curl -X PUT -F name=test -F myfile="@psyco.jpg" http://yourserver:3000/test/upload
 ```
 
->The logging level is quite verbose, remember to modify 'logging' to your needs ( for example, turning off 2nd level debugging )
+>Remember to modify 'logging' to your needs ( for example, turning off 2nd level debugging )
