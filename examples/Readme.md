@@ -20,13 +20,17 @@
 > - **http://nodeServerIp:3000/test/**  *or try* [localhost](http://localhost:3000/test/) 
 
 
->or you could use curl:
+>or you could use __curl__:
+
+-  with __POST__ :
 
 ``` bash
- // POST -->
  $ curl -i -F name=test -F myfile1="@psyco.jpg" -F myfile2="@fearandloathing.jpg" http://yourserver/test/upload or  http://yourserver:3000/test/upload
- 
- //PUT -->
+```
+
+-  with __PUT__ :
+
+``` bash
  $ curl -X PUT -F myfile="@psyco.jpg" http://yourserver:3000/test/upload
 
 ```
