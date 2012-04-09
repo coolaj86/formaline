@@ -1,3 +1,11 @@
+ 0.6.5 / 2012-04-09
+===================
+ 
+ Merged pull requests: 
+ * nmcclay/master - cleaned up some leaked global variables in formaline.js
+ * ericwolter/master - Fixed compatibility issue with bodyParser for Connect >= 1.8
+ * AtliThor/master - Adding "fs.watch" to uploaded files again, but bypassing it on Windows
+
  0.6.4 / 2011-09-20
 ===================
  
