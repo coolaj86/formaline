@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/rootslab/formaline.png)](http://travis-ci.org/rootslab/formaline)
 # Formaline, an Upload Module for NodeJS 
 
 > __formaline__ is a low-level, full-featured (**[nodeJS](http://nodejs.org/)**) module for handling form requests ( **HTTP POSTs / PUTs** ) and for fast parsing of file uploads, 
