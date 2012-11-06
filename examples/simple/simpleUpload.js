@@ -141,7 +141,7 @@ var http = require( 'http' ),
                     // console: 'off' --> disable console log output 
                     // record: 'on' --> record binary data from client request
                     // See the Readme!
-                logging : 'debug:on,1:on,2:off,3:off,4:off,console:on,file:off,record:off', // <-- turn off 2nd level to see only warnings, and parser overall results
+                logging : 'debug:on,1:on,2:off,3:off,4:off,console:on,file:off,record:on', // <-- turn off 2nd level to see only warnings, and parser overall results
                 
                     // listeners
                 listeners : {
@@ -226,7 +226,7 @@ var http = require( 'http' ),
 
 server = connect( getHtmlForm , handleFormRequest );
 
-server.listen( 3000 );
+server.listen( 3001 );
 
 log();
 log( ' ->\033[1m started at: \033[32m' + new Date() + '\033[0m' );
