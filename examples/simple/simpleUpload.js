@@ -222,15 +222,15 @@ var http = require( 'http' ),
     hi = function () {
         form = null;
         console.log( '\n\033[1;33mHi!, I\'m the callback function!\033[0m' );
-    };
+    },
+    port = 3001,
+    server = connect( getHtmlForm , handleFormRequest );
 
-server = connect( getHtmlForm , handleFormRequest );
-
-server.listen( 3001 );
+server.listen( port );
 
 log();
 log( ' ->\033[1m started at: \033[32m' + new Date() + '\033[0m' );
-log( ' ->\033[1m listening on: \033[36mhttp://localhost:3000/\033[0m' );
+log( ' ->\033[1m listening on: \033[36mhttp://localhost:' + port + '/\033[0m' );
 log( ' ->\033[1m upload directory is: \033[31m' + dir + '\033[0m' );
 
 
