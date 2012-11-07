@@ -4,7 +4,7 @@ var http = require( 'http' ),
     fs = require( 'fs' ),
     server,
     log = console.log,
-    dir =  '/tmp/',
+    dir =  '/tmp',
     getHtmlForm = function ( req, res, next ) {
         if ( req.url === '/test/' ) {
         log( ' -> req url :', req.url );
@@ -223,7 +223,7 @@ var http = require( 'http' ),
         form = null;
         console.log( '\n\033[1;33mHi!, I\'m the callback function!\033[0m' );
     },
-    port = 3001,
+    port = 3000,
     server = connect( getHtmlForm , handleFormRequest );
 
 server.listen( port );
