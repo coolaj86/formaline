@@ -121,6 +121,7 @@ form.on('end', function (fields, files) {
   fields.password = fields.password[0];
   console.log(fields, files);
 });
+```
 
 NOTE:
 I put a lot of thought (too much, in fact) into how to represent fields and files in a way which is both consistent and easy to use.
@@ -145,8 +146,6 @@ and handle the fields in a `switch` is ugly / cumbersome.
 
 Another workaround is to require php-style field naming conventions such as `categories[]` and `username`, but PHP is &lt;insert-profanity-here&gt; and self-respecting individuals have a hard time taking anything that started with PHP seriously, even though it's atually not a terribly profane solution.
 The downside to this solution is that it requires parsing field names.
-
-```
 
 ## Future Enhancements
 
