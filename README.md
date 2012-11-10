@@ -1,27 +1,26 @@
 ## Formaline v2.x
 
-Formaline extends PoorForm to make it a slightly better.
+Formaline extends [PoorForm](http://github.com/coolaj86/poor-form) to create a very developer-friendly form parser, and still easy to get at the guts.
 
 It doesn't include the kitchen sink, but it's got at least a drawer or two and cleanly separates the forks from the knives. Also, Formaline is from Brooklyn.
 
 If you don't think Formaline is light-weight enough for you, you're crazy.
-Also, you'd probably really like PoorForm.
+Also, you'd probably really like [PoorForm](http://github.com/coolaj86/poor-form).
 
 ## API
 
-  * `Formaline.create(request, options)`
-  * `Formaline#on('progress', fn)`
-  * `Formaline#on('field', fn)`
-  * `Formaline#on('file', fn)`
-    * `FormFile#name`
-    * `FormFile#size`
-    * `FormFile#type`
-    * `FormFile#lastModifiedDate`
-    * `FormFile#path`
-    * `FormFile#headers`
-    * `FormFile#<hashtype>`
-  * `Formaline#on('end', fn)`
-  * `Formaline#parse()`
+  * [`Formaline.create(request, options)`](#formalinecreaterequest-options)
+  * [`Formaline#on('progress', fn)`](#formalineonprogress-function--)
+  * [`Formaline#on('field', fn)`](#formalineonfield-function-name-decodedvalue-)
+  * [`Formaline#on('file', fn)`](#formalineonfile-function-name-goodfilestream-headers-)
+    * [`FormFile#name`](#formfile)
+    * [`FormFile#size`](#formfile)
+    * [`FormFile#type`](#formfile)
+    * [`FormFile#lastModifiedDate`](#formfile)
+    * [`FormFile#path`](#formfile)
+    * [`FormFile#headers`](#formfile)
+    * [`FormFile#<hashtype>`](#formfile) (md5, sha1, sha512, etc)
+  * [`Formaline#on('end', fn)`](#formalineonend-function-fields-files-)
 
 ### Formaline.create(request, options)
 
