@@ -1,18 +1,18 @@
-## GoodForm
+## Formaline v2.x
 
-GoodForm extends PoorForm to make it a slightly better.
+Formaline extends PoorForm to make it a slightly better.
 
-It doesn't include the kitchen sink, but it's got at least a drawer or two and cleanly separates the forks from the knives. Also, GoodForm is from Brooklyn.
+It doesn't include the kitchen sink, but it's got at least a drawer or two and cleanly separates the forks from the knives. Also, Formaline is from Brooklyn.
 
-If you don't think GoodForm is light-weight enough for you, you're crazy.
+If you don't think Formaline is light-weight enough for you, you're crazy.
 Also, you'd probably really like PoorForm.
 
 ## API
 
-  * `GoodForm.create(request, options)`
-  * `GoodForm#on('progress', fn)`
-  * `GoodForm#on('field', fn)`
-  * `GoodForm#on('file', fn)`
+  * `Formaline.create(request, options)`
+  * `Formaline#on('progress', fn)`
+  * `Formaline#on('field', fn)`
+  * `Formaline#on('file', fn)`
     * `FormFile#name`
     * `FormFile#size`
     * `FormFile#type`
@@ -20,10 +20,10 @@ Also, you'd probably really like PoorForm.
     * `FormFile#path`
     * `FormFile#headers`
     * `FormFile#<hashtype>`
-  * `GoodForm#on('end', fn)`
-  * `GoodForm#parse()`
+  * `Formaline#on('end', fn)`
+  * `Formaline#parse()`
 
-### GoodForm.create(request, options)
+### Formaline.create(request, options)
 
 Returns an instance of `PoorForm` with a few extra events tacked on as described above.
 
@@ -72,31 +72,37 @@ However, if `arrayFields` is an array of field names, two special things happen:
 #### Example
 
 ```javascript
-// Using Connect, for example
-app.use(function (req, res, next) {
-  var form = GoodForm.create(req, {
-          tmpDir: '/mnt/uploads/tmp'
-        , hashes: ['md5']
-        , arrayFields: ['photos']
-      })
-    , fieldsMap
-    , filesMap
+(function () {
+  "use strict";
+
+  var Formaline = require('formaline')
     ;
+  // Using Connect, for example
+  app.use(function (req, res, next) {
+    var form = Formaline.create(req, {
+            tmpDir: '/mnt/uploads/tmp'
+          , hashes: ['md5']
+          , arrayFields: ['photos']
+        })
+      , fieldsMap
+      , filesMap
+      ;
 
-  if (!form) {
-    console.log("Either this was already parsed or it isn't a multi-part form");
-    next();
-    return;
-  }
+    if (!form) {
+      console.log("Either this was already parsed or it isn't a multi-part form");
+      next();
+      return;
+    }
 
-  // form.on('field', ...)
-  // ...
-});
+    // form.on('field', ...)
+    // ...
+  });
+}());
 ```
 
-### GoodForm#on('progress', function () {})
+### Formaline#on('progress', function () {})
 
-Fires after `GoodForm#loaded` is updated so you can compare that against `GoodForm#total`.
+Fires after `Formaline#loaded` is updated so you can compare that against `Formaline#total`.
 
 ```javascript
 form.on('progress', function () {
@@ -110,7 +116,7 @@ form.on('progress', function () {
 })
 ```
 
-### GoodForm#on('field', function (name, decodedValue) {})
+### Formaline#on('field', function (name, decodedValue) {})
 
 Provides the form name and decoded string
 abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events
@@ -124,7 +130,7 @@ form.on('field', function (key, value) {
 })
 ```
 
-### GoodForm#on('file', function (name, goodFileStream, headers) {})
+### Formaline#on('file', function (name, goodFileStream, headers) {})
 
 Provides the form name (not filename) as well as a FormFile stream (described below, has the filename),
 and all associated headers (generally not needed).
@@ -188,7 +194,7 @@ abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
   * `headers` is the array of MIME headers associated with the form
   * `md5`, `sha1`, `sha256`, `sha512`, etc are attached in declared in the `options.hashes` array
 
-### `GoodForm#on('end', function (fields, files) {})`
+### `Formaline#on('end', function (fields, files) {})`
 
 Congratulations. You've reached the end of the form.
 
