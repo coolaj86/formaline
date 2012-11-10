@@ -45,7 +45,9 @@
     this.length = null; // alias of size
     this.type = headers.type;
     this.name = headers.filename;
+    this.fieldname = headers.name;
     this.lastModifiedDate = null;
+    this.headers = headers;
   }
   util.inherits(GoodFile, EventEmitter);
   GoodFile.prototype.pause = function () {
@@ -110,7 +112,6 @@
 
         curField = null;
         curFile = new GoodFile(req, headers);
-        curFile.headers = headers;
 
         filesMap[headers.name].push(curFile);
         filesArr.push(curFile);
@@ -118,7 +119,7 @@
         if (options.hashes.length) {
           startHashing(curFile, options.hashes);
         }
-        poorForm.emit('file', headers.name, curFile);
+        poorForm.emit('file', headers.name /*form name, not file name*/, curFile);
         if (null !== options.path) {
           curFile.pipe(fs.createWriteStream(path.join(options.path, UUID.v4())));
         }
@@ -129,7 +130,7 @@
 
         curFile = null;
         curField = {
-            name: headers.name
+            name: decodeURIComponent(headers.name)
           , value: ""
         };
 

@@ -10,7 +10,6 @@ Also, you'd probably really like PoorForm.
 ## API
 
   * `GoodForm.create(request, options)`
-  * `GoodForm.pump(readableStream, filepath)`
   * `GoodForm#on('progress', fn)`
   * `GoodForm#on('field', fn)`
   * `GoodForm#on('file', fn)`
@@ -19,6 +18,8 @@ Also, you'd probably really like PoorForm.
     * `GoodFile#type`
     * `GoodFile#lastModifiedDate`
     * `GoodFile#path`
+    * `GoodFile#headers`
+    * `GoodFile#<hashtype>`
   * `GoodForm#on('end', fn)`
   * `GoodForm#parse()`
 
@@ -31,10 +32,10 @@ Like PoorForm, it returns null if either it's not a multi-part form or the form 
 #### Options
 
     {
-        tmpDir: null || pathString || os.tmpDir() /*default*/
-      , hashes: ["md5", "sha1", ...] || [] /*default*/
-      , fieldNames: [fieldNameString] || [] /*default*/
-      , arrayFields: [fieldNameString] || fieldNames /*default*/
+        tmpDir: null || pathString || os.tmpDir()
+      , hashes: ["md5", "sha1", ...] || []
+      , fieldNames: [fieldNameString] || []
+      , singleFields: [fieldNameString] || []
     }
 
 ##### tmpDir
@@ -131,7 +132,7 @@ Treating all fields as files would have unneccesary overhead in parsing.
 What you're likely to do with a field (store it in a database as metadata)
 is different from what you'll do with a file (store it in a file system).
 
-The hybrid approach of maping pure arrays makes it simple to ignore (and or error check)
+The hybrid approach of mapping pure arrays makes it simple to ignore (and or error check)
 duplicate fields that should have been singular without the confusion of other common methodologies
 (see below).
 
@@ -150,3 +151,9 @@ The downside to this solution is that it requires parsing field names.
 ## Future Enhancements
 
 needs an abstracted `error` event for both `PoorForm` and `http#request`
+
+default max size of field name length (256b)
+
+default max size of field buffer length (1mb?)
+
+optional max size of file buffer length (1mb?)
