@@ -246,9 +246,10 @@ The downside to this solution is that it requires parsing field names.
 The following are abbreviated security concerns for a form handler with generous and reasonable defaults
 
   * `error` - abstract `req.on('error')` and `poorForm.on('error', fn)` as to handle malformed requests
-  * `maxFieldHeaderSize` - default 256 Bytes - prevent memory attacks
-  * `maxFieldNames` - default 1000 - prevent hash collision attacks
-  * `maxFieldValueSize` - default 4KB - prevent memory attacks
+  * `maxHeaderSize` - default 256 Bytes - prevent memory attacks
+  * `maxUniqueFieldNames` - default 1000 - prevent hash collision attacks
+  * `maxFieldSize` - default 4KB - prevent memory attacks
+  * `maxFieldTotalSize` - default 1MB - prevent memory attacks
   * `maxFileSize` - default 4 GiB - prevent storage attacks
   * `maxUploadSize` - default 16 GiB - prevent memory / storage attacks
   * `removeIncomplete` - default true - ignore unless creating a resumable upload service
