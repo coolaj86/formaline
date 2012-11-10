@@ -13,13 +13,13 @@ Also, you'd probably really like PoorForm.
   * `GoodForm#on('progress', fn)`
   * `GoodForm#on('field', fn)`
   * `GoodForm#on('file', fn)`
-    * `GoodFile#name`
-    * `GoodFile#size`
-    * `GoodFile#type`
-    * `GoodFile#lastModifiedDate`
-    * `GoodFile#path`
-    * `GoodFile#headers`
-    * `GoodFile#<hashtype>`
+    * `FormFile#name`
+    * `FormFile#size`
+    * `FormFile#type`
+    * `FormFile#lastModifiedDate`
+    * `FormFile#path`
+    * `FormFile#headers`
+    * `FormFile#<hashtype>`
   * `GoodForm#on('end', fn)`
   * `GoodForm#parse()`
 
@@ -34,8 +34,7 @@ Like PoorForm, it returns null if either it's not a multi-part form or the form 
     {
         tmpDir: null || pathString || os.tmpDir()
       , hashes: ["md5", "sha1", ...] || []
-      , fieldNames: [fieldNameString] || []
-      , singleFields: [fieldNameString] || []
+      , arrayFields: [fieldNameString] || null
     }
 
 ##### tmpDir
@@ -54,26 +53,43 @@ The hash will be attached to the file before the `end` event.
 
 List the fields and or files you expect here and they'll be prepopulated with empty arrays if not submitted.
 
+##### arrayFields
+
+When `end` fires it hands back a map for both `fields` and `files`,
+all of which are assumed to be arrays by default (as per the HTTP spec).
+
+However, if `arrayFields` is an array of field names, two special things happen:
+
+  1. All of the fields listed will always return an array, even if it's empty
+
+    I.E. The user created an album, but uploaded 0 photos.
+
+  2. All fields and files not listed in `arrayFields` will be treated as single values
+     (if the field is encountered multiple times, only the last value is kept)
+
+    I.E. If `username` is given twice, only the second value is kept.
+
 #### Example
 
 ```javascript
 // Using Connect, for example
 app.use(function (req, res, next) {
-  var goodForm = GoodForm.create(req, {
+  var form = GoodForm.create(req, {
           tmpDir: '/mnt/uploads/tmp'
         , hashes: ['md5']
-        , fieldNames: ['username', 'password', 'photos']
         , arrayFields: ['photos']
       })
+    , fieldsMap
+    , filesMap
     ;
 
-  if (!goodForm) {
+  if (!form) {
     console.log("Either this was already parsed or it isn't a multi-part form");
     next();
     return;
   }
 
-  // goodForm.on('field', ...)
+  // form.on('field', ...)
   // ...
 });
 ```
@@ -82,26 +98,89 @@ app.use(function (req, res, next) {
 
 Fires after `GoodForm#loaded` is updated so you can compare that against `GoodForm#total`.
 
+```javascript
+form.on('progress', function () {
+  var ratio = poorForm.loaded / poorForm.total
+    , percent = Math.round(ratio * 100)
+    ;
+
+  console.log(percent + '% complete (' + poorForm.loaded + ' bytes)');
+  // might be 0 because poorForm.total is Infinity when Content-Length is undefined
+  // I.E. Transfer-Encoding: chunked
+})
+```
+
 ### GoodForm#on('field', function (name, decodedValue) {})
 
 Provides the form name and decoded string
 abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events
 (remember than a field's data is occasionally chunked across two `fielddata` events).
 
+```javascript
+form.on('field', function (key, value) {
+  // both key and value have been run through `str = decodeURIComponent(str)`
+  fieldsMap[key] = value;
+  console.log(key, value);
+})
+```
+
 ### GoodForm#on('file', function (name, goodFileStream, headers) {})
 
-Provides the form name (not filename) as well as a GoodFile stream (described below, has the filename),
+Provides the form name (not filename) as well as a FormFile stream (described below, has the filename),
 and all associated headers (generally not needed).
 
 Remember: If you specify `options.tmpDir = null`,
 you are entirely responsible for writing the file to disk, GridStore, S3, the toilet, or wherever.
 
-#### GoodFile
+```javascript
+form.on('file', function (key, formFile) {
+  // for example, we want to save to amazon s3 using knox
+  var s3 = require('knox').createClient({ key: '<api-key>', secret: '<secret>', bucket: '<foo>'})
+    , s3req
+    , metadata
+    ;
+
+  // and let's say we have a field called `metadata` containing a hash with metadata
+  // such as `lastModifiedDate` and `size` for every file to be uploaded
+  if (!fieldMaps.metadata) {
+    console.error('sad day, no metadata');
+  } else {
+    metadata = JSON.parse(fieldMaps.metadata[formFile.name]);
+  }
+
+  s3req = s3.put('/test/file.bin', {
+      'Content-Length': metadata.size
+    , 'Content-Type': 'application/octet-stream'
+  });
+  formFile.pipe(s3);
+
+  formFile.on('end', function () {
+    // formFile is an instance of EventEmitter, but it `JSON.stringify()`s as you would expect.
+    // Also note that some of the properties are added just before the `end` event fires.
+    formFile.lastModifiedDate = metadata.lastModifiedDate;
+    if (!formFile.sha1 === metadata.sha1) {
+      console.error('Oh No! The sha1 sums don't match!');
+    }
+    console.log(key, JSON.stringify(formFile));
+  });
+
+  s3.on('response', function(res){
+    if (200 == res.statusCode) {
+      console.log('saved to %s', req.url);
+    } else {
+      console.error('fell on hard times, didn't save %s', req.url);
+    }
+  });
+})
+```
+
+#### FormFile
 
 A simple EventEmitter FileStream (pausable, resumable, etc)
 abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
 
   * `name` is taken from the `filename` in the `Content-Disposition` 
+  * `fieldname` is the actual name of the field
   * `size` is the current byte size of the file, which changes until the `end` event is called
   * `type` is the `contentType`
   * `lastModifiedDate` is updated each time a chunk is written to the file
@@ -114,13 +193,22 @@ abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
 Congratulations. You've reached the end of the form.
 
   * `fields` is a map of arrays of Strings `{ "anyFieldName": ["decodedStringValue"] }`
-  * `files` is a map of arrays of GoodFiles `{ "anyFileName": [aGoodFile, anOtherGoodFile] }`
+  * `files` is a map of arrays of FormFiles `{ "anyFileName": [aFormFile, anOtherFormFile] }`
 
 ```javascript
 form.on('end', function (fields, files) {
-  fields.username = fields.username[0];
-  fields.password = fields.password[0];
-  console.log(fields, files);
+  // Normally the values for each key of fields and files would be arrays
+  // However, I specified `arrayFields`, which means that those names not listed are not arrays
+  console.log(fields.username);
+  console.log(fields.password);
+
+  // this is an array because it would be by default if I ha
+  files.photos.forEach(function (formFile) {
+    // JSON.stringify ignores the non-enumerable properties of the underlying EventEmitter
+    console.log(JSON.stringify(formFile));
+  });
+
+  console.log('uploads complete');
 });
 ```
 
@@ -148,12 +236,14 @@ and handle the fields in a `switch` is ugly / cumbersome.
 Another workaround is to require php-style field naming conventions such as `categories[]` and `username`, but PHP is &lt;insert-profanity-here&gt; and self-respecting individuals have a hard time taking anything that started with PHP seriously, even though it's atually not a terribly profane solution.
 The downside to this solution is that it requires parsing field names.
 
-## Future Enhancements
+## Future Enhancements (TODO)
 
-needs an abstracted `error` event for both `PoorForm` and `http#request`
+The following are abbreviated security concerns for a form handler with generous and reasonable defaults
 
-default max size of field name length (256b)
-
-default max size of field buffer length (1mb?)
-
-optional max size of file buffer length (1mb?)
+  * `error` - abstract `req.on('error')` and `poorForm.on('error', fn)` as to handle malformed requests
+  * `maxFieldHeaderSize` - default 256 Bytes - prevent memory attacks
+  * `maxFieldNames` - default 1000 - prevent hash collision attacks
+  * `maxFieldValueSize` - default 4KB - prevent memory attacks
+  * `maxFileSize` - default 4 GiB - prevent storage attacks
+  * `maxUploadSize` - default 16 GiB - prevent memory / storage attacks
+  * `removeIncomplete` - default true - ignore unless creating a resumable upload service
