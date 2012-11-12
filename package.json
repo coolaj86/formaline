@@ -1,16 +1,36 @@
 {
-    "name" : "formaline"
-  , "version" : "0.6.7"
-  , "description" : "formaline, a module for handling form requests ( HTTP POST / PUT ) and for fast parsing of file uploads, it is also ready to use with middlewares like connect"
-  , "homepage" : "https://github.com/rootslab/formaline"
-  , "repository" : {
-        "type" : "git"
-        ,"url" : "git://github.com/rootslab/formaline.git"
-    }
-  , "keywords" : ["form","upload","multipart","urlencoded","formaline","parser","connect","post"]
-  , "tags":["form","upload","multipart","urlencoded","post","json"]
-  , "author" : "Guglielmo Ferri <44gatti@gmail.com>"
-  , "dependencies" : {}
-  , "main" : "index"
-  , "engines" : { "node": ">=0.4.8" }
+  "name": "formaline",
+  "version": "2.0.0-rc.1",
+  "description": "Built upon the ultrafast poor-form, truly a formidable competitor.",
+  "main": "lib/formaline.js",
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {
+    "poor-form": ">=1.0.2 <1.1.0"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "node test.js & sleep 1; bash test.sh"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rootslab/formaline.git"
+  },
+  "keywords": [
+    "formaline",
+    "formidable",
+    "good-form",
+    "poor-form",
+    "multipart",
+    "upload",
+    "form",
+    "connect",
+    "express",
+    "post",
+    "parser"
+  ],
+  "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.info)",
+  "license": "MIT"
 }
