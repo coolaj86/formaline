@@ -9,8 +9,20 @@
     , cryptostream = require('./cryptostream')
     , fs = require('fs')
     , path = require('path')
-    , UUID = require('node-uuid')
+    , alphanum = '0123456789abcdefghijklmnopqrstuvwxyz'
     ;
+
+  function randomString(length, chars) {
+      var result = ''
+        , i
+        ;
+
+      for (i = 0; i < length; i += 1) {
+        result += chars[Math.round(Math.random() * (chars.length - 1))];
+      }
+
+      return result;
+  }
 
   os.tmpDir = os.tmpDir || function () {
     return process.env.TMP || process.env.TMP || '/tmp';
@@ -151,7 +163,7 @@
         }
         poorForm.emit('file', headers.name /*form name, not file name*/, curFile);
         if (null !== options.path) {
-          curFile.path = path.join(options.path, UUID.v4());
+          curFile.path = path.join(options.path, randomString(64, alphanum));
           curFile.pipe(fs.createWriteStream(curFile.path));
         }
       } else {
@@ -241,4 +253,5 @@
   };
 
   module.exports.Formaline = Formaline;
+  module.exports.GoodForm = Formaline;
 }());
