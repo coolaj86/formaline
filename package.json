@@ -1,8 +1,8 @@
 {
-  "name": "good-form",
-  "version": "1.0.0",
+  "name": "formaline",
+  "version": "2.0.0-rc.1",
   "description": "Built upon the ultrafast poor-form, truly a formidable competitor.",
-  "main": "good-form.js",
+  "main": "formaline.js",
   "dependencies": {
     "poor-form": ">=1.0.2 <1.1.0",
     "connect": "~2.6.0",
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/coolaj86/good-form.git"
+    "url": "git://github.com/rootslab/formaline.git"
   },
   "keywords": [
     "formaline",
