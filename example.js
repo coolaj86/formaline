@@ -1,19 +1,29 @@
-/*jshint strict:true node:true es5:true onevar:true laxcomma:true laxbreak:true eqeqeq:true immed:true latedef:true*/
+/*jshint strict:true node:true es5:true onevar:true laxcomma:true laxbreak:true eqeqeq:true immed:true latedef:true unused:true*/
 (function () {
   "use strict";
 
   var connect = require('connect')
-    , GoodForm = require('./good-form').GoodForm
-    , UUID = require('node-uuid')
+    , fs = require('fs')
+    , Formaline = require('./formaline').Formaline
     , app
     , server
     ;
 
+  /*
+  function hidePrivates(key, value) {
+    if ('_' === key[0]) {
+      return undefined;
+    }
+    return value;
+  }
+  */
+
   app = connect.createServer()
     .use(function (req, res, next) {
-        var form = GoodForm.create(req)
-          , fields = {}
-          , files = []
+        var form = Formaline.create(req, {
+                hashes: ['md5', 'sha1']
+              , arrayFields: ['avatar']
+            })
           ;
 
         if (!form) {
@@ -23,33 +33,43 @@
           return;
         }
 
-        form.on('progress', function (bytes) {
-          //form.total;
+        form.on('progress', function () {
+          console.log((100 * (form.loaded / form.total)).toFixed(2) + '%');
         });
 
-        form.on('field', function (key, value, headers) {
-          // TODO php-style keyname[] ?
-          if (fields.hasOwnProperty(key)) {
-            if (!Array.isArray(fields[key])) {
-              fields[key] = [fields[key], value];
-            } else {
-              fields[key].push(value);
-            }
-          }
+        form.on('field', function (key, value) {
+          console.log(key, value);
         });
 
-        form.on('file', function (key, file, headers) {
-          // GoodForm will call req.pause() and req.resume()
-          form.createPipe(file, '/tmp/' + UUID.v4());
+        form.on('file', function (key, file) {
+          console.log(key, file);
         });
 
-        form.on('end', function () {
+        form.on('end', function (fields, files) {
           console.log(fields);
           console.log(files);
-          res.end(JSON.stringify({ "success": true }, null, '  '));
+
+          // TODO this should, of course, use forEachAsync
+          Object.keys(files).forEach(function (key) {
+            var arr = files[key]
+              ;
+
+            arr.forEach(function (file) {
+              fs.unlink(file.path);
+            });
+          });
+
+          res.setHeader('Content-Type', 'application/json');
+          res.end(JSON.stringify({
+              "success": true
+            , "result": {fields: fields, files: files}
+          //}, hidePrivate, '  ') + '\n');
+          }, null, '  ') + '\n');
         });
       })
     ;
 
-  app.listen(process.argv[2] || 3000);
+  server = app.listen(process.argv[2] || 3000, function () {
+    console.log('Listening...', server.address());
+  });
 }());

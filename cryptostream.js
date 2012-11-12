@@ -30,11 +30,13 @@
     this._hash.update(chunk);
     return true;
   };
+  CryptoStream.prototype.digest = function (str) {
+    return this._hash.digest(str);
+  };
   CryptoStream.prototype.end = function (bytes, enc) {
     if (bytes) {
       this.write(bytes, enc);
     }
-    this.digest = this._hash.digest('hex');
     this.emit('end');
   };
 

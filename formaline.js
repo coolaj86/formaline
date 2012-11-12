@@ -4,7 +4,7 @@
 
   var os = require('os')
     , PoorForm = require('poor-form')
-    , EventEmitter = require('events').EventEmitter
+    , Stream = require('stream')
     , util = require('util')
     , cryptostream = require('./cryptostream')
     , fs = require('fs')
@@ -17,63 +17,93 @@
   };
 
   function startHashing(file, hashes) {
+    //file._hashes = {};
     hashes.forEach(function (algo) {
       var cs = cryptostream.create(algo)
         ;
 
+      //file._hashes[algo] = cs;
       file.pipe(cs);
-      cs.on('end', function (digest) {
-        file[algo] = digest;
+      cs.on('end', function () {
+        file[algo] = cs.digest('hex');
       });
     });
   }
+  /*
   function stopHashing(file) {
-    file._hashes = undefined;
-  }
+    Object.keys(file._hashes, function (algo) {
+      var cs = file._hashes[algo]
+        ;
 
-  function GoodFile(req, headers) {
-    if (!(this instanceof GoodFile)) {
-      return new GoodFile(req, headers);
+      if (!file[algo]) {
+        //file.partial = true;
+        file[algo] = cs.digest('hex');
+      }
+    });
+  }
+  */
+
+  function FormFile(req, headers) {
+    if (!(this instanceof FormFile)) {
+      return new FormFile(req, headers);
     }
 
-    EventEmitter.call(this);
-
-    this._req = req;
+    Object.defineProperty(this, '_events', {
+        enumerable: false
+      , writable: true
+    });
+    Stream.call(this);
 
     // W3C File API
     this.size = 0;
-    this.length = null; // alias of size
     this.type = headers.type;
     this.name = headers.filename;
-    this.fieldname = headers.name;
     this.lastModifiedDate = null;
+
+    //this._req = req;
+    Object.defineProperty(this, '_req', {
+        value: req
+      , enumerable: false
+    });
     this.headers = headers;
+    this.fieldname = headers.name;
+    this.length = null; // alias of size
+    // TODO headers should subtract filename, name, type
+
+    // NodeJS Stream API
+    Object.defineProperty(this, 'readable', {
+        value: true
+      , enumerable: false
+    });
+    Object.defineProperty(this, 'writable', {
+        value: false
+      , enumerable: false
+    });
   }
-  util.inherits(GoodFile, EventEmitter);
-  GoodFile.prototype.pause = function () {
+  util.inherits(FormFile, Stream);
+  FormFile.prototype.pause = function () {
     this._req.pause();
   };
-  GoodFile.prototype.resume = function () {
+  FormFile.prototype.resume = function () {
     this._req.resume();
   };
-  GoodFile.create = function (req, headers) {
-    return new GoodFile(req, headers);
+  /*
+  FormFile.prototype.pipe = function () {
+
+  };
+  */
+  FormFile.create = function (req, headers) {
+    return new FormFile(req, headers);
   };
 
-  function GoodForm() {
+  function Formaline() {
   }
-  GoodForm.pump = function (file, pathname) {
-    var tmpFile = fs.createWriteStream(pathname)
-      ;
-
-    file.pipe(tmpFile);
-  };
-  GoodForm.create = function (req, options) {
+  Formaline.create = function (req, options) {
     var poorForm = PoorForm.create(req)
-      , fieldsArr
-      , filesArr
-      , fieldsMap
-      , filesMap
+      , fieldsArr = []
+      , filesArr = []
+      , fieldsMap = {}
+      , filesMap = {}
       , curFile
       , curField
       ;
@@ -83,9 +113,9 @@
     }
 
     options = options || {};
-    options.fieldNames = options.fieldNames || [];
     options.expectedFiles = options.expectedFiles || [];
     options.hashes = options.hashes || [];
+    options.arrayFields = options.arrayFields || null;
 
     // either not defined or undefined
     if ('undefined' === typeof options.path) {
@@ -111,7 +141,7 @@
         filesMap[headers.name] = filesMap[headers.name] || [];
 
         curField = null;
-        curFile = new GoodFile(req, headers);
+        curFile = new FormFile(req, headers);
 
         filesMap[headers.name].push(curFile);
         filesArr.push(curFile);
@@ -121,7 +151,8 @@
         }
         poorForm.emit('file', headers.name /*form name, not file name*/, curFile);
         if (null !== options.path) {
-          curFile.pipe(fs.createWriteStream(path.join(options.path, UUID.v4())));
+          curFile.path = path.join(options.path, UUID.v4());
+          curFile.pipe(fs.createWriteStream(curFile.path));
         }
       } else {
         // probably a field, but maybe a file without a filename
@@ -134,7 +165,6 @@
           , value: ""
         };
 
-        fieldsMap[headers.name].push(curField);
         fieldsArr.push(curField);
       }
     });
@@ -156,17 +186,49 @@
         curFile = null;
       } else {
         curField.value = decodeURIComponent(curField.value);
+        fieldsMap[curField.name].push(curField.value);
         poorForm.emit('field', curField.name, curField.value);
         curField = null;
       }
     });
 
     poorForm.on('formend', function () {
-      options.fieldNames.forEach(function (key) {
+      var arrayFields = options.arrayFields
+        ;
+
+      // It is useful for resumableness to know the sum of the uploaded chunk
+      // and the sum can be resumed without recalc server side
+      if (curFile) {
+        curFile.emit('end');
+        // which name? incomplete, complete, partial
+        curFile.incomplete = true;
+        // TODO unless options.keepIncomplete, fs.unlink
+      }
+      //filesArr.forEach(stopHashing);
+
+      if (!arrayFields) {
+        poorForm.emit('end', fieldsMap, filesMap);
+        return;
+      }
+
+      // make sure that any non-submitted fields are empty arrays
+      arrayFields.forEach(function (key) {
         fieldsMap[key] = fieldsMap[key] || [];
         filesMap[key] = filesMap[key] || [];
       });
-      filesArr.forEach(stopHashing);
+
+      // change remaining fields from arrays to single values
+      Object.keys(fieldsMap).forEach(function (key) {
+        if (-1 === arrayFields.indexOf(key)) {
+          fieldsMap[key] = fieldsMap[key][0];
+        }
+      });
+      Object.keys(filesMap).forEach(function (key) {
+        if (-1 === arrayFields.indexOf(key)) {
+          filesMap[key] = filesMap[key][0];
+        }
+      });
+
       poorForm.emit('end', fieldsMap, filesMap);
     });
 
@@ -178,5 +240,5 @@
     return poorForm;
   };
 
-  module.exports.GoodForm = GoodForm;
+  module.exports.Formaline = Formaline;
 }());

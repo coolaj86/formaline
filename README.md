@@ -48,16 +48,13 @@ so change it if the system's default tmp is a different partition than your dest
 An array of hashes that should be performed on each file (fields are excluded).
 The hash will be attached to the file before the `end` event.
 
-##### fieldNames
-
-List the fields and or files you expect here and they'll be prepopulated with empty arrays if not submitted.
-
 ##### arrayFields
 
 When `end` fires it hands back a map for both `fields` and `files`,
 all of which are assumed to be arrays by default (as per the HTTP spec).
 
-However, if `arrayFields` is an array of field names, two special things happen:
+However, if `arrayFields` is an array of field names (or an empty array),
+two special things happen:
 
   1. All of the fields listed will always return an array, even if it's empty
 
