@@ -4,7 +4,7 @@
 
   var connect = require('connect')
     , fs = require('fs')
-    , Formaline = require('./formaline').Formaline
+    , Formaline = require('./').Formaline
     , app
     , server
     ;
