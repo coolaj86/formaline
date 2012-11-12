@@ -4,18 +4,9 @@
   "description": "Built upon the ultrafast poor-form, truly a formidable competitor.",
   "main": "formaline.js",
   "dependencies": {
-    "poor-form": ">=1.0.2 <1.1.0",
-    "connect": "~2.6.0",
-    "node-uuid": ">=1.4.0 <1.5.0"
+    "poor-form": ">=1.0.2 <1.1.0"
   },
   "devDependencies": {
-    "FormData": "*",
-    "File": "*",
-    "bufferjs": "1.x",
-    "ahr2": "2.x",
-    "walk": "2.x",
-    "loop": ">=2.1.1 <2.2.0",
-    "forEachAsync": "2.x"
   },
   "scripts": {
     "test": "node test.js & sleep 1; bash test.sh"
@@ -27,6 +18,8 @@
   "keywords": [
     "formaline",
     "formidable",
+    "good-form",
+    "poor-form",
     "multipart",
     "upload",
     "form",

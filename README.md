@@ -7,6 +7,8 @@ It doesn't include the kitchen sink, but it's got at least a drawer or two and c
 If you don't think Formaline is light-weight enough for you, you're crazy.
 Also, you'd probably really like [PoorForm](http://github.com/coolaj86/poor-form).
 
+The **[Formaline v0.x](https://github.com/rootslab/formaline/tree/v0.x)** [documentation](https://github.com/rootslab/formaline/blob/v0.x/Readme.md) is available on the v0.x branch. v0.6.4 seems to be the best version. It never made it to v1.0.0.
+
 ## API
 
   * [`Formaline.create(request, options)`](#formalinecreaterequest-options)
