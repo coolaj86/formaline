@@ -61,9 +61,9 @@ two special things happen:
     I.E. The user created an album, but uploaded 0 photos.
 
   2. All fields and files not listed in `arrayFields` will be treated as single values
-     (if the field is encountered multiple times, only the last value is kept)
+     (if the field is encountered multiple times, only the first value is kept)
 
-    I.E. If `username` is given twice, only the second value is kept.
+    I.E. If `username` is given twice, only the first value is kept.
 
 #### Example
 
@@ -73,10 +73,11 @@ two special things happen:
 
   var Formaline = require('formaline')
     ;
+
   // Using Connect, for example
   app.use(function (req, res, next) {
     var form = Formaline.create(req, {
-            tmpDir: '/mnt/uploads/tmp'
+            tmpDir: '/mnt/my-app-data/tmp'
           , hashes: ['md5']
           , arrayFields: ['photos']
         })
