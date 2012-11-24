@@ -162,7 +162,7 @@ form.on('file', function (key, formFile) {
     // Also note that some of the properties are added just before the `end` event fires.
     formFile.lastModifiedDate = metadata.lastModifiedDate;
     if (!formFile.sha1 === metadata.sha1) {
-      console.error('Oh No! The sha1 sums don't match!');
+      console.error("Oh No! The sha1 sums don't match!");
     }
     console.log(key, JSON.stringify(formFile));
   });
