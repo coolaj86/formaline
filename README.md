@@ -191,7 +191,7 @@ abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
   * `headers` is the array of MIME headers associated with the form
   * `md5`, `sha1`, `sha256`, `sha512`, etc are attached in declared in the `options.hashes` array
 
-### `Formaline#on('end', function (fields, files) {})`
+### Formaline#on('end', function (fields, files) {})
 
 Congratulations. You've reached the end of the form.
 
