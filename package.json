@@ -1,13 +1,13 @@
 {
   "name": "formaline",
-  "version": "2.0.0-rc.1",
+  "version": "2.0.0",
   "description": "Built upon the ultrafast poor-form, truly a formidable competitor.",
   "main": "lib/formaline.js",
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {
-    "poor-form": ">=1.0.2 <1.1.0"
+    "poor-form": ">=1.1.0 <1.2.0"
   },
   "devDependencies": {
   },
