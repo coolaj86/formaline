@@ -187,9 +187,9 @@ abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
   * `size` is the current byte size of the file, which changes until the `end` event is called
   * `type` is the `contentType`
   * `lastModifiedDate` is updated each time a chunk is written to the file
-  * `path` is the current file path (either in '/tmp' or a path you specified)
+  * `path` is the current file path (either in `/tmp` or a path you specified)
   * `headers` is the array of MIME headers associated with the form
-  * `md5`, `sha1`, `sha256`, `sha512`, etc are attached in declared in the `options.hashes` array
+  * `md5`, `sha1`, `sha256`, `sha512`, etc are attached as per the `options.hashes` array
 
 ### Formaline#on('end', function (fields, files) {})
 
