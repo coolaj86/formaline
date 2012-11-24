@@ -12,7 +12,7 @@ The **[Formaline v0.x](https://github.com/rootslab/formaline/tree/v0.x)** [docum
   * [`Formaline.create(request, options)`](#formalinecreaterequest-options)
   * [`Formaline#on('progress', fn)`](#formalineonprogress-function--)
   * [`Formaline#on('field', fn)`](#formalineonfield-function-name-decodedvalue-)
-  * [`Formaline#on('file', fn)`](#formalineonfile-function-name-goodfilestream-headers-)
+  * [`Formaline#on('file', fn)`](#formalineonfile-function-name-formfilestream-headers-)
     * [`FormFile#name`](#formfile)
     * [`FormFile#size`](#formfile)
     * [`FormFile#type`](#formfile)
@@ -127,7 +127,7 @@ form.on('field', function (key, value) {
 })
 ```
 
-### Formaline#on('file', function (name, goodFileStream, headers) {})
+### Formaline#on('file', function (name, formFileStream, headers) {})
 
 Provides the form name (not filename) as well as a FormFile stream (described below, has the filename),
 and all associated headers (generally not needed).
