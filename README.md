@@ -197,6 +197,7 @@ Congratulations. You've reached the end of the form.
 
   * `fields` is a map of arrays of Strings `{ "anyFieldName": ["decodedStringValue"] }`
   * `files` is a map of arrays of FormFiles `{ "anyFileName": [aFormFile, anOtherFormFile] }`
+  * `options.arrayFields` changes the behavior such that only the listed fields are arrays and all others are singular
 
 ```javascript
 form.on('end', function (fields, files) {
