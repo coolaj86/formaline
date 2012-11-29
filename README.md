@@ -2,8 +2,6 @@
 
 Formaline extends [PoorForm](http://github.com/coolaj86/poor-form) to create a very developer-friendly form parser, and still easy to get at the guts.
 
-It doesn't include the kitchen sink, but it's got at least a drawer or two and cleanly separates the forks from the knives. Also, Formaline is from Brooklyn.
-
 If you don't think Formaline is light-weight enough for you, you're crazy.
 Also, you'd probably really like [PoorForm](http://github.com/coolaj86/poor-form).
 
@@ -14,7 +12,7 @@ The **[Formaline v0.x](https://github.com/rootslab/formaline/tree/v0.x)** [docum
   * [`Formaline.create(request, options)`](#formalinecreaterequest-options)
   * [`Formaline#on('progress', fn)`](#formalineonprogress-function--)
   * [`Formaline#on('field', fn)`](#formalineonfield-function-name-decodedvalue-)
-  * [`Formaline#on('file', fn)`](#formalineonfile-function-name-goodfilestream-headers-)
+  * [`Formaline#on('file', fn)`](#formalineonfile-function-name-formfilestream-headers-)
     * [`FormFile#name`](#formfile)
     * [`FormFile#size`](#formfile)
     * [`FormFile#type`](#formfile)
@@ -129,7 +127,7 @@ form.on('field', function (key, value) {
 })
 ```
 
-### Formaline#on('file', function (name, goodFileStream, headers) {})
+### Formaline#on('file', function (name, formFileStream, headers) {})
 
 Provides the form name (not filename) as well as a FormFile stream (described below, has the filename),
 and all associated headers (generally not needed).
@@ -164,7 +162,7 @@ form.on('file', function (key, formFile) {
     // Also note that some of the properties are added just before the `end` event fires.
     formFile.lastModifiedDate = metadata.lastModifiedDate;
     if (!formFile.sha1 === metadata.sha1) {
-      console.error('Oh No! The sha1 sums don't match!');
+      console.error("Oh No! The sha1 sums don't match!");
     }
     console.log(key, JSON.stringify(formFile));
   });
@@ -173,7 +171,7 @@ form.on('file', function (key, formFile) {
     if (200 == res.statusCode) {
       console.log('saved to %s', req.url);
     } else {
-      console.error('fell on hard times, didn't save %s', req.url);
+      console.error("fell on hard times, didn't save %s", req.url);
     }
   });
 })
@@ -189,16 +187,17 @@ abstracted from PoorForm's `fieldstart`, `fielddata`, and `fieldend` events.
   * `size` is the current byte size of the file, which changes until the `end` event is called
   * `type` is the `contentType`
   * `lastModifiedDate` is updated each time a chunk is written to the file
-  * `path` is the current file path (either in '/tmp' or a path you specified)
+  * `path` is the current file path (either in `/tmp` or a path you specified)
   * `headers` is the array of MIME headers associated with the form
-  * `md5`, `sha1`, `sha256`, `sha512`, etc are attached in declared in the `options.hashes` array
+  * `md5`, `sha1`, `sha256`, `sha512`, etc are attached as per the `options.hashes` array
 
-### `Formaline#on('end', function (fields, files) {})`
+### Formaline#on('end', function (fields, files) {})
 
 Congratulations. You've reached the end of the form.
 
   * `fields` is a map of arrays of Strings `{ "anyFieldName": ["decodedStringValue"] }`
   * `files` is a map of arrays of FormFiles `{ "anyFileName": [aFormFile, anOtherFormFile] }`
+  * `options.arrayFields` changes the behavior such that only the listed fields are arrays and all others are singular
 
 ```javascript
 form.on('end', function (fields, files) {
