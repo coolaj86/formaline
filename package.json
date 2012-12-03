@@ -1,7 +1,7 @@
 {
   "name": "formaline",
   "version": "2.0.1",
-  "description": "Built upon the ultrafast poor-form, truly a formidable competitor.",
+  "description": "formaline is a module for handling form requests ( HTTP POSTs / PUTs ) and for fast parsing of file uploads.",
   "main": "lib/formaline.js",
   "directories": {
     "lib": "./lib"
@@ -31,6 +31,5 @@
     "post",
     "parser"
   ],
-  "author": "AJ ONeal <coolaj86@gmail.com> (http://coolaj86.info)",
   "license": "MIT"
 }

@@ -5,7 +5,7 @@ Formaline extends [PoorForm](http://github.com/coolaj86/poor-form) to create a v
 If you don't think Formaline is light-weight enough for you, you're crazy.
 Also, you'd probably really like [PoorForm](http://github.com/coolaj86/poor-form).
 
-The **[Formaline v0.x](https://github.com/rootslab/formaline/tree/v0.x)** [documentation](https://github.com/rootslab/formaline/blob/v0.x/Readme.md) is available on the v0.x branch. v0.6.4 seems to be the best version. It never made it to v1.0.0.
+The **[Formaline v0.x](https://github.com/rootslab/formaline/tree/v0.x)** [documentation](https://github.com/rootslab/formaline/blob/v0.x/Readme.md) is available on the v0.x branch.
 
 ## API
 
