@@ -21,7 +21,10 @@
   app = connect.createServer()
     .use(function (req, res, next) {
         var form = Formaline.create(req, {
+                // You might want to use a hash to verify transfer integrity or deduplicate uploaded files
                 hashes: ['md5', 'sha1']
+                // all fields are assumed arrays by default, but when arrayFields is specified
+                // only the fieldnames listed will be treated as arrays (including empty arrays)
               , arrayFields: ['avatar']
             })
           ;
@@ -37,26 +40,35 @@
           console.log((100 * (form.loaded / form.total)).toFixed(2) + '%');
         });
 
-        form.on('field', function (key, value) {
-          console.log(key, value);
+        form.on('field', function (fieldname, value) {
+          console.log(fieldname, value);
         });
 
-        form.on('file', function (key, file) {
-          console.log(key, file);
+        form.on('file', function (fieldname, file) {
+          console.log(fieldname, file);
         });
 
         form.on('end', function (fields, files) {
+          // uploading a file just to get an md5sum is pretty wasteful...
+          // but oh well, we'll unlink them now
+          
           console.log(fields);
           console.log(files);
 
-          // TODO this should, of course, use forEachAsync
-          Object.keys(files).forEach(function (key) {
-            var arr = files[key]
+          // TODO these two loops should, of course, use forEachAsync
+          files.avatar.forEach(function (file) {
+            fs.unlink(file.path);
+          });
+          Object.keys(files).forEach(function (fieldname) {
+            var file = files[fieldname]
               ;
-
-            arr.forEach(function (file) {
-              fs.unlink(file.path);
-            });
+              
+            if ('avatar' === fieldname) {
+              // this was already handled
+              return;
+            }
+            
+            fs.unlink(file.path);
           });
 
           res.setHeader('Content-Type', 'application/json');
