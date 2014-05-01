@@ -71,7 +71,7 @@ two special things happen:
 (function () {
   "use strict";
 
-  var Formaline = require('formaline')
+  var Formaline = require('formaline').Formaline
     ;
 
   // Using Connect, for example
