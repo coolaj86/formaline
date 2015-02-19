@@ -1,13 +1,13 @@
 {
   "name": "formaline",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "formaline is a module for handling form requests ( HTTP POSTs / PUTs ) and for fast parsing of file uploads.",
   "main": "lib/formaline.js",
   "directories": {
     "lib": "./lib"
   },
   "dependencies": {
-    "poor-form": ">=1.1.3 <1.2.0"
+    "poor-form": ">=1.1.4 <1.2.0"
   },
   "devDependencies": {
   },
