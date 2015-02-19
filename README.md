@@ -252,3 +252,8 @@ The following are abbreviated security concerns for a form handler with generous
   * `maxFileSize` - default 4 GiB - prevent storage attacks
   * `maxUploadSize` - default 16 GiB - prevent memory / storage attacks
   * `removeIncomplete` - default true - ignore unless creating a resumable upload service
+
+# LICENSE
+
+  * Apache 2
+  * MIT
